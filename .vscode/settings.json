@@ -1,0 +1,5 @@
+{
+  // Microsoft Live Preview (extension id: ms-vscode.live-server)
+  // Relative to workspace folder; no leading slash.
+  "livePreview.serverRoot": "site"
+}
