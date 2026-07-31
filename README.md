@@ -91,6 +91,28 @@ See the [full worked example](./examples/MODEL_FACTS.md), the [hand-authored tem
 | `safety` | Safety label | How hot are the built-in filters? Do I need my own guardrails? |
 | `benchmarks` | Nutrition value | Objective, comparable numbers (MMLU, GSM8K, HumanEval…). |
 
+## Generating a label
+
+You *can* hand-write `MODEL_FACTS.md` from the template, but the [generator](./generator/) drafts one for you — from a Hugging Face model card or a local Ollama model:
+
+```bash
+cd generator
+pnpm install
+
+# deterministic draft (no LLM) — judgment fields marked "# TODO: verify"
+pnpm generate Qwen/Qwen2.5-7B-Instruct
+
+# LLM-curated from the model card — local-first via Ollama,
+# or openai / anthropic / xai / gemini
+pnpm generate https://huggingface.co/Qwen/Qwen2.5-7B-Instruct \
+  --provider ollama --model llama3.1
+
+# from a local Ollama model (GGUF header facts: params, context, quant, license)
+pnpm generate ollama:llama3.1 --provider ollama --model llama3.1
+```
+
+Deterministic facts (parameter count, context window, quantization, license, base model) come straight from structured metadata. The LLM only fills the judgment-and-provenance fields from the card text, under the Golden Rule — and its output is sanitized against the schema's enums. See [`generator/README.md`](./generator/README.md).
+
 ## Validating a file
 
 The frontmatter conforms to [`site/schema/model-facts.schema.json`](./site/schema/model-facts.schema.json) (served at [modelfacts.dev/schema/model-facts.schema.json](https://modelfacts.dev/schema/model-facts.schema.json)) — any draft-07 validator works. This repo ships a small TypeScript CLI:
@@ -108,7 +130,8 @@ pnpm validate path/to/your/MODEL_FACTS.md
 
 - [x] Spec v0.1.0, canonical JSON Schema, worked examples
 - [x] Schema validator CLI (TypeScript)
-- [ ] Generator: draft a `MODEL_FACTS.md` from a Hugging Face model ID / model card (LLM-curated, like the [AppFacts generator](https://github.com/Catalyst-Forge-LLC/app-facts/tree/main/generator))
+- [x] Generator: draft a `MODEL_FACTS.md` from a Hugging Face model card/URL or a local Ollama model, with optional LLM curation (ollama / openai / anthropic / xai / gemini)
+- [ ] More generator sources: OpenRouter, LM Studio, raw GGUF files
 - [ ] Portable visual label (`/v#mf1.…` QR payload, no backend) and badges, mirroring AppFacts
 - [ ] A directory of labeled models ("ModelFacts certified")
 

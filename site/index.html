@@ -366,7 +366,7 @@
       <div class="cta">
         <a class="btn btn-primary" href="https://github.com/Catalyst-Forge-LLC/model-facts">View on GitHub</a>
         <a class="btn btn-ghost" href="https://github.com/Catalyst-Forge-LLC/model-facts/blob/main/SPEC.md">Read the spec</a>
-        <a class="btn btn-ghost" href="#write">Write one</a>
+        <a class="btn btn-ghost" href="#write">Generate one</a>
       </div>
     </div>
 
@@ -477,32 +477,38 @@ generated:
 
     <section id="write">
       <div class="wrap">
-        <h2 class="section-title">Write one</h2>
+        <h2 class="section-title">Generate one</h2>
         <p class="section-lead">
-          Start from the template, fill in the objective facts from the model card and paper,
-          then validate against the canonical schema — locally or in CI.
+          The generator drafts a label from a Hugging Face model card/URL or a local Ollama model.
+          Hard facts come straight from metadata; an LLM (optional, local-first) curates the rest
+          from the card — never invents.
         </p>
         <div class="split">
-          <pre># start from the template
-curl -O https://raw.githubusercontent.com/Catalyst-Forge-LLC/model-facts/main/examples/MODEL_FACTS.template.md
-mv MODEL_FACTS.template.md MODEL_FACTS.md
+          <pre># from a Hugging Face model card
+cd model-facts/generator &amp;&amp; pnpm install
+pnpm generate Qwen/Qwen2.5-7B-Instruct \
+  --provider ollama --model llama3.1
 
-# validate (TypeScript CLI in this repo)
-cd model-facts/validator
-pnpm install
+# from a local Ollama model
+pnpm generate ollama:llama3.1 --provider ollama --model llama3.1
+
+# validate any MODEL_FACTS.md (CI-friendly exit codes)
+cd ../validator &amp;&amp; pnpm install
 pnpm validate path/to/MODEL_FACTS.md</pre>
           <div class="prose">
             <p>
-              The frontmatter conforms to
-              <a href="/schema/model-facts.schema.json">model-facts.schema.json</a> (draft-07) —
-              any JSON Schema validator works.
+              Output is validated against
+              <a href="/schema/model-facts.schema.json">model-facts.schema.json</a> (draft-07)
+              before it's written. Omit <code>--model</code> for a deterministic, no-LLM draft
+              with the judgment fields marked <code>TODO: verify</code>.
             </p>
             <p>
-              On the roadmap: a generator that drafts <code>MODEL_FACTS.md</code> from a Hugging Face
-              model card, portable QR labels, badges, and a directory of labeled models.
+              On the roadmap: more sources (OpenRouter, LM Studio, raw GGUF), portable QR labels,
+              badges, and a directory of labeled models.
             </p>
             <ul class="links">
               <li><a href="https://github.com/Catalyst-Forge-LLC/model-facts">github.com/Catalyst-Forge-LLC/model-facts</a></li>
+              <li><a href="https://github.com/Catalyst-Forge-LLC/model-facts/tree/main/generator">Generator docs</a></li>
               <li><a href="https://github.com/Catalyst-Forge-LLC/model-facts/tree/main/validator">Validator docs</a></li>
             </ul>
           </div>
