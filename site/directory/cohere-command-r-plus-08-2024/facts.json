@@ -1,0 +1,48 @@
+{
+  "model_facts_version": "0.1.0",
+  "name": "c4ai-command-r-plus-08-2024",
+  "developer": "Cohere",
+  "status": "active",
+  "license": "CC-BY-NC-4.0",
+  "release_date": "2024-08-21",
+  "weights": "https://huggingface.co/CohereForAI/c4ai-command-r-plus-08-2024",
+  "architecture": {
+    "type": "dense transformer (decoder-only)",
+    "parameters": "103.8B",
+    "context_window": "undisclosed",
+    "quantization": "bf16",
+    "modalities_in": [
+      "text"
+    ],
+    "modalities_out": [
+      "text"
+    ]
+  },
+  "training": {
+    "knowledge_cutoff": "undisclosed",
+    "methodology": "pre-training → SFT → preference optimization",
+    "tokens": "undisclosed"
+  },
+  "capabilities": {
+    "natural_language": "full",
+    "reasoning_math": "high",
+    "coding": "medium",
+    "vision_input": "disabled",
+    "audio_input": "disabled",
+    "tool_use": "native",
+    "notes": "Optimized for RAG and tool use"
+  },
+  "safety": {
+    "refusal_sensitivity": "medium",
+    "instruction_following": "high",
+    "filter_type": "hybrid"
+  },
+  "generated": {
+    "date": "2026-08-03",
+    "generator": "directory seed — human-reviewed judgment fields"
+  },
+  "credits": {
+    "generated_with": "https://modelfacts.dev",
+    "built_by": "Catalyst Forge — https://www.catalystforge.com/"
+  }
+}

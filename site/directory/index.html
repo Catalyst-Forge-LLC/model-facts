@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Directory — ModelFacts</title>
+  <meta name="description" content="Browse curated ModelFacts labels for top open-weight and closed AI models." />
+  <link rel="canonical" href="https://modelfacts.dev/directory/" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Sora:wght@500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/directory/directory.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="wrap bar">
+      <a class="brand-link" href="/">Model<span>Facts</span></a>
+      <nav>
+        <a href="/directory/" aria-current="page">Directory</a>
+        <a href="https://github.com/Catalyst-Forge-LLC/model-facts/blob/main/DIRECTORY_SPEC.md">Spec</a>
+        <a href="/schema/model-facts.schema.json">Schema</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap listing">
+    <h1>Directory</h1>
+    <p class="lede">Curated ModelFacts labels for well-known models. Open weights and closed APIs side by side — including when the answer is <code>undisclosed</code>.</p>
+
+    <div class="controls">
+      <div class="chips" role="group" aria-label="Filter by weight access">
+        <button type="button" data-filter="all" class="chip active">All</button>
+        <button type="button" data-filter="open" class="chip">Open</button>
+        <button type="button" data-filter="closed" class="chip">Closed</button>
+      </div>
+      <label class="search">
+        <span class="sr-only">Filter models</span>
+        <input type="search" id="q" placeholder="Filter by name or developer…" autocomplete="off" />
+      </label>
+    </div>
+
+    <p class="count" id="count"></p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Developer</th>
+            <th>Params</th>
+            <th>Context</th>
+            <th>Filter</th>
+            <th>Access</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap row">
+      <div>© 2026 ModelFacts · <a href="https://www.catalystforge.com/">Catalyst Forge</a></div>
+      <div><a href="/">Home</a> · <a href="https://github.com/Catalyst-Forge-LLC/model-facts">GitHub</a></div>
+    </div>
+  </footer>
+
+  <script src="/directory/listing.js"></script>
+</body>
+</html>

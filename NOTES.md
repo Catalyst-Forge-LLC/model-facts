@@ -1,7 +1,7 @@
 # Project Notes — ModelFacts
 
 > Working notes for maintainers/agents picking up this project. Not published to the site.
-> Last updated: 2026-07-31 (initial build session).
+> Last updated: 2026-08-03 (directory seed + DIRECTORY_SPEC).
 
 ## What this is
 
@@ -24,7 +24,9 @@ pushed**; owner pushes).
 | Examples | `examples/MODEL_FACTS.md` (Llama-3.1-70B worked example), `examples/MODEL_FACTS.template.md` | Both pass validation. |
 | Validator CLI | `validator/` | TypeScript ESM, pnpm, tsx + ajv + yaml. `pnpm validate <files…>`, CI-friendly exit codes. |
 | Generator CLI | `generator/` | TypeScript ESM. Sources: Hugging Face (`org/name`, `hf:`, full URL) and local Ollama (`ollama:name[:tag]`). Optional LLM curation via ollama/openai/anthropic/xai/gemini (fetch-based, no SDK deps). Output self-validates against the schema before writing. |
-| Site | `site/` | Static, Cloudflare Pages-ready (root = `site`, no build). AppFacts design system with violet accent (`--accent: #7c5cf0`). Landing page only — no `/v` viewer or badge pages yet. |
+| Site | `site/` | Static, Cloudflare Pages-ready (root = `site`, no build). AppFacts design system with violet accent (`--accent: #7c5cf0`). Landing + `/directory/` catalog. No `/v` viewer or badge pages yet. |
+| Directory spec | `DIRECTORY_SPEC.md` | Done. Repo-canonical labels, static mirror, `draft`/`reviewed` curation, open+closed seed. |
+| Directory seed | `directory/` + `directory-tools/` | 28 models (21 open HF + 7 closed APIs). `pnpm apply-reviews` + `pnpm sync` regenerates `site/directory/`. |
 
 Verified end-to-end on this machine: `Qwen/Qwen2.5-7B-Instruct` deterministic draft;
 same model LLM-curated by local `gemma4:12b` (correctly kept `undisclosed` for Qwen's
@@ -87,12 +89,10 @@ emits them — the AppFacts generator insight, doubled here.
 ## Next steps (rough priority)
 
 1. **Push to GitHub** (owner does this; first push sets default branch — site links
-   assume `main`).
-2. **Seed the directory:** batch-generate labels for top open models (HF + Ollama
-   library), human-review the judgment fields, publish under `site/` (static JSON +
-   listing page). This is the launch artifact.
-3. Deploy site to Cloudflare Pages (project root = `site`, no build step) + DNS for
-   modelfacts.dev.
+   assume `main`). Directory seed is ready to ship with it.
+2. Deploy site to Cloudflare Pages (project root = `site`, no build step) + DNS for
+   modelfacts.dev — `/directory/` is the launch surface.
+3. Expand the catalog (more open models; keep closed entries honest with `undisclosed`).
 4. More generator sources: OpenRouter, LM Studio, raw GGUF files (adapters in
    `generator/src/sources/`, return the common `SourceFacts` shape).
 5. Portable visual label + badge, mirroring AppFacts (`/v#mf1.…` zlib+base64url payload,

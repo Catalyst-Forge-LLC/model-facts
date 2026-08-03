@@ -1,0 +1,61 @@
+{
+  "model_facts_version": "0.1.0",
+  "name": "Llama-3.1-405B-Instruct",
+  "developer": "Meta",
+  "status": "active",
+  "license": "Llama 3.1 Community License",
+  "release_date": "2024-07-16",
+  "weights": "https://huggingface.co/meta-llama/Llama-3.1-405B-Instruct",
+  "base_model": "meta-llama/Meta-Llama-3.1-405B",
+  "architecture": {
+    "type": "dense transformer (decoder-only)",
+    "parameters": "405B",
+    "context_window": "128k",
+    "quantization": "bf16",
+    "modalities_in": [
+      "text"
+    ],
+    "modalities_out": [
+      "text"
+    ]
+  },
+  "training": {
+    "knowledge_cutoff": "2023-12",
+    "methodology": "pre-training → SFT → RLHF (rejection sampling + DPO)",
+    "tokens": "15T"
+  },
+  "capabilities": {
+    "natural_language": "full",
+    "reasoning_math": "high",
+    "coding": "high",
+    "vision_input": "disabled",
+    "audio_input": "disabled",
+    "tool_use": "native",
+    "languages": "8 languages officially supported"
+  },
+  "safety": {
+    "refusal_sensitivity": "medium",
+    "instruction_following": "high",
+    "filter_type": "hybrid"
+  },
+  "generated": {
+    "date": "2026-08-03",
+    "generator": "directory seed — human-reviewed judgment fields"
+  },
+  "credits": {
+    "generated_with": "https://modelfacts.dev",
+    "built_by": "Catalyst Forge — https://www.catalystforge.com/"
+  },
+  "benchmarks": [
+    {
+      "name": "MMLU",
+      "score": 88.6,
+      "notes": "5-shot"
+    },
+    {
+      "name": "HumanEval",
+      "score": 89,
+      "notes": "pass@1"
+    }
+  ]
+}

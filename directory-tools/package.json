@@ -1,0 +1,23 @@
+{
+  "name": "modelfacts-directory-tools",
+  "version": "0.1.0",
+  "description": "Sync and seed the ModelFacts directory (canonical labels → static site mirror).",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "sync": "tsx src/sync.ts",
+    "seed": "tsx src/seed.ts",
+    "apply-reviews": "tsx src/apply-reviews.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "yaml": "^2.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.0"
+  }
+}

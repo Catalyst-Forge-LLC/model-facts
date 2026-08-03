@@ -1,0 +1,49 @@
+{
+  "model_facts_version": "0.1.0",
+  "name": "OLMo-2-1124-13B-Instruct",
+  "developer": "Allen Institute for AI",
+  "status": "active",
+  "license": "Apache-2.0",
+  "release_date": "2024-12-18",
+  "weights": "https://huggingface.co/allenai/OLMo-2-1124-13B-Instruct",
+  "base_model": "allenai/OLMo-2-1124-13B-Instruct-RLVR2",
+  "architecture": {
+    "type": "dense transformer (decoder-only)",
+    "parameters": "13.7B",
+    "context_window": "4k",
+    "quantization": "bf16",
+    "modalities_in": [
+      "text"
+    ],
+    "modalities_out": [
+      "text"
+    ]
+  },
+  "training": {
+    "knowledge_cutoff": "undisclosed",
+    "methodology": "fully open pre-training → SFT → DPO (Dolci)",
+    "tokens": "undisclosed"
+  },
+  "capabilities": {
+    "natural_language": "full",
+    "reasoning_math": "medium",
+    "coding": "medium",
+    "vision_input": "disabled",
+    "audio_input": "disabled",
+    "tool_use": "prompted",
+    "notes": "Open data, code, and weights (OLMo lineage)"
+  },
+  "safety": {
+    "refusal_sensitivity": "medium",
+    "instruction_following": "medium",
+    "filter_type": "hybrid"
+  },
+  "generated": {
+    "date": "2026-08-03",
+    "generator": "directory seed — human-reviewed judgment fields"
+  },
+  "credits": {
+    "generated_with": "https://modelfacts.dev",
+    "built_by": "Catalyst Forge — https://www.catalystforge.com/"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "model_facts_version": "0.1.0",
+  "name": "gemma-2-9b-it",
+  "developer": "Google",
+  "status": "active",
+  "license": "Gemma Terms of Use",
+  "release_date": "2024-06-24",
+  "weights": "https://huggingface.co/google/gemma-2-9b-it",
+  "base_model": "google/gemma-2-9b",
+  "architecture": {
+    "type": "dense transformer (decoder-only)",
+    "parameters": "9.24B",
+    "context_window": "8k",
+    "quantization": "bf16",
+    "modalities_in": [
+      "text"
+    ],
+    "modalities_out": [
+      "text"
+    ]
+  },
+  "training": {
+    "knowledge_cutoff": "undisclosed",
+    "methodology": "pre-training → SFT → RLHF",
+    "tokens": "8T"
+  },
+  "capabilities": {
+    "natural_language": "full",
+    "reasoning_math": "medium",
+    "coding": "medium",
+    "vision_input": "disabled",
+    "audio_input": "disabled",
+    "tool_use": "prompted"
+  },
+  "safety": {
+    "refusal_sensitivity": "high",
+    "instruction_following": "high",
+    "filter_type": "hybrid"
+  },
+  "generated": {
+    "date": "2026-08-03",
+    "generator": "directory seed — human-reviewed judgment fields"
+  },
+  "credits": {
+    "generated_with": "https://modelfacts.dev",
+    "built_by": "Catalyst Forge — https://www.catalystforge.com/"
+  }
+}
