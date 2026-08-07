@@ -99,8 +99,15 @@ td a:hover { color: var(--accent-soft); }
   overflow: hidden; clip: rect(0,0,0,0); border: 0;
 }
 .crumb { color: var(--mute); font-size: 0.8rem; margin: 0 0 0.75rem; }
-.meta-line { display: flex; flex-wrap: wrap; gap: 0.5rem 0.75rem; align-items: center; color: #c9d3de; }
-.links-row { display: flex; flex-wrap: wrap; gap: 0.85rem; margin: 1rem 0 1.5rem; }
+.meta-line {
+  display: flex; flex-wrap: wrap; gap: 0.5rem 0.75rem; align-items: center;
+  color: #c9d3de; margin: 0 0 1.35rem;
+}
+.label-plane a.label-link {
+  color: var(--ink); text-decoration: underline; text-underline-offset: 0.15em;
+  text-decoration-thickness: 1px; word-break: break-all;
+}
+.label-plane a.label-link:hover { color: #4c3ab8; }
 .label-plane {
   background: var(--paper); color: var(--ink); border-top: 4px solid var(--ink);
   box-shadow: 0 20px 60px rgba(0,0,0,0.35);

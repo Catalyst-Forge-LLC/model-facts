@@ -68,6 +68,22 @@ export function parseContextTokens(raw: string): number | null {
   return Math.round(n);
 }
 
+function shortUrl(url: string): string {
+  try {
+    const u = new URL(url);
+    const path = u.pathname === "/" ? "" : u.pathname.replace(/\/$/, "");
+    const display = `${u.host}${path}`;
+    return display.length > 42 ? `${display.slice(0, 39)}…` : display;
+  } catch {
+    return url.length > 42 ? `${url.slice(0, 39)}…` : url;
+  }
+}
+
+function linkRow(label: string, url: string | undefined): string {
+  if (!url) return "";
+  return `<div class="row"><strong>${escapeHtml(label)}</strong><span><a class="label-link" href="${escapeHtml(url)}" rel="noopener">${escapeHtml(shortUrl(url))}</a></span></div>`;
+}
+
 function detailHtml(entry: CatalogEntry, facts: ModelFacts): string {
   const a = facts.architecture;
   const t = facts.training;
@@ -79,6 +95,13 @@ function detailHtml(entry: CatalogEntry, facts: ModelFacts): string {
       : "—";
   const benchmarks = (facts.benchmarks ?? [])
     .map((b) => `<div class="row"><strong>${escapeHtml(b.name)}</strong><span>${escapeHtml(String(b.score))}${b.notes ? ` <em>${escapeHtml(b.notes)}</em>` : ""}</span></div>`)
+    .join("\n");
+  const sourceLinks = [
+    linkRow("Homepage", facts.homepage),
+    linkRow("Weights", facts.weights),
+    linkRow("Repository", facts.repository),
+  ]
+    .filter(Boolean)
     .join("\n");
 
   return `<!DOCTYPE html>
@@ -117,11 +140,6 @@ function detailHtml(entry: CatalogEntry, facts: ModelFacts): string {
       ·
       <span>${escapeHtml(facts.license)}</span>
     </p>
-    <div class="links-row">
-      ${facts.homepage ? `<a href="${escapeHtml(facts.homepage)}">Homepage</a>` : ""}
-      ${facts.weights ? `<a href="${escapeHtml(facts.weights)}">Weights</a>` : ""}
-      ${facts.repository ? `<a href="${escapeHtml(facts.repository)}">Repository</a>` : ""}
-    </div>
 
     <div class="label-plane" aria-label="Model Facts label">
       <div class="label-plane-inner">
@@ -144,6 +162,7 @@ function detailHtml(entry: CatalogEntry, facts: ModelFacts): string {
           <div class="row"><strong>Vision</strong><span>${escapeHtml(c.vision_input)}</span></div>
           <div class="row"><strong>Tool use</strong><span>${escapeHtml(c.tool_use ?? "—")}</span></div>
           ${benchmarks ? `<div class="deps"><b>Benchmarks</b></div>${benchmarks}` : ""}
+          ${sourceLinks ? `<div class="deps"><b>Sources</b></div>${sourceLinks}` : ""}
         </div>
       </div>
     </div>
