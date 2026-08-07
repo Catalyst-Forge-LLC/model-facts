@@ -76,7 +76,11 @@ export interface CatalogEntry {
   weight_access: "open" | "closed";
   curation: "draft" | "reviewed";
   parameters: string;
+  /** Numeric billions for filtering; null when undisclosed / unparseable. */
+  parameters_b: number | null;
   context_window: string;
+  /** Numeric tokens for filtering; null when undisclosed / unparseable. */
+  context_tokens: number | null;
   release_date?: string;
   filter_type: string;
   href: string;

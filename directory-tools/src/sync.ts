@@ -40,6 +40,31 @@ function escapeHtml(s: string): string {
     .replace(/"/g, "&quot;");
 }
 
+/** Parse "70B", "7.62B", "8x22B" → billions; undisclosed → null. */
+export function parseParametersB(raw: string): number | null {
+  const s = raw.trim().toLowerCase();
+  if (!s || s === "undisclosed") return null;
+  const moe = /^(\d+(?:\.\d+)?)\s*x\s*(\d+(?:\.\d+)?)\s*b$/.exec(s);
+  if (moe) return Number(moe[1]) * Number(moe[2]);
+  const plain = /^(\d+(?:\.\d+)?)\s*b$/.exec(s);
+  if (plain) return Number(plain[1]);
+  return null;
+}
+
+/** Parse "128k", "1M", "8000" → tokens; undisclosed → null. */
+export function parseContextTokens(raw: string): number | null {
+  const s = raw.trim().toLowerCase();
+  if (!s || s === "undisclosed") return null;
+  const m = /^(\d+(?:\.\d+)?)\s*([kmb])?$/.exec(s);
+  if (!m) return null;
+  const n = Number(m[1]);
+  const unit = m[2];
+  if (unit === "k") return Math.round(n * 1_000);
+  if (unit === "m") return Math.round(n * 1_000_000);
+  if (unit === "b") return Math.round(n * 1_000_000_000);
+  return Math.round(n);
+}
+
 function detailHtml(entry: CatalogEntry, facts: ModelFacts): string {
   const a = facts.architecture;
   const t = facts.training;
@@ -137,263 +162,7 @@ function detailHtml(entry: CatalogEntry, facts: ModelFacts): string {
 `;
 }
 
-const listingShell = `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Directory — ModelFacts</title>
-  <meta name="description" content="Browse curated ModelFacts labels for top open-weight and closed AI models." />
-  <link rel="canonical" href="https://modelfacts.dev/directory/" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Sora:wght@500;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/directory/directory.css" />
-</head>
-<body>
-  <header class="top">
-    <div class="wrap bar">
-      <a class="brand-link" href="/">Model<span>Facts</span></a>
-      <nav>
-        <a href="/directory/" aria-current="page">Directory</a>
-        <a href="https://github.com/Catalyst-Forge-LLC/model-facts/blob/main/DIRECTORY_SPEC.md">Spec</a>
-        <a href="/schema/model-facts.schema.json">Schema</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="wrap listing">
-    <h1>Directory</h1>
-    <p class="lede">Curated ModelFacts labels for well-known models. Open weights and closed APIs side by side — including when the answer is <code>undisclosed</code>.</p>
-
-    <div class="controls">
-      <div class="chips" role="group" aria-label="Filter by weight access">
-        <button type="button" data-filter="all" class="chip active">All</button>
-        <button type="button" data-filter="open" class="chip">Open</button>
-        <button type="button" data-filter="closed" class="chip">Closed</button>
-      </div>
-      <label class="search">
-        <span class="sr-only">Filter models</span>
-        <input type="search" id="q" placeholder="Filter by name or developer…" autocomplete="off" />
-      </label>
-    </div>
-
-    <p class="count" id="count"></p>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Model</th>
-            <th>Developer</th>
-            <th>Params</th>
-            <th>Context</th>
-            <th>Filter</th>
-            <th>Access</th>
-          </tr>
-        </thead>
-        <tbody id="rows"></tbody>
-      </table>
-    </div>
-  </main>
-
-  <footer>
-    <div class="wrap row">
-      <div>© 2026 ModelFacts · <a href="https://www.catalystforge.com/">Catalyst Forge</a></div>
-      <div><a href="/">Home</a> · <a href="https://github.com/Catalyst-Forge-LLC/model-facts">GitHub</a></div>
-    </div>
-  </footer>
-
-  <script src="/directory/listing.js"></script>
-</body>
-</html>
-`;
-
-const listingJs = `async function main() {
-  const res = await fetch("/directory/index.json");
-  const catalog = await res.json();
-  const rowsEl = document.getElementById("rows");
-  const countEl = document.getElementById("count");
-  const qEl = document.getElementById("q");
-  let access = "all";
-
-  function render() {
-    const q = (qEl.value || "").trim().toLowerCase();
-    const models = catalog.models.filter((m) => {
-      if (access !== "all" && m.weight_access !== access) return false;
-      if (!q) return true;
-      return (
-        m.name.toLowerCase().includes(q) ||
-        m.developer.toLowerCase().includes(q) ||
-        m.slug.includes(q)
-      );
-    });
-    countEl.textContent = models.length + " of " + catalog.count + " models";
-    rowsEl.innerHTML = models
-      .map(
-        (m) =>
-          "<tr data-access=\\"" +
-          m.weight_access +
-          '\\"><td><a href="' +
-          m.href +
-          '">' +
-          escapeHtml(m.name) +
-          '</a></td><td>' +
-          escapeHtml(m.developer) +
-          "</td><td>" +
-          escapeHtml(m.parameters) +
-          "</td><td>" +
-          escapeHtml(m.context_window) +
-          '</td><td>' +
-          escapeHtml(m.filter_type) +
-          '</td><td><span class="badge ' +
-          m.weight_access +
-          '">' +
-          m.weight_access +
-          "</span></td></tr>",
-      )
-      .join("");
-  }
-
-  function escapeHtml(s) {
-    return String(s)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;");
-  }
-
-  document.querySelectorAll(".chip").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      document.querySelectorAll(".chip").forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-      access = btn.getAttribute("data-filter") || "all";
-      render();
-    });
-  });
-  qEl.addEventListener("input", render);
-  render();
-}
-main();
-`;
-
-const directoryCss = `:root {
-  --ink: #101418;
-  --paper: #f8fafc;
-  --mute: #9aa8b8;
-  --accent: #7c5cf0;
-  --accent-soft: #ab93f5;
-  --font-display: "Sora", sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
-  --max: 68rem;
-}
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  color: var(--paper);
-  background:
-    radial-gradient(1200px 600px at 10% -10%, rgba(124, 92, 240, 0.18), transparent 55%),
-    radial-gradient(900px 500px at 90% 0%, rgba(80, 120, 160, 0.14), transparent 50%),
-    linear-gradient(180deg, #0c1015 0%, var(--ink) 40%, #0a0e13 100%);
-  font-family: var(--font-mono);
-  font-size: 15px;
-  line-height: 1.55;
-  min-height: 100vh;
-}
-a { color: var(--accent-soft); text-underline-offset: 0.18em; }
-a:hover { color: #fff; }
-.wrap { width: min(100% - 2rem, var(--max)); margin-inline: auto; }
-.top { border-bottom: 1px solid rgba(255,255,255,0.08); }
-.bar {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 1rem 0; gap: 1rem; flex-wrap: wrap;
-}
-.brand-link {
-  font-family: var(--font-display); font-weight: 800; font-size: 1.25rem;
-  letter-spacing: -0.03em; color: #fff; text-decoration: none;
-}
-.brand-link span { color: var(--accent); }
-nav { display: flex; gap: 1rem; flex-wrap: wrap; }
-nav a { text-decoration: none; font-weight: 600; font-size: 0.85rem; }
-.listing, .detail { padding: 2.25rem 0 3rem; }
-h1 {
-  font-family: var(--font-display); font-weight: 800;
-  font-size: clamp(2rem, 5vw, 2.75rem); letter-spacing: -0.04em;
-  margin: 0 0 0.75rem; color: #fff;
-}
-.lede { color: var(--mute); max-width: 54ch; margin: 0 0 1.5rem; }
-.controls {
-  display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between;
-  align-items: center; margin-bottom: 0.75rem;
-}
-.chips { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-.chip {
-  background: transparent; border: 1px solid rgba(255,255,255,0.22);
-  color: var(--paper); font: 600 0.8rem/1 var(--font-mono);
-  padding: 0.5rem 0.75rem; cursor: pointer;
-}
-.chip.active, .chip:hover { border-color: var(--accent); color: #fff; }
-.search input {
-  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.16);
-  color: #fff; font: 400 0.85rem/1.2 var(--font-mono); padding: 0.55rem 0.7rem;
-  min-width: min(100%, 18rem);
-}
-.count { color: var(--mute); font-size: 0.8rem; margin: 0 0 0.75rem; }
-.table-wrap { overflow-x: auto; border-top: 1px solid rgba(255,255,255,0.1); }
-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
-th, td { text-align: left; padding: 0.7rem 0.6rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
-th { color: var(--mute); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; font-size: 0.7rem; }
-td a { font-weight: 600; text-decoration: none; color: #fff; }
-td a:hover { color: var(--accent-soft); }
-.badge {
-  display: inline-block; padding: 0.15rem 0.4rem; font-size: 0.7rem; font-weight: 600;
-  border: 1px solid rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.04em;
-}
-.badge.open { border-color: rgba(47, 111, 78, 0.7); color: #8fd6b0; }
-.badge.closed { border-color: rgba(171, 147, 245, 0.55); color: var(--accent-soft); }
-.badge.reviewed { border-color: rgba(255,255,255,0.25); color: #d5dde6; }
-.sr-only {
-  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-  overflow: hidden; clip: rect(0,0,0,0); border: 0;
-}
-.crumb { color: var(--mute); font-size: 0.8rem; margin: 0 0 0.75rem; }
-.meta-line { display: flex; flex-wrap: wrap; gap: 0.5rem 0.75rem; align-items: center; color: #c9d3de; }
-.links-row { display: flex; flex-wrap: wrap; gap: 0.85rem; margin: 1rem 0 1.5rem; }
-.label-plane {
-  background: var(--paper); color: var(--ink); border-top: 4px solid var(--ink);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-}
-.label-plane-inner { padding: 1.1rem 1.15rem 1.35rem; }
-.label-plane h2 {
-  font-family: var(--font-display); font-weight: 800; font-size: clamp(1.4rem, 3vw, 1.9rem);
-  letter-spacing: -0.03em; margin: 0; text-transform: uppercase;
-}
-.serving {
-  font-size: 0.75rem; border-bottom: 10px solid var(--ink);
-  padding: 0.4rem 0 0.5rem; margin-bottom: 0.35rem;
-}
-.label-cols { display: grid; gap: 0.15rem 2rem; }
-@media (min-width: 720px) { .label-cols { grid-template-columns: 1fr 1fr; } }
-.label-plane .row {
-  display: flex; justify-content: space-between; gap: 1rem;
-  border-bottom: 1px solid var(--ink); padding: 0.32rem 0; font-size: 0.8rem;
-}
-.label-plane .row.thick { border-bottom-width: 5px; }
-.label-plane .row em { color: #44505c; font-style: normal; font-size: 0.72rem; }
-.label-plane .deps {
-  grid-column: 1 / -1; margin-top: 0.5rem; font-size: 0.8rem; font-weight: 600;
-}
-.footnote { color: var(--mute); font-size: 0.78rem; max-width: 62ch; margin: 1.5rem 0 0; }
-footer {
-  padding: 2rem 0 2.75rem; border-top: 1px solid rgba(255,255,255,0.08);
-  color: var(--mute); font-size: 0.8rem;
-}
-footer .row {
-  display: flex; flex-wrap: wrap; gap: 0.75rem 1.5rem;
-  justify-content: space-between; align-items: center;
-}
-`;
-
+const assetsDir = resolve(here, "../assets");
 const manifest = JSON.parse(readFileSync(manifestPath, "utf8")) as Manifest;
 const today = new Date().toISOString().slice(0, 10);
 
@@ -439,7 +208,9 @@ for (const m of manifest.models) {
     weight_access: m.weight_access,
     curation: m.curation,
     parameters: facts.architecture.parameters,
+    parameters_b: parseParametersB(facts.architecture.parameters),
     context_window: facts.architecture.context_window,
+    context_tokens: parseContextTokens(facts.architecture.context_window),
     release_date: facts.release_date,
     filter_type: facts.safety.filter_type,
     href: `/directory/${m.slug}/`,
@@ -466,9 +237,9 @@ const catalog: Catalog = {
 };
 
 writeFileSync(resolve(siteDir, "index.json"), JSON.stringify(catalog, null, 2) + "\n", "utf8");
-writeFileSync(resolve(siteDir, "index.html"), listingShell, "utf8");
-writeFileSync(resolve(siteDir, "listing.js"), listingJs, "utf8");
-writeFileSync(resolve(siteDir, "directory.css"), directoryCss, "utf8");
+copyFileSync(resolve(assetsDir, "listing.html"), resolve(siteDir, "index.html"));
+copyFileSync(resolve(assetsDir, "listing.js"), resolve(siteDir, "listing.js"));
+copyFileSync(resolve(assetsDir, "directory.css"), resolve(siteDir, "directory.css"));
 
 if (failed) {
   console.error("Sync finished with errors.");

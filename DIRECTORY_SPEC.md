@@ -84,7 +84,9 @@ detail page.
       "weight_access": "open",
       "curation": "reviewed",
       "parameters": "70B",
+      "parameters_b": 70,
       "context_window": "128k",
+      "context_tokens": 128000,
       "release_date": "2024-07-23",
       "filter_type": "hybrid",
       "href": "/directory/meta-llama-3.1-70b-instruct/",
@@ -104,7 +106,12 @@ These are **not** part of the ModelFacts schema; they describe the catalog entry
 | `weight_access` | `open` \| `closed` | Open downloadable weights vs API-only / undisclosed weights |
 | `curation` | `draft` \| `reviewed` | Generator draft vs human-reviewed judgment fields |
 | `slug` | string | Directory id |
+| `parameters_b` | number \| `null` | Parsed parameter count in billions for filters (`null` if undisclosed) |
+| `context_tokens` | number \| `null` | Parsed context length in tokens for filters (`null` if undisclosed) |
 | `href` / `facts_json` / `facts_md` | paths | Site URLs |
+
+The listing page filters by developer, min params, min context, filter type, and weight access.
+Min-param / min-context filters **exclude** models whose value is `undisclosed`.
 
 `weight_access` is inferred at sync time:
 
