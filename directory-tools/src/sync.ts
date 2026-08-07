@@ -167,7 +167,7 @@ function detailHtml(entry: CatalogEntry, facts: ModelFacts): string {
 
     <p class="footnote">
       Judgment fields are reviewed self-reports from published docs — not ModelFacts-run evals.
-      See <a href="https://github.com/Catalyst-Forge-LLC/model-facts/blob/main/DIRECTORY_SPEC.md">DIRECTORY_SPEC.md</a>.
+      See <a href="https://github.com/Catalyst-Forge-LLC/model-facts/blob/main/specs/DIRECTORY_SPEC.md">DIRECTORY_SPEC.md</a>.
     </p>
   </main>
 

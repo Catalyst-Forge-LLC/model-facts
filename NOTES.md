@@ -1,7 +1,7 @@
 # Project Notes — ModelFacts
 
 > Working notes for maintainers/agents picking up this project. Not published to the site.
-> Last updated: 2026-08-07 (directory refresh from Ollama traction + current closed flagships).
+> Last updated: 2026-08-07 (specs moved under `specs/`; selection roadmap drafted).
 
 ## What this is
 
@@ -18,14 +18,15 @@ pushed**; owner pushes).
 
 | Piece | Where | Status |
 |---|---|---|
-| Formal spec v0.1.0 | `SPEC.md` | Done. Five fact groups: architecture, training, capabilities, safety, benchmarks. Closed enums for judgment fields; `undisclosed` convention. File format version `"0.1.0"`. |
-| Original concept draft | `SPEC-draft.md` | Preserved verbatim; SPEC.md formalizes it. |
+| Formal spec v0.1.0 | `specs/SPEC.md` | Done. Five fact groups: architecture, training, capabilities, safety, benchmarks. Closed enums for judgment fields; `undisclosed` convention. File format version `"0.1.0"`. Root `SPEC.md` is a stub. |
+| Original concept draft | `specs/SPEC-draft.md` | Preserved verbatim; SPEC.md formalizes it. |
 | Canonical JSON Schema | `site/schema/model-facts.schema.json` | Done (draft-07). `$id` = modelfacts.dev URL. |
 | Examples | `examples/MODEL_FACTS.md` (Llama-3.1-70B worked example), `examples/MODEL_FACTS.template.md` | Both pass validation. |
 | Validator CLI | `validator/` | TypeScript ESM, pnpm, tsx + ajv + yaml. `pnpm validate <files…>`, CI-friendly exit codes. |
 | Generator CLI | `generator/` | TypeScript ESM. Sources: Hugging Face (`org/name`, `hf:`, full URL) and local Ollama (`ollama:name[:tag]`). Optional LLM curation via ollama/openai/anthropic/xai/gemini (fetch-based, no SDK deps). Output self-validates against the schema before writing. |
 | Site | `site/` | Static, Cloudflare Pages-ready (root = `site`, no build). AppFacts design system with violet accent (`--accent: #7c5cf0`). Landing + `/directory/` catalog. No `/v` viewer or badge pages yet. |
-| Directory spec | `DIRECTORY_SPEC.md` | Done. Repo-canonical labels, static mirror, `draft`/`reviewed` curation, open+closed seed. |
+| Directory spec | `specs/DIRECTORY_SPEC.md` | Done. Repo-canonical labels, static mirror, `draft`/`reviewed` curation, open+closed seed. Root stub redirects. |
+| Selection roadmap | `specs/DIRECTORY_SELECTION.md` | Draft. Phases 1–5 to turn inventory into a decision surface. Phase 1 not started. |
 | Directory seed | `directory/` + `directory-tools/` | 24 models (16 Ollama ≥250K/6mo + 8 closed flagships). Seed authored in `seed-catalog.ts`. `pnpm apply-reviews` + `pnpm sync`. |
 
 Verified end-to-end on this machine: `Qwen/Qwen2.5-7B-Instruct` deterministic draft;

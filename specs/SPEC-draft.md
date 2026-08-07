@@ -1,5 +1,5 @@
 > **Note:** This is the original concept draft for ModelFacts, preserved as-is.
-> The normative specification lives in [`SPEC.md`](./SPEC.md).
+> The normative specification lives in [`SPEC.md`](./SPEC.md) (under `specs/`).
 
 ---
 

@@ -3,8 +3,9 @@
 This folder holds the **source-of-truth** `MODEL_FACTS.md` files for the public catalog
 at [modelfacts.dev/directory](https://modelfacts.dev/directory).
 
-See [`DIRECTORY_SPEC.md`](../DIRECTORY_SPEC.md) for layout, slugs, curation levels, and
-how to add a model.
+See [`specs/DIRECTORY_SPEC.md`](../specs/DIRECTORY_SPEC.md) for layout, slugs, curation
+levels, and how to add a model. Selection-surface roadmap:
+[`specs/DIRECTORY_SELECTION.md`](../specs/DIRECTORY_SELECTION.md).
 
 ## Current seed criteria (2026-08)
 
