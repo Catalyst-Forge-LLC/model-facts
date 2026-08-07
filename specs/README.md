@@ -9,5 +9,6 @@ copies; root stubs exist only for old URLs.
 | [`SPEC-draft.md`](./SPEC-draft.md) | Original concept draft (historical) |
 | [`DIRECTORY_SPEC.md`](./DIRECTORY_SPEC.md) | Catalog layout, curation, `index.json`, site mirror |
 | [`DIRECTORY_SELECTION.md`](./DIRECTORY_SELECTION.md) | Decision-surface gaps and phased work |
+| [`IMPROVEMENT-ROADMAP.md`](./IMPROVEMENT-ROADMAP.md) | Improvements from suite value assessment |
 
 JSON Schema for labels: [`../site/schema/model-facts.schema.json`](../site/schema/model-facts.schema.json).
