@@ -9,7 +9,7 @@ architecture:
   type: undisclosed (transformer-family)
   parameters: undisclosed
   context_window: 500k
-  quantization: undisclosed
+  quantization: n/a (API-served)
   modalities_in:
     - text
     - image
@@ -17,7 +17,7 @@ architecture:
     - text
 training:
   knowledge_cutoff: undisclosed
-  methodology: undisclosed
+  methodology: undisclosed (xAI has not published a detailed public system card comparable to Anthropic/OpenAI)
   tokens: undisclosed
 capabilities:
   natural_language: full
@@ -26,7 +26,7 @@ capabilities:
   vision_input: enabled
   audio_input: disabled
   tool_use: native
-  notes: xAI cheap-flagship tier; real-time X data integration claimed
+  notes: Cheap-flagship tier; real-time X data claimed — training mix still unpublished
 safety:
   refusal_sensitivity: low
   instruction_following: high
@@ -54,7 +54,7 @@ credits:
 | Type | undisclosed (transformer-family) |
 | Parameters | undisclosed |
 | Context window | 500k |
-| Quantization | undisclosed |
+| Quantization | n/a (API-served) |
 | Modalities | text + image → text |
 
 ## Training Provenance
@@ -62,7 +62,7 @@ credits:
 | | |
 |---|---|
 | Knowledge cutoff | undisclosed |
-| Methodology | undisclosed |
+| Methodology | undisclosed (xAI has not published a detailed public system card comparable to Anthropic/OpenAI) |
 | Tokens | undisclosed |
 
 ## Capabilities
@@ -76,7 +76,7 @@ credits:
 | Audio (input) | disabled |
 | Tool use | native |
 
-*xAI cheap-flagship tier; real-time X data integration claimed*
+*Cheap-flagship tier; real-time X data claimed — training mix still unpublished*
 
 ## Safety Profile
 

@@ -9,7 +9,7 @@
     "type": "undisclosed (transformer-family)",
     "parameters": "undisclosed",
     "context_window": "500k",
-    "quantization": "undisclosed",
+    "quantization": "n/a (API-served)",
     "modalities_in": [
       "text",
       "image"
@@ -20,7 +20,7 @@
   },
   "training": {
     "knowledge_cutoff": "undisclosed",
-    "methodology": "undisclosed",
+    "methodology": "undisclosed (xAI has not published a detailed public system card comparable to Anthropic/OpenAI)",
     "tokens": "undisclosed"
   },
   "capabilities": {
@@ -30,7 +30,7 @@
     "vision_input": "enabled",
     "audio_input": "disabled",
     "tool_use": "native",
-    "notes": "xAI cheap-flagship tier; real-time X data integration claimed"
+    "notes": "Cheap-flagship tier; real-time X data claimed — training mix still unpublished"
   },
   "safety": {
     "refusal_sensitivity": "low",

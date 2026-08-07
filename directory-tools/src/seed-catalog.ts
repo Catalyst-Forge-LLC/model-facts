@@ -610,24 +610,46 @@ export const seedCatalog: Record<string, ModelFacts> = {
   }),
 
   // —— Closed API flagships (Aug 2026) ——
+  // Sources: lab model docs / system cards. Params, tokens, exact mix % stay undisclosed.
   "openai-gpt-5.6-sol": base({
     name: "GPT-5.6 Sol",
     developer: "OpenAI",
     license: "Proprietary (API)",
     release_date: "2026-07-09",
-    homepage: "https://openai.com/",
+    homepage: "https://developers.openai.com/api/docs/models/gpt-5.6-sol",
     architecture: {
       type: "undisclosed (transformer-family)",
       parameters: "undisclosed",
-      context_window: "1M",
-      quantization: "undisclosed",
+      context_window: "1.05M",
+      quantization: "n/a (API-served)",
       modalities_in: ["text", "image"],
       modalities_out: ["text"],
     },
     training: {
-      knowledge_cutoff: "undisclosed",
-      methodology: "undisclosed",
+      knowledge_cutoff: "2026-02-16",
+      methodology:
+        "pre-training on public web + partner + user/trainer data → filtering → RL for reasoning chains (per GPT-5.6 system card)",
       tokens: "undisclosed",
+      data_composition: [
+        {
+          component: "public internet",
+          percent: "undisclosed",
+          source_type: "scraped/licensed text",
+          purpose: "general knowledge",
+        },
+        {
+          component: "third-party partnerships",
+          percent: "undisclosed",
+          source_type: "licensed datasets",
+          purpose: "coverage / quality",
+        },
+        {
+          component: "human + synthetic feedback",
+          percent: "undisclosed",
+          source_type: "trainers / users / model-generated",
+          purpose: "alignment and reasoning",
+        },
+      ],
     },
     capabilities: {
       natural_language: "full",
@@ -636,7 +658,7 @@ export const seedCatalog: Record<string, ModelFacts> = {
       vision_input: "enabled",
       audio_input: "disabled",
       tool_use: "native",
-      notes: "GPT-5.6 flagship tier (Sol); Terra/Luna are lower tiers",
+      notes: "GPT-5.6 flagship tier (Sol); see OpenAI system card for safety evals",
     },
     safety: {
       refusal_sensitivity: "high",
@@ -650,19 +672,40 @@ export const seedCatalog: Record<string, ModelFacts> = {
     developer: "OpenAI",
     license: "Proprietary (API)",
     release_date: "2026-07-09",
-    homepage: "https://openai.com/",
+    homepage: "https://developers.openai.com/api/docs/models",
     architecture: {
       type: "undisclosed (transformer-family)",
       parameters: "undisclosed",
-      context_window: "1M",
-      quantization: "undisclosed",
+      context_window: "1.05M",
+      quantization: "n/a (API-served)",
       modalities_in: ["text", "image"],
       modalities_out: ["text"],
     },
     training: {
-      knowledge_cutoff: "undisclosed",
-      methodology: "undisclosed",
+      knowledge_cutoff: "2026-02-16",
+      methodology:
+        "same GPT-5.6 family pipeline as Sol (public + partner + trainer data → RL reasoning); Luna is the cost/latency tier",
       tokens: "undisclosed",
+      data_composition: [
+        {
+          component: "public internet",
+          percent: "undisclosed",
+          source_type: "scraped/licensed text",
+          purpose: "general knowledge",
+        },
+        {
+          component: "third-party partnerships",
+          percent: "undisclosed",
+          source_type: "licensed datasets",
+          purpose: "coverage / quality",
+        },
+        {
+          component: "human + synthetic feedback",
+          percent: "undisclosed",
+          source_type: "trainers / users / model-generated",
+          purpose: "alignment and reasoning",
+        },
+      ],
     },
     capabilities: {
       natural_language: "full",
@@ -685,19 +728,40 @@ export const seedCatalog: Record<string, ModelFacts> = {
     developer: "Anthropic",
     license: "Proprietary (API)",
     release_date: "2026-06-09",
-    homepage: "https://www.anthropic.com/",
+    homepage: "https://platform.claude.com/docs/en/about-claude/models/overview",
     architecture: {
-      type: "undisclosed (transformer-family)",
+      type: "undisclosed (decoder-only LLM)",
       parameters: "undisclosed",
       context_window: "1M",
-      quantization: "undisclosed",
+      quantization: "n/a (API-served)",
       modalities_in: ["text", "image"],
       modalities_out: ["text"],
     },
     training: {
-      knowledge_cutoff: "undisclosed",
-      methodology: "undisclosed (Constitutional AI / RLHF lineage)",
+      knowledge_cutoff: "2026-01",
+      methodology:
+        "pre-training on proprietary mix of public web, private datasets, and synthetic data → Constitutional AI / post-training alignment (per Anthropic system cards)",
       tokens: "undisclosed",
+      data_composition: [
+        {
+          component: "general web",
+          percent: "undisclosed",
+          source_type: "ClaudeBot crawl of public sites (robots.txt respected)",
+          purpose: "general knowledge",
+        },
+        {
+          component: "public and private datasets",
+          percent: "undisclosed",
+          source_type: "licensed / curated corpora",
+          purpose: "coverage and quality",
+        },
+        {
+          component: "synthetic",
+          percent: "undisclosed",
+          source_type: "model-generated",
+          purpose: "capability and alignment data",
+        },
+      ],
     },
     capabilities: {
       natural_language: "full",
@@ -706,7 +770,8 @@ export const seedCatalog: Record<string, ModelFacts> = {
       vision_input: "enabled",
       audio_input: "disabled",
       tool_use: "native",
-      notes: "Top Claude 5 tier above Opus for hardest long-horizon work",
+      notes:
+        "Top GA Claude 5 tier; adaptive thinking always on; max output 128k. System card: anthropic.com/system-cards",
     },
     safety: {
       refusal_sensitivity: "high",
@@ -720,19 +785,40 @@ export const seedCatalog: Record<string, ModelFacts> = {
     developer: "Anthropic",
     license: "Proprietary (API)",
     release_date: "2026-07-24",
-    homepage: "https://www.anthropic.com/",
+    homepage: "https://www.anthropic.com/news/claude-opus-5",
     architecture: {
-      type: "undisclosed (transformer-family)",
+      type: "undisclosed (decoder-only LLM)",
       parameters: "undisclosed",
       context_window: "1M",
-      quantization: "undisclosed",
+      quantization: "n/a (API-served)",
       modalities_in: ["text", "image"],
       modalities_out: ["text"],
     },
     training: {
-      knowledge_cutoff: "undisclosed",
-      methodology: "undisclosed (Constitutional AI / RLHF lineage)",
+      knowledge_cutoff: "2026-05",
+      methodology:
+        "pre-training on proprietary mix of public web, private datasets, and synthetic data → Constitutional AI post-training (Opus 5 system card)",
       tokens: "undisclosed",
+      data_composition: [
+        {
+          component: "general web",
+          percent: "undisclosed",
+          source_type: "ClaudeBot crawl of public sites",
+          purpose: "general knowledge",
+        },
+        {
+          component: "public and private datasets",
+          percent: "undisclosed",
+          source_type: "licensed / curated corpora",
+          purpose: "coverage and quality",
+        },
+        {
+          component: "synthetic",
+          percent: "undisclosed",
+          source_type: "model-generated",
+          purpose: "capability and alignment data",
+        },
+      ],
     },
     capabilities: {
       natural_language: "full",
@@ -741,7 +827,7 @@ export const seedCatalog: Record<string, ModelFacts> = {
       vision_input: "enabled",
       audio_input: "disabled",
       tool_use: "native",
-      notes: "Upper-mid Claude 5 tier; strong coding/agentic default",
+      notes: "Recommended default for complex agentic coding; adaptive thinking; max output 128k",
     },
     safety: {
       refusal_sensitivity: "high",
@@ -755,19 +841,40 @@ export const seedCatalog: Record<string, ModelFacts> = {
     developer: "Anthropic",
     license: "Proprietary (API)",
     release_date: "2026-06-30",
-    homepage: "https://www.anthropic.com/",
+    homepage: "https://www.anthropic.com/claude-sonnet-5-system-card",
     architecture: {
-      type: "undisclosed (transformer-family)",
+      type: "undisclosed (decoder-only LLM)",
       parameters: "undisclosed",
       context_window: "1M",
-      quantization: "undisclosed",
+      quantization: "n/a (API-served)",
       modalities_in: ["text", "image"],
       modalities_out: ["text"],
     },
     training: {
-      knowledge_cutoff: "undisclosed",
-      methodology: "undisclosed (Constitutional AI / RLHF lineage)",
+      knowledge_cutoff: "2026-01",
+      methodology:
+        "pre-training on proprietary mix of public web, private datasets, and synthetic data → Constitutional AI post-training (Sonnet 5 system card)",
       tokens: "undisclosed",
+      data_composition: [
+        {
+          component: "general web",
+          percent: "undisclosed",
+          source_type: "ClaudeBot crawl of public sites",
+          purpose: "general knowledge",
+        },
+        {
+          component: "public and private datasets",
+          percent: "undisclosed",
+          source_type: "licensed / curated corpora",
+          purpose: "coverage and quality",
+        },
+        {
+          component: "synthetic",
+          percent: "undisclosed",
+          source_type: "model-generated",
+          purpose: "capability and alignment data",
+        },
+      ],
     },
     capabilities: {
       natural_language: "full",
@@ -776,7 +883,7 @@ export const seedCatalog: Record<string, ModelFacts> = {
       vision_input: "enabled",
       audio_input: "disabled",
       tool_use: "native",
-      notes: "Mid Claude 5 tier — volume coding / general workhorse",
+      notes: "Speed/intelligence mid tier; adaptive thinking; max output 128k",
     },
     safety: {
       refusal_sensitivity: "high",
@@ -789,18 +896,18 @@ export const seedCatalog: Record<string, ModelFacts> = {
     name: "Gemini 3.1 Pro",
     developer: "Google DeepMind",
     license: "Proprietary (API)",
-    homepage: "https://deepmind.google/models/gemini/",
+    homepage: "https://ai.google.dev/gemini-api/docs/generate-content/gemini-3",
     architecture: {
       type: "undisclosed (transformer-family)",
       parameters: "undisclosed",
       context_window: "1M",
-      quantization: "undisclosed",
+      quantization: "n/a (API-served)",
       modalities_in: ["text", "image", "audio", "video"],
       modalities_out: ["text"],
     },
     training: {
-      knowledge_cutoff: "undisclosed",
-      methodology: "undisclosed",
+      knowledge_cutoff: "2025-01",
+      methodology: "undisclosed (Gemini 3 family; see DeepMind model cards for safety evals)",
       tokens: "undisclosed",
     },
     capabilities: {
@@ -810,7 +917,7 @@ export const seedCatalog: Record<string, ModelFacts> = {
       vision_input: "enabled",
       audio_input: "enabled",
       tool_use: "native",
-      notes: "Multimodal Pro-tier Gemini 3.x; accuracy / research oriented",
+      notes: "Pro-tier Gemini 3.x; Google docs list Jan 2025 knowledge cutoff — use Search Grounding for newer facts",
     },
     safety: {
       refusal_sensitivity: "high",
@@ -824,18 +931,18 @@ export const seedCatalog: Record<string, ModelFacts> = {
     developer: "Google DeepMind",
     license: "Proprietary (API)",
     release_date: "2026-07-21",
-    homepage: "https://deepmind.google/models/gemini/",
+    homepage: "https://deepmind.google/models/model-cards/gemini-3-6-flash/",
     architecture: {
       type: "undisclosed (transformer-family)",
       parameters: "undisclosed",
       context_window: "1M",
-      quantization: "undisclosed",
+      quantization: "n/a (API-served)",
       modalities_in: ["text", "image", "audio", "video"],
       modalities_out: ["text"],
     },
     training: {
-      knowledge_cutoff: "undisclosed",
-      methodology: "undisclosed",
+      knowledge_cutoff: "2026-03",
+      methodology: "undisclosed (Gemini 3.6 Flash model card; some domains may still reflect Jan 2025)",
       tokens: "undisclosed",
     },
     capabilities: {
@@ -845,7 +952,7 @@ export const seedCatalog: Record<string, ModelFacts> = {
       vision_input: "enabled",
       audio_input: "enabled",
       tool_use: "native",
-      notes: "Flash-tier Gemini 3.6 workhorse (Jul 2026)",
+      notes: "Flash workhorse; model card knowledge cutoff March 2026 with domain caveats",
     },
     safety: {
       refusal_sensitivity: "high",
@@ -863,13 +970,13 @@ export const seedCatalog: Record<string, ModelFacts> = {
       type: "undisclosed (transformer-family)",
       parameters: "undisclosed",
       context_window: "500k",
-      quantization: "undisclosed",
+      quantization: "n/a (API-served)",
       modalities_in: ["text", "image"],
       modalities_out: ["text"],
     },
     training: {
       knowledge_cutoff: "undisclosed",
-      methodology: "undisclosed",
+      methodology: "undisclosed (xAI has not published a detailed public system card comparable to Anthropic/OpenAI)",
       tokens: "undisclosed",
     },
     capabilities: {
@@ -879,7 +986,7 @@ export const seedCatalog: Record<string, ModelFacts> = {
       vision_input: "enabled",
       audio_input: "disabled",
       tool_use: "native",
-      notes: "xAI cheap-flagship tier; real-time X data integration claimed",
+      notes: "Cheap-flagship tier; real-time X data claimed — training mix still unpublished",
     },
     safety: {
       refusal_sensitivity: "low",

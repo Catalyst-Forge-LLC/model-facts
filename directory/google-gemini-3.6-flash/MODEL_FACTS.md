@@ -5,12 +5,12 @@ name: Gemini 3.6 Flash
 developer: Google DeepMind
 license: Proprietary (API)
 release_date: 2026-07-21
-homepage: https://deepmind.google/models/gemini/
+homepage: https://deepmind.google/models/model-cards/gemini-3-6-flash/
 architecture:
   type: undisclosed (transformer-family)
   parameters: undisclosed
   context_window: 1M
-  quantization: undisclosed
+  quantization: n/a (API-served)
   modalities_in:
     - text
     - image
@@ -19,8 +19,8 @@ architecture:
   modalities_out:
     - text
 training:
-  knowledge_cutoff: undisclosed
-  methodology: undisclosed
+  knowledge_cutoff: 2026-03
+  methodology: undisclosed (Gemini 3.6 Flash model card; some domains may still reflect Jan 2025)
   tokens: undisclosed
 capabilities:
   natural_language: full
@@ -29,7 +29,7 @@ capabilities:
   vision_input: enabled
   audio_input: enabled
   tool_use: native
-  notes: Flash-tier Gemini 3.6 workhorse (Jul 2026)
+  notes: Flash workhorse; model card knowledge cutoff March 2026 with domain caveats
 safety:
   refusal_sensitivity: high
   instruction_following: high
@@ -58,15 +58,15 @@ credits:
 | Type | undisclosed (transformer-family) |
 | Parameters | undisclosed |
 | Context window | 1M |
-| Quantization | undisclosed |
+| Quantization | n/a (API-served) |
 | Modalities | text + image + audio + video → text |
 
 ## Training Provenance
 
 | | |
 |---|---|
-| Knowledge cutoff | undisclosed |
-| Methodology | undisclosed |
+| Knowledge cutoff | 2026-03 |
+| Methodology | undisclosed (Gemini 3.6 Flash model card; some domains may still reflect Jan 2025) |
 | Tokens | undisclosed |
 
 ## Capabilities
@@ -80,7 +80,7 @@ credits:
 | Audio (input) | enabled |
 | Tool use | native |
 
-*Flash-tier Gemini 3.6 workhorse (Jul 2026)*
+*Flash workhorse; model card knowledge cutoff March 2026 with domain caveats*
 
 ## Safety Profile
 

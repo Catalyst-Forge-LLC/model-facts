@@ -4,12 +4,12 @@ status: active
 name: Gemini 3.1 Pro
 developer: Google DeepMind
 license: Proprietary (API)
-homepage: https://deepmind.google/models/gemini/
+homepage: https://ai.google.dev/gemini-api/docs/generate-content/gemini-3
 architecture:
   type: undisclosed (transformer-family)
   parameters: undisclosed
   context_window: 1M
-  quantization: undisclosed
+  quantization: n/a (API-served)
   modalities_in:
     - text
     - image
@@ -18,8 +18,8 @@ architecture:
   modalities_out:
     - text
 training:
-  knowledge_cutoff: undisclosed
-  methodology: undisclosed
+  knowledge_cutoff: 2025-01
+  methodology: undisclosed (Gemini 3 family; see DeepMind model cards for safety evals)
   tokens: undisclosed
 capabilities:
   natural_language: full
@@ -28,7 +28,7 @@ capabilities:
   vision_input: enabled
   audio_input: enabled
   tool_use: native
-  notes: Multimodal Pro-tier Gemini 3.x; accuracy / research oriented
+  notes: Pro-tier Gemini 3.x; Google docs list Jan 2025 knowledge cutoff — use Search Grounding for newer facts
 safety:
   refusal_sensitivity: high
   instruction_following: high
@@ -56,15 +56,15 @@ credits:
 | Type | undisclosed (transformer-family) |
 | Parameters | undisclosed |
 | Context window | 1M |
-| Quantization | undisclosed |
+| Quantization | n/a (API-served) |
 | Modalities | text + image + audio + video → text |
 
 ## Training Provenance
 
 | | |
 |---|---|
-| Knowledge cutoff | undisclosed |
-| Methodology | undisclosed |
+| Knowledge cutoff | 2025-01 |
+| Methodology | undisclosed (Gemini 3 family; see DeepMind model cards for safety evals) |
 | Tokens | undisclosed |
 
 ## Capabilities
@@ -78,7 +78,7 @@ credits:
 | Audio (input) | enabled |
 | Tool use | native |
 
-*Multimodal Pro-tier Gemini 3.x; accuracy / research oriented*
+*Pro-tier Gemini 3.x; Google docs list Jan 2025 knowledge cutoff — use Search Grounding for newer facts*
 
 ## Safety Profile
 

@@ -5,12 +5,12 @@
   "developer": "Anthropic",
   "license": "Proprietary (API)",
   "release_date": "2026-07-24",
-  "homepage": "https://www.anthropic.com/",
+  "homepage": "https://www.anthropic.com/news/claude-opus-5",
   "architecture": {
-    "type": "undisclosed (transformer-family)",
+    "type": "undisclosed (decoder-only LLM)",
     "parameters": "undisclosed",
     "context_window": "1M",
-    "quantization": "undisclosed",
+    "quantization": "n/a (API-served)",
     "modalities_in": [
       "text",
       "image"
@@ -20,9 +20,29 @@
     ]
   },
   "training": {
-    "knowledge_cutoff": "undisclosed",
-    "methodology": "undisclosed (Constitutional AI / RLHF lineage)",
-    "tokens": "undisclosed"
+    "knowledge_cutoff": "2026-05",
+    "methodology": "pre-training on proprietary mix of public web, private datasets, and synthetic data → Constitutional AI post-training (Opus 5 system card)",
+    "tokens": "undisclosed",
+    "data_composition": [
+      {
+        "component": "general web",
+        "percent": "undisclosed",
+        "source_type": "ClaudeBot crawl of public sites",
+        "purpose": "general knowledge"
+      },
+      {
+        "component": "public and private datasets",
+        "percent": "undisclosed",
+        "source_type": "licensed / curated corpora",
+        "purpose": "coverage and quality"
+      },
+      {
+        "component": "synthetic",
+        "percent": "undisclosed",
+        "source_type": "model-generated",
+        "purpose": "capability and alignment data"
+      }
+    ]
   },
   "capabilities": {
     "natural_language": "full",
@@ -31,7 +51,7 @@
     "vision_input": "enabled",
     "audio_input": "disabled",
     "tool_use": "native",
-    "notes": "Upper-mid Claude 5 tier; strong coding/agentic default"
+    "notes": "Recommended default for complex agentic coding; adaptive thinking; max output 128k"
   },
   "safety": {
     "refusal_sensitivity": "high",

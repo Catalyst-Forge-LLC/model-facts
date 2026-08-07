@@ -5,21 +5,34 @@ name: Claude Fable 5
 developer: Anthropic
 license: Proprietary (API)
 release_date: 2026-06-09
-homepage: https://www.anthropic.com/
+homepage: https://platform.claude.com/docs/en/about-claude/models/overview
 architecture:
-  type: undisclosed (transformer-family)
+  type: undisclosed (decoder-only LLM)
   parameters: undisclosed
   context_window: 1M
-  quantization: undisclosed
+  quantization: n/a (API-served)
   modalities_in:
     - text
     - image
   modalities_out:
     - text
 training:
-  knowledge_cutoff: undisclosed
-  methodology: undisclosed (Constitutional AI / RLHF lineage)
+  knowledge_cutoff: 2026-01
+  methodology: pre-training on proprietary mix of public web, private datasets, and synthetic data → Constitutional AI / post-training alignment (per Anthropic system cards)
   tokens: undisclosed
+  data_composition:
+    - component: general web
+      percent: undisclosed
+      source_type: ClaudeBot crawl of public sites (robots.txt respected)
+      purpose: general knowledge
+    - component: public and private datasets
+      percent: undisclosed
+      source_type: licensed / curated corpora
+      purpose: coverage and quality
+    - component: synthetic
+      percent: undisclosed
+      source_type: model-generated
+      purpose: capability and alignment data
 capabilities:
   natural_language: full
   reasoning_math: high
@@ -27,7 +40,7 @@ capabilities:
   vision_input: enabled
   audio_input: disabled
   tool_use: native
-  notes: Top Claude 5 tier above Opus for hardest long-horizon work
+  notes: "Top GA Claude 5 tier; adaptive thinking always on; max output 128k. System card: anthropic.com/system-cards"
 safety:
   refusal_sensitivity: high
   instruction_following: high
@@ -53,19 +66,25 @@ credits:
 
 | | |
 |---|---|
-| Type | undisclosed (transformer-family) |
+| Type | undisclosed (decoder-only LLM) |
 | Parameters | undisclosed |
 | Context window | 1M |
-| Quantization | undisclosed |
+| Quantization | n/a (API-served) |
 | Modalities | text + image → text |
 
 ## Training Provenance
 
 | | |
 |---|---|
-| Knowledge cutoff | undisclosed |
-| Methodology | undisclosed (Constitutional AI / RLHF lineage) |
+| Knowledge cutoff | 2026-01 |
+| Methodology | pre-training on proprietary mix of public web, private datasets, and synthetic data → Constitutional AI / post-training alignment (per Anthropic system cards) |
 | Tokens | undisclosed |
+
+| Component | % | Source | Purpose |
+|---|---|---|---|
+| general web | undisclosed | ClaudeBot crawl of public sites (robots.txt respected) | general knowledge |
+| public and private datasets | undisclosed | licensed / curated corpora | coverage and quality |
+| synthetic | undisclosed | model-generated | capability and alignment data |
 
 ## Capabilities
 
@@ -78,7 +97,7 @@ credits:
 | Audio (input) | disabled |
 | Tool use | native |
 
-*Top Claude 5 tier above Opus for hardest long-horizon work*
+*Top GA Claude 5 tier; adaptive thinking always on; max output 128k. System card: anthropic.com/system-cards*
 
 ## Safety Profile
 

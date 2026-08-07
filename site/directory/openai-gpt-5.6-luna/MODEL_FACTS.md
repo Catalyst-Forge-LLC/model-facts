@@ -5,21 +5,34 @@ name: GPT-5.6 Luna
 developer: OpenAI
 license: Proprietary (API)
 release_date: 2026-07-09
-homepage: https://openai.com/
+homepage: https://developers.openai.com/api/docs/models
 architecture:
   type: undisclosed (transformer-family)
   parameters: undisclosed
-  context_window: 1M
-  quantization: undisclosed
+  context_window: 1.05M
+  quantization: n/a (API-served)
   modalities_in:
     - text
     - image
   modalities_out:
     - text
 training:
-  knowledge_cutoff: undisclosed
-  methodology: undisclosed
+  knowledge_cutoff: 2026-02-16
+  methodology: same GPT-5.6 family pipeline as Sol (public + partner + trainer data → RL reasoning); Luna is the cost/latency tier
   tokens: undisclosed
+  data_composition:
+    - component: public internet
+      percent: undisclosed
+      source_type: scraped/licensed text
+      purpose: general knowledge
+    - component: third-party partnerships
+      percent: undisclosed
+      source_type: licensed datasets
+      purpose: coverage / quality
+    - component: human + synthetic feedback
+      percent: undisclosed
+      source_type: trainers / users / model-generated
+      purpose: alignment and reasoning
 capabilities:
   natural_language: full
   reasoning_math: high
@@ -55,17 +68,23 @@ credits:
 |---|---|
 | Type | undisclosed (transformer-family) |
 | Parameters | undisclosed |
-| Context window | 1M |
-| Quantization | undisclosed |
+| Context window | 1.05M |
+| Quantization | n/a (API-served) |
 | Modalities | text + image → text |
 
 ## Training Provenance
 
 | | |
 |---|---|
-| Knowledge cutoff | undisclosed |
-| Methodology | undisclosed |
+| Knowledge cutoff | 2026-02-16 |
+| Methodology | same GPT-5.6 family pipeline as Sol (public + partner + trainer data → RL reasoning); Luna is the cost/latency tier |
 | Tokens | undisclosed |
+
+| Component | % | Source | Purpose |
+|---|---|---|---|
+| public internet | undisclosed | scraped/licensed text | general knowledge |
+| third-party partnerships | undisclosed | licensed datasets | coverage / quality |
+| human + synthetic feedback | undisclosed | trainers / users / model-generated | alignment and reasoning |
 
 ## Capabilities
 
