@@ -1,4 +1,4 @@
-# ModelFacts Directory Specification — v0.1.0
+# ModelFacts Directory Specification — v0.2.0
 
 > The labeled catalog at [modelfacts.dev/directory](https://modelfacts.dev/directory).
 > Companion to [`SPEC.md`](./SPEC.md) (the per-model file format).
@@ -78,27 +78,42 @@ detail page.
 
 ```json
 {
-  "directory_version": "0.1.0",
-  "generated": "2026-08-03",
-  "count": 28,
+  "directory_version": "0.2.0",
+  "generated": "2026-08-07",
+  "count": 24,
   "models": [
     {
-      "slug": "meta-llama-3.1-70b-instruct",
-      "name": "Llama-3.1-70B-Instruct",
-      "developer": "Meta",
+      "slug": "openai-gpt-5.6-luna",
+      "name": "GPT-5.6 Luna",
+      "developer": "OpenAI",
       "status": "active",
-      "license": "Llama 3.1 Community License",
-      "weight_access": "open",
+      "license": "Proprietary (API)",
+      "weight_access": "closed",
       "curation": "reviewed",
-      "parameters": "70B",
-      "parameters_b": 70,
-      "context_window": "128k",
-      "context_tokens": 128000,
-      "release_date": "2024-07-23",
-      "filter_type": "hybrid",
-      "href": "/directory/meta-llama-3.1-70b-instruct/",
-      "facts_json": "/directory/meta-llama-3.1-70b-instruct/facts.json",
-      "facts_md": "/directory/meta-llama-3.1-70b-instruct/MODEL_FACTS.md"
+      "parameters": "undisclosed",
+      "parameters_b": null,
+      "context_window": "1.05M",
+      "context_tokens": 1050000,
+      "release_date": "2026-07-09",
+      "filter_type": "censored",
+      "vision_input": "enabled",
+      "audio_input": "disabled",
+      "tool_use": "native",
+      "reasoning_math": "high",
+      "coding": "high",
+      "refusal_sensitivity": "high",
+      "instruction_following": "high",
+      "knowledge_cutoff": "2026-02-16",
+      "api_ids": ["gpt-5.6-luna"],
+      "ollama_tag": null,
+      "hf_id": null,
+      "commercial_ok": "conditional",
+      "price_tier": "api_budget",
+      "vram_gb_q4": null,
+      "speed_tier": "flash",
+      "href": "/directory/openai-gpt-5.6-luna/",
+      "facts_json": "/directory/openai-gpt-5.6-luna/facts.json",
+      "facts_md": "/directory/openai-gpt-5.6-luna/MODEL_FACTS.md"
     }
   ]
 }
@@ -106,7 +121,9 @@ detail page.
 
 ### Directory-only fields
 
-These are **not** part of the ModelFacts schema; they describe the catalog entry:
+These are **not** part of the ModelFacts schema; they describe the catalog entry.
+Selection enrichments are authored in
+[`directory-tools/src/selection.ts`](../directory-tools/src/selection.ts) and merged at sync.
 
 | Field | Values | Meaning |
 |---|---|---|
@@ -115,20 +132,30 @@ These are **not** part of the ModelFacts schema; they describe the catalog entry
 | `slug` | string | Directory id |
 | `parameters_b` | number \| `null` | Parsed parameter count in billions for filters (`null` if undisclosed) |
 | `context_tokens` | number \| `null` | Parsed context length in tokens for filters (`null` if undisclosed) |
+| `knowledge_cutoff` | string \| `null` | From `training.knowledge_cutoff` (`null` if undisclosed) |
+| `api_ids` | string[] | Provider / routing model ids when known |
+| `ollama_tag` | string \| `null` | Ollama library tag when `source.type` is `ollama` |
+| `hf_id` | string \| `null` | `org/name` when weights URL is on Hugging Face (or explicit) |
+| `commercial_ok` | `yes` \| `no` \| `conditional` \| `undisclosed` | Commercial-use posture from license / terms — not legal advice |
+| `price_tier` | `free_local` \| `api_budget` \| `api_standard` \| `api_premium` \| `undisclosed` | Coarse cost band; not dollar prices |
+| `vram_gb_q4` | number \| `null` | Rough local Q4 VRAM proxy in GB (`null` if unknown / closed) |
+| `speed_tier` | `flash` \| `standard` \| `flagship` \| `undisclosed` | Relative within this catalog |
 | `href` / `facts_json` / `facts_md` | paths | Site URLs |
 
 ### Listing filters (URL query params)
 
 Filters sync to the URL via `history.replaceState` so links are shareable and agent-friendly.
-Example: `/directory/?access=open&vision=1&min_context=128000&tools=native&expert=1`
+Example: `/directory/?access=open&vision=1&min_context=128000&tools=native&max_vram=24&expert=1`
 
 | Param | Values | Notes |
 |---|---|---|
 | `access` | `open` \| `closed` | Weight access |
-| `q` | string | Name / developer / slug search |
+| `q` | string | Name / developer / slug / api id / ollama tag / hf id |
 | `developer` | string | Exact developer match |
 | `min_params` | number (billions) | Excludes `undisclosed` params |
 | `min_context` | number (tokens) | Excludes `undisclosed` context |
+| `max_vram` | number (GB) | Keep models with `vram_gb_q4` ≤ value; excludes unknown VRAM |
+| `commercial` | `yes` \| `no` \| `conditional` \| `undisclosed` | Exact `commercial_ok` |
 | `filter` | `raw` \| `hybrid` \| `censored` | Safety filter type |
 | `vision` / `audio` | `1` | Require enabled input modality |
 | `tools` | `any` \| `native` | Tool use present, or native only |
@@ -138,9 +165,12 @@ Example: `/directory/?access=open&vision=1&min_context=128000&tools=native&exper
 | `curation` | `draft` \| `reviewed` | Catalog curation |
 | `expert` | `1` | Keep the expert panel open |
 
+When `min_params`, `min_context`, or `max_vram` is active, the listing shows how many models
+were omitted because the numeric field is `null` (e.g. closed APIs with undisclosed params).
+
 Catalog entries also expose `vision_input`, `audio_input`, `tool_use`, `reasoning_math`,
-`coding`, `refusal_sensitivity`, and `instruction_following` in `index.json` for direct
-agent filtering without the HTML UI.
+`coding`, `refusal_sensitivity`, `instruction_following`, and the Phase 1 selection fields
+in `index.json` for direct agent filtering without the HTML UI.
 
 `weight_access` is inferred at sync time:
 
@@ -203,9 +233,10 @@ Reserve the word **certified** for a future harness-backed tier. It is out of sc
 ### Listing (`/directory/`)
 
 - One composition: brand-consistent with the landing page (violet accent, Sora + IBM Plex Mono).
-- Filter chips: All / Open / Closed; optional text filter on name/developer.
-- Compact rows (not cards-as-decoration): name, developer, params, context, filter type,
-  weight_access, curation badge.
+- Filter chips: All / Open / Closed; text search on name / ids / tags.
+- Compact rows (not cards-as-decoration): name, developer, params, context, tools, vision,
+  knowledge cutoff, commercial posture, speed tier, weight access.
+- Omission notes when numeric filters drop models with `null` fields.
 - Each row links to the detail page.
 
 ### Detail (`/directory/<slug>/`)
@@ -250,14 +281,15 @@ CI should run `pnpm sync` (or at least validate + confirm `site/directory` is up
 
 ## Versioning
 
-- **This document:** v0.1.0.
-- **`directory_version` / `manifest_version`:** `"0.1.0"` — bump when the catalog JSON
-  shape or membership rules change in a breaking way.
+- **This document:** v0.2.0.
+- **`directory_version`:** `"0.2.0"` — Phase 1 selection fields on catalog entries.
+- **`manifest_version`:** `"0.1.0"` — bump when membership rules change in a breaking way.
 
 ## Revision history
 
 | Version | Notes |
 |---|---|
+| **0.2.0** | Phase 1 selection surface: catalog enrichments (`api_ids`, cutoff, commercial, VRAM proxy, speed/price tiers), denser listing columns, `max_vram` / `commercial` filters, omission notes. |
 | **0.1.0** | Initial directory spec: repo-canonical labels, static site mirror, open+closed seed, `draft`/`reviewed` curation (no "certified"). |
 
 ## License

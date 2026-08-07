@@ -55,6 +55,26 @@ export interface ModelFacts {
   credits?: { generated_with?: string; built_by?: string };
 }
 
+export type CommercialOk = "yes" | "no" | "conditional" | "undisclosed";
+export type PriceTier =
+  | "free_local"
+  | "api_budget"
+  | "api_standard"
+  | "api_premium"
+  | "undisclosed";
+export type SpeedTier = "flash" | "standard" | "flagship" | "undisclosed";
+
+/** Directory-only selection fields (not part of MODEL_FACTS.md schema). */
+export interface SelectionEnrichment {
+  api_ids?: string[];
+  ollama_tag?: string | null;
+  hf_id?: string | null;
+  commercial_ok?: CommercialOk;
+  price_tier?: PriceTier;
+  vram_gb_q4?: number | null;
+  speed_tier?: SpeedTier;
+}
+
 export interface ManifestModel {
   slug: string;
   weight_access: "open" | "closed";
@@ -94,6 +114,17 @@ export interface CatalogEntry {
   coding: "high" | "medium" | "low";
   refusal_sensitivity: "high" | "medium" | "low";
   instruction_following: "high" | "medium" | "low";
+  /** From training.knowledge_cutoff; null if undisclosed. */
+  knowledge_cutoff: string | null;
+  /** Provider / routing model ids when known. */
+  api_ids: string[];
+  ollama_tag: string | null;
+  hf_id: string | null;
+  commercial_ok: CommercialOk;
+  price_tier: PriceTier;
+  /** Rough local Q4 VRAM proxy in GB; null if unknown / closed. */
+  vram_gb_q4: number | null;
+  speed_tier: SpeedTier;
   href: string;
   facts_json: string;
   facts_md: string;

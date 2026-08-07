@@ -34,7 +34,7 @@
       </div>
       <label class="search">
         <span class="sr-only">Search models</span>
-        <input type="search" id="q" name="q" placeholder="Search name…" autocomplete="off" />
+        <input type="search" id="q" name="q" placeholder="Search name, id, tag…" autocomplete="off" />
       </label>
     </div>
 
@@ -64,6 +64,26 @@
           <option value="128000">128k+</option>
           <option value="200000">200k+</option>
           <option value="1000000">1M+</option>
+        </select>
+      </label>
+      <label>
+        <span>Max VRAM (Q4)</span>
+        <select id="max-vram" name="max_vram">
+          <option value="">Any</option>
+          <option value="8">≤8 GB</option>
+          <option value="16">≤16 GB</option>
+          <option value="24">≤24 GB</option>
+          <option value="48">≤48 GB</option>
+        </select>
+      </label>
+      <label>
+        <span>Commercial</span>
+        <select id="commercial" name="commercial">
+          <option value="">Any</option>
+          <option value="yes">yes</option>
+          <option value="conditional">conditional</option>
+          <option value="undisclosed">undisclosed</option>
+          <option value="no">no</option>
         </select>
       </label>
       <label>
@@ -143,16 +163,17 @@
         </div>
         <p class="expert-hint">
           Query params: <code>access</code> <code>q</code> <code>developer</code> <code>min_params</code>
-          <code>min_context</code> <code>filter</code> <code>vision</code> <code>audio</code>
-          <code>tools</code> (<code>any</code>|<code>native</code>) <code>min_reasoning</code>
-          <code>min_coding</code> <code>refusal</code> <code>instruction</code> <code>status</code>
-          <code>curation</code> <code>expert</code>. Catalog JSON:
+          <code>min_context</code> <code>max_vram</code> <code>commercial</code> <code>filter</code>
+          <code>vision</code> <code>audio</code> <code>tools</code> (<code>any</code>|<code>native</code>)
+          <code>min_reasoning</code> <code>min_coding</code> <code>refusal</code> <code>instruction</code>
+          <code>status</code> <code>curation</code> <code>expert</code>. Catalog JSON:
           <a href="/directory/index.json"><code>/directory/index.json</code></a>
         </p>
       </div>
     </details>
 
     <p class="count" id="count"></p>
+    <p class="omit-note" id="omit-note" hidden></p>
     <div class="table-wrap">
       <table>
         <thead>
@@ -161,7 +182,11 @@
             <th>Developer</th>
             <th>Params</th>
             <th>Context</th>
-            <th>Filter</th>
+            <th>Tools</th>
+            <th>Vision</th>
+            <th>Cutoff</th>
+            <th>Commercial</th>
+            <th>Speed</th>
             <th>Access</th>
           </tr>
         </thead>

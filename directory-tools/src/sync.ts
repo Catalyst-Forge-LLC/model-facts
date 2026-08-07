@@ -14,6 +14,7 @@ import { fileURLToPath } from "node:url";
 import { Ajv } from "ajv";
 import addFormats from "ajv-formats";
 import { parse as parseYaml } from "yaml";
+import { buildSelectionFields } from "./selection.js";
 import type { Catalog, CatalogEntry, Manifest, ModelFacts } from "./types.js";
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -219,6 +220,8 @@ for (const m of manifest.models) {
     continue;
   }
 
+  const parametersB = parseParametersB(facts.architecture.parameters);
+  const selection = buildSelectionFields(m, facts, parametersB);
   const entry: CatalogEntry = {
     slug: m.slug,
     name: facts.name,
@@ -228,7 +231,7 @@ for (const m of manifest.models) {
     weight_access: m.weight_access,
     curation: m.curation,
     parameters: facts.architecture.parameters,
-    parameters_b: parseParametersB(facts.architecture.parameters),
+    parameters_b: parametersB,
     context_window: facts.architecture.context_window,
     context_tokens: parseContextTokens(facts.architecture.context_window),
     release_date: facts.release_date,
@@ -240,6 +243,7 @@ for (const m of manifest.models) {
     coding: facts.capabilities.coding,
     refusal_sensitivity: facts.safety.refusal_sensitivity,
     instruction_following: facts.safety.instruction_following,
+    ...selection,
     href: `/directory/${m.slug}/`,
     facts_json: `/directory/${m.slug}/facts.json`,
     facts_md: `/directory/${m.slug}/MODEL_FACTS.md`,
@@ -257,7 +261,7 @@ for (const m of manifest.models) {
 entries.sort((a, b) => a.name.localeCompare(b.name));
 
 const catalog: Catalog = {
-  directory_version: "0.1.0",
+  directory_version: "0.2.0",
   generated: today,
   count: entries.length,
   models: entries,

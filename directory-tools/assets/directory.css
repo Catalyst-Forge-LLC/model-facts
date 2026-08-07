@@ -6,7 +6,7 @@
   --accent-soft: #ab93f5;
   --font-display: "Sora", sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
-  --max: 68rem;
+  --max: 78rem;
 }
 * { box-sizing: border-box; }
 body {
@@ -126,21 +126,31 @@ h1 {
 .expert-hint code {
   color: #c9d3de; font-size: 0.7rem;
 }
-.count { color: var(--mute); font-size: 0.8rem; margin: 0 0 0.75rem; }
+.count { color: var(--mute); font-size: 0.8rem; margin: 0 0 0.35rem; }
+.omit-note {
+  color: #d4b87a; font-size: 0.75rem; margin: 0 0 0.75rem; max-width: 70ch;
+}
 .empty { color: var(--mute); font-size: 0.9rem; margin: 1.25rem 0 0; }
 .table-wrap { overflow-x: auto; border-top: 1px solid rgba(255,255,255,0.1); }
-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
-th, td { text-align: left; padding: 0.7rem 0.6rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
-th { color: var(--mute); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; font-size: 0.7rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
+th, td { text-align: left; padding: 0.65rem 0.45rem; border-bottom: 1px solid rgba(255,255,255,0.08); white-space: nowrap; }
+th { color: var(--mute); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; font-size: 0.65rem; }
 td a { font-weight: 600; text-decoration: none; color: #fff; }
 td a:hover { color: var(--accent-soft); }
+.cap { font-size: 0.72rem; letter-spacing: 0.02em; }
+.cap.on { color: #8fd6b0; }
+.cap.off { color: var(--mute); }
 .badge {
-  display: inline-block; padding: 0.15rem 0.4rem; font-size: 0.7rem; font-weight: 600;
+  display: inline-block; padding: 0.15rem 0.4rem; font-size: 0.65rem; font-weight: 600;
   border: 1px solid rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.04em;
 }
 .badge.open { border-color: rgba(47, 111, 78, 0.7); color: #8fd6b0; }
 .badge.closed { border-color: rgba(171, 147, 245, 0.55); color: var(--accent-soft); }
 .badge.reviewed { border-color: rgba(255,255,255,0.25); color: #d5dde6; }
+.badge.commercial-yes { border-color: rgba(47, 111, 78, 0.7); color: #8fd6b0; }
+.badge.commercial-conditional { border-color: rgba(212, 184, 122, 0.65); color: #d4b87a; }
+.badge.commercial-undisclosed,
+.badge.commercial-no { border-color: rgba(255,255,255,0.2); color: var(--mute); }
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0,0,0,0); border: 0;

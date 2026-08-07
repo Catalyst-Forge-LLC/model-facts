@@ -9,7 +9,7 @@
 
 ## Status
 
-**Draft for review.** No implementation until Phase 1 is approved and started.
+Phase 1 implemented (catalog enrichments + denser rows). Phases 2–5 remain open.
 Phases are ordered by selection leverage; later phases may shrink once earlier ones
 land and we re-measure catalog discrimination.
 
@@ -117,10 +117,10 @@ answer “where do I get it, what’s the cutoff, can I use it commercially, wha
 
 **Exit criteria**
 
-- [ ] `index.json` includes the Phase 1 fields for all catalog entries
-- [ ] Listing shows decision columns without opening detail pages
-- [ ] Closed models with null params are explained when param filters are active
-- [ ] `DIRECTORY_SPEC.md` documents the new catalog shape
+- [x] `index.json` includes the Phase 1 fields for all catalog entries
+- [x] Listing shows decision columns without opening detail pages
+- [x] Closed models with null params are explained when param filters are active
+- [x] `DIRECTORY_SPEC.md` documents the new catalog shape
 
 **Out of scope for Phase 1:** compare view, task presets, enum recalibration, benchmarks.
 
@@ -257,6 +257,7 @@ leaning harder on capability filters in presets.
 
 | Version | Notes |
 |---|---|
+| **0.1.1** | Phase 1 marked done (`directory_version` 0.2.0). |
 | **0.1.0** | Initial roadmap from agent critical pass: inventory vs decision surface, five phases. |
 
 ## License

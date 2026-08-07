@@ -20,7 +20,9 @@ function emptyState() {
     developer: "",
     minParams: 0,
     minContext: 0,
+    maxVram: 0,
     filterType: "",
+    commercial: "",
     vision: false,
     audio: false,
     tools: "", // "" | "any" | "native"
@@ -37,13 +39,18 @@ function emptyState() {
 function parseUrlState() {
   const p = new URLSearchParams(location.search);
   const toolsRaw = p.get("tools") || "";
+  const commercial = p.get("commercial") || "";
   return {
     access: ["open", "closed"].includes(p.get("access") || "") ? p.get("access") : "all",
     q: p.get("q") || "",
     developer: p.get("developer") || "",
     minParams: Number(p.get("min_params") || 0) || 0,
     minContext: Number(p.get("min_context") || 0) || 0,
+    maxVram: Number(p.get("max_vram") || 0) || 0,
     filterType: p.get("filter") || "",
+    commercial: ["yes", "conditional", "undisclosed", "no"].includes(commercial)
+      ? commercial
+      : "",
     vision: p.get("vision") === "1",
     audio: p.get("audio") === "1",
     tools: toolsRaw === "native" || toolsRaw === "any" ? toolsRaw : "",
@@ -64,7 +71,9 @@ function writeUrl(state) {
   if (state.developer) p.set("developer", state.developer);
   if (state.minParams > 0) p.set("min_params", String(state.minParams));
   if (state.minContext > 0) p.set("min_context", String(state.minContext));
+  if (state.maxVram > 0) p.set("max_vram", String(state.maxVram));
   if (state.filterType) p.set("filter", state.filterType);
+  if (state.commercial) p.set("commercial", state.commercial);
   if (state.vision) p.set("vision", "1");
   if (state.audio) p.set("audio", "1");
   if (state.tools) p.set("tools", state.tools);
@@ -87,18 +96,38 @@ function meetsMinLevel(actual, min) {
   return (LEVEL[actual] || 0) >= (LEVEL[min] || 0);
 }
 
+function fmtCutoff(v) {
+  return v || "—";
+}
+
+function fmtTools(v) {
+  if (!v || v === "none") return "—";
+  return v;
+}
+
+function fmtVision(v) {
+  return v === "enabled" ? "yes" : "—";
+}
+
+function capClass(on) {
+  return on ? "cap on" : "cap off";
+}
+
 async function main() {
   const res = await fetch("/directory/index.json");
   const catalog = await res.json();
 
   const rowsEl = document.getElementById("rows");
   const countEl = document.getElementById("count");
+  const omitEl = document.getElementById("omit-note");
   const emptyEl = document.getElementById("empty");
   const qEl = document.getElementById("q");
   const developerEl = document.getElementById("developer");
   const minParamsEl = document.getElementById("min-params");
   const minContextEl = document.getElementById("min-context");
+  const maxVramEl = document.getElementById("max-vram");
   const filterTypeEl = document.getElementById("filter-type");
+  const commercialEl = document.getElementById("commercial");
   const resetEl = document.getElementById("reset");
   const expertEl = document.getElementById("expert");
   const visionEl = document.getElementById("vision");
@@ -132,7 +161,9 @@ async function main() {
     developerEl.value = state.developer;
     minParamsEl.value = state.minParams > 0 ? String(state.minParams) : "";
     minContextEl.value = state.minContext > 0 ? String(state.minContext) : "";
+    maxVramEl.value = state.maxVram > 0 ? String(state.maxVram) : "";
     filterTypeEl.value = state.filterType;
+    commercialEl.value = state.commercial;
     visionEl.checked = state.vision;
     audioEl.checked = state.audio;
     toolsEl.checked = state.tools === "any";
@@ -154,7 +185,9 @@ async function main() {
     state.developer = developerEl.value;
     state.minParams = Number(minParamsEl.value || 0) || 0;
     state.minContext = Number(minContextEl.value || 0) || 0;
+    state.maxVram = Number(maxVramEl.value || 0) || 0;
     state.filterType = filterTypeEl.value;
+    state.commercial = commercialEl.value;
     state.vision = visionEl.checked;
     state.audio = audioEl.checked;
     if (toolsNativeEl.checked) state.tools = "native";
@@ -181,11 +214,15 @@ async function main() {
     if (state.access !== "all" && m.weight_access !== state.access) return false;
     if (state.developer && m.developer !== state.developer) return false;
     if (state.filterType && m.filter_type !== state.filterType) return false;
+    if (state.commercial && m.commercial_ok !== state.commercial) return false;
     if (state.minParams > 0) {
       if (m.parameters_b == null || m.parameters_b < state.minParams) return false;
     }
     if (state.minContext > 0) {
       if (m.context_tokens == null || m.context_tokens < state.minContext) return false;
+    }
+    if (state.maxVram > 0) {
+      if (m.vram_gb_q4 == null || m.vram_gb_q4 > state.maxVram) return false;
     }
     if (state.vision && m.vision_input !== "enabled") return false;
     if (state.audio && m.audio_input !== "enabled") return false;
@@ -198,10 +235,37 @@ async function main() {
     if (state.status && m.status !== state.status) return false;
     if (state.curation && m.curation !== state.curation) return false;
     if (state.q) {
-      const hay = `${m.name} ${m.developer} ${m.slug}`.toLowerCase();
+      const hay = [
+        m.name,
+        m.developer,
+        m.slug,
+        ...(m.api_ids || []),
+        m.ollama_tag || "",
+        m.hf_id || "",
+      ]
+        .join(" ")
+        .toLowerCase();
       if (!hay.includes(state.q.toLowerCase())) return false;
     }
     return true;
+  }
+
+  /** Counts models excluded solely because a numeric field is null under an active min/max filter. */
+  function omissionNotes(all) {
+    const notes = [];
+    if (state.minParams > 0) {
+      const n = all.filter((m) => m.parameters_b == null).length;
+      if (n) notes.push(`${n} omitted: params undisclosed`);
+    }
+    if (state.minContext > 0) {
+      const n = all.filter((m) => m.context_tokens == null).length;
+      if (n) notes.push(`${n} omitted: context undisclosed`);
+    }
+    if (state.maxVram > 0) {
+      const n = all.filter((m) => m.vram_gb_q4 == null).length;
+      if (n) notes.push(`${n} omitted: VRAM unknown (often closed APIs)`);
+    }
+    return notes;
   }
 
   function render() {
@@ -209,19 +273,33 @@ async function main() {
     writeUrl(state);
     const models = catalog.models.filter(matches);
     countEl.textContent = `${models.length} of ${catalog.count} models`;
+    const notes = omissionNotes(catalog.models);
+    if (notes.length) {
+      omitEl.hidden = false;
+      omitEl.textContent = notes.join(" · ");
+    } else {
+      omitEl.hidden = true;
+      omitEl.textContent = "";
+    }
     resetEl.hidden = !filtersActive();
     emptyEl.hidden = models.length > 0;
     rowsEl.innerHTML = models
-      .map(
-        (m) => `<tr>
+      .map((m) => {
+        const toolsOn = m.tool_use === "native" || m.tool_use === "prompted";
+        const visionOn = m.vision_input === "enabled";
+        return `<tr>
           <td><a href="${escapeHtml(m.href)}">${escapeHtml(m.name)}</a></td>
           <td>${escapeHtml(m.developer)}</td>
           <td>${escapeHtml(m.parameters)}</td>
           <td>${escapeHtml(m.context_window)}</td>
-          <td>${escapeHtml(m.filter_type)}</td>
+          <td><span class="${capClass(toolsOn)}">${escapeHtml(fmtTools(m.tool_use))}</span></td>
+          <td><span class="${capClass(visionOn)}">${escapeHtml(fmtVision(m.vision_input))}</span></td>
+          <td>${escapeHtml(fmtCutoff(m.knowledge_cutoff))}</td>
+          <td><span class="badge commercial-${escapeHtml(m.commercial_ok)}">${escapeHtml(m.commercial_ok)}</span></td>
+          <td>${escapeHtml(m.speed_tier)}</td>
           <td><span class="badge ${escapeHtml(m.weight_access)}">${escapeHtml(m.weight_access)}</span></td>
-        </tr>`,
-      )
+        </tr>`;
+      })
       .join("");
   }
 
@@ -253,7 +331,9 @@ async function main() {
     developerEl,
     minParamsEl,
     minContextEl,
+    maxVramEl,
     filterTypeEl,
+    commercialEl,
     visionEl,
     audioEl,
     minReasoningEl,
