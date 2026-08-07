@@ -1,173 +1,169 @@
 {
   "manifest_version": "0.1.0",
+  "selection": {
+    "open": "Ollama library models with ≥250K pulls and library update within ~6 months (as of 2026-08-07). One representative size/tag per family. Sources: https://ollama.com/search?o=newest and ?o=popular.",
+    "closed": "Current frontier API flagships as of 2026-08 (OpenAI GPT-5.6, Anthropic Claude 5, Google Gemini 3.x, xAI Grok 4.5)."
+  },
   "models": [
     {
-      "slug": "meta-llama-3.1-8b-instruct",
+      "slug": "google-gemma-4-31b",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "huggingface", "id": "meta-llama/Llama-3.1-8B-Instruct" }
+      "source": { "type": "ollama", "id": "gemma4:31b" },
+      "ollama_pulls": "20.9M"
     },
     {
-      "slug": "meta-llama-3.1-70b-instruct",
+      "slug": "qwen-qwen3.5-35b",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "huggingface", "id": "meta-llama/Llama-3.1-70B-Instruct" }
+      "source": { "type": "ollama", "id": "qwen3.5:35b" },
+      "ollama_pulls": "17.1M"
     },
     {
-      "slug": "meta-llama-3.1-405b-instruct",
+      "slug": "qwen-qwen3.6-35b",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "huggingface", "id": "meta-llama/Llama-3.1-405B-Instruct" }
+      "source": { "type": "ollama", "id": "qwen3.6:35b" },
+      "ollama_pulls": "5.3M"
     },
     {
-      "slug": "meta-llama-3.3-70b-instruct",
+      "slug": "nvidia-nemotron-3-super",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "huggingface", "id": "meta-llama/Llama-3.3-70B-Instruct" }
+      "source": { "type": "ollama", "id": "nemotron-3-super" },
+      "ollama_pulls": "2.9M"
     },
     {
-      "slug": "qwen-qwen2.5-7b-instruct",
+      "slug": "zai-glm-5.1",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "huggingface", "id": "Qwen/Qwen2.5-7B-Instruct" }
+      "source": { "type": "ollama", "id": "glm-5.1" },
+      "ollama_pulls": "2.3M"
     },
     {
-      "slug": "qwen-qwen2.5-72b-instruct",
+      "slug": "minimax-m2.7",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "huggingface", "id": "Qwen/Qwen2.5-72B-Instruct" }
+      "source": { "type": "ollama", "id": "minimax-m2.7" },
+      "ollama_pulls": "2.3M"
     },
     {
-      "slug": "qwen-qwen2.5-coder-32b-instruct",
+      "slug": "liquid-lfm2",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "huggingface", "id": "Qwen/Qwen2.5-Coder-32B-Instruct" }
+      "source": { "type": "ollama", "id": "lfm2" },
+      "ollama_pulls": "1.1M"
     },
     {
-      "slug": "qwen-qwen3-32b",
+      "slug": "nvidia-nemotron-3-nano-omni",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "huggingface", "id": "Qwen/Qwen3-32B" }
+      "source": { "type": "ollama", "id": "nemotron3" },
+      "ollama_pulls": "631.4K"
     },
     {
-      "slug": "mistral-7b-instruct-v0.3",
+      "slug": "moonshot-kimi-k2.6",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "huggingface", "id": "mistralai/Mistral-7B-Instruct-v0.3" }
+      "source": { "type": "ollama", "id": "kimi-k2.6" },
+      "ollama_pulls": "419.7K"
     },
     {
-      "slug": "mistral-small-24b-instruct-2501",
+      "slug": "minimax-m3",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "huggingface", "id": "mistralai/Mistral-Small-24B-Instruct-2501" }
+      "source": { "type": "ollama", "id": "minimax-m3" },
+      "ollama_pulls": "370.1K"
     },
     {
-      "slug": "mistral-mixtral-8x22b-instruct",
+      "slug": "ornith-35b",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "huggingface", "id": "mistralai/Mixtral-8x22B-Instruct-v0.1" }
+      "source": { "type": "ollama", "id": "ornith:35b" },
+      "ollama_pulls": "348.1K"
     },
     {
-      "slug": "google-gemma-2-9b-it",
+      "slug": "deepseek-v4-flash",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "huggingface", "id": "google/gemma-2-9b-it" }
+      "source": { "type": "ollama", "id": "deepseek-v4-flash" },
+      "ollama_pulls": "328.5K"
     },
     {
-      "slug": "google-gemma-2-27b-it",
+      "slug": "ibm-granite-4.1",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "huggingface", "id": "google/gemma-2-27b-it" }
+      "source": { "type": "ollama", "id": "granite4.1" },
+      "ollama_pulls": "314.3K"
     },
     {
-      "slug": "google-gemma-3-27b-it",
+      "slug": "deepseek-v4-pro",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "huggingface", "id": "google/gemma-3-27b-it" }
+      "source": { "type": "ollama", "id": "deepseek-v4-pro" },
+      "ollama_pulls": "312.7K"
     },
     {
-      "slug": "deepseek-v3",
+      "slug": "mistral-medium-3.5",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "huggingface", "id": "deepseek-ai/DeepSeek-V3" }
+      "source": { "type": "ollama", "id": "mistral-medium-3.5" },
+      "ollama_pulls": "304.4K"
     },
     {
-      "slug": "deepseek-r1",
+      "slug": "zai-glm-5.2",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "huggingface", "id": "deepseek-ai/DeepSeek-R1" }
+      "source": { "type": "ollama", "id": "glm-5.2" },
+      "ollama_pulls": "297.3K"
     },
     {
-      "slug": "microsoft-phi-4",
-      "weight_access": "open",
-      "curation": "reviewed",
-      "source": { "type": "huggingface", "id": "microsoft/phi-4" }
-    },
-    {
-      "slug": "cohere-command-r-plus-08-2024",
-      "weight_access": "open",
-      "curation": "reviewed",
-      "source": { "type": "huggingface", "id": "CohereForAI/c4ai-command-r-plus-08-2024" }
-    },
-    {
-      "slug": "allenai-olmo-2-13b-instruct",
-      "weight_access": "open",
-      "curation": "reviewed",
-      "source": { "type": "huggingface", "id": "allenai/OLMo-2-1124-13B-Instruct" }
-    },
-    {
-      "slug": "ibm-granite-3.1-8b-instruct",
-      "weight_access": "open",
-      "curation": "reviewed",
-      "source": { "type": "huggingface", "id": "ibm-granite/granite-3.1-8b-instruct" }
-    },
-    {
-      "slug": "openai-gpt-4o",
+      "slug": "openai-gpt-5.6-sol",
       "weight_access": "closed",
       "curation": "reviewed",
       "source": { "type": "hand" }
     },
     {
-      "slug": "openai-o3",
+      "slug": "openai-gpt-5.6-luna",
       "weight_access": "closed",
       "curation": "reviewed",
       "source": { "type": "hand" }
     },
     {
-      "slug": "anthropic-claude-sonnet-4",
+      "slug": "anthropic-claude-fable-5",
       "weight_access": "closed",
       "curation": "reviewed",
       "source": { "type": "hand" }
     },
     {
-      "slug": "anthropic-claude-opus-4",
+      "slug": "anthropic-claude-opus-5",
       "weight_access": "closed",
       "curation": "reviewed",
       "source": { "type": "hand" }
     },
     {
-      "slug": "google-gemini-2.5-pro",
+      "slug": "anthropic-claude-sonnet-5",
       "weight_access": "closed",
       "curation": "reviewed",
       "source": { "type": "hand" }
     },
     {
-      "slug": "google-gemini-2.5-flash",
+      "slug": "google-gemini-3.1-pro",
       "weight_access": "closed",
       "curation": "reviewed",
       "source": { "type": "hand" }
     },
     {
-      "slug": "xai-grok-3",
+      "slug": "google-gemini-3.6-flash",
       "weight_access": "closed",
       "curation": "reviewed",
       "source": { "type": "hand" }
     },
     {
-      "slug": "mistral-large-instruct-2411",
-      "weight_access": "open",
+      "slug": "xai-grok-4.5",
+      "weight_access": "closed",
       "curation": "reviewed",
-      "source": { "type": "huggingface", "id": "mistralai/Mistral-Large-Instruct-2411" }
+      "source": { "type": "hand" }
     }
   ]
 }

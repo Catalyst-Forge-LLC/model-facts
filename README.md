@@ -145,7 +145,7 @@ pnpm sync            # validate + write site/directory/*
 - [x] Spec v0.1.0, canonical JSON Schema, worked examples
 - [x] Schema validator CLI (TypeScript)
 - [x] Generator: draft a `MODEL_FACTS.md` from a Hugging Face model card/URL or a local Ollama model, with optional LLM curation (ollama / openai / anthropic / xai / gemini)
-- [x] Directory of labeled models (28-model seed: open-weight + closed APIs)
+- [x] Directory of labeled models (Ollama ≥250K/6mo open set + current closed flagships)
 - [ ] More generator sources: OpenRouter, LM Studio, raw GGUF files
 - [ ] Portable visual label (`/v#mf1.…` QR payload, no backend) and badges, mirroring AppFacts
 - [ ] Measured-benchmark harness behind a future "certified" tier

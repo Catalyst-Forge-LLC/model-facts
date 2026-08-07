@@ -1,0 +1,90 @@
+---
+model_facts_version: 0.1.0
+status: active
+name: Granite-4.1
+developer: IBM
+license: Apache-2.0
+homepage: https://ollama.com/library/granite4.1
+weights: https://ollama.com/library/granite4.1
+architecture:
+  type: dense transformer (decoder-only)
+  parameters: 8B
+  context_window: undisclosed
+  quantization: GGUF (Ollama default)
+  modalities_in:
+    - text
+  modalities_out:
+    - text
+training:
+  knowledge_cutoff: undisclosed
+  methodology: "undisclosed (enterprise Granite 4.1 family: 3B/8B/30B)"
+  tokens: undisclosed
+capabilities:
+  natural_language: full
+  reasoning_math: medium
+  coding: high
+  vision_input: disabled
+  audio_input: disabled
+  tool_use: native
+  notes: Representative 8B from Granite 4.1; multilingual + RAG/tool use
+safety:
+  refusal_sensitivity: medium
+  instruction_following: high
+  filter_type: hybrid
+generated:
+  date: 2026-08-07
+  generator: directory seed — Ollama/API refresh 2026-08
+credits:
+  generated_with: https://modelfacts.dev
+  built_by: Catalyst Forge — https://www.catalystforge.com/
+---
+
+# Model Facts — Granite-4.1
+
+| | |
+|---|---|
+| **Developer** | IBM |
+| **Status** | active |
+| **License** | Apache-2.0 |
+
+## Architecture
+
+| | |
+|---|---|
+| Type | dense transformer (decoder-only) |
+| Parameters | 8B |
+| Context window | undisclosed |
+| Quantization | GGUF (Ollama default) |
+| Modalities | text → text |
+
+## Training Provenance
+
+| | |
+|---|---|
+| Knowledge cutoff | undisclosed |
+| Methodology | undisclosed (enterprise Granite 4.1 family: 3B/8B/30B) |
+| Tokens | undisclosed |
+
+## Capabilities
+
+| Capability | Level |
+|---|---|
+| Natural language | full |
+| Reasoning / math | medium |
+| Coding | high |
+| Vision (input) | disabled |
+| Audio (input) | disabled |
+| Tool use | native |
+
+*Representative 8B from Granite 4.1; multilingual + RAG/tool use*
+
+## Safety Profile
+
+| | |
+|---|---|
+| Refusal sensitivity | medium |
+| Instruction following | high |
+| Filter type | hybrid |
+
+---
+*Generated with [ModelFacts](https://modelfacts.dev) · Built by Catalyst Forge — https://www.catalystforge.com/*

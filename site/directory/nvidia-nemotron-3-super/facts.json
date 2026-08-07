@@ -1,0 +1,49 @@
+{
+  "model_facts_version": "0.1.0",
+  "status": "active",
+  "name": "Nemotron-3-Super",
+  "developer": "NVIDIA",
+  "license": "NVIDIA Open Model License",
+  "homepage": "https://ollama.com/library/nemotron-3-super",
+  "weights": "https://ollama.com/library/nemotron-3-super",
+  "architecture": {
+    "type": "mixture of experts (MoE)",
+    "parameters": "120B",
+    "active_parameters": "12B",
+    "context_window": "undisclosed",
+    "quantization": "GGUF / cloud (Ollama)",
+    "modalities_in": [
+      "text"
+    ],
+    "modalities_out": [
+      "text"
+    ]
+  },
+  "training": {
+    "knowledge_cutoff": "undisclosed",
+    "methodology": "undisclosed (multi-agent / high-throughput reasoning)",
+    "tokens": "undisclosed"
+  },
+  "capabilities": {
+    "natural_language": "full",
+    "reasoning_math": "high",
+    "coding": "high",
+    "vision_input": "disabled",
+    "audio_input": "disabled",
+    "tool_use": "native",
+    "notes": "120B MoE activating ~12B per token"
+  },
+  "safety": {
+    "refusal_sensitivity": "medium",
+    "instruction_following": "high",
+    "filter_type": "hybrid"
+  },
+  "generated": {
+    "date": "2026-08-07",
+    "generator": "directory seed — Ollama/API refresh 2026-08"
+  },
+  "credits": {
+    "generated_with": "https://modelfacts.dev",
+    "built_by": "Catalyst Forge — https://www.catalystforge.com/"
+  }
+}

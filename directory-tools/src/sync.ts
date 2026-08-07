@@ -40,14 +40,17 @@ function escapeHtml(s: string): string {
     .replace(/"/g, "&quot;");
 }
 
-/** Parse "70B", "7.62B", "8x22B" → billions; undisclosed → null. */
+/** Parse "70B", "7.62B", "8x22B", "1.6T" → billions; undisclosed → null. */
 export function parseParametersB(raw: string): number | null {
   const s = raw.trim().toLowerCase();
   if (!s || s === "undisclosed") return null;
   const moe = /^(\d+(?:\.\d+)?)\s*x\s*(\d+(?:\.\d+)?)\s*b$/.exec(s);
   if (moe) return Number(moe[1]) * Number(moe[2]);
-  const plain = /^(\d+(?:\.\d+)?)\s*b$/.exec(s);
-  if (plain) return Number(plain[1]);
+  const withUnit = /^(\d+(?:\.\d+)?)\s*([bt])$/.exec(s);
+  if (withUnit) {
+    const n = Number(withUnit[1]);
+    return withUnit[2] === "t" ? n * 1000 : n;
+  }
   return null;
 }
 

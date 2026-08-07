@@ -1,0 +1,54 @@
+{
+  "model_facts_version": "0.1.0",
+  "status": "active",
+  "name": "GLM-5.1",
+  "developer": "Z.ai",
+  "license": "MIT",
+  "homepage": "https://ollama.com/library/glm-5.1",
+  "weights": "https://ollama.com/library/glm-5.1",
+  "architecture": {
+    "type": "undisclosed (transformer-family)",
+    "parameters": "undisclosed",
+    "context_window": "198k",
+    "quantization": "cloud / Ollama",
+    "modalities_in": [
+      "text"
+    ],
+    "modalities_out": [
+      "text"
+    ]
+  },
+  "training": {
+    "knowledge_cutoff": "undisclosed",
+    "methodology": "undisclosed (agentic engineering post-training)",
+    "tokens": "undisclosed"
+  },
+  "capabilities": {
+    "natural_language": "full",
+    "reasoning_math": "high",
+    "coding": "high",
+    "vision_input": "disabled",
+    "audio_input": "disabled",
+    "tool_use": "native",
+    "notes": "Long-horizon agentic coding flagship (pre-5.2)"
+  },
+  "safety": {
+    "refusal_sensitivity": "medium",
+    "instruction_following": "high",
+    "filter_type": "hybrid"
+  },
+  "benchmarks": [
+    {
+      "name": "SWE-Bench Pro",
+      "score": 58.4
+    }
+  ],
+  "generated": {
+    "date": "2026-08-07",
+    "generator": "directory seed — Ollama/API refresh 2026-08"
+  },
+  "credits": {
+    "generated_with": "https://modelfacts.dev",
+    "built_by": "Catalyst Forge — https://www.catalystforge.com/"
+  }
+}

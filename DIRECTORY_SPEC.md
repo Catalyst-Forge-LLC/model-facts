@@ -24,6 +24,12 @@ from published cards and docs (see [Curation](#curation)).
 
 Target seed size for first publish: **≥ 24 models**.
 
+**v0 open selection (2026-08):** Ollama library models with **≥ 250K pulls** and a
+library update within ~**6 months** ([newest](https://ollama.com/search?o=newest) /
+[popular](https://ollama.com/search?o=popular)). One representative size per family.
+
+**v0 closed selection:** current frontier API flagships (not historical GPT-4o / Claude 3).
+
 ## Layout
 
 Canonical labels live in the git repo. The static site serves a generated mirror.

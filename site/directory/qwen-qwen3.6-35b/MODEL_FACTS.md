@@ -1,0 +1,91 @@
+---
+model_facts_version: 0.1.0
+status: active
+name: Qwen3.6-35B
+developer: Alibaba (Qwen)
+license: Apache-2.0
+homepage: https://ollama.com/library/qwen3.6
+weights: https://ollama.com/library/qwen3.6
+architecture:
+  type: dense transformer (decoder-only)
+  parameters: 35B
+  context_window: 256k
+  quantization: GGUF (Ollama default)
+  modalities_in:
+    - text
+    - image
+  modalities_out:
+    - text
+training:
+  knowledge_cutoff: undisclosed
+  methodology: undisclosed (open-weight Qwen3.6; thinking preservation)
+  tokens: undisclosed
+capabilities:
+  natural_language: full
+  reasoning_math: high
+  coding: high
+  vision_input: enabled
+  audio_input: disabled
+  tool_use: native
+  notes: Agentic coding focus; 27B and 35B tags on Ollama
+safety:
+  refusal_sensitivity: medium
+  instruction_following: high
+  filter_type: hybrid
+generated:
+  date: 2026-08-07
+  generator: directory seed — Ollama/API refresh 2026-08
+credits:
+  generated_with: https://modelfacts.dev
+  built_by: Catalyst Forge — https://www.catalystforge.com/
+---
+
+# Model Facts — Qwen3.6-35B
+
+| | |
+|---|---|
+| **Developer** | Alibaba (Qwen) |
+| **Status** | active |
+| **License** | Apache-2.0 |
+
+## Architecture
+
+| | |
+|---|---|
+| Type | dense transformer (decoder-only) |
+| Parameters | 35B |
+| Context window | 256k |
+| Quantization | GGUF (Ollama default) |
+| Modalities | text + image → text |
+
+## Training Provenance
+
+| | |
+|---|---|
+| Knowledge cutoff | undisclosed |
+| Methodology | undisclosed (open-weight Qwen3.6; thinking preservation) |
+| Tokens | undisclosed |
+
+## Capabilities
+
+| Capability | Level |
+|---|---|
+| Natural language | full |
+| Reasoning / math | high |
+| Coding | high |
+| Vision (input) | enabled |
+| Audio (input) | disabled |
+| Tool use | native |
+
+*Agentic coding focus; 27B and 35B tags on Ollama*
+
+## Safety Profile
+
+| | |
+|---|---|
+| Refusal sensitivity | medium |
+| Instruction following | high |
+| Filter type | hybrid |
+
+---
+*Generated with [ModelFacts](https://modelfacts.dev) · Built by Catalyst Forge — https://www.catalystforge.com/*

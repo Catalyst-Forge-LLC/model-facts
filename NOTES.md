@@ -1,7 +1,7 @@
 # Project Notes — ModelFacts
 
 > Working notes for maintainers/agents picking up this project. Not published to the site.
-> Last updated: 2026-08-03 (directory seed + DIRECTORY_SPEC).
+> Last updated: 2026-08-07 (directory refresh from Ollama traction + current closed flagships).
 
 ## What this is
 
@@ -26,7 +26,7 @@ pushed**; owner pushes).
 | Generator CLI | `generator/` | TypeScript ESM. Sources: Hugging Face (`org/name`, `hf:`, full URL) and local Ollama (`ollama:name[:tag]`). Optional LLM curation via ollama/openai/anthropic/xai/gemini (fetch-based, no SDK deps). Output self-validates against the schema before writing. |
 | Site | `site/` | Static, Cloudflare Pages-ready (root = `site`, no build). AppFacts design system with violet accent (`--accent: #7c5cf0`). Landing + `/directory/` catalog. No `/v` viewer or badge pages yet. |
 | Directory spec | `DIRECTORY_SPEC.md` | Done. Repo-canonical labels, static mirror, `draft`/`reviewed` curation, open+closed seed. |
-| Directory seed | `directory/` + `directory-tools/` | 28 models (21 open HF + 7 closed APIs). `pnpm apply-reviews` + `pnpm sync` regenerates `site/directory/`. |
+| Directory seed | `directory/` + `directory-tools/` | 24 models (16 Ollama ≥250K/6mo + 8 closed flagships). Seed authored in `seed-catalog.ts`. `pnpm apply-reviews` + `pnpm sync`. |
 
 Verified end-to-end on this machine: `Qwen/Qwen2.5-7B-Instruct` deterministic draft;
 same model LLM-curated by local `gemma4:12b` (correctly kept `undisclosed` for Qwen's

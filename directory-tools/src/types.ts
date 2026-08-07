@@ -59,7 +59,11 @@ export interface ManifestModel {
   slug: string;
   weight_access: "open" | "closed";
   curation: "draft" | "reviewed";
-  source: { type: "huggingface"; id: string } | { type: "hand" };
+  source:
+    | { type: "huggingface"; id: string }
+    | { type: "ollama"; id: string }
+    | { type: "hand" };
+  ollama_pulls?: string;
 }
 
 export interface Manifest {

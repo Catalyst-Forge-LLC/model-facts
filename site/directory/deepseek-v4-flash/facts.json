@@ -1,0 +1,66 @@
+{
+  "model_facts_version": "0.1.0",
+  "status": "active",
+  "name": "DeepSeek-V4-Flash",
+  "developer": "DeepSeek",
+  "license": "MIT",
+  "homepage": "https://ollama.com/library/deepseek-v4-flash",
+  "weights": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash",
+  "architecture": {
+    "type": "mixture of experts (MoE)",
+    "parameters": "284B",
+    "active_parameters": "13B",
+    "context_window": "1M",
+    "quantization": "bf16 / cloud (Ollama)",
+    "modalities_in": [
+      "text"
+    ],
+    "modalities_out": [
+      "text"
+    ]
+  },
+  "training": {
+    "knowledge_cutoff": "undisclosed",
+    "methodology": "undisclosed (V4 series; no/thinking/max thinking modes)",
+    "tokens": "undisclosed"
+  },
+  "capabilities": {
+    "natural_language": "full",
+    "reasoning_math": "high",
+    "coding": "high",
+    "vision_input": "disabled",
+    "audio_input": "disabled",
+    "tool_use": "native",
+    "notes": "Efficient 1M-context MoE preview of DeepSeek-V4"
+  },
+  "safety": {
+    "refusal_sensitivity": "low",
+    "instruction_following": "high",
+    "filter_type": "raw"
+  },
+  "benchmarks": [
+    {
+      "name": "MMLU-Pro",
+      "score": 86.4,
+      "notes": "V4-Flash High"
+    },
+    {
+      "name": "GPQA Diamond",
+      "score": 87.4,
+      "notes": "V4-Flash High"
+    },
+    {
+      "name": "SWE Verified",
+      "score": 78.6,
+      "notes": "V4-Flash High"
+    }
+  ],
+  "generated": {
+    "date": "2026-08-07",
+    "generator": "directory seed — Ollama/API refresh 2026-08"
+  },
+  "credits": {
+    "generated_with": "https://modelfacts.dev",
+    "built_by": "Catalyst Forge — https://www.catalystforge.com/"
+  }
+}

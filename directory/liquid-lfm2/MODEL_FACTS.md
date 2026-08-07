@@ -1,0 +1,92 @@
+---
+model_facts_version: 0.1.0
+status: active
+name: LFM2-24B-A2B
+developer: Liquid AI
+license: UNKNOWN
+homepage: https://ollama.com/library/lfm2
+weights: https://ollama.com/library/lfm2
+architecture:
+  type: hybrid / MoE (on-device family)
+  parameters: 24B
+  active_parameters: 2B
+  context_window: undisclosed
+  quantization: GGUF (Ollama default)
+  modalities_in:
+    - text
+  modalities_out:
+    - text
+training:
+  knowledge_cutoff: undisclosed
+  methodology: undisclosed (on-device / edge tool-calling)
+  tokens: undisclosed
+capabilities:
+  natural_language: full
+  reasoning_math: medium
+  coding: medium
+  vision_input: disabled
+  audio_input: disabled
+  tool_use: native
+  notes: Largest LFM2 variant on Ollama (24B total, ~2B active)
+safety:
+  refusal_sensitivity: medium
+  instruction_following: high
+  filter_type: hybrid
+generated:
+  date: 2026-08-07
+  generator: directory seed — Ollama/API refresh 2026-08
+credits:
+  generated_with: https://modelfacts.dev
+  built_by: Catalyst Forge — https://www.catalystforge.com/
+---
+
+# Model Facts — LFM2-24B-A2B
+
+| | |
+|---|---|
+| **Developer** | Liquid AI |
+| **Status** | active |
+| **License** | UNKNOWN |
+
+## Architecture
+
+| | |
+|---|---|
+| Type | hybrid / MoE (on-device family) |
+| Parameters | 24B |
+| Active parameters | 2B |
+| Context window | undisclosed |
+| Quantization | GGUF (Ollama default) |
+| Modalities | text → text |
+
+## Training Provenance
+
+| | |
+|---|---|
+| Knowledge cutoff | undisclosed |
+| Methodology | undisclosed (on-device / edge tool-calling) |
+| Tokens | undisclosed |
+
+## Capabilities
+
+| Capability | Level |
+|---|---|
+| Natural language | full |
+| Reasoning / math | medium |
+| Coding | medium |
+| Vision (input) | disabled |
+| Audio (input) | disabled |
+| Tool use | native |
+
+*Largest LFM2 variant on Ollama (24B total, ~2B active)*
+
+## Safety Profile
+
+| | |
+|---|---|
+| Refusal sensitivity | medium |
+| Instruction following | high |
+| Filter type | hybrid |
+
+---
+*Generated with [ModelFacts](https://modelfacts.dev) · Built by Catalyst Forge — https://www.catalystforge.com/*

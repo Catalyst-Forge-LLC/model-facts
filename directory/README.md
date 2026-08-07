@@ -6,21 +6,26 @@ at [modelfacts.dev/directory](https://modelfacts.dev/directory).
 See [`DIRECTORY_SPEC.md`](../DIRECTORY_SPEC.md) for layout, slugs, curation levels, and
 how to add a model.
 
+## Current seed criteria (2026-08)
+
+**Open-weight / Ollama-listed:** models from
+[ollama.com/search?o=newest](https://ollama.com/search?o=newest) and
+[?o=popular](https://ollama.com/search?o=popular) with **≥ 250K pulls** and a library
+update within roughly the **last 6 months**. One representative size/tag per family.
+
+**Closed APIs:** current frontier flagships (GPT-5.6, Claude 5, Gemini 3.x, Grok 4.5) —
+heavy on `undisclosed`, which is the point.
+
+Membership and pull notes live in [`manifest.json`](./manifest.json). Label bodies are
+authored in [`directory-tools/src/seed-catalog.ts`](../directory-tools/src/seed-catalog.ts).
+
 ## Quick commands
 
 ```bash
 cd directory-tools
 pnpm install
-
-# draft any missing open-weight labels from Hugging Face
-pnpm seed
-
-# apply human-reviewed overlays + write closed API labels
-pnpm apply-reviews
-
-# validate and regenerate site/directory/*
-pnpm sync
+pnpm apply-reviews   # write directory/<slug>/MODEL_FACTS.md from seed-catalog
+pnpm sync            # validate + write site/directory/*
 ```
 
-Membership and directory metadata live in [`manifest.json`](./manifest.json).
 The static site mirror under `site/directory/` is generated — do not hand-edit it.
