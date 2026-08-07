@@ -111,3 +111,6 @@ emits them — the AppFacts generator insight, doubled here.
 - tsconfig uses `moduleResolution: "Bundler"` because tsx/esbuild is the runner; ajv is
   imported as the **named** export (`import { Ajv } from "ajv"`) to keep `tsc --noEmit`
   clean.
+- Local preview: serve from `site/` (`cd site && lite-server`). Use `/directory/` **with
+  the trailing slash**. Default lite-server historyApiFallback rewrites bare `/directory`
+  to the homepage — `site/bs-config.js` disables that middleware.
