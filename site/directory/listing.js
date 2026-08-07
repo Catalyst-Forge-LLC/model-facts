@@ -10,9 +10,87 @@ function uniqueSorted(values) {
   return [...new Set(values)].sort((a, b) => a.localeCompare(b));
 }
 
+const LEVEL = { low: 1, medium: 2, high: 3 };
+
+/** Default filter state (no constraints). */
+function emptyState() {
+  return {
+    access: "all",
+    q: "",
+    developer: "",
+    minParams: 0,
+    minContext: 0,
+    filterType: "",
+    vision: false,
+    audio: false,
+    tools: "", // "" | "any" | "native"
+    minReasoning: "",
+    minCoding: "",
+    refusal: "",
+    instruction: "",
+    status: "",
+    curation: "",
+    expert: false,
+  };
+}
+
+function parseUrlState() {
+  const p = new URLSearchParams(location.search);
+  const toolsRaw = p.get("tools") || "";
+  return {
+    access: ["open", "closed"].includes(p.get("access") || "") ? p.get("access") : "all",
+    q: p.get("q") || "",
+    developer: p.get("developer") || "",
+    minParams: Number(p.get("min_params") || 0) || 0,
+    minContext: Number(p.get("min_context") || 0) || 0,
+    filterType: p.get("filter") || "",
+    vision: p.get("vision") === "1",
+    audio: p.get("audio") === "1",
+    tools: toolsRaw === "native" || toolsRaw === "any" ? toolsRaw : "",
+    minReasoning: p.get("min_reasoning") || "",
+    minCoding: p.get("min_coding") || "",
+    refusal: p.get("refusal") || "",
+    instruction: p.get("instruction") || "",
+    status: p.get("status") || "",
+    curation: p.get("curation") || "",
+    expert: p.get("expert") === "1",
+  };
+}
+
+function writeUrl(state) {
+  const p = new URLSearchParams();
+  if (state.access !== "all") p.set("access", state.access);
+  if (state.q) p.set("q", state.q);
+  if (state.developer) p.set("developer", state.developer);
+  if (state.minParams > 0) p.set("min_params", String(state.minParams));
+  if (state.minContext > 0) p.set("min_context", String(state.minContext));
+  if (state.filterType) p.set("filter", state.filterType);
+  if (state.vision) p.set("vision", "1");
+  if (state.audio) p.set("audio", "1");
+  if (state.tools) p.set("tools", state.tools);
+  if (state.minReasoning) p.set("min_reasoning", state.minReasoning);
+  if (state.minCoding) p.set("min_coding", state.minCoding);
+  if (state.refusal) p.set("refusal", state.refusal);
+  if (state.instruction) p.set("instruction", state.instruction);
+  if (state.status) p.set("status", state.status);
+  if (state.curation) p.set("curation", state.curation);
+  if (state.expert) p.set("expert", "1");
+
+  const qs = p.toString();
+  const next = `${location.pathname}${qs ? `?${qs}` : ""}${location.hash}`;
+  const cur = `${location.pathname}${location.search}${location.hash}`;
+  if (next !== cur) history.replaceState(null, "", next);
+}
+
+function meetsMinLevel(actual, min) {
+  if (!min) return true;
+  return (LEVEL[actual] || 0) >= (LEVEL[min] || 0);
+}
+
 async function main() {
   const res = await fetch("/directory/index.json");
   const catalog = await res.json();
+
   const rowsEl = document.getElementById("rows");
   const countEl = document.getElementById("count");
   const emptyEl = document.getElementById("empty");
@@ -22,6 +100,17 @@ async function main() {
   const minContextEl = document.getElementById("min-context");
   const filterTypeEl = document.getElementById("filter-type");
   const resetEl = document.getElementById("reset");
+  const expertEl = document.getElementById("expert");
+  const visionEl = document.getElementById("vision");
+  const audioEl = document.getElementById("audio");
+  const toolsEl = document.getElementById("tools");
+  const toolsNativeEl = document.getElementById("tools-native");
+  const minReasoningEl = document.getElementById("min-reasoning");
+  const minCodingEl = document.getElementById("min-coding");
+  const refusalEl = document.getElementById("refusal");
+  const instructionEl = document.getElementById("instruction");
+  const statusEl = document.getElementById("status");
+  const curationEl = document.getElementById("curation");
   const accessChips = document.querySelectorAll(".chip[data-access]");
 
   for (const name of uniqueSorted(catalog.models.map((m) => m.developer))) {
@@ -31,32 +120,61 @@ async function main() {
     developerEl.appendChild(opt);
   }
 
-  const state = {
-    access: "all",
-    q: "",
-    developer: "",
-    minParams: 0,
-    minContext: 0,
-    filterType: "",
-  };
+  let state = parseUrlState();
+  let syncing = false;
+
+  function applyStateToControls() {
+    syncing = true;
+    accessChips.forEach((b) =>
+      b.classList.toggle("active", (b.getAttribute("data-access") || "all") === state.access),
+    );
+    qEl.value = state.q;
+    developerEl.value = state.developer;
+    minParamsEl.value = state.minParams > 0 ? String(state.minParams) : "";
+    minContextEl.value = state.minContext > 0 ? String(state.minContext) : "";
+    filterTypeEl.value = state.filterType;
+    visionEl.checked = state.vision;
+    audioEl.checked = state.audio;
+    toolsEl.checked = state.tools === "any";
+    toolsNativeEl.checked = state.tools === "native";
+    minReasoningEl.value = state.minReasoning;
+    minCodingEl.value = state.minCoding;
+    refusalEl.value = state.refusal;
+    instructionEl.value = state.instruction;
+    statusEl.value = state.status;
+    curationEl.value = state.curation;
+    expertEl.open = state.expert;
+    syncing = false;
+  }
 
   function readControls() {
-    state.q = (qEl.value || "").trim().toLowerCase();
+    state.access =
+      document.querySelector(".chip[data-access].active")?.getAttribute("data-access") || "all";
+    state.q = (qEl.value || "").trim();
     state.developer = developerEl.value;
-    state.minParams = Number(minParamsEl.value || 0);
-    state.minContext = Number(minContextEl.value || 0);
+    state.minParams = Number(minParamsEl.value || 0) || 0;
+    state.minContext = Number(minContextEl.value || 0) || 0;
     state.filterType = filterTypeEl.value;
+    state.vision = visionEl.checked;
+    state.audio = audioEl.checked;
+    if (toolsNativeEl.checked) state.tools = "native";
+    else if (toolsEl.checked) state.tools = "any";
+    else state.tools = "";
+    state.minReasoning = minReasoningEl.value;
+    state.minCoding = minCodingEl.value;
+    state.refusal = refusalEl.value;
+    state.instruction = instructionEl.value;
+    state.status = statusEl.value;
+    state.curation = curationEl.value;
+    state.expert = expertEl.open;
   }
 
   function filtersActive() {
-    return (
-      state.access !== "all" ||
-      !!state.q ||
-      !!state.developer ||
-      state.minParams > 0 ||
-      state.minContext > 0 ||
-      !!state.filterType
-    );
+    const d = emptyState();
+    return Object.keys(d).some((k) => {
+      if (k === "expert") return false;
+      return state[k] !== d[k];
+    });
   }
 
   function matches(m) {
@@ -69,15 +187,26 @@ async function main() {
     if (state.minContext > 0) {
       if (m.context_tokens == null || m.context_tokens < state.minContext) return false;
     }
+    if (state.vision && m.vision_input !== "enabled") return false;
+    if (state.audio && m.audio_input !== "enabled") return false;
+    if (state.tools === "native" && m.tool_use !== "native") return false;
+    if (state.tools === "any" && m.tool_use !== "native" && m.tool_use !== "prompted") return false;
+    if (!meetsMinLevel(m.reasoning_math, state.minReasoning)) return false;
+    if (!meetsMinLevel(m.coding, state.minCoding)) return false;
+    if (state.refusal && m.refusal_sensitivity !== state.refusal) return false;
+    if (!meetsMinLevel(m.instruction_following, state.instruction)) return false;
+    if (state.status && m.status !== state.status) return false;
+    if (state.curation && m.curation !== state.curation) return false;
     if (state.q) {
       const hay = `${m.name} ${m.developer} ${m.slug}`.toLowerCase();
-      if (!hay.includes(state.q)) return false;
+      if (!hay.includes(state.q.toLowerCase())) return false;
     }
     return true;
   }
 
   function render() {
-    readControls();
+    if (!syncing) readControls();
+    writeUrl(state);
     const models = catalog.models.filter(matches);
     countEl.textContent = `${models.length} of ${catalog.count} models`;
     resetEl.hidden = !filtersActive();
@@ -105,22 +234,53 @@ async function main() {
     });
   });
 
-  for (const el of [qEl, developerEl, minParamsEl, minContextEl, filterTypeEl]) {
+  toolsEl.addEventListener("change", () => {
+    if (toolsEl.checked) toolsNativeEl.checked = false;
+    render();
+  });
+  toolsNativeEl.addEventListener("change", () => {
+    if (toolsNativeEl.checked) toolsEl.checked = false;
+    render();
+  });
+
+  expertEl.addEventListener("toggle", () => {
+    state.expert = expertEl.open;
+    render();
+  });
+
+  const inputs = [
+    qEl,
+    developerEl,
+    minParamsEl,
+    minContextEl,
+    filterTypeEl,
+    visionEl,
+    audioEl,
+    minReasoningEl,
+    minCodingEl,
+    refusalEl,
+    instructionEl,
+    statusEl,
+    curationEl,
+  ];
+  for (const el of inputs) {
     el.addEventListener("input", render);
     el.addEventListener("change", render);
   }
 
   resetEl.addEventListener("click", () => {
-    state.access = "all";
-    accessChips.forEach((b) => b.classList.toggle("active", b.getAttribute("data-access") === "all"));
-    qEl.value = "";
-    developerEl.value = "";
-    minParamsEl.value = "";
-    minContextEl.value = "";
-    filterTypeEl.value = "";
+    state = emptyState();
+    applyStateToControls();
     render();
   });
 
+  window.addEventListener("popstate", () => {
+    state = parseUrlState();
+    applyStateToControls();
+    render();
+  });
+
+  applyStateToControls();
   render();
 }
 

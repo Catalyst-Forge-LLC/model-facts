@@ -116,8 +116,30 @@ These are **not** part of the ModelFacts schema; they describe the catalog entry
 | `context_tokens` | number \| `null` | Parsed context length in tokens for filters (`null` if undisclosed) |
 | `href` / `facts_json` / `facts_md` | paths | Site URLs |
 
-The listing page filters by developer, min params, min context, filter type, and weight access.
-Min-param / min-context filters **exclude** models whose value is `undisclosed`.
+### Listing filters (URL query params)
+
+Filters sync to the URL via `history.replaceState` so links are shareable and agent-friendly.
+Example: `/directory/?access=open&vision=1&min_context=128000&tools=native&expert=1`
+
+| Param | Values | Notes |
+|---|---|---|
+| `access` | `open` \| `closed` | Weight access |
+| `q` | string | Name / developer / slug search |
+| `developer` | string | Exact developer match |
+| `min_params` | number (billions) | Excludes `undisclosed` params |
+| `min_context` | number (tokens) | Excludes `undisclosed` context |
+| `filter` | `raw` \| `hybrid` \| `censored` | Safety filter type |
+| `vision` / `audio` | `1` | Require enabled input modality |
+| `tools` | `any` \| `native` | Tool use present, or native only |
+| `min_reasoning` / `min_coding` / `instruction` | `medium` \| `high` | Minimum level |
+| `refusal` | `low` \| `medium` \| `high` | Exact match |
+| `status` | `active` \| … | Model status |
+| `curation` | `draft` \| `reviewed` | Catalog curation |
+| `expert` | `1` | Keep the expert panel open |
+
+Catalog entries also expose `vision_input`, `audio_input`, `tool_use`, `reasoning_math`,
+`coding`, `refusal_sensitivity`, and `instruction_following` in `index.json` for direct
+agent filtering without the HTML UI.
 
 `weight_access` is inferred at sync time:
 

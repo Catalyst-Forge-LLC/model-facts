@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Directory — ModelFacts</title>
-  <meta name="description" content="Browse curated ModelFacts labels for top open-weight and closed AI models." />
+  <meta name="description" content="Browse curated ModelFacts labels for top open-weight and closed AI models. Filters sync to the URL for sharing and agents." />
   <link rel="canonical" href="https://modelfacts.dev/directory/" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,7 +26,7 @@
 
   <main class="wrap listing">
     <h1>Directory</h1>
-    <p class="lede">Curated ModelFacts labels for well-known models. Open weights and closed APIs side by side — including when the answer is <code>undisclosed</code>.</p>
+    <p class="lede">Curated ModelFacts labels for well-known models. Filters persist in the URL — shareable and machine-readable for agents.</p>
 
     <div class="controls">
       <div class="chips" role="group" aria-label="Filter by weight access">
@@ -36,20 +36,20 @@
       </div>
       <label class="search">
         <span class="sr-only">Search models</span>
-        <input type="search" id="q" placeholder="Search name…" autocomplete="off" />
+        <input type="search" id="q" name="q" placeholder="Search name…" autocomplete="off" />
       </label>
     </div>
 
     <div class="filters" id="filters">
       <label>
         <span>Developer</span>
-        <select id="developer">
+        <select id="developer" name="developer">
           <option value="">Any</option>
         </select>
       </label>
       <label>
         <span>Min params</span>
-        <select id="min-params">
+        <select id="min-params" name="min_params">
           <option value="">Any</option>
           <option value="7">7B+</option>
           <option value="30">30B+</option>
@@ -60,7 +60,7 @@
       </label>
       <label>
         <span>Min context</span>
-        <select id="min-context">
+        <select id="min-context" name="min_context">
           <option value="">Any</option>
           <option value="32000">32k+</option>
           <option value="128000">128k+</option>
@@ -70,7 +70,7 @@
       </label>
       <label>
         <span>Filter type</span>
-        <select id="filter-type">
+        <select id="filter-type" name="filter">
           <option value="">Any</option>
           <option value="raw">raw</option>
           <option value="hybrid">hybrid</option>
@@ -79,6 +79,80 @@
       </label>
       <button type="button" class="chip reset" id="reset" hidden>Clear filters</button>
     </div>
+
+    <details class="expert" id="expert">
+      <summary>Expert filters</summary>
+      <div class="expert-body">
+        <fieldset class="check-group">
+          <legend>Capabilities</legend>
+          <label class="check"><input type="checkbox" id="vision" name="vision" value="1" /> Vision input</label>
+          <label class="check"><input type="checkbox" id="audio" name="audio" value="1" /> Audio input</label>
+          <label class="check"><input type="checkbox" id="tools" name="tools" value="any" /> Tool use</label>
+          <label class="check"><input type="checkbox" id="tools-native" name="tools_native" value="1" /> Native tools only</label>
+        </fieldset>
+        <div class="expert-selects">
+          <label>
+            <span>Min reasoning</span>
+            <select id="min-reasoning" name="min_reasoning">
+              <option value="">Any</option>
+              <option value="medium">medium+</option>
+              <option value="high">high</option>
+            </select>
+          </label>
+          <label>
+            <span>Min coding</span>
+            <select id="min-coding" name="min_coding">
+              <option value="">Any</option>
+              <option value="medium">medium+</option>
+              <option value="high">high</option>
+            </select>
+          </label>
+          <label>
+            <span>Refusal</span>
+            <select id="refusal" name="refusal">
+              <option value="">Any</option>
+              <option value="low">low</option>
+              <option value="medium">medium</option>
+              <option value="high">high</option>
+            </select>
+          </label>
+          <label>
+            <span>Instruction following</span>
+            <select id="instruction" name="instruction">
+              <option value="">Any</option>
+              <option value="medium">medium+</option>
+              <option value="high">high</option>
+            </select>
+          </label>
+          <label>
+            <span>Status</span>
+            <select id="status" name="status">
+              <option value="">Any</option>
+              <option value="active">active</option>
+              <option value="preview">preview</option>
+              <option value="deprecated">deprecated</option>
+              <option value="archived">archived</option>
+            </select>
+          </label>
+          <label>
+            <span>Curation</span>
+            <select id="curation" name="curation">
+              <option value="">Any</option>
+              <option value="reviewed">reviewed</option>
+              <option value="draft">draft</option>
+            </select>
+          </label>
+        </div>
+        <p class="expert-hint">
+          Query params: <code>access</code> <code>q</code> <code>developer</code> <code>min_params</code>
+          <code>min_context</code> <code>filter</code> <code>vision</code> <code>audio</code>
+          <code>tools</code> (<code>any</code>|<code>native</code>) <code>min_reasoning</code>
+          <code>min_coding</code> <code>refusal</code> <code>instruction</code> <code>status</code>
+          <code>curation</code> <code>expert</code>. Catalog JSON:
+          <a href="/directory/index.json"><code>/directory/index.json</code></a>
+        </p>
+      </div>
+    </details>
 
     <p class="count" id="count"></p>
     <div class="table-wrap">

@@ -87,6 +87,13 @@ export interface CatalogEntry {
   context_tokens: number | null;
   release_date?: string;
   filter_type: string;
+  vision_input: "enabled" | "disabled";
+  audio_input: "enabled" | "disabled";
+  tool_use: "native" | "prompted" | "none" | null;
+  reasoning_math: "high" | "medium" | "low";
+  coding: "high" | "medium" | "low";
+  refusal_sensitivity: "high" | "medium" | "low";
+  instruction_following: "high" | "medium" | "low";
   href: string;
   facts_json: string;
   facts_md: string;
