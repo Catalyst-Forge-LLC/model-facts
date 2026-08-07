@@ -42,7 +42,17 @@ h1 {
   font-size: clamp(2rem, 5vw, 2.75rem); letter-spacing: -0.04em;
   margin: 0 0 0.75rem; color: #fff;
 }
-.lede { color: var(--mute); max-width: 54ch; margin: 0 0 1.5rem; }
+.lede { color: var(--mute); max-width: 62ch; margin: 0 0 1.25rem; }
+.lede em { color: #c9d3de; font-style: normal; }
+.presets {
+  display: flex; flex-wrap: wrap; gap: 0.45rem; align-items: center;
+  margin: 0 0 1.1rem;
+}
+.presets-label {
+  font-size: 0.7rem; letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--mute); margin-right: 0.25rem;
+}
+.chip.preset { text-decoration: none; display: inline-block; }
 .controls {
   display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between;
   align-items: center; margin-bottom: 0.85rem;
@@ -55,6 +65,7 @@ h1 {
 }
 .chip.active, .chip:hover { border-color: var(--accent); color: #fff; }
 .chip.reset { margin-left: auto; }
+a.chip:hover { color: #fff; }
 .search input,
 .filters select,
 .expert select {
@@ -120,6 +131,25 @@ h1 {
 .expert-selects {
   display: flex; flex-wrap: wrap; gap: 0.75rem 1rem;
 }
+.claim-group {
+  opacity: 0.92;
+  padding-top: 0.35rem;
+  border-top: 1px dashed rgba(255,255,255,0.12);
+}
+.claim-group label {
+  display: grid; gap: 0.3rem; font-size: 0.7rem;
+  letter-spacing: 0.04em; text-transform: uppercase; color: var(--mute);
+}
+.claim-group select {
+  min-width: 8.5rem; appearance: none;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.16);
+  color: #fff; font: 400 0.85rem/1.2 var(--font-mono); padding: 0.55rem 1.6rem 0.55rem 0.7rem;
+  background-image: linear-gradient(45deg, transparent 50%, var(--mute) 50%),
+    linear-gradient(135deg, var(--mute) 50%, transparent 50%);
+  background-position: calc(100% - 14px) 55%, calc(100% - 9px) 55%;
+  background-size: 5px 5px, 5px 5px; background-repeat: no-repeat;
+}
+.claim-group select option { color: #101418; background: #f8fafc; }
 .expert-hint {
   margin: 0; font-size: 0.72rem; color: var(--mute); line-height: 1.55;
 }
@@ -151,6 +181,37 @@ td a:hover { color: var(--accent-soft); }
 .badge.commercial-conditional { border-color: rgba(212, 184, 122, 0.65); color: #d4b87a; }
 .badge.commercial-undisclosed,
 .badge.commercial-no { border-color: rgba(255,255,255,0.2); color: var(--mute); }
+.badge.basis { border-color: rgba(212, 184, 122, 0.55); color: #d4b87a; text-transform: none; letter-spacing: 0.02em; }
+.col-check { width: 2rem; }
+.compare-cb { accent-color: var(--accent); width: 1rem; height: 1rem; }
+.compare-bar {
+  position: sticky; bottom: 0; z-index: 5;
+  display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;
+  justify-content: center; padding: 0.85rem 1rem;
+  background: rgba(12, 16, 21, 0.94);
+  border-top: 1px solid rgba(124, 92, 240, 0.45);
+  backdrop-filter: blur(8px);
+}
+.compare-bar .chip { text-decoration: none; }
+.compare-table th[scope="row"] {
+  color: var(--mute); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.judgment-block {
+  margin: 1.75rem 0 0; padding: 1rem 0 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  max-width: 62ch;
+}
+.judgment-block h2 {
+  font-family: var(--font-display); font-size: 1.1rem; font-weight: 700;
+  margin: 0 0 0.5rem; color: #fff; letter-spacing: -0.02em;
+}
+.judgment-block p { color: #c9d3de; font-size: 0.85rem; margin: 0 0 0.75rem; }
+.judgment-block ul { margin: 0; padding-left: 1.1rem; color: var(--mute); font-size: 0.82rem; }
+.judgment-block li { margin: 0.35rem 0; }
+.mute-inline { color: var(--mute); }
+.related { color: var(--mute); font-size: 0.82rem; margin: -0.5rem 0 1.25rem; }
+.related a { font-weight: 600; }
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0,0,0,0); border: 0;

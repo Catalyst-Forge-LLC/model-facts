@@ -16,15 +16,29 @@
       <a class="brand-link" href="/">Model<span>Facts</span></a>
       <nav>
         <a href="/directory/" aria-current="page">Directory</a>
+        <a href="/directory/compare/">Compare</a>
+        <a href="/directory/AGENTS.md">Agents</a>
         <a href="https://github.com/Catalyst-Forge-LLC/model-facts/blob/main/specs/DIRECTORY_SPEC.md">Spec</a>
-        <a href="/schema/model-facts.schema.json">Schema</a>
       </nav>
     </div>
   </header>
 
   <main class="wrap listing">
     <h1>Directory</h1>
-    <p class="lede">Curated ModelFacts labels for well-known models. Filters persist in the URL — shareable and machine-readable for agents.</p>
+    <p class="lede">
+      Curated labels for well-known models. Prefer objective filters (access, context, tools, vision, VRAM)
+      when shortlisting — capability levels are <em>published claims</em>, not ModelFacts-run evals.
+      Filters and presets sync to the URL for sharing and agents.
+    </p>
+
+    <div class="presets" role="group" aria-label="Task presets">
+      <span class="presets-label">Presets</span>
+      <a class="chip preset" href="/directory/?access=open&amp;tools=native&amp;max_vram=24">Local coding (≤24GB)</a>
+      <a class="chip preset" href="/directory/?min_context=200000">Long-context (200k+)</a>
+      <a class="chip preset" href="/directory/?vision=1&amp;tools=native&amp;expert=1">Vision + tools</a>
+      <a class="chip preset" href="/directory/?filter=raw">Raw / lightly filtered</a>
+      <a class="chip preset" href="/directory/?access=closed&amp;speed=flagship">Frontier API</a>
+    </div>
 
     <div class="controls">
       <div class="chips" role="group" aria-label="Filter by weight access">
@@ -87,6 +101,15 @@
         </select>
       </label>
       <label>
+        <span>Speed tier</span>
+        <select id="speed" name="speed">
+          <option value="">Any</option>
+          <option value="flash">flash</option>
+          <option value="standard">standard</option>
+          <option value="flagship">flagship</option>
+        </select>
+      </label>
+      <label>
         <span>Filter type</span>
         <select id="filter-type" name="filter">
           <option value="">Any</option>
@@ -102,13 +125,14 @@
       <summary>Expert filters</summary>
       <div class="expert-body">
         <fieldset class="check-group">
-          <legend>Capabilities</legend>
+          <legend>Objective capabilities</legend>
           <label class="check"><input type="checkbox" id="vision" name="vision" value="1" /> Vision input</label>
           <label class="check"><input type="checkbox" id="audio" name="audio" value="1" /> Audio input</label>
           <label class="check"><input type="checkbox" id="tools" name="tools" value="any" /> Tool use</label>
           <label class="check"><input type="checkbox" id="tools-native" name="tools_native" value="1" /> Native tools only</label>
         </fieldset>
-        <div class="expert-selects">
+        <fieldset class="check-group claim-group">
+          <legend>Claimed levels (unverified — catalog is mostly flat)</legend>
           <label>
             <span>Min reasoning</span>
             <select id="min-reasoning" name="min_reasoning">
@@ -142,6 +166,8 @@
               <option value="high">high</option>
             </select>
           </label>
+        </fieldset>
+        <div class="expert-selects">
           <label>
             <span>Status</span>
             <select id="status" name="status">
@@ -163,11 +189,14 @@
         </div>
         <p class="expert-hint">
           Query params: <code>access</code> <code>q</code> <code>developer</code> <code>min_params</code>
-          <code>min_context</code> <code>max_vram</code> <code>commercial</code> <code>filter</code>
-          <code>vision</code> <code>audio</code> <code>tools</code> (<code>any</code>|<code>native</code>)
-          <code>min_reasoning</code> <code>min_coding</code> <code>refusal</code> <code>instruction</code>
-          <code>status</code> <code>curation</code> <code>expert</code>. Catalog JSON:
+          <code>min_context</code> <code>max_vram</code> <code>commercial</code> <code>speed</code>
+          <code>filter</code> <code>vision</code> <code>audio</code> <code>tools</code>
+          (<code>any</code>|<code>native</code>) claimed: <code>min_reasoning</code> <code>min_coding</code>
+          <code>refusal</code> <code>instruction</code> · <code>status</code> <code>curation</code>
+          <code>expert</code>. Catalog:
           <a href="/directory/index.json"><code>/directory/index.json</code></a>
+          · Agent guide: <a href="/directory/AGENTS.md"><code>AGENTS.md</code></a>
+          · Compare: <code>/directory/compare/?ids=slug-a,slug-b</code>
         </p>
       </div>
     </details>
@@ -178,6 +207,7 @@
       <table>
         <thead>
           <tr>
+            <th class="col-check"><span class="sr-only">Compare</span></th>
             <th>Model</th>
             <th>Developer</th>
             <th>Params</th>
@@ -196,10 +226,21 @@
     <p class="empty" id="empty" hidden>No models match these filters.</p>
   </main>
 
+  <div class="compare-bar" id="compare-bar" hidden>
+    <span id="compare-label">0 selected</span>
+    <a class="chip" id="compare-go" href="/directory/compare/">Compare</a>
+    <button type="button" class="chip" id="compare-clear">Clear</button>
+  </div>
+
   <footer>
     <div class="wrap row">
       <div>© 2026 ModelFacts · <a href="https://www.catalystforge.com/">Catalyst Forge</a></div>
-      <div><a href="/">Home</a> · <a href="https://github.com/Catalyst-Forge-LLC/model-facts">GitHub</a></div>
+      <div>
+        <a href="/">Home</a> ·
+        <a href="/llms.txt">llms.txt</a> ·
+        <a href="/directory/AGENTS.md">Agents</a> ·
+        <a href="https://github.com/Catalyst-Forge-LLC/model-facts">GitHub</a>
+      </div>
     </div>
   </footer>
 

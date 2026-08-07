@@ -28,10 +28,12 @@
     <p class="meta-line">
       <span class="badge open">open</span>
       <span class="badge reviewed">reviewed</span>
+      <span class="badge basis">reviewed_claim</span>
       <span>Ornith</span>
       ·
       <span>UNKNOWN</span>
     </p>
+    
 
     <div class="label-plane" aria-label="Model Facts label">
       <div class="label-plane-inner">
@@ -47,10 +49,10 @@
           <div class="row"><strong>Methodology</strong><span>undisclosed (self-improving open family for agentic coding)</span></div>
           <div class="row"><strong>Tokens</strong><span>undisclosed</span></div>
           <div class="row thick"><strong>Filter type</strong><span>raw</span></div>
-          <div class="row"><strong>Refusal</strong><span>low</span></div>
-          <div class="row"><strong>Instruction following</strong><span>high</span></div>
-          <div class="row"><strong>Reasoning / math</strong><span>high</span></div>
-          <div class="row"><strong>Coding</strong><span>high</span></div>
+          <div class="row"><strong>Refusal</strong><span>low <em>claimed</em></span></div>
+          <div class="row"><strong>Instruction following</strong><span>high <em>claimed</em></span></div>
+          <div class="row"><strong>Reasoning / math</strong><span>high <em>claimed</em></span></div>
+          <div class="row"><strong>Coding</strong><span>high <em>claimed</em></span></div>
           <div class="row"><strong>Vision</strong><span>disabled</span></div>
           <div class="row"><strong>Tool use</strong><span>native</span></div>
           
@@ -60,9 +62,19 @@
       </div>
     </div>
 
+    <section class="judgment-block">
+      <h2>Sources for judgments</h2>
+      <p>
+        Capability and safety levels above are <strong>reviewed_claim</strong>
+        readings of published docs — not independent ModelFacts measurements.
+        Prefer objective fields (context, modalities, tools, cutoff, access) when selecting a model.
+      </p>
+      <ul><li><a href="https://ollama.com/library/ornith" rel="noopener">Homepage / docs</a> — <span class="mute-inline">ollama.com/library/ornith</span></li></ul>
+    </section>
+
     <p class="footnote">
-      Judgment fields are reviewed self-reports from published docs — not ModelFacts-run evals.
-      See <a href="https://github.com/Catalyst-Forge-LLC/model-facts/blob/main/specs/DIRECTORY_SPEC.md">DIRECTORY_SPEC.md</a>.
+      See <a href="https://github.com/Catalyst-Forge-LLC/model-facts/blob/main/specs/DIRECTORY_SPEC.md">DIRECTORY_SPEC.md</a>
+      · Agent guide: <a href="/directory/AGENTS.md">/directory/AGENTS.md</a>
     </p>
   </main>
 

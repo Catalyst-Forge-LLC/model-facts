@@ -11,6 +11,8 @@ function uniqueSorted(values) {
 }
 
 const LEVEL = { low: 1, medium: 2, high: 3 };
+const COMPARE_KEY = "mf-compare-slugs";
+const MAX_COMPARE = 4;
 
 /** Default filter state (no constraints). */
 function emptyState() {
@@ -23,9 +25,10 @@ function emptyState() {
     maxVram: 0,
     filterType: "",
     commercial: "",
+    speed: "",
     vision: false,
     audio: false,
-    tools: "", // "" | "any" | "native"
+    tools: "",
     minReasoning: "",
     minCoding: "",
     refusal: "",
@@ -40,6 +43,7 @@ function parseUrlState() {
   const p = new URLSearchParams(location.search);
   const toolsRaw = p.get("tools") || "";
   const commercial = p.get("commercial") || "";
+  const speed = p.get("speed") || "";
   return {
     access: ["open", "closed"].includes(p.get("access") || "") ? p.get("access") : "all",
     q: p.get("q") || "",
@@ -51,6 +55,7 @@ function parseUrlState() {
     commercial: ["yes", "conditional", "undisclosed", "no"].includes(commercial)
       ? commercial
       : "",
+    speed: ["flash", "standard", "flagship", "undisclosed"].includes(speed) ? speed : "",
     vision: p.get("vision") === "1",
     audio: p.get("audio") === "1",
     tools: toolsRaw === "native" || toolsRaw === "any" ? toolsRaw : "",
@@ -74,6 +79,7 @@ function writeUrl(state) {
   if (state.maxVram > 0) p.set("max_vram", String(state.maxVram));
   if (state.filterType) p.set("filter", state.filterType);
   if (state.commercial) p.set("commercial", state.commercial);
+  if (state.speed) p.set("speed", state.speed);
   if (state.vision) p.set("vision", "1");
   if (state.audio) p.set("audio", "1");
   if (state.tools) p.set("tools", state.tools);
@@ -113,6 +119,20 @@ function capClass(on) {
   return on ? "cap on" : "cap off";
 }
 
+function loadCompare() {
+  try {
+    const raw = sessionStorage.getItem(COMPARE_KEY);
+    const arr = raw ? JSON.parse(raw) : [];
+    return Array.isArray(arr) ? arr.filter((s) => typeof s === "string") : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveCompare(slugs) {
+  sessionStorage.setItem(COMPARE_KEY, JSON.stringify(slugs.slice(0, MAX_COMPARE)));
+}
+
 async function main() {
   const res = await fetch("/directory/index.json");
   const catalog = await res.json();
@@ -128,6 +148,7 @@ async function main() {
   const maxVramEl = document.getElementById("max-vram");
   const filterTypeEl = document.getElementById("filter-type");
   const commercialEl = document.getElementById("commercial");
+  const speedEl = document.getElementById("speed");
   const resetEl = document.getElementById("reset");
   const expertEl = document.getElementById("expert");
   const visionEl = document.getElementById("vision");
@@ -141,6 +162,10 @@ async function main() {
   const statusEl = document.getElementById("status");
   const curationEl = document.getElementById("curation");
   const accessChips = document.querySelectorAll(".chip[data-access]");
+  const compareBar = document.getElementById("compare-bar");
+  const compareLabel = document.getElementById("compare-label");
+  const compareGo = document.getElementById("compare-go");
+  const compareClear = document.getElementById("compare-clear");
 
   for (const name of uniqueSorted(catalog.models.map((m) => m.developer))) {
     const opt = document.createElement("option");
@@ -151,6 +176,18 @@ async function main() {
 
   let state = parseUrlState();
   let syncing = false;
+  let compareSlugs = loadCompare();
+
+  function updateCompareBar() {
+    const n = compareSlugs.length;
+    compareBar.hidden = n === 0;
+    compareLabel.textContent = `${n} selected for compare (max ${MAX_COMPARE})`;
+    compareGo.href =
+      n >= 2
+        ? `/directory/compare/?ids=${encodeURIComponent(compareSlugs.join(","))}`
+        : "/directory/compare/";
+    compareGo.setAttribute("aria-disabled", n < 2 ? "true" : "false");
+  }
 
   function applyStateToControls() {
     syncing = true;
@@ -164,6 +201,7 @@ async function main() {
     maxVramEl.value = state.maxVram > 0 ? String(state.maxVram) : "";
     filterTypeEl.value = state.filterType;
     commercialEl.value = state.commercial;
+    speedEl.value = state.speed;
     visionEl.checked = state.vision;
     audioEl.checked = state.audio;
     toolsEl.checked = state.tools === "any";
@@ -188,6 +226,7 @@ async function main() {
     state.maxVram = Number(maxVramEl.value || 0) || 0;
     state.filterType = filterTypeEl.value;
     state.commercial = commercialEl.value;
+    state.speed = speedEl.value;
     state.vision = visionEl.checked;
     state.audio = audioEl.checked;
     if (toolsNativeEl.checked) state.tools = "native";
@@ -215,6 +254,7 @@ async function main() {
     if (state.developer && m.developer !== state.developer) return false;
     if (state.filterType && m.filter_type !== state.filterType) return false;
     if (state.commercial && m.commercial_ok !== state.commercial) return false;
+    if (state.speed && m.speed_tier !== state.speed) return false;
     if (state.minParams > 0) {
       if (m.parameters_b == null || m.parameters_b < state.minParams) return false;
     }
@@ -239,6 +279,7 @@ async function main() {
         m.name,
         m.developer,
         m.slug,
+        m.family || "",
         ...(m.api_ids || []),
         m.ollama_tag || "",
         m.hf_id || "",
@@ -250,7 +291,6 @@ async function main() {
     return true;
   }
 
-  /** Counts models excluded solely because a numeric field is null under an active min/max filter. */
   function omissionNotes(all) {
     const notes = [];
     if (state.minParams > 0) {
@@ -287,7 +327,9 @@ async function main() {
       .map((m) => {
         const toolsOn = m.tool_use === "native" || m.tool_use === "prompted";
         const visionOn = m.vision_input === "enabled";
+        const checked = compareSlugs.includes(m.slug) ? " checked" : "";
         return `<tr>
+          <td class="col-check"><input type="checkbox" class="compare-cb" data-slug="${escapeHtml(m.slug)}"${checked} aria-label="Compare ${escapeHtml(m.name)}" /></td>
           <td><a href="${escapeHtml(m.href)}">${escapeHtml(m.name)}</a></td>
           <td>${escapeHtml(m.developer)}</td>
           <td>${escapeHtml(m.parameters)}</td>
@@ -301,7 +343,32 @@ async function main() {
         </tr>`;
       })
       .join("");
+    updateCompareBar();
   }
+
+  rowsEl.addEventListener("change", (ev) => {
+    const t = ev.target;
+    if (!(t instanceof HTMLInputElement) || !t.classList.contains("compare-cb")) return;
+    const slug = t.getAttribute("data-slug");
+    if (!slug) return;
+    if (t.checked) {
+      if (compareSlugs.length >= MAX_COMPARE) {
+        t.checked = false;
+        return;
+      }
+      if (!compareSlugs.includes(slug)) compareSlugs.push(slug);
+    } else {
+      compareSlugs = compareSlugs.filter((s) => s !== slug);
+    }
+    saveCompare(compareSlugs);
+    updateCompareBar();
+  });
+
+  compareClear.addEventListener("click", () => {
+    compareSlugs = [];
+    saveCompare(compareSlugs);
+    render();
+  });
 
   accessChips.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -334,6 +401,7 @@ async function main() {
     maxVramEl,
     filterTypeEl,
     commercialEl,
+    speedEl,
     visionEl,
     audioEl,
     minReasoningEl,

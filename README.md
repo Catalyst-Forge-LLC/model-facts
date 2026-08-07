@@ -147,7 +147,7 @@ pnpm sync            # validate + write site/directory/*
 - [x] Schema validator CLI (TypeScript)
 - [x] Generator: draft a `MODEL_FACTS.md` from a Hugging Face model card/URL or a local Ollama model, with optional LLM curation (ollama / openai / anthropic / xai / gemini)
 - [x] Directory of labeled models (Ollama ≥250K/6mo open set + current closed flagships)
-- [x] Directory decision surface Phase 1 (catalog enrichments + denser rows; see [`specs/DIRECTORY_SELECTION.md`](./specs/DIRECTORY_SELECTION.md))
+- [x] Directory decision surface Phases 1–5 (first publish stab; see [`specs/DIRECTORY_SELECTION.md`](./specs/DIRECTORY_SELECTION.md))
 - [ ] More generator sources: OpenRouter, LM Studio, raw GGUF files
 - [ ] Portable visual label (`/v#mf1.…` QR payload, no backend) and badges, mirroring AppFacts
 - [ ] Measured-benchmark harness behind a future "certified" tier

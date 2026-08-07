@@ -27,7 +27,7 @@ capabilities:
   vision_input: enabled
   audio_input: disabled
   tool_use: native
-  notes: Representative dense 31B from Gemma 4 family (also E2B/E4B/12B/26B-MoE)
+  notes: Dense 31B from Gemma 4; paired with 12B in the directory size ladder.
 safety:
   refusal_sensitivity: high
   instruction_following: high
@@ -84,7 +84,7 @@ credits:
 | Audio (input) | disabled |
 | Tool use | native |
 
-*Representative dense 31B from Gemma 4 family (also E2B/E4B/12B/26B-MoE)*
+*Dense 31B from Gemma 4; paired with 12B in the directory size ladder.*
 
 ## Safety Profile
 

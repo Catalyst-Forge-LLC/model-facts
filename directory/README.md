@@ -12,10 +12,16 @@ levels, and how to add a model. Selection-surface roadmap:
 **Open-weight / Ollama-listed:** models from
 [ollama.com/search?o=newest](https://ollama.com/search?o=newest) and
 [?o=popular](https://ollama.com/search?o=popular) with **≥ 250K pulls** and a library
-update within roughly the **last 6 months**. One representative size/tag per family.
+update within roughly the **last 6 months**. Default: one representative size/tag per
+family. **Exception:** deliberate size ladders where RAM vs quality matters (v0: Gemma 4
+12B + 31B).
 
 **Closed APIs:** current frontier flagships (GPT-5.6, Claude 5, Gemini 3.x, Grok 4.5) —
 heavy on `undisclosed`, which is the point.
+
+**Benchmarks:** include only scores published on the card/docs for that version. No
+required shared bench set yet — omit rather than invent. Scores are as-published, not
+ModelFacts-run.
 
 Membership and pull notes live in [`manifest.json`](./manifest.json). Label bodies are
 authored in [`directory-tools/src/seed-catalog.ts`](../directory-tools/src/seed-catalog.ts).

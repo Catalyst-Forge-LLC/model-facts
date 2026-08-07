@@ -63,6 +63,13 @@ export type PriceTier =
   | "api_premium"
   | "undisclosed";
 export type SpeedTier = "flash" | "standard" | "flagship" | "undisclosed";
+/** How capability/safety enums were set. `measured` reserved for a future harness. */
+export type CapabilityBasis = "claimed" | "reviewed_claim" | "measured";
+
+export interface JudgmentSource {
+  label: string;
+  url: string;
+}
 
 /** Directory-only selection fields (not part of MODEL_FACTS.md schema). */
 export interface SelectionEnrichment {
@@ -73,6 +80,10 @@ export interface SelectionEnrichment {
   price_tier?: PriceTier;
   vram_gb_q4?: number | null;
   speed_tier?: SpeedTier;
+  family?: string | null;
+  related_slugs?: string[];
+  judgment_sources?: JudgmentSource[];
+  capability_basis?: CapabilityBasis;
 }
 
 export interface ManifestModel {
@@ -88,6 +99,7 @@ export interface ManifestModel {
 
 export interface Manifest {
   manifest_version: string;
+  selection?: { open?: string; closed?: string };
   models: ManifestModel[];
 }
 
@@ -125,6 +137,11 @@ export interface CatalogEntry {
   /** Rough local Q4 VRAM proxy in GB; null if unknown / closed. */
   vram_gb_q4: number | null;
   speed_tier: SpeedTier;
+  capability_basis: CapabilityBasis;
+  /** Product family key for size ladders / pairing (not cross-lab equivalence). */
+  family: string | null;
+  related_slugs: string[];
+  judgment_sources: JudgmentSource[];
   href: string;
   facts_json: string;
   facts_md: string;

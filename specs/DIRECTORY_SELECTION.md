@@ -9,9 +9,8 @@
 
 ## Status
 
-Phase 1 implemented (catalog enrichments + denser rows). Phases 2–5 remain open.
-Phases are ordered by selection leverage; later phases may shrink once earlier ones
-land and we re-measure catalog discrimination.
+Phases 1–5 implemented for the first public stab (`directory_version` 0.3.0).
+Enum policy **B**; Phase 5 kept modest (Gemma 4 12B+31B ladder). Revisit after user feedback.
 
 ## Problem
 
@@ -146,9 +145,11 @@ answer “where do I get it, what’s the cutoff, can I use it commercially, wha
 
 **Exit criteria**
 
-- [ ] Reviewed labels expose judgment provenance or explicitly mark gaps
-- [ ] Expert filters no longer imply false precision when the catalog is flat
-- [ ] Landing/directory copy does not oversell enums as benchmarks
+- [x] Reviewed labels expose judgment provenance or explicitly mark gaps
+- [x] Expert filters no longer imply false precision when the catalog is flat
+- [x] Landing/directory copy does not oversell enums as benchmarks
+
+**Decision:** Policy **B** (demote claimed levels; prefer objective filters).
 
 ---
 
@@ -172,9 +173,9 @@ answer “where do I get it, what’s the cutoff, can I use it commercially, wha
 
 **Exit criteria**
 
-- [ ] ≥4 presets live and documented
-- [ ] Compare supports 2–4 models without scraping detail HTML
-- [ ] Agent guide (Phase 4) can point at presets + compare contracts
+- [x] ≥4 presets live and documented
+- [x] Compare supports 2–4 models without scraping detail HTML
+- [x] Agent guide (Phase 4) can point at presets + compare contracts
 
 ---
 
@@ -196,11 +197,8 @@ answer “where do I get it, what’s the cutoff, can I use it commercially, wha
 
 **Exit criteria**
 
-- [ ] Stable URLs return the agent guide
-- [ ] A new agent can shortlist without reading `DIRECTORY_SPEC.md` in git
-
-*Note: A thin Phase 4 slice (minimal `llms.txt` pointing at current `index.json` +
-filters) may ship earlier if useful; full guide waits on Phases 1–3 field stability.*
+- [x] Stable URLs return the agent guide
+- [x] A new agent can shortlist without reading `DIRECTORY_SPEC.md` in git
 
 ---
 
@@ -222,9 +220,11 @@ filters) may ship earlier if useful; full guide waits on Phases 1–3 field stab
 
 **Exit criteria**
 
-- [ ] At least one family has a deliberate size ladder in the catalog
-- [ ] Benchmark policy documented and applied to new seeds
-- [ ] Curation criteria updated if selection set changes
+- [x] At least one family has a deliberate size ladder in the catalog (Gemma 4 12B + 31B)
+- [x] Benchmark policy documented and applied to new seeds
+- [x] Curation criteria updated if selection set changes
+
+**Modest default:** no full re-seed; family/`related_slugs` on existing pairs; Gemini ≠ Gemma.
 
 ---
 
@@ -257,6 +257,7 @@ leaning harder on capability filters in presets.
 
 | Version | Notes |
 |---|---|
+| **0.2.0** | Phases 2–5 marked done for first publish stab (`directory_version` 0.3.0). |
 | **0.1.1** | Phase 1 marked done (`directory_version` 0.2.0). |
 | **0.1.0** | Initial roadmap from agent critical pass: inventory vs decision surface, five phases. |
 

@@ -104,6 +104,18 @@ function detailHtml(entry: CatalogEntry, facts: ModelFacts): string {
   ]
     .filter(Boolean)
     .join("\n");
+  const judgmentLinks = (entry.judgment_sources ?? [])
+    .map(
+      (s) =>
+        `<li><a href="${escapeHtml(s.url)}" rel="noopener">${escapeHtml(s.label)}</a> — <span class="mute-inline">${escapeHtml(shortUrl(s.url))}</span></li>`,
+    )
+    .join("\n");
+  const related =
+    entry.related_slugs.length > 0
+      ? `<p class="related">Same family: ${entry.related_slugs
+          .map((s) => `<a href="/directory/${escapeHtml(s)}/">${escapeHtml(s)}</a>`)
+          .join(" · ")}</p>`
+      : "";
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -135,10 +147,12 @@ function detailHtml(entry: CatalogEntry, facts: ModelFacts): string {
     <p class="meta-line">
       <span class="badge ${entry.weight_access}">${entry.weight_access}</span>
       <span class="badge ${entry.curation}">${entry.curation}</span>
+      <span class="badge basis">${escapeHtml(entry.capability_basis)}</span>
       <span>${escapeHtml(facts.developer)}</span>
       ·
       <span>${escapeHtml(facts.license)}</span>
     </p>
+    ${related}
 
     <div class="label-plane" aria-label="Model Facts label">
       <div class="label-plane-inner">
@@ -154,21 +168,35 @@ function detailHtml(entry: CatalogEntry, facts: ModelFacts): string {
           <div class="row"><strong>Methodology</strong><span>${escapeHtml(t.methodology)}</span></div>
           ${t.tokens ? `<div class="row"><strong>Tokens</strong><span>${escapeHtml(t.tokens)}</span></div>` : ""}
           <div class="row thick"><strong>Filter type</strong><span>${escapeHtml(s.filter_type)}</span></div>
-          <div class="row"><strong>Refusal</strong><span>${escapeHtml(s.refusal_sensitivity)}</span></div>
-          <div class="row"><strong>Instruction following</strong><span>${escapeHtml(s.instruction_following)}</span></div>
-          <div class="row"><strong>Reasoning / math</strong><span>${escapeHtml(c.reasoning_math)}</span></div>
-          <div class="row"><strong>Coding</strong><span>${escapeHtml(c.coding)}</span></div>
+          <div class="row"><strong>Refusal</strong><span>${escapeHtml(s.refusal_sensitivity)} <em>claimed</em></span></div>
+          <div class="row"><strong>Instruction following</strong><span>${escapeHtml(s.instruction_following)} <em>claimed</em></span></div>
+          <div class="row"><strong>Reasoning / math</strong><span>${escapeHtml(c.reasoning_math)} <em>claimed</em></span></div>
+          <div class="row"><strong>Coding</strong><span>${escapeHtml(c.coding)} <em>claimed</em></span></div>
           <div class="row"><strong>Vision</strong><span>${escapeHtml(c.vision_input)}</span></div>
           <div class="row"><strong>Tool use</strong><span>${escapeHtml(c.tool_use ?? "—")}</span></div>
-          ${benchmarks ? `<div class="deps"><b>Benchmarks</b></div>${benchmarks}` : ""}
+          ${benchmarks ? `<div class="deps"><b>Benchmarks</b> <em>(as published; not ModelFacts-run)</em></div>${benchmarks}` : ""}
           ${sourceLinks ? `<div class="deps"><b>Sources</b></div>${sourceLinks}` : ""}
         </div>
       </div>
     </div>
 
+    <section class="judgment-block">
+      <h2>Sources for judgments</h2>
+      <p>
+        Capability and safety levels above are <strong>${escapeHtml(entry.capability_basis)}</strong>
+        readings of published docs — not independent ModelFacts measurements.
+        Prefer objective fields (context, modalities, tools, cutoff, access) when selecting a model.
+      </p>
+      ${
+        judgmentLinks
+          ? `<ul>${judgmentLinks}</ul>`
+          : `<p class="mute-inline">No judgment source URLs recorded for this entry yet.</p>`
+      }
+    </section>
+
     <p class="footnote">
-      Judgment fields are reviewed self-reports from published docs — not ModelFacts-run evals.
-      See <a href="https://github.com/Catalyst-Forge-LLC/model-facts/blob/main/specs/DIRECTORY_SPEC.md">DIRECTORY_SPEC.md</a>.
+      See <a href="https://github.com/Catalyst-Forge-LLC/model-facts/blob/main/specs/DIRECTORY_SPEC.md">DIRECTORY_SPEC.md</a>
+      · Agent guide: <a href="/directory/AGENTS.md">/directory/AGENTS.md</a>
     </p>
   </main>
 
@@ -261,7 +289,7 @@ for (const m of manifest.models) {
 entries.sort((a, b) => a.name.localeCompare(b.name));
 
 const catalog: Catalog = {
-  directory_version: "0.2.0",
+  directory_version: "0.3.0",
   generated: today,
   count: entries.length,
   models: entries,
@@ -271,6 +299,12 @@ writeFileSync(resolve(siteDir, "index.json"), JSON.stringify(catalog, null, 2) +
 copyFileSync(resolve(assetsDir, "listing.html"), resolve(siteDir, "index.html"));
 copyFileSync(resolve(assetsDir, "listing.js"), resolve(siteDir, "listing.js"));
 copyFileSync(resolve(assetsDir, "directory.css"), resolve(siteDir, "directory.css"));
+copyFileSync(resolve(assetsDir, "AGENTS.md"), resolve(siteDir, "AGENTS.md"));
+
+const compareDir = resolve(siteDir, "compare");
+mkdirSync(compareDir, { recursive: true });
+copyFileSync(resolve(assetsDir, "compare.html"), resolve(compareDir, "index.html"));
+copyFileSync(resolve(assetsDir, "compare.js"), resolve(compareDir, "compare.js"));
 
 if (failed) {
   console.error("Sync finished with errors.");

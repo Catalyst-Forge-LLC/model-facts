@@ -1,0 +1,26 @@
+# ModelFacts
+
+> Nutrition-label facts for AI models. Prefer structured JSON over marketing HTML.
+
+## Primary
+
+- Directory catalog (JSON): https://modelfacts.dev/directory/index.json
+- Agent guide: https://modelfacts.dev/directory/AGENTS.md
+- Label schema: https://modelfacts.dev/schema/model-facts.schema.json
+- Site: https://modelfacts.dev/
+
+## How to select a model
+
+1. Fetch `/directory/index.json`
+2. Filter on objective fields (access, context, tools, vision, VRAM, commercial, speed, cutoff, api_ids)
+3. Open `/directory/<slug>/facts.json` for the full label
+4. Optional compare: `/directory/compare/?ids=slug-a,slug-b`
+
+Do not treat reasoning/coding enums as calibrated scores — they are published claims (`capability_basis`).
+Undisclosed beats guessing.
+
+## Specs (git)
+
+- https://github.com/Catalyst-Forge-LLC/model-facts/blob/main/specs/SPEC.md
+- https://github.com/Catalyst-Forge-LLC/model-facts/blob/main/specs/DIRECTORY_SPEC.md
+- https://github.com/Catalyst-Forge-LLC/model-facts/blob/main/specs/DIRECTORY_SELECTION.md

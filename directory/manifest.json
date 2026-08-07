@@ -1,10 +1,17 @@
 {
   "manifest_version": "0.1.0",
   "selection": {
-    "open": "Ollama library models with ≥250K pulls and library update within ~6 months (as of 2026-08-07). One representative size/tag per family. Sources: https://ollama.com/search?o=newest and ?o=popular.",
+    "open": "Ollama library models with ≥250K pulls and library update within ~6 months (as of 2026-08-07), plus deliberate size-ladder additions (e.g. Gemma 4 12B+31B). Default remains one representative size per family unless a ladder is documented. Sources: https://ollama.com/search?o=newest and ?o=popular.",
     "closed": "Current frontier API flagships as of 2026-08 (OpenAI GPT-5.6, Anthropic Claude 5, Google Gemini 3.x, xAI Grok 4.5)."
   },
   "models": [
+    {
+      "slug": "google-gemma-4-12b",
+      "weight_access": "open",
+      "curation": "reviewed",
+      "source": { "type": "ollama", "id": "gemma4:12b" },
+      "ollama_pulls": "ladder"
+    },
     {
       "slug": "google-gemma-4-31b",
       "weight_access": "open",

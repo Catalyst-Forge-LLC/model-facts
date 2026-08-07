@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Compare — ModelFacts Directory</title>
+  <meta name="description" content="Side-by-side comparison of ModelFacts directory entries." />
+  <link rel="canonical" href="https://modelfacts.dev/directory/compare/" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <link rel="stylesheet" href="/directory/directory.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="wrap bar">
+      <a class="brand-link" href="/">Model<span>Facts</span></a>
+      <nav>
+        <a href="/directory/">Directory</a>
+        <a href="/directory/compare/" aria-current="page">Compare</a>
+        <a href="/directory/AGENTS.md">Agents</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap listing">
+    <h1>Compare</h1>
+    <p class="lede">
+      Side-by-side fields from <code>/directory/index.json</code>. Pass 2–4 slugs via
+      <code>?ids=slug-a,slug-b</code>. Capability levels are published claims, not measured evals.
+    </p>
+    <p class="count" id="status"></p>
+    <div class="table-wrap" id="table-wrap"></div>
+    <p class="empty" id="empty" hidden>Add 2–4 models from the <a href="/directory/">directory</a> (checkboxes), or open a compare URL with <code>ids</code>.</p>
+  </main>
+
+  <footer>
+    <div class="wrap row">
+      <div>© 2026 ModelFacts · <a href="https://www.catalystforge.com/">Catalyst Forge</a></div>
+      <div><a href="/directory/">Directory</a> · <a href="/llms.txt">llms.txt</a></div>
+    </div>
+  </footer>
+
+  <script src="/directory/compare/compare.js"></script>
+</body>
+</html>

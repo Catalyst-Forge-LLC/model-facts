@@ -1,14 +1,14 @@
 ---
 model_facts_version: 0.1.0
 status: active
-name: Gemma-4-31B
+name: Gemma-4-12B
 developer: Google DeepMind
 license: Gemma Terms of Use
 homepage: https://ollama.com/library/gemma4
 weights: https://ollama.com/library/gemma4
 architecture:
   type: dense transformer (decoder-only)
-  parameters: 31B
+  parameters: 12B
   context_window: 256k
   quantization: GGUF (Ollama default)
   modalities_in:
@@ -27,18 +27,11 @@ capabilities:
   vision_input: enabled
   audio_input: disabled
   tool_use: native
-  notes: Dense 31B from Gemma 4; paired with 12B in the directory size ladder.
+  notes: Size-ladder mid point for Gemma 4 (with 31B). Local-friendly vs 31B.
 safety:
   refusal_sensitivity: high
   instruction_following: high
   filter_type: hybrid
-benchmarks:
-  - name: MMLU Pro
-    score: 85.2
-  - name: GPQA Diamond
-    score: 84.3
-  - name: LiveCodeBench v6
-    score: 80
 generated:
   date: 2026-08-07
   generator: directory seed — Ollama/API refresh 2026-08
@@ -47,7 +40,7 @@ credits:
   built_by: Catalyst Forge — https://www.catalystforge.com/
 ---
 
-# Model Facts — Gemma-4-31B
+# Model Facts — Gemma-4-12B
 
 | | |
 |---|---|
@@ -60,7 +53,7 @@ credits:
 | | |
 |---|---|
 | Type | dense transformer (decoder-only) |
-| Parameters | 31B |
+| Parameters | 12B |
 | Context window | 256k |
 | Quantization | GGUF (Ollama default) |
 | Modalities | text + image → text |
@@ -84,7 +77,7 @@ credits:
 | Audio (input) | disabled |
 | Tool use | native |
 
-*Dense 31B from Gemma 4; paired with 12B in the directory size ladder.*
+*Size-ladder mid point for Gemma 4 (with 31B). Local-friendly vs 31B.*
 
 ## Safety Profile
 
@@ -93,14 +86,6 @@ credits:
 | Refusal sensitivity | high |
 | Instruction following | high |
 | Filter type | hybrid |
-
-## Benchmarks
-
-| Benchmark | Score | Notes |
-|---|---|---|
-| MMLU Pro | 85.2 |  |
-| GPQA Diamond | 84.3 |  |
-| LiveCodeBench v6 | 80 |  |
 
 ---
 *Generated with [ModelFacts](https://modelfacts.dev) · Built by Catalyst Forge — https://www.catalystforge.com/*

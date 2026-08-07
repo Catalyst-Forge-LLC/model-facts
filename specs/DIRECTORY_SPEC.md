@@ -1,4 +1,4 @@
-# ModelFacts Directory Specification — v0.2.0
+# ModelFacts Directory Specification — v0.3.0
 
 > The labeled catalog at [modelfacts.dev/directory](https://modelfacts.dev/directory).
 > Companion to [`SPEC.md`](./SPEC.md) (the per-model file format).
@@ -78,9 +78,9 @@ detail page.
 
 ```json
 {
-  "directory_version": "0.2.0",
+  "directory_version": "0.3.0",
   "generated": "2026-08-07",
-  "count": 24,
+  "count": 25,
   "models": [
     {
       "slug": "openai-gpt-5.6-luna",
@@ -140,6 +140,10 @@ Selection enrichments are authored in
 | `price_tier` | `free_local` \| `api_budget` \| `api_standard` \| `api_premium` \| `undisclosed` | Coarse cost band; not dollar prices |
 | `vram_gb_q4` | number \| `null` | Rough local Q4 VRAM proxy in GB (`null` if unknown / closed) |
 | `speed_tier` | `flash` \| `standard` \| `flagship` \| `undisclosed` | Relative within this catalog |
+| `capability_basis` | `claimed` \| `reviewed_claim` \| `measured` | How capability/safety enums were set (`measured` unused until a harness) |
+| `family` | string \| `null` | Product family key for ladders / related entries |
+| `related_slugs` | string[] | Sibling slugs in the same family (not cross-lab equivalence) |
+| `judgment_sources` | `{ label, url }[]` | Docs used for judgment-field readings |
 | `href` / `facts_json` / `facts_md` | paths | Site URLs |
 
 ### Listing filters (URL query params)
@@ -156,6 +160,7 @@ Example: `/directory/?access=open&vision=1&min_context=128000&tools=native&max_v
 | `min_context` | number (tokens) | Excludes `undisclosed` context |
 | `max_vram` | number (GB) | Keep models with `vram_gb_q4` ≤ value; excludes unknown VRAM |
 | `commercial` | `yes` \| `no` \| `conditional` \| `undisclosed` | Exact `commercial_ok` |
+| `speed` | `flash` \| `standard` \| `flagship` | Exact `speed_tier` |
 | `filter` | `raw` \| `hybrid` \| `censored` | Safety filter type |
 | `vision` / `audio` | `1` | Require enabled input modality |
 | `tools` | `any` \| `native` | Tool use present, or native only |
@@ -223,8 +228,13 @@ Rules for `reviewed`:
 2. Prefer `undisclosed` over a guess — especially for closed labs' data mix, token counts,
    and parameter counts.
 3. Capability and safety enums are **best-effort readings of published claims**, not
-   ModelFacts-run evals. Do not imply certification.
+   ModelFacts-run evals. Catalog `capability_basis` records that posture. Do not imply
+   certification. **Enum policy B:** prefer objective filters in UI/presets; demote
+   reasoning/coding levels until evidence spreads the catalog.
 4. Benchmarks must cite scores as published (use `notes` for shot count / variant).
+   There is **no required shared benchmark set** in v0 — omit rather than invent.
+5. Size ladders: default one size per family; add a second size only when the RAM vs
+   quality tradeoff is the point (documented in `family` / `related_slugs`).
 
 Reserve the word **certified** for a future harness-backed tier. It is out of scope for v0.
 
@@ -233,17 +243,25 @@ Reserve the word **certified** for a future harness-backed tier. It is out of sc
 ### Listing (`/directory/`)
 
 - One composition: brand-consistent with the landing page (violet accent, Sora + IBM Plex Mono).
-- Filter chips: All / Open / Closed; text search on name / ids / tags.
-- Compact rows (not cards-as-decoration): name, developer, params, context, tools, vision,
-  knowledge cutoff, commercial posture, speed tier, weight access.
+- Task presets (URL-only), filter chips, text search on name / ids / tags.
+- Compact rows: name, developer, params, context, tools, vision, cutoff, commercial,
+  speed, access — plus compare checkboxes.
+- Claimed capability filters live under Expert with an explicit “unverified” label.
 - Omission notes when numeric filters drop models with `null` fields.
-- Each row links to the detail page.
+- Agent guide: [`/directory/AGENTS.md`](../site/directory/AGENTS.md); site root
+  [`/llms.txt`](../site/llms.txt).
+
+### Compare (`/directory/compare/?ids=…`)
+
+- 2–4 slugs side by side from `index.json` (no detail-page scrape).
 
 ### Detail (`/directory/<slug>/`)
 
 - Renders the nutrition-label view from `facts.json` (frontmatter).
 - Links out to homepage / weights / raw `MODEL_FACTS.md`.
-- Shows `weight_access` and `curation` badges so readers know the trust posture.
+- Shows `weight_access`, `curation`, and `capability_basis` badges.
+- “Sources for judgments” block lists docs behind capability/safety readings.
+- Related family slugs when present.
 
 No backend. Cloudflare Pages, project root = `site`, no build step at deploy time — the
 sync script is run in-repo before commit/publish.
@@ -281,14 +299,15 @@ CI should run `pnpm sync` (or at least validate + confirm `site/directory` is up
 
 ## Versioning
 
-- **This document:** v0.2.0.
-- **`directory_version`:** `"0.2.0"` — Phase 1 selection fields on catalog entries.
+- **This document:** v0.3.0.
+- **`directory_version`:** `"0.3.0"` — Phases 2–5 (credibility, presets/compare, agent guide, modest ladders).
 - **`manifest_version`:** `"0.1.0"` — bump when membership rules change in a breaking way.
 
 ## Revision history
 
 | Version | Notes |
 |---|---|
+| **0.3.0** | Phases 2–5: `capability_basis` + judgment sources; enum policy B; task presets; compare view; `AGENTS.md` / `llms.txt`; Gemma 4 12B+31B ladder; family/related_slugs; benchmark omit-over-invent policy. |
 | **0.2.0** | Phase 1 selection surface: catalog enrichments (`api_ids`, cutoff, commercial, VRAM proxy, speed/price tiers), denser listing columns, `max_vram` / `commercial` filters, omission notes. |
 | **0.1.0** | Initial directory spec: repo-canonical labels, static site mirror, open+closed seed, `draft`/`reviewed` curation (no "certified"). |
 

@@ -25,6 +25,41 @@ function base(
 }
 
 export const seedCatalog: Record<string, ModelFacts> = {
+  "google-gemma-4-12b": base({
+    name: "Gemma-4-12B",
+    developer: "Google DeepMind",
+    license: "Gemma Terms of Use",
+    homepage: "https://ollama.com/library/gemma4",
+    weights: "https://ollama.com/library/gemma4",
+    architecture: {
+      type: "dense transformer (decoder-only)",
+      parameters: "12B",
+      context_window: "256k",
+      quantization: "GGUF (Ollama default)",
+      modalities_in: ["text", "image"],
+      modalities_out: ["text"],
+    },
+    training: {
+      knowledge_cutoff: "undisclosed",
+      methodology: "undisclosed (Gemma 4 instruct + thinking modes)",
+      tokens: "undisclosed",
+    },
+    capabilities: {
+      natural_language: "full",
+      reasoning_math: "high",
+      coding: "high",
+      vision_input: "enabled",
+      audio_input: "disabled",
+      tool_use: "native",
+      notes: "Size-ladder mid point for Gemma 4 (with 31B). Local-friendly vs 31B.",
+    },
+    safety: {
+      refusal_sensitivity: "high",
+      instruction_following: "high",
+      filter_type: "hybrid",
+    },
+  }),
+
   "google-gemma-4-31b": base({
     name: "Gemma-4-31B",
     developer: "Google DeepMind",
@@ -51,7 +86,7 @@ export const seedCatalog: Record<string, ModelFacts> = {
       vision_input: "enabled",
       audio_input: "disabled",
       tool_use: "native",
-      notes: "Representative dense 31B from Gemma 4 family (also E2B/E4B/12B/26B-MoE)",
+      notes: "Dense 31B from Gemma 4; paired with 12B in the directory size ladder.",
     },
     safety: {
       refusal_sensitivity: "high",
