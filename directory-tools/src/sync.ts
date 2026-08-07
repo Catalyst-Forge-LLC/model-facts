@@ -113,9 +113,7 @@ function detailHtml(entry: CatalogEntry, facts: ModelFacts): string {
   <meta name="description" content="ModelFacts label for ${escapeHtml(facts.name)} by ${escapeHtml(facts.developer)}." />
   <link rel="canonical" href="https://modelfacts.dev${entry.href}" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Sora:wght@500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
   <link rel="stylesheet" href="/directory/directory.css" />
 </head>
 <body>

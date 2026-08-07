@@ -114,3 +114,5 @@ emits them — the AppFacts generator insight, doubled here.
 - Local preview: serve from `site/` (`cd site && lite-server`). Use `/directory/` **with
   the trailing slash**. Default lite-server historyApiFallback rewrites bare `/directory`
   to the homepage — `site/bs-config.js` disables that middleware.
+- Fonts are **self-hosted** under `site/fonts/` (not Google Fonts CDN). Remote font CSS
+  was making local loads feel multi-second even though HTML/JSON are tiny.
