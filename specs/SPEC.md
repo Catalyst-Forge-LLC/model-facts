@@ -1,4 +1,4 @@
-# ModelFacts Specification — v0.1.0
+# ModelFacts Specification — v0.1.1
 
 > *"Know the weights behind the words."*
 
@@ -152,9 +152,22 @@ published, and use `notes` for shot count / variant (e.g. `5-shot`, `pass@1`).
   [`https://modelfacts.dev/schema/model-facts.schema.json`](https://modelfacts.dev/schema/model-facts.schema.json)
   Source in this repo: [`site/schema/model-facts.schema.json`](../site/schema/model-facts.schema.json).
 
+## Publication & discovery
+
+Suite contract: [x-facts `DISCOVERY-AND-PUBLICATION.md`](../../x-facts/specs/DISCOVERY-AND-PUBLICATION.md).
+
+| | |
+|---|---|
+| **Canonical file** | Model repo / model-card directory `MODEL_FACTS.md` |
+| **Primary pointer** | Lab or hub model card link to that file |
+| **Cold-start** | Seeded [directory](https://modelfacts.dev/directory/) when upstream cards do not link out |
+| **Viewer** | Optional later; catalog + `facts.json` remain the agent path for now |
+
+Cross-package refs to a model label **SHOULD** use an `https://` URL to the canonical file (or a stable directory entry that resolves to it).
+
 ## Versioning
 
-- **This document:** v0.1.0.
+- **This document:** v0.1.1 (publication & discovery; see revision history).
 - **Files** declare `model_facts_version` (currently `"0.1.0"`) so tooling can evolve
   independently of the prose document.
 - Required-field list may still change before v1.0.
@@ -163,6 +176,7 @@ published, and use `notes` for shot count / variant (e.g. `5-shot`, `pass@1`).
 
 | Spec doc | Notes |
 |---|---|
+| **0.1.1** | Publication & discovery: card/directory pointers; link to suite discovery contract. |
 | **0.1.0** | Initial specification, formalizing the concept draft ([`SPEC-draft.md`](./SPEC-draft.md)): frontmatter + rendered body, five fact groups (architecture, training, capabilities, safety, benchmarks), closed enums for levels, `undisclosed` convention. |
 
 ## License
