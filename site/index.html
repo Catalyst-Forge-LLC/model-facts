@@ -82,22 +82,6 @@
     }
 
 
-    .suite {
-      position: relative;
-      margin: 0 0 0.75rem;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--mute);
-    }
-
-    .suite a {
-      color: #c9d3de;
-      text-decoration: none;
-    }
-
-    .suite a:hover { color: #fff; }
 
     .brand {
       font-family: var(--font-display);
@@ -110,6 +94,9 @@
     }
 
     .brand span { color: var(--accent); }
+
+    .lede a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+    .lede a:hover { color: #fff; }
 
     .lede {
       font-family: var(--font-display);
@@ -403,9 +390,8 @@
 <body>
   <header class="hero">
     <div class="wrap hero-copy">
-      <p class="suite">Part of the <a href="https://xfacts.dev">xFacts</a> suite</p>
       <h1 class="brand">Model<span>Facts</span></h1>
-      <p class="lede">A Nutrition Facts label for AI models.</p>
+      <p class="lede">A Nutrition Facts label for AI models, part of the <a href="https://xfacts.dev">xFacts</a> suite.</p>
       <p class="sub">
         Know the weights behind the words. A tiny <code>MODEL_FACTS.md</code> beside the model card
         that answers one question in under a minute: what went into this model?
