@@ -35,7 +35,7 @@ main gap for *public* network effects.
 
 1. **Push remote + deploy modelfacts.dev** + DNS — unlock everything else.
 2. Confirm `llms.txt` / directory JSON CORS/`_headers` correct in production.
-3. Hub + sibling footers: flip ModelFacts from “not live” to live when true.
+3. Hub + sibling footers: ModelFacts marked live (done 2026-08).
 4. One outbound note: “how agents select models” pointing at `/directory/AGENTS.md`
    and the suite [discovery contract](../../x-facts/specs/DISCOVERY-AND-PUBLICATION.md)
    (directory = cold-start; cards should still link canonical `MODEL_FACTS.md`).
