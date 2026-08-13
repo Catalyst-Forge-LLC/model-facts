@@ -1,0 +1,13 @@
+{
+  "name": "model-facts",
+  "private": true,
+  "scripts": {
+    "ship": "wrangler pages deploy site --project-name=model-facts"
+  },
+  "devDependencies": {
+    "wrangler": "^4.28.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild", "workerd"]
+  }
+}
