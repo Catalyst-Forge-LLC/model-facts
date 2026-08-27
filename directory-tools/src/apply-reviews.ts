@@ -27,6 +27,10 @@ let failed = false;
 for (const entry of manifest.models) {
   const facts = seedCatalog[entry.slug];
   if (!facts) {
+    if (entry.curation === "draft") {
+      console.log(`↷ ${entry.slug} — draft (not in seed-catalog; leave file as-is)`);
+      continue;
+    }
     console.error(`✗ ${entry.slug} — missing seedCatalog entry`);
     failed = true;
     continue;

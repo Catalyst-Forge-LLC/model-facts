@@ -8,6 +8,8 @@
     "sync": "tsx src/sync.ts",
     "seed": "tsx src/seed.ts",
     "apply-reviews": "tsx src/apply-reviews.ts",
+    "refresh": "tsx src/refresh.ts",
+    "rebuild": "tsx src/rebuild.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

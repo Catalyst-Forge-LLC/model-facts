@@ -1,0 +1,41 @@
+# Weekly Ollama/HF directory refresh. Opens a PR when membership or pull counts change.
+# Enable Actions on the repo, or run locally: pnpm directory:rebuild
+name: Directory refresh
+
+on:
+  schedule:
+    - cron: "0 14 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm directory:install
+      - run: pnpm directory:rebuild
+      - name: Open pull request if the catalog changed
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: chore/directory-refresh
+          title: Weekly directory refresh
+          commit-message: Refresh directory pull counts and rebuild the site catalog.
+          body: |
+            Automated weekly `pnpm directory:rebuild`.
+
+            Review `directory/refresh-report.json` for new Ollama candidates.
+            To add drafts in a follow-up: `pnpm directory:rebuild -- --apply-new`.
+          add-paths: |
+            directory/
+            site/directory/

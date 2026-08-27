@@ -274,6 +274,11 @@ sync script is run in-repo before commit/publish.
 |---|---|
 | `pnpm sync` | Validate every `directory/*/MODEL_FACTS.md`, write `site/directory/**` |
 | `pnpm seed` | For manifest entries with `source.type: huggingface` missing a file, run the generator (deterministic by default) into `directory/<slug>/` |
+| `pnpm apply-reviews` | Rewrite reviewed labels from `seed-catalog.ts` (drafts without a seed entry are left alone) |
+| `pnpm refresh` | Rescrape Ollama search + library pages; update `ollama_pulls`; write `directory/refresh-report.json`. `--apply-new` adds qualifying new families as drafts |
+| `pnpm rebuild` | `refresh` → `apply-reviews` → `seed` → `sync` (weekly cron entrypoint) |
+
+Root `package.json` mirrors these as `pnpm directory:<name>`. GitHub Action `.github/workflows/directory-refresh.yml` runs `rebuild` Mondays and opens a PR.
 
 CI should run `pnpm sync` (or at least validate + confirm `site/directory` is up to date).
 

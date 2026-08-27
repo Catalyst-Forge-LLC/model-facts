@@ -2,7 +2,14 @@
   "name": "model-facts",
   "private": true,
   "scripts": {
-    "ship": "wrangler pages deploy site --project-name=model-facts"
+    "ship": "wrangler pages deploy site --project-name=model-facts",
+    "directory:install": "pnpm --dir directory-tools install && pnpm --dir generator install",
+    "directory:apply-reviews": "pnpm --dir directory-tools apply-reviews",
+    "directory:sync": "pnpm --dir directory-tools sync",
+    "directory:seed": "pnpm --dir directory-tools seed",
+    "directory:refresh": "pnpm --dir directory-tools refresh",
+    "directory:rebuild": "pnpm --dir directory-tools rebuild",
+    "directory:typecheck": "pnpm --dir directory-tools typecheck"
   },
   "devDependencies": {
     "wrangler": "^4.28.0"

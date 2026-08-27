@@ -136,10 +136,14 @@ A curated catalog of labels for top open-weight and closed models ships at
 and the selection roadmap [`specs/DIRECTORY_SELECTION.md`](./specs/DIRECTORY_SELECTION.md).
 
 ```bash
-cd directory-tools && pnpm install
-pnpm apply-reviews   # refresh reviewed overlays / closed seeds
-pnpm sync            # validate + write site/directory/*
+pnpm directory:install
+pnpm directory:apply-reviews   # write directory/<slug>/ from seed-catalog.ts
+pnpm directory:sync            # validate + write site/directory/*
+pnpm directory:refresh         # rescrape Ollama (+ HF probes); update pulls; write report
+pnpm directory:rebuild         # refresh → apply-reviews → seed missing HF → sync
 ```
+
+Weekly cron / GitHub Action: `pnpm directory:rebuild`. New qualifying families are listed in `directory/refresh-report.json`; add them as drafts with `pnpm directory:rebuild -- --apply-new` (does not overwrite reviewed labels).
 
 ## Roadmap
 

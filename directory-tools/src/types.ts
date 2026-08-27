@@ -95,10 +95,13 @@ export interface ManifestModel {
     | { type: "ollama"; id: string }
     | { type: "hand" };
   ollama_pulls?: string;
+  /** ISO date from the Ollama library "Updated" timestamp, if known. */
+  ollama_updated?: string;
 }
 
 export interface Manifest {
   manifest_version: string;
+  last_refreshed?: string;
   selection?: { open?: string; closed?: string };
   models: ManifestModel[];
 }

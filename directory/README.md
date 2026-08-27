@@ -28,11 +28,17 @@ authored in [`directory-tools/src/seed-catalog.ts`](../directory-tools/src/seed-
 
 ## Quick commands
 
+From the repo root:
+
 ```bash
-cd directory-tools
-pnpm install
-pnpm apply-reviews   # write directory/<slug>/MODEL_FACTS.md from seed-catalog
-pnpm sync            # validate + write site/directory/*
+pnpm directory:install
+pnpm directory:apply-reviews   # write directory/<slug>/MODEL_FACTS.md from seed-catalog
+pnpm directory:sync            # validate + write site/directory/*
+pnpm directory:refresh         # rescrape Ollama popular/newest; update pull counts
+pnpm directory:rebuild         # refresh + apply-reviews + seed + sync (weekly)
 ```
+
+`refresh` writes [`refresh-report.json`](./refresh-report.json) (new candidates, stale entries, HF hints).
+`--apply-new` adds qualifying new families as **draft** labels; reviewed `seed-catalog.ts` overlays stay put.
 
 The static site mirror under `site/directory/` is generated — do not hand-edit it.

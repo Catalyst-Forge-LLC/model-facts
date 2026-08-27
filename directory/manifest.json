@@ -9,168 +9,253 @@
       "slug": "google-gemma-4-12b",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "ollama", "id": "gemma4:12b" },
-      "ollama_pulls": "ladder"
+      "source": {
+        "type": "ollama",
+        "id": "gemma4:12b"
+      },
+      "ollama_pulls": "23.5M",
+      "ollama_updated": "2026-08-26"
     },
     {
       "slug": "google-gemma-4-31b",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "ollama", "id": "gemma4:31b" },
-      "ollama_pulls": "20.9M"
+      "source": {
+        "type": "ollama",
+        "id": "gemma4:31b"
+      },
+      "ollama_pulls": "23.5M",
+      "ollama_updated": "2026-08-26"
     },
     {
       "slug": "qwen-qwen3.5-35b",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "ollama", "id": "qwen3.5:35b" },
-      "ollama_pulls": "17.1M"
+      "source": {
+        "type": "ollama",
+        "id": "qwen3.5:35b"
+      },
+      "ollama_pulls": "18.5M",
+      "ollama_updated": "2026-05-21"
     },
     {
       "slug": "qwen-qwen3.6-35b",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "ollama", "id": "qwen3.6:35b" },
-      "ollama_pulls": "5.3M"
+      "source": {
+        "type": "ollama",
+        "id": "qwen3.6:35b"
+      },
+      "ollama_pulls": "6.2M",
+      "ollama_updated": "2026-08-25"
     },
     {
       "slug": "nvidia-nemotron-3-super",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "ollama", "id": "nemotron-3-super" },
-      "ollama_pulls": "2.9M"
+      "source": {
+        "type": "ollama",
+        "id": "nemotron-3-super"
+      },
+      "ollama_pulls": "2.9M",
+      "ollama_updated": "2026-03-11"
     },
     {
       "slug": "zai-glm-5.1",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "ollama", "id": "glm-5.1" },
-      "ollama_pulls": "2.3M"
+      "source": {
+        "type": "ollama",
+        "id": "glm-5.1"
+      },
+      "ollama_pulls": "2.3M",
+      "ollama_updated": "2026-04-07"
     },
     {
       "slug": "minimax-m2.7",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "ollama", "id": "minimax-m2.7" },
-      "ollama_pulls": "2.3M"
+      "source": {
+        "type": "ollama",
+        "id": "minimax-m2.7"
+      },
+      "ollama_pulls": "2.4M",
+      "ollama_updated": "2026-03-18"
     },
     {
       "slug": "liquid-lfm2",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "ollama", "id": "lfm2" },
-      "ollama_pulls": "1.1M"
+      "source": {
+        "type": "ollama",
+        "id": "lfm2"
+      },
+      "ollama_pulls": "1.1M",
+      "ollama_updated": "2026-02-24"
     },
     {
       "slug": "nvidia-nemotron-3-nano-omni",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "ollama", "id": "nemotron3" },
-      "ollama_pulls": "631.4K"
+      "source": {
+        "type": "ollama",
+        "id": "nemotron3"
+      },
+      "ollama_pulls": "650.6K",
+      "ollama_updated": "2026-04-27"
     },
     {
       "slug": "moonshot-kimi-k2.6",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "ollama", "id": "kimi-k2.6" },
-      "ollama_pulls": "419.7K"
+      "source": {
+        "type": "ollama",
+        "id": "kimi-k2.6"
+      },
+      "ollama_pulls": "448.9K",
+      "ollama_updated": "2026-04-20"
     },
     {
       "slug": "minimax-m3",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "ollama", "id": "minimax-m3" },
-      "ollama_pulls": "370.1K"
+      "source": {
+        "type": "ollama",
+        "id": "minimax-m3"
+      },
+      "ollama_pulls": "489.9K",
+      "ollama_updated": "2026-06-01"
     },
     {
       "slug": "ornith-35b",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "ollama", "id": "ornith:35b" },
-      "ollama_pulls": "348.1K"
+      "source": {
+        "type": "ollama",
+        "id": "ornith:35b"
+      },
+      "ollama_pulls": "423.7K",
+      "ollama_updated": "2026-06-27"
     },
     {
       "slug": "deepseek-v4-flash",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "ollama", "id": "deepseek-v4-flash" },
-      "ollama_pulls": "328.5K"
+      "source": {
+        "type": "ollama",
+        "id": "deepseek-v4-flash"
+      },
+      "ollama_pulls": "401.1K",
+      "ollama_updated": "2026-08-01"
     },
     {
       "slug": "ibm-granite-4.1",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "ollama", "id": "granite4.1" },
-      "ollama_pulls": "314.3K"
+      "source": {
+        "type": "ollama",
+        "id": "granite4.1"
+      },
+      "ollama_pulls": "380.3K",
+      "ollama_updated": "2026-05-19"
     },
     {
       "slug": "deepseek-v4-pro",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "ollama", "id": "deepseek-v4-pro" },
-      "ollama_pulls": "312.7K"
+      "source": {
+        "type": "ollama",
+        "id": "deepseek-v4-pro"
+      },
+      "ollama_pulls": "360.8K",
+      "ollama_updated": "2026-08-13"
     },
     {
       "slug": "mistral-medium-3.5",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "ollama", "id": "mistral-medium-3.5" },
-      "ollama_pulls": "304.4K"
+      "source": {
+        "type": "ollama",
+        "id": "mistral-medium-3.5"
+      },
+      "ollama_pulls": "358.1K",
+      "ollama_updated": "2026-05-05"
     },
     {
       "slug": "zai-glm-5.2",
       "weight_access": "open",
       "curation": "reviewed",
-      "source": { "type": "ollama", "id": "glm-5.2" },
-      "ollama_pulls": "297.3K"
+      "source": {
+        "type": "ollama",
+        "id": "glm-5.2"
+      },
+      "ollama_pulls": "332.7K",
+      "ollama_updated": "2026-06-16"
     },
     {
       "slug": "openai-gpt-5.6-sol",
       "weight_access": "closed",
       "curation": "reviewed",
-      "source": { "type": "hand" }
+      "source": {
+        "type": "hand"
+      }
     },
     {
       "slug": "openai-gpt-5.6-luna",
       "weight_access": "closed",
       "curation": "reviewed",
-      "source": { "type": "hand" }
+      "source": {
+        "type": "hand"
+      }
     },
     {
       "slug": "anthropic-claude-fable-5",
       "weight_access": "closed",
       "curation": "reviewed",
-      "source": { "type": "hand" }
+      "source": {
+        "type": "hand"
+      }
     },
     {
       "slug": "anthropic-claude-opus-5",
       "weight_access": "closed",
       "curation": "reviewed",
-      "source": { "type": "hand" }
+      "source": {
+        "type": "hand"
+      }
     },
     {
       "slug": "anthropic-claude-sonnet-5",
       "weight_access": "closed",
       "curation": "reviewed",
-      "source": { "type": "hand" }
+      "source": {
+        "type": "hand"
+      }
     },
     {
       "slug": "google-gemini-3.1-pro",
       "weight_access": "closed",
       "curation": "reviewed",
-      "source": { "type": "hand" }
+      "source": {
+        "type": "hand"
+      }
     },
     {
       "slug": "google-gemini-3.6-flash",
       "weight_access": "closed",
       "curation": "reviewed",
-      "source": { "type": "hand" }
+      "source": {
+        "type": "hand"
+      }
     },
     {
       "slug": "xai-grok-4.5",
       "weight_access": "closed",
       "curation": "reviewed",
-      "source": { "type": "hand" }
+      "source": {
+        "type": "hand"
+      }
     }
-  ]
+  ],
+  "last_refreshed": "2026-08-27"
 }
