@@ -2,8 +2,8 @@
 /**
  * Weekly directory rebuild: refresh listings → apply reviewed overlays → seed missing HF → sync site.
  *
- *   pnpm rebuild
- *   pnpm rebuild --apply-new
+ *   pnpm rebuild-catalog
+ *   pnpm rebuild-catalog --apply-new
  */
 import { spawnSync } from "node:child_process";
 import { dirname, resolve } from "node:path";

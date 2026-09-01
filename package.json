@@ -8,7 +8,7 @@
     "directory:sync": "pnpm --dir directory-tools sync",
     "directory:seed": "pnpm --dir directory-tools seed",
     "directory:refresh": "pnpm --dir directory-tools refresh",
-    "directory:rebuild": "pnpm --dir directory-tools rebuild",
+    "directory:rebuild": "pnpm --dir directory-tools rebuild-catalog",
     "directory:typecheck": "pnpm --dir directory-tools typecheck"
   },
   "devDependencies": {

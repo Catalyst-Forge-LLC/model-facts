@@ -1,89 +1,84 @@
 {
-  "generated": "2026-08-27",
+  "generated": "2026-09-01",
   "criteria": {
     "min_pulls": 250000,
     "max_age_months": 6
   },
-  "listed": 238,
+  "listed": 239,
   "updated_pulls": [
     {
       "slug": "google-gemma-4-12b",
-      "from": "ladder",
-      "to": "23.5M"
+      "from": "23.5M",
+      "to": "23.9M"
     },
     {
       "slug": "google-gemma-4-31b",
-      "from": "20.9M",
-      "to": "23.5M"
+      "from": "23.5M",
+      "to": "23.9M"
     },
     {
       "slug": "qwen-qwen3.5-35b",
-      "from": "17.1M",
-      "to": "18.5M"
+      "from": "18.5M",
+      "to": "18.9M"
     },
     {
       "slug": "qwen-qwen3.6-35b",
-      "from": "5.3M",
-      "to": "6.2M"
-    },
-    {
-      "slug": "minimax-m2.7",
-      "from": "2.3M",
-      "to": "2.4M"
+      "from": "6.2M",
+      "to": "6.3M"
     },
     {
       "slug": "nvidia-nemotron-3-nano-omni",
-      "from": "631.4K",
-      "to": "650.6K"
+      "from": "650.6K",
+      "to": "653.4K"
     },
     {
       "slug": "moonshot-kimi-k2.6",
-      "from": "419.7K",
-      "to": "448.9K"
+      "from": "448.9K",
+      "to": "454.7K"
     },
     {
       "slug": "minimax-m3",
-      "from": "370.1K",
-      "to": "489.9K"
+      "from": "489.9K",
+      "to": "500K"
     },
     {
       "slug": "ornith-35b",
-      "from": "348.1K",
-      "to": "423.7K"
+      "from": "423.7K",
+      "to": "439.6K"
     },
     {
       "slug": "deepseek-v4-flash",
-      "from": "328.5K",
-      "to": "401.1K"
+      "from": "401.1K",
+      "to": "412.1K"
     },
     {
       "slug": "ibm-granite-4.1",
-      "from": "314.3K",
-      "to": "380.3K"
+      "from": "380.3K",
+      "to": "392.1K"
     },
     {
       "slug": "deepseek-v4-pro",
-      "from": "312.7K",
-      "to": "360.8K"
+      "from": "360.8K",
+      "to": "369.9K"
     },
     {
       "slug": "mistral-medium-3.5",
-      "from": "304.4K",
-      "to": "358.1K"
+      "from": "358.1K",
+      "to": "367.5K"
     },
     {
       "slug": "zai-glm-5.2",
-      "from": "297.3K",
-      "to": "332.7K"
+      "from": "332.7K",
+      "to": "337.1K"
     }
   ],
   "missing_from_search": [],
   "new_candidates": [
     {
       "name": "qwen3.8",
-      "pulls": "948.1K",
-      "pulls_n": 948100,
-      "updated": "1 week ago",
+      "pulls": "1.3M",
+      "pulls_n": 1300000,
+      "updated": "2 weeks ago",
       "updated_iso": "2026-08-14T16:54:00.000Z",
       "sizes": [
         "27b"
@@ -92,9 +87,23 @@
       "suggested_slug": "qwen-qwen3.8"
     },
     {
+      "name": "ornith-1.5",
+      "pulls": "265.9K",
+      "pulls_n": 265900,
+      "updated": "1 week ago",
+      "updated_iso": "2026-08-19T18:06:00.000Z",
+      "sizes": [
+        "9b",
+        "35b",
+        "397b"
+      ],
+      "url": "https://ollama.com/library/ornith-1.5",
+      "suggested_slug": "ornith-ornith-1.5"
+    },
+    {
       "name": "medgemma",
-      "pulls": "317.1K",
-      "pulls_n": 317100,
+      "pulls": "332.4K",
+      "pulls_n": 332400,
       "updated": "4 months ago",
       "updated_iso": "2026-04-16T00:08:00.000Z",
       "sizes": [
@@ -116,8 +125,8 @@
     },
     {
       "name": "nemotron-3-nano",
-      "pulls": "728.1K",
-      "pulls_n": 728100,
+      "pulls": "757.1K",
+      "pulls_n": 757100,
       "updated": "5 months ago",
       "updated_iso": "2026-03-16T15:34:00.000Z",
       "sizes": [
@@ -139,6 +148,10 @@
     {
       "library": "qwen3.8",
       "hf_id": "unsloth/Qwen3.8-27B-GGUF"
+    },
+    {
+      "library": "ornith-1.5",
+      "hf_id": "ornith-ai/Ornith-1.5-9B-GGUF"
     },
     {
       "library": "medgemma",

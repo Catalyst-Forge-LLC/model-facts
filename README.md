@@ -141,6 +141,7 @@ pnpm directory:apply-reviews   # write directory/<slug>/ from seed-catalog.ts
 pnpm directory:sync            # validate + write site/directory/*
 pnpm directory:refresh         # rescrape Ollama (+ HF probes); update pulls; write report
 pnpm directory:rebuild         # refresh → apply-reviews → seed missing HF → sync
+# (not `pnpm rebuild` — that is pnpm's native-module command)
 ```
 
 Weekly cron / GitHub Action: `pnpm directory:rebuild`. New qualifying families are listed in `directory/refresh-report.json`; add them as drafts with `pnpm directory:rebuild -- --apply-new` (does not overwrite reviewed labels).

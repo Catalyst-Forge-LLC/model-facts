@@ -9,7 +9,7 @@
     "seed": "tsx src/seed.ts",
     "apply-reviews": "tsx src/apply-reviews.ts",
     "refresh": "tsx src/refresh.ts",
-    "rebuild": "tsx src/rebuild.ts",
+    "rebuild-catalog": "tsx src/rebuild.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

@@ -13,8 +13,8 @@
         "type": "ollama",
         "id": "gemma4:12b"
       },
-      "ollama_pulls": "23.5M",
-      "ollama_updated": "2026-08-26"
+      "ollama_pulls": "23.9M",
+      "ollama_updated": "2026-08-31"
     },
     {
       "slug": "google-gemma-4-31b",
@@ -24,8 +24,8 @@
         "type": "ollama",
         "id": "gemma4:31b"
       },
-      "ollama_pulls": "23.5M",
-      "ollama_updated": "2026-08-26"
+      "ollama_pulls": "23.9M",
+      "ollama_updated": "2026-08-31"
     },
     {
       "slug": "qwen-qwen3.5-35b",
@@ -35,7 +35,7 @@
         "type": "ollama",
         "id": "qwen3.5:35b"
       },
-      "ollama_pulls": "18.5M",
+      "ollama_pulls": "18.9M",
       "ollama_updated": "2026-05-21"
     },
     {
@@ -46,8 +46,8 @@
         "type": "ollama",
         "id": "qwen3.6:35b"
       },
-      "ollama_pulls": "6.2M",
-      "ollama_updated": "2026-08-25"
+      "ollama_pulls": "6.3M",
+      "ollama_updated": "2026-08-27"
     },
     {
       "slug": "nvidia-nemotron-3-super",
@@ -101,7 +101,7 @@
         "type": "ollama",
         "id": "nemotron3"
       },
-      "ollama_pulls": "650.6K",
+      "ollama_pulls": "653.4K",
       "ollama_updated": "2026-04-27"
     },
     {
@@ -112,7 +112,7 @@
         "type": "ollama",
         "id": "kimi-k2.6"
       },
-      "ollama_pulls": "448.9K",
+      "ollama_pulls": "454.7K",
       "ollama_updated": "2026-04-20"
     },
     {
@@ -123,7 +123,7 @@
         "type": "ollama",
         "id": "minimax-m3"
       },
-      "ollama_pulls": "489.9K",
+      "ollama_pulls": "500K",
       "ollama_updated": "2026-06-01"
     },
     {
@@ -134,7 +134,7 @@
         "type": "ollama",
         "id": "ornith:35b"
       },
-      "ollama_pulls": "423.7K",
+      "ollama_pulls": "439.6K",
       "ollama_updated": "2026-06-27"
     },
     {
@@ -145,7 +145,7 @@
         "type": "ollama",
         "id": "deepseek-v4-flash"
       },
-      "ollama_pulls": "401.1K",
+      "ollama_pulls": "412.1K",
       "ollama_updated": "2026-08-01"
     },
     {
@@ -156,7 +156,7 @@
         "type": "ollama",
         "id": "granite4.1"
       },
-      "ollama_pulls": "380.3K",
+      "ollama_pulls": "392.1K",
       "ollama_updated": "2026-05-19"
     },
     {
@@ -167,7 +167,7 @@
         "type": "ollama",
         "id": "deepseek-v4-pro"
       },
-      "ollama_pulls": "360.8K",
+      "ollama_pulls": "369.9K",
       "ollama_updated": "2026-08-13"
     },
     {
@@ -178,7 +178,7 @@
         "type": "ollama",
         "id": "mistral-medium-3.5"
       },
-      "ollama_pulls": "358.1K",
+      "ollama_pulls": "367.5K",
       "ollama_updated": "2026-05-05"
     },
     {
@@ -189,7 +189,7 @@
         "type": "ollama",
         "id": "glm-5.2"
       },
-      "ollama_pulls": "332.7K",
+      "ollama_pulls": "337.1K",
       "ollama_updated": "2026-06-16"
     },
     {
@@ -257,5 +257,5 @@
       }
     }
   ],
-  "last_refreshed": "2026-08-27"
+  "last_refreshed": "2026-09-01"
 }

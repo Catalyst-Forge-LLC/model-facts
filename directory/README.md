@@ -35,7 +35,7 @@ pnpm directory:install
 pnpm directory:apply-reviews   # write directory/<slug>/MODEL_FACTS.md from seed-catalog
 pnpm directory:sync            # validate + write site/directory/*
 pnpm directory:refresh         # rescrape Ollama popular/newest; update pull counts
-pnpm directory:rebuild         # refresh + apply-reviews + seed + sync (weekly)
+pnpm directory:rebuild         # refresh + apply-reviews + seed + sync (weekly; not pnpm's `rebuild`)
 ```
 
 `refresh` writes [`refresh-report.json`](./refresh-report.json) (new candidates, stale entries, HF hints).
