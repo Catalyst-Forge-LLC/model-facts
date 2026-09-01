@@ -25,9 +25,12 @@ from published cards and docs (see [Curation](#curation)).
 
 Target seed size for first publish: **≥ 24 models**.
 
-**v0 open selection (2026-08):** Ollama library models with **≥ 250K pulls** and a
+**v0 open selection:** Ollama library models with **≥ 250K pulls** and a
 library update within ~**6 months** ([newest](https://ollama.com/search?o=newest) /
-[popular](https://ollama.com/search?o=popular)). One representative size per family.
+[popular](https://ollama.com/search?o=popular)), **plus** Hugging Face Hub models
+(`text-generation` / `image-text-to-text` / `any-to-any`) with **≥ 250K downloads**
+and `lastModified` within ~**6 months**. HF listing skips community quant dumps and
+keeps one size per family. Deduped against Ollama entries already in the catalog.
 
 **v0 closed selection:** current frontier API flagships (not historical GPT-4o / Claude 3).
 
@@ -275,7 +278,7 @@ sync script is run in-repo before commit/publish.
 | `pnpm sync` | Validate every `directory/*/MODEL_FACTS.md`, write `site/directory/**` |
 | `pnpm seed` | For manifest entries with `source.type: huggingface` missing a file, run the generator (deterministic by default) into `directory/<slug>/` |
 | `pnpm apply-reviews` | Rewrite reviewed labels from `seed-catalog.ts` (drafts without a seed entry are left alone) |
-| `pnpm refresh` | Rescrape Ollama search + library pages; update `ollama_pulls`; write `directory/refresh-report.json`. `--apply-new` adds qualifying new families as drafts |
+| `pnpm refresh` | Rescrape Ollama search + Hugging Face Hub; update pull/download counts; write `directory/refresh-report.json`. `--apply-new` adds qualifying new families as drafts |
 | `pnpm rebuild-catalog` | `refresh` → `apply-reviews` → `seed` → `sync` (weekly cron; do **not** name this `rebuild` — that is pnpm's native-module command) |
 
 Root `package.json` mirrors these as `pnpm directory:<name>`. GitHub Action `.github/workflows/directory-refresh.yml` runs `rebuild` Mondays and opens a PR.

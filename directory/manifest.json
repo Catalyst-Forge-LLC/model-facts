@@ -1,7 +1,7 @@
 {
   "manifest_version": "0.1.0",
   "selection": {
-    "open": "Ollama library models with ≥250K pulls and library update within ~6 months (as of 2026-08-07), plus deliberate size-ladder additions (e.g. Gemma 4 12B+31B). Default remains one representative size per family unless a ladder is documented. Sources: https://ollama.com/search?o=newest and ?o=popular.",
+    "open": "Ollama library models with ≥250K pulls and a library update within ~6 months, plus Hugging Face Hub models (text-generation / image-text-to-text / any-to-any) with ≥250K downloads and lastModified within ~6 months. HF listing skips community quant dumps and keeps one size per family. Default remains one representative size unless a ladder is documented.",
     "closed": "Current frontier API flagships as of 2026-08 (OpenAI GPT-5.6, Anthropic Claude 5, Google Gemini 3.x, xAI Grok 4.5)."
   },
   "models": [
@@ -145,7 +145,7 @@
         "type": "ollama",
         "id": "deepseek-v4-flash"
       },
-      "ollama_pulls": "412.1K",
+      "ollama_pulls": "412.2K",
       "ollama_updated": "2026-08-01"
     },
     {
@@ -167,7 +167,7 @@
         "type": "ollama",
         "id": "deepseek-v4-pro"
       },
-      "ollama_pulls": "369.9K",
+      "ollama_pulls": "370K",
       "ollama_updated": "2026-08-13"
     },
     {
@@ -255,6 +255,61 @@
       "source": {
         "type": "hand"
       }
+    },
+    {
+      "slug": "qwen-qwen3.8",
+      "weight_access": "open",
+      "curation": "draft",
+      "source": {
+        "type": "ollama",
+        "id": "qwen3.8:27b"
+      },
+      "ollama_pulls": "1.3M",
+      "ollama_updated": "2026-08-14"
+    },
+    {
+      "slug": "ornith-ornith-1.5",
+      "weight_access": "open",
+      "curation": "draft",
+      "source": {
+        "type": "ollama",
+        "id": "ornith-1.5:397b"
+      },
+      "ollama_pulls": "266.4K",
+      "ollama_updated": "2026-08-19"
+    },
+    {
+      "slug": "ollama-medgemma",
+      "weight_access": "open",
+      "curation": "draft",
+      "source": {
+        "type": "ollama",
+        "id": "medgemma:27b"
+      },
+      "ollama_pulls": "332.4K",
+      "ollama_updated": "2026-04-16"
+    },
+    {
+      "slug": "zai-glm-4.7-flash",
+      "weight_access": "open",
+      "curation": "draft",
+      "source": {
+        "type": "ollama",
+        "id": "glm-4.7-flash"
+      },
+      "ollama_pulls": "1.5M",
+      "ollama_updated": "2026-06-05"
+    },
+    {
+      "slug": "nvidia-nemotron-3-nano",
+      "weight_access": "open",
+      "curation": "draft",
+      "source": {
+        "type": "ollama",
+        "id": "nemotron-3-nano:30b"
+      },
+      "ollama_pulls": "757.2K",
+      "ollama_updated": "2026-03-16"
     }
   ],
   "last_refreshed": "2026-09-01"

@@ -1,140 +1,106 @@
 {
   "generated": "2026-09-01",
   "criteria": {
-    "min_pulls": 250000,
+    "min_ollama_pulls": 250000,
+    "min_hf_downloads": 250000,
     "max_age_months": 6
   },
-  "listed": 239,
-  "updated_pulls": [
-    {
-      "slug": "google-gemma-4-12b",
-      "from": "23.5M",
-      "to": "23.9M"
-    },
-    {
-      "slug": "google-gemma-4-31b",
-      "from": "23.5M",
-      "to": "23.9M"
-    },
-    {
-      "slug": "qwen-qwen3.5-35b",
-      "from": "18.5M",
-      "to": "18.9M"
-    },
-    {
-      "slug": "qwen-qwen3.6-35b",
-      "from": "6.2M",
-      "to": "6.3M"
-    },
-    {
-      "slug": "nvidia-nemotron-3-nano-omni",
-      "from": "650.6K",
-      "to": "653.4K"
-    },
-    {
-      "slug": "moonshot-kimi-k2.6",
-      "from": "448.9K",
-      "to": "454.7K"
-    },
-    {
-      "slug": "minimax-m3",
-      "from": "489.9K",
-      "to": "500K"
-    },
-    {
-      "slug": "ornith-35b",
-      "from": "423.7K",
-      "to": "439.6K"
-    },
-    {
-      "slug": "deepseek-v4-flash",
-      "from": "401.1K",
-      "to": "412.1K"
-    },
-    {
-      "slug": "ibm-granite-4.1",
-      "from": "380.3K",
-      "to": "392.1K"
-    },
-    {
-      "slug": "deepseek-v4-pro",
-      "from": "360.8K",
-      "to": "369.9K"
-    },
-    {
-      "slug": "mistral-medium-3.5",
-      "from": "358.1K",
-      "to": "367.5K"
-    },
-    {
-      "slug": "zai-glm-5.2",
-      "from": "332.7K",
-      "to": "337.1K"
-    }
-  ],
+  "ollama_listed": 239,
+  "hf_listed": 144,
+  "updated_pulls": [],
+  "updated_hf_downloads": [],
   "missing_from_search": [],
-  "new_candidates": [
+  "new_candidates": [],
+  "new_hf_candidates": [
     {
-      "name": "qwen3.8",
-      "pulls": "1.3M",
-      "pulls_n": 1300000,
-      "updated": "2 weeks ago",
-      "updated_iso": "2026-08-14T16:54:00.000Z",
-      "sizes": [
-        "27b"
-      ],
-      "url": "https://ollama.com/library/qwen3.8",
-      "suggested_slug": "qwen-qwen3.8"
+      "source": "huggingface",
+      "id": "farbodtavakkoli/OTel-2.0-LLM-31B-IT",
+      "downloads": 6742957,
+      "last_modified": "2026-08-24T18:38:47.000Z",
+      "pipeline_tag": "text-generation",
+      "gated": false,
+      "url": "https://huggingface.co/farbodtavakkoli/OTel-2.0-LLM-31B-IT",
+      "suggested_slug": "ollama-otel-2.0-llm-31b-it"
     },
     {
-      "name": "ornith-1.5",
-      "pulls": "265.9K",
-      "pulls_n": 265900,
-      "updated": "1 week ago",
-      "updated_iso": "2026-08-19T18:06:00.000Z",
-      "sizes": [
-        "9b",
-        "35b",
-        "397b"
-      ],
-      "url": "https://ollama.com/library/ornith-1.5",
-      "suggested_slug": "ornith-ornith-1.5"
+      "source": "huggingface",
+      "id": "RadixArk/Kimi-K3-DSpark",
+      "downloads": 3280582,
+      "last_modified": "2026-08-16T16:23:16.000Z",
+      "pipeline_tag": "text-generation",
+      "gated": false,
+      "url": "https://huggingface.co/RadixArk/Kimi-K3-DSpark",
+      "suggested_slug": "moonshot-kimi-k3-dspark"
     },
     {
-      "name": "medgemma",
-      "pulls": "332.4K",
-      "pulls_n": 332400,
-      "updated": "4 months ago",
-      "updated_iso": "2026-04-16T00:08:00.000Z",
-      "sizes": [
-        "4b",
-        "27b"
-      ],
-      "url": "https://ollama.com/library/medgemma",
-      "suggested_slug": "ollama-medgemma"
+      "source": "huggingface",
+      "id": "moonshotai/Kimi-K3",
+      "downloads": 2792274,
+      "last_modified": "2026-08-20T04:57:37.000Z",
+      "pipeline_tag": "image-text-to-text",
+      "gated": false,
+      "url": "https://huggingface.co/moonshotai/Kimi-K3",
+      "suggested_slug": "moonshot-kimi-k3"
     },
     {
-      "name": "glm-4.7-flash",
-      "pulls": "1.5M",
-      "pulls_n": 1500000,
-      "updated": "2 months ago",
-      "updated_iso": "2026-06-05T16:16:00.000Z",
-      "sizes": [],
-      "url": "https://ollama.com/library/glm-4.7-flash",
-      "suggested_slug": "zai-glm-4.7-flash"
+      "source": "huggingface",
+      "id": "farbodtavakkoli/OTel-LLM-E4B-IT",
+      "downloads": 1479479,
+      "last_modified": "2026-06-23T11:58:47.000Z",
+      "pipeline_tag": "text-generation",
+      "gated": false,
+      "url": "https://huggingface.co/farbodtavakkoli/OTel-LLM-E4B-IT",
+      "suggested_slug": "ollama-otel-llm-e4b-it"
     },
     {
-      "name": "nemotron-3-nano",
-      "pulls": "757.1K",
-      "pulls_n": 757100,
-      "updated": "5 months ago",
-      "updated_iso": "2026-03-16T15:34:00.000Z",
-      "sizes": [
-        "4b",
-        "30b"
-      ],
-      "url": "https://ollama.com/library/nemotron-3-nano",
-      "suggested_slug": "nvidia-nemotron-3-nano"
+      "source": "huggingface",
+      "id": "farbodtavakkoli/OTel-LLM-27B-IT",
+      "downloads": 1349505,
+      "last_modified": "2026-06-23T11:59:16.000Z",
+      "pipeline_tag": "text-generation",
+      "gated": false,
+      "url": "https://huggingface.co/farbodtavakkoli/OTel-LLM-27B-IT",
+      "suggested_slug": "ollama-otel-llm-27b-it"
+    },
+    {
+      "source": "huggingface",
+      "id": "google/diffusiongemma-26B-A4B-it",
+      "downloads": 1339787,
+      "last_modified": "2026-07-15T16:35:45.000Z",
+      "pipeline_tag": "image-text-to-text",
+      "gated": false,
+      "url": "https://huggingface.co/google/diffusiongemma-26B-A4B-it",
+      "suggested_slug": "ollama-diffusiongemma-26b-a4b-it"
+    },
+    {
+      "source": "huggingface",
+      "id": "nvidia/Cosmos-Reason2-2B",
+      "downloads": 981187,
+      "last_modified": "2026-04-30T03:14:52.000Z",
+      "pipeline_tag": "image-text-to-text",
+      "gated": true,
+      "url": "https://huggingface.co/nvidia/Cosmos-Reason2-2B",
+      "suggested_slug": "ollama-cosmos-reason2-2b"
+    },
+    {
+      "source": "huggingface",
+      "id": "openbmb/MiniCPM-o-4_5",
+      "downloads": 916621,
+      "last_modified": "2026-08-18T03:57:56.000Z",
+      "pipeline_tag": "any-to-any",
+      "gated": false,
+      "url": "https://huggingface.co/openbmb/MiniCPM-o-4_5",
+      "suggested_slug": "ollama-minicpm-o-4-5"
+    },
+    {
+      "source": "huggingface",
+      "id": "raxcore-dev/Rax-4.5",
+      "downloads": 889883,
+      "last_modified": "2026-07-13T10:21:40.000Z",
+      "pipeline_tag": "image-text-to-text",
+      "gated": false,
+      "url": "https://huggingface.co/raxcore-dev/Rax-4.5",
+      "suggested_slug": "ollama-rax-4.5"
     }
   ],
   "stale_in_catalog": [
@@ -142,28 +108,6 @@
       "slug": "liquid-lfm2",
       "pulls": "1.1M",
       "pulls_n": 1100000
-    }
-  ],
-  "hf_suggestions": [
-    {
-      "library": "qwen3.8",
-      "hf_id": "unsloth/Qwen3.8-27B-GGUF"
-    },
-    {
-      "library": "ornith-1.5",
-      "hf_id": "ornith-ai/Ornith-1.5-9B-GGUF"
-    },
-    {
-      "library": "medgemma",
-      "hf_id": "google/medgemma-4b-it"
-    },
-    {
-      "library": "glm-4.7-flash",
-      "hf_id": "zai-org/GLM-4.7-Flash"
-    },
-    {
-      "library": "nemotron-3-nano",
-      "hf_id": "nvidia/Nemotron-3-Nano-Omni-30B-A3B-Reasoning-NVFP4"
     }
   ],
   "applied_drafts": [],

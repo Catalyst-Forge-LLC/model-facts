@@ -117,5 +117,6 @@ emits them — the AppFacts generator insight, doubled here.
   to the homepage — `site/bs-config.js` disables that middleware.
 - Fonts are **self-hosted** under `site/fonts/` (not Google Fonts CDN). Remote font CSS
   was making local loads feel multi-second even though HTML/JSON are tiny.
-- Directory refresh scrapes `ollama.com/search` (SSR + HTMX `?page=`). There is no official
-  Ollama registry API. Weekly: `pnpm directory:rebuild` (or the `directory-refresh` Action).
+- Directory refresh scrapes `ollama.com/search` (SSR + HTMX `?page=`; no official registry
+  API) **and** the Hugging Face Hub models API (downloads + lastModified, skip quant dumps).
+  Weekly: `pnpm directory:rebuild` (or the `directory-refresh` Action).

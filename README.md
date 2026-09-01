@@ -139,7 +139,7 @@ and the selection roadmap [`specs/DIRECTORY_SELECTION.md`](./specs/DIRECTORY_SEL
 pnpm directory:install
 pnpm directory:apply-reviews   # write directory/<slug>/ from seed-catalog.ts
 pnpm directory:sync            # validate + write site/directory/*
-pnpm directory:refresh         # rescrape Ollama (+ HF probes); update pulls; write report
+pnpm directory:refresh         # rescrape Ollama + Hugging Face Hub; write report
 pnpm directory:rebuild         # refresh → apply-reviews → seed missing HF → sync
 # (not `pnpm rebuild` — that is pnpm's native-module command)
 ```

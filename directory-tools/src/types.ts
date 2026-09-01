@@ -97,6 +97,8 @@ export interface ManifestModel {
   ollama_pulls?: string;
   /** ISO date from the Ollama library "Updated" timestamp, if known. */
   ollama_updated?: string;
+  hf_downloads?: number;
+  hf_updated?: string;
 }
 
 export interface Manifest {

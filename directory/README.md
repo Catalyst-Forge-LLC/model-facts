@@ -16,6 +16,12 @@ update within roughly the **last 6 months**. Default: one representative size/ta
 family. **Exception:** deliberate size ladders where RAM vs quality matters (v0: Gemma 4
 12B + 31B).
 
+**Open-weight / Hugging Face (no Ollama required):** Hub models with pipeline
+`text-generation`, `image-text-to-text`, or `any-to-any`, **≥ 250K downloads**,
+`lastModified` within ~**6 months**. Skips community quant dumps, OCR-only repos, and
+compressed remuxes (FP8 / GGUF / MLX-bit). One size per family. Deduped against Ollama
+slugs already in the catalog.
+
 **Closed APIs:** current frontier flagships (GPT-5.6, Claude 5, Gemini 3.x, Grok 4.5) —
 heavy on `undisclosed`, which is the point.
 
@@ -34,11 +40,11 @@ From the repo root:
 pnpm directory:install
 pnpm directory:apply-reviews   # write directory/<slug>/MODEL_FACTS.md from seed-catalog
 pnpm directory:sync            # validate + write site/directory/*
-pnpm directory:refresh         # rescrape Ollama popular/newest; update pull counts
+pnpm directory:refresh         # rescrape Ollama + Hugging Face Hub; update counts
 pnpm directory:rebuild         # refresh + apply-reviews + seed + sync (weekly; not pnpm's `rebuild`)
 ```
 
-`refresh` writes [`refresh-report.json`](./refresh-report.json) (new candidates, stale entries, HF hints).
+`refresh` writes [`refresh-report.json`](./refresh-report.json) (Ollama + HF-only candidates, stale entries).
 `--apply-new` adds qualifying new families as **draft** labels; reviewed `seed-catalog.ts` overlays stay put.
 
 The static site mirror under `site/directory/` is generated — do not hand-edit it.

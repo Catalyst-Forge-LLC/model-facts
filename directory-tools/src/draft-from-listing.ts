@@ -1,3 +1,4 @@
+import type { HfListing } from "./hf-library.js";
 import type { ModelFacts } from "./types.js";
 import type { OllamaListing } from "./ollama-library.js";
 
@@ -105,4 +106,63 @@ export function draftFactsFromListing(item: OllamaListing): ModelFacts {
 export function representativeOllamaId(item: OllamaListing): string {
   const size = pickSize(item.sizes);
   return size ? `${item.name}:${size}` : item.name;
+}
+
+export function slugForHfId(id: string): string {
+  const [org, repo] = id.split("/");
+  const vendor = vendorForLibrary(repo ?? org ?? id);
+  const base = (repo ?? id).toLowerCase().replace(/[^a-z0-9.]+/g, "-").replace(/^-|-$/g, "");
+  return `${vendor}-${base}`;
+}
+
+export function draftFactsFromHf(item: HfListing): ModelFacts {
+  const vision =
+    item.pipeline_tag === "image-text-to-text" || item.tags.includes("vision") || item.tags.includes("multimodal")
+      ? "enabled"
+      : "disabled";
+  const audio =
+    item.pipeline_tag === "any-to-any" || item.tags.includes("audio") ? "enabled" : "disabled";
+  const tools = item.tags.some((t) => /function[- ]?calling|tool[- ]?use/i.test(t)) ? "native" : "none";
+  const today = new Date().toISOString().slice(0, 10);
+  return {
+    model_facts_version: "0.1.0",
+    name: item.name,
+    developer: item.author,
+    status: "active",
+    license: item.license ?? "UNKNOWN",
+    homepage: item.url,
+    weights: item.url,
+    architecture: {
+      type: "undisclosed",
+      parameters: "undisclosed",
+      context_window: "undisclosed",
+      quantization: "undisclosed (HF weights; not an Ollama tag)",
+      modalities_in: vision === "enabled" ? ["text", "image"] : ["text"],
+      modalities_out: ["text"],
+    },
+    training: {
+      knowledge_cutoff: "undisclosed",
+      methodology: "undisclosed (draft from Hugging Face Hub listing)",
+      tokens: "undisclosed",
+    },
+    capabilities: {
+      natural_language: "full",
+      reasoning_math: "medium",
+      coding: "medium",
+      vision_input: vision,
+      audio_input: audio,
+      tool_use: tools,
+      notes: `Draft from HF Hub (${item.downloads.toLocaleString()} downloads). Review before marking curated.`,
+    },
+    safety: {
+      refusal_sensitivity: "medium",
+      instruction_following: "medium",
+      filter_type: "hybrid",
+    },
+    generated: {
+      date: today,
+      generator: "directory refresh — Hugging Face Hub draft",
+    },
+    credits: CREDITS,
+  };
 }
