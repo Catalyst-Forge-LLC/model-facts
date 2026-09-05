@@ -5,4 +5,4 @@ alwaysApply: true
 
 # Deploy
 
-Site publish is `pnpm ship` (Wrangler Pages project `model-facts`, uploads `site/` with no build step). Run `pnpm sync` in `directory-tools/` first if the catalog changed.
+Site publish is `pnpm ship` (Wrangler Worker `model-facts`, uploads `site/` as static assets with no build step). This is a Worker, not a Pages project. Do not use `wrangler pages deploy`. Run `pnpm sync` in `directory-tools/` first if the catalog changed.

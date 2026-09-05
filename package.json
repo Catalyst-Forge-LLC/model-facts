@@ -2,7 +2,7 @@
   "name": "model-facts",
   "private": true,
   "scripts": {
-    "ship": "wrangler pages deploy site --project-name=model-facts",
+    "ship": "wrangler deploy --config site/wrangler.jsonc",
     "directory:install": "pnpm --dir directory-tools install && pnpm --dir generator install",
     "directory:apply-reviews": "pnpm --dir directory-tools apply-reviews",
     "directory:sync": "pnpm --dir directory-tools sync",

@@ -159,7 +159,7 @@ Weekly cron / GitHub Action: `pnpm directory:rebuild`. New qualifying families a
 
 ## Website
 
-The static site for [modelfacts.dev](https://modelfacts.dev) lives in [`site/`](./site/). Publish with `pnpm ship` (Wrangler Pages project `model-facts`, no build step). Run `pnpm sync` in `directory-tools/` first if the catalog changed. Local preview: open [`model-facts.code-workspace`](./model-facts.code-workspace) and use Live Preview (`ms-vscode.live-server`), or `npx serve site -p 3002`.
+The static site for [modelfacts.dev](https://modelfacts.dev) lives in [`site/`](./site/). Publish with `pnpm ship` (Wrangler Worker `model-facts`, uploads `site/` as static assets, no build step). Run `pnpm sync` in `directory-tools/` first if the catalog changed. Local preview: open [`model-facts.code-workspace`](./model-facts.code-workspace) and use Live Preview (`ms-vscode.live-server`), or `npx serve site -p 3002`.
 
 | Path | Purpose |
 |---|---|
