@@ -91,7 +91,7 @@ function parseUrlState() {
     curation: p.get("curation") || "",
     expert:
       p.get("expert") === "1" ||
-      Boolean(p.get("license") || p.get("curation") || p.get("status")),
+      Boolean(p.get("license") || p.get("curation") || p.get("status") || p.get("filter")),
   };
 }
 
@@ -347,23 +347,23 @@ async function main() {
     const notes = [];
     if (state.minParams > 0) {
       const n = all.filter((m) => m.parameters_b == null).length;
-      if (n) notes.push(`${n} omitted: params undisclosed`);
+      if (n) notes.push(`${n} no params`);
     }
     if (state.minContext > 0) {
       const n = all.filter((m) => m.context_tokens == null).length;
-      if (n) notes.push(`${n} omitted: context undisclosed`);
+      if (n) notes.push(`${n} no context`);
     }
     if (state.maxVram > 0) {
       const n = all.filter((m) => m.vram_gb_q4 == null).length;
-      if (n) notes.push(`${n} omitted: VRAM unknown (often closed APIs)`);
+      if (n) notes.push(`${n} no VRAM`);
     }
     if (state.minPopularity > 0) {
       const n = all.filter((m) => m.popularity_n == null).length;
-      if (n) notes.push(`${n} omitted: popularity unknown (often closed APIs)`);
+      if (n) notes.push(`${n} no popularity`);
     }
     if (state.maxAgeDays > 0) {
       const n = all.filter((m) => !m.updated).length;
-      if (n) notes.push(`${n} omitted: no listing/release date`);
+      if (n) notes.push(`${n} no date`);
     }
     return notes;
   }

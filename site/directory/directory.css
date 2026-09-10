@@ -36,17 +36,17 @@ a:hover { color: #fff; }
 .brand-link span { color: var(--accent); }
 nav { display: flex; gap: 1rem; flex-wrap: wrap; }
 nav a { text-decoration: none; font-weight: 600; font-size: 0.85rem; }
-.listing, .detail { padding: 2.25rem 0 3rem; }
+.listing, .detail { padding: 1.5rem 0 2.5rem; }
 h1 {
   font-family: var(--font-display); font-weight: 800;
-  font-size: clamp(2rem, 5vw, 2.75rem); letter-spacing: -0.04em;
-  margin: 0 0 0.75rem; color: #fff;
+  font-size: clamp(1.75rem, 4vw, 2.25rem); letter-spacing: -0.04em;
+  margin: 0 0 0.4rem; color: #fff;
 }
-.lede { color: var(--mute); max-width: 62ch; margin: 0 0 1.25rem; }
+.lede { color: var(--mute); max-width: 68ch; margin: 0 0 0.85rem; }
 .lede em { color: #c9d3de; font-style: normal; }
 .presets {
-  display: flex; flex-wrap: wrap; gap: 0.45rem; align-items: center;
-  margin: 0 0 1.1rem;
+  display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center;
+  margin: 0 0 0.75rem;
 }
 .presets-label {
   font-size: 0.7rem; letter-spacing: 0.04em; text-transform: uppercase;
@@ -54,8 +54,8 @@ h1 {
 }
 .chip.preset { text-decoration: none; display: inline-block; }
 .controls {
-  display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between;
-  align-items: center; margin-bottom: 0.85rem;
+  display: flex; flex-wrap: wrap; gap: 0.65rem 1rem; justify-content: space-between;
+  align-items: center; margin-bottom: 0.55rem;
 }
 .chips { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 .chip {
@@ -64,7 +64,7 @@ h1 {
   padding: 0.5rem 0.75rem; cursor: pointer;
 }
 .chip.active, .chip:hover { border-color: var(--accent); color: #fff; }
-.chip.reset { margin-left: auto; }
+.chip.reset { margin-left: 0; }
 a.chip:hover { color: #fff; }
 .search input,
 .filters select,
@@ -72,11 +72,14 @@ a.chip:hover { color: #fff; }
   background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.16);
   color: #fff; font: 400 0.85rem/1.2 var(--font-mono); padding: 0.55rem 0.7rem;
 }
-.search input { min-width: min(100%, 16rem); }
+.controls-end { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+.search input { min-width: min(100%, 12rem); }
 .filters {
-  display: flex; flex-wrap: wrap; gap: 0.75rem 1rem;
-  align-items: end; margin-bottom: 0.5rem;
-  padding: 0.85rem 0 0.35rem; border-top: 1px solid rgba(255,255,255,0.08);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(7.4rem, 1fr));
+  gap: 0.55rem 0.65rem;
+  align-items: end; margin-bottom: 0.45rem;
+  padding: 0.65rem 0 0.2rem; border-top: 1px solid rgba(255,255,255,0.08);
 }
 .filters label,
 .expert-selects label {
@@ -85,7 +88,7 @@ a.chip:hover { color: #fff; }
 }
 .filters select,
 .expert select {
-  min-width: 8.5rem; appearance: none;
+  min-width: 0; width: 100%; appearance: none;
   background-image: linear-gradient(45deg, transparent 50%, var(--mute) 50%),
     linear-gradient(135deg, var(--mute) 50%, transparent 50%);
   background-position: calc(100% - 14px) 55%, calc(100% - 9px) 55%;
@@ -129,7 +132,9 @@ a.chip:hover { color: #fff; }
   accent-color: var(--accent); width: 0.95rem; height: 0.95rem;
 }
 .expert-selects {
-  display: flex; flex-wrap: wrap; gap: 0.75rem 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(7.4rem, 1fr));
+  gap: 0.55rem 0.65rem;
 }
 .claim-group {
   opacity: 0.92;
@@ -158,7 +163,7 @@ a.chip:hover { color: #fff; }
 }
 .count { color: var(--mute); font-size: 0.8rem; margin: 0 0 0.35rem; }
 .omit-note {
-  color: #d4b87a; font-size: 0.75rem; margin: 0 0 0.75rem; max-width: 70ch;
+  color: #d4b87a; font-size: 0.75rem; margin: 0 0 0.45rem;
 }
 .empty { color: var(--mute); font-size: 0.9rem; margin: 1.25rem 0 0; }
 .table-wrap { overflow-x: auto; border-top: 1px solid rgba(255,255,255,0.1); }

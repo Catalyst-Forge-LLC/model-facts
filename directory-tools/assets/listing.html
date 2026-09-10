@@ -25,18 +25,16 @@
   <main class="wrap listing">
     <h1>Directory</h1>
     <p class="lede">
-      Curated labels for well-known models. Prefer objective filters (access, context, tools, vision, VRAM)
-      when shortlisting - capability levels are <em>published claims</em>, not ModelFacts-run evals.
-      Filters and presets sync to the URL for sharing and agents.
-      Select 2-4 models in the table, then use Compare at the bottom of the page.
+      Objective filters first - capability levels are <em>published claims</em>.
+      Check 2-4 rows, then Compare at the bottom.
     </p>
 
     <div class="presets" role="group" aria-label="Task presets">
       <span class="presets-label">Presets</span>
-      <a class="chip preset" href="/directory/?access=open&amp;tools=native&amp;max_vram=24">Local coding (<=24GB)</a>
-      <a class="chip preset" href="/directory/?min_context=200000">Long-context (200k+)</a>
+      <a class="chip preset" href="/directory/?access=open&amp;tools=native&amp;max_vram=24">Local <=24GB</a>
+      <a class="chip preset" href="/directory/?min_context=200000">200k+ context</a>
       <a class="chip preset" href="/directory/?vision=1&amp;tools=native&amp;expert=1">Vision + tools</a>
-      <a class="chip preset" href="/directory/?filter=raw">Raw / lightly filtered</a>
+      <a class="chip preset" href="/directory/?filter=raw&amp;expert=1">Raw</a>
       <a class="chip preset" href="/directory/?access=closed&amp;speed=flagship">Frontier API</a>
     </div>
 
@@ -46,10 +44,13 @@
         <button type="button" data-access="open" class="chip">Open</button>
         <button type="button" data-access="closed" class="chip">Closed</button>
       </div>
-      <label class="search">
-        <span class="sr-only">Search models</span>
-        <input type="search" id="q" name="q" placeholder="Search name, id, tag..." autocomplete="off" />
-      </label>
+      <div class="controls-end">
+        <label class="search">
+          <span class="sr-only">Search models</span>
+          <input type="search" id="q" name="q" placeholder="Search..." autocomplete="off" />
+        </label>
+        <button type="button" class="chip reset" id="reset" hidden>Clear</button>
+      </div>
     </div>
 
     <div class="filters" id="filters">
@@ -60,7 +61,7 @@
         </select>
       </label>
       <label>
-        <span>Min params</span>
+        <span>Params</span>
         <select id="min-params" name="min_params">
           <option value="">Any</option>
           <option value="7">7B+</option>
@@ -71,7 +72,7 @@
         </select>
       </label>
       <label>
-        <span>Min context</span>
+        <span>Context</span>
         <select id="min-context" name="min_context">
           <option value="">Any</option>
           <option value="32000">32k+</option>
@@ -81,7 +82,7 @@
         </select>
       </label>
       <label>
-        <span>Max VRAM (Q4)</span>
+        <span title="Max Q4 VRAM proxy">VRAM</span>
         <select id="max-vram" name="max_vram">
           <option value="">Any</option>
           <option value="8">&lt;=8 GB</option>
@@ -101,7 +102,7 @@
         </select>
       </label>
       <label>
-        <span>Speed tier</span>
+        <span>Speed</span>
         <select id="speed" name="speed">
           <option value="">Any</option>
           <option value="flash">flash</option>
@@ -110,7 +111,7 @@
         </select>
       </label>
       <label>
-        <span>Min popularity</span>
+        <span title="Ollama pulls or HF downloads">Popularity</span>
         <select id="min-popularity" name="min_popularity">
           <option value="">Any</option>
           <option value="250000">250K+</option>
@@ -120,7 +121,7 @@
         </select>
       </label>
       <label>
-        <span>Updated within</span>
+        <span title="Listing or release date">Updated</span>
         <select id="max-age-days" name="max_age_days">
           <option value="">Any</option>
           <option value="7">7 days</option>
@@ -128,16 +129,6 @@
           <option value="180">6 months</option>
         </select>
       </label>
-      <label>
-        <span>Filter type</span>
-        <select id="filter-type" name="filter">
-          <option value="">Any</option>
-          <option value="raw">raw</option>
-          <option value="hybrid">hybrid</option>
-          <option value="censored">censored</option>
-        </select>
-      </label>
-      <button type="button" class="chip reset" id="reset" hidden>Clear filters</button>
     </div>
 
     <details class="expert" id="expert">
@@ -209,6 +200,15 @@
             <span>License</span>
             <select id="license" name="license">
               <option value="">Any</option>
+            </select>
+          </label>
+          <label>
+            <span>Filter type</span>
+            <select id="filter-type" name="filter">
+              <option value="">Any</option>
+              <option value="raw">raw</option>
+              <option value="hybrid">hybrid</option>
+              <option value="censored">censored</option>
             </select>
           </label>
         </div>
