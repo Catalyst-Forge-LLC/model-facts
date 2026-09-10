@@ -1,7 +1,7 @@
 {
   "directory_version": "0.3.0",
   "generated": "2026-09-01",
-  "count": 25,
+  "count": 30,
   "models": [
     {
       "slug": "anthropic-claude-fable-5",
@@ -412,6 +412,47 @@
       "facts_md": "/directory/google-gemma-4-31b/MODEL_FACTS.md"
     },
     {
+      "slug": "zai-glm-4.7-flash",
+      "name": "glm-4.7-flash",
+      "developer": "zai",
+      "status": "active",
+      "license": "UNKNOWN",
+      "weight_access": "open",
+      "curation": "draft",
+      "parameters": "undisclosed",
+      "parameters_b": null,
+      "context_window": "undisclosed",
+      "context_tokens": null,
+      "filter_type": "hybrid",
+      "vision_input": "disabled",
+      "audio_input": "disabled",
+      "tool_use": "native",
+      "reasoning_math": "medium",
+      "coding": "medium",
+      "refusal_sensitivity": "medium",
+      "instruction_following": "medium",
+      "knowledge_cutoff": null,
+      "api_ids": [],
+      "ollama_tag": "glm-4.7-flash",
+      "hf_id": null,
+      "commercial_ok": "undisclosed",
+      "price_tier": "free_local",
+      "vram_gb_q4": null,
+      "speed_tier": "undisclosed",
+      "capability_basis": "claimed",
+      "family": null,
+      "related_slugs": [],
+      "judgment_sources": [
+        {
+          "label": "Homepage / docs",
+          "url": "https://ollama.com/library/glm-4.7-flash"
+        }
+      ],
+      "href": "/directory/zai-glm-4.7-flash/",
+      "facts_json": "/directory/zai-glm-4.7-flash/facts.json",
+      "facts_md": "/directory/zai-glm-4.7-flash/MODEL_FACTS.md"
+    },
+    {
       "slug": "zai-glm-5.1",
       "name": "GLM-5.1",
       "developer": "Z.ai",
@@ -756,6 +797,47 @@
       "facts_md": "/directory/liquid-lfm2/MODEL_FACTS.md"
     },
     {
+      "slug": "ollama-medgemma",
+      "name": "medgemma",
+      "developer": "ollama",
+      "status": "active",
+      "license": "UNKNOWN",
+      "weight_access": "open",
+      "curation": "draft",
+      "parameters": "27B",
+      "parameters_b": 27,
+      "context_window": "undisclosed",
+      "context_tokens": null,
+      "filter_type": "hybrid",
+      "vision_input": "enabled",
+      "audio_input": "disabled",
+      "tool_use": "none",
+      "reasoning_math": "medium",
+      "coding": "medium",
+      "refusal_sensitivity": "medium",
+      "instruction_following": "medium",
+      "knowledge_cutoff": null,
+      "api_ids": [],
+      "ollama_tag": "medgemma:27b",
+      "hf_id": null,
+      "commercial_ok": "undisclosed",
+      "price_tier": "free_local",
+      "vram_gb_q4": 15,
+      "speed_tier": "undisclosed",
+      "capability_basis": "claimed",
+      "family": null,
+      "related_slugs": [],
+      "judgment_sources": [
+        {
+          "label": "Homepage / docs",
+          "url": "https://ollama.com/library/medgemma"
+        }
+      ],
+      "href": "/directory/ollama-medgemma/",
+      "facts_json": "/directory/ollama-medgemma/facts.json",
+      "facts_md": "/directory/ollama-medgemma/MODEL_FACTS.md"
+    },
+    {
       "slug": "minimax-m2.7",
       "name": "MiniMax-M2.7",
       "developer": "MiniMax",
@@ -887,6 +969,47 @@
       "facts_md": "/directory/mistral-medium-3.5/MODEL_FACTS.md"
     },
     {
+      "slug": "nvidia-nemotron-3-nano",
+      "name": "nemotron-3-nano",
+      "developer": "nvidia",
+      "status": "active",
+      "license": "UNKNOWN",
+      "weight_access": "open",
+      "curation": "draft",
+      "parameters": "30B",
+      "parameters_b": 30,
+      "context_window": "undisclosed",
+      "context_tokens": null,
+      "filter_type": "hybrid",
+      "vision_input": "disabled",
+      "audio_input": "disabled",
+      "tool_use": "native",
+      "reasoning_math": "medium",
+      "coding": "medium",
+      "refusal_sensitivity": "medium",
+      "instruction_following": "medium",
+      "knowledge_cutoff": null,
+      "api_ids": [],
+      "ollama_tag": "nemotron-3-nano:30b",
+      "hf_id": null,
+      "commercial_ok": "undisclosed",
+      "price_tier": "free_local",
+      "vram_gb_q4": 17,
+      "speed_tier": "undisclosed",
+      "capability_basis": "claimed",
+      "family": null,
+      "related_slugs": [],
+      "judgment_sources": [
+        {
+          "label": "Homepage / docs",
+          "url": "https://ollama.com/library/nemotron-3-nano"
+        }
+      ],
+      "href": "/directory/nvidia-nemotron-3-nano/",
+      "facts_json": "/directory/nvidia-nemotron-3-nano/facts.json",
+      "facts_md": "/directory/nvidia-nemotron-3-nano/MODEL_FACTS.md"
+    },
+    {
       "slug": "nvidia-nemotron-3-nano-omni",
       "name": "Nemotron-3-Nano-Omni",
       "developer": "NVIDIA",
@@ -971,6 +1094,47 @@
       "href": "/directory/nvidia-nemotron-3-super/",
       "facts_json": "/directory/nvidia-nemotron-3-super/facts.json",
       "facts_md": "/directory/nvidia-nemotron-3-super/MODEL_FACTS.md"
+    },
+    {
+      "slug": "ornith-ornith-1.5",
+      "name": "ornith-1.5",
+      "developer": "ornith",
+      "status": "active",
+      "license": "UNKNOWN",
+      "weight_access": "open",
+      "curation": "draft",
+      "parameters": "397B",
+      "parameters_b": 397,
+      "context_window": "undisclosed",
+      "context_tokens": null,
+      "filter_type": "hybrid",
+      "vision_input": "enabled",
+      "audio_input": "disabled",
+      "tool_use": "none",
+      "reasoning_math": "medium",
+      "coding": "medium",
+      "refusal_sensitivity": "medium",
+      "instruction_following": "medium",
+      "knowledge_cutoff": null,
+      "api_ids": [],
+      "ollama_tag": "ornith-1.5:397b",
+      "hf_id": null,
+      "commercial_ok": "undisclosed",
+      "price_tier": "free_local",
+      "vram_gb_q4": 218,
+      "speed_tier": "undisclosed",
+      "capability_basis": "claimed",
+      "family": null,
+      "related_slugs": [],
+      "judgment_sources": [
+        {
+          "label": "Homepage / docs",
+          "url": "https://ollama.com/library/ornith-1.5"
+        }
+      ],
+      "href": "/directory/ornith-ornith-1.5/",
+      "facts_json": "/directory/ornith-ornith-1.5/facts.json",
+      "facts_md": "/directory/ornith-ornith-1.5/MODEL_FACTS.md"
     },
     {
       "slug": "ornith-35b",
@@ -1094,6 +1258,47 @@
       "href": "/directory/qwen-qwen3.6-35b/",
       "facts_json": "/directory/qwen-qwen3.6-35b/facts.json",
       "facts_md": "/directory/qwen-qwen3.6-35b/MODEL_FACTS.md"
+    },
+    {
+      "slug": "qwen-qwen3.8",
+      "name": "qwen3.8",
+      "developer": "qwen",
+      "status": "active",
+      "license": "UNKNOWN",
+      "weight_access": "open",
+      "curation": "draft",
+      "parameters": "27B",
+      "parameters_b": 27,
+      "context_window": "undisclosed",
+      "context_tokens": null,
+      "filter_type": "hybrid",
+      "vision_input": "enabled",
+      "audio_input": "disabled",
+      "tool_use": "native",
+      "reasoning_math": "medium",
+      "coding": "medium",
+      "refusal_sensitivity": "medium",
+      "instruction_following": "medium",
+      "knowledge_cutoff": null,
+      "api_ids": [],
+      "ollama_tag": "qwen3.8:27b",
+      "hf_id": null,
+      "commercial_ok": "undisclosed",
+      "price_tier": "free_local",
+      "vram_gb_q4": 15,
+      "speed_tier": "undisclosed",
+      "capability_basis": "claimed",
+      "family": null,
+      "related_slugs": [],
+      "judgment_sources": [
+        {
+          "label": "Homepage / docs",
+          "url": "https://ollama.com/library/qwen3.8"
+        }
+      ],
+      "href": "/directory/qwen-qwen3.8/",
+      "facts_json": "/directory/qwen-qwen3.8/facts.json",
+      "facts_md": "/directory/qwen-qwen3.8/MODEL_FACTS.md"
     }
   ]
 }
