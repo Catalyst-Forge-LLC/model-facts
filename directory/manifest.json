@@ -13,7 +13,7 @@
         "type": "ollama",
         "id": "gemma4:12b"
       },
-      "ollama_pulls": "23.9M",
+      "ollama_pulls": "24.6M",
       "ollama_updated": "2026-08-31"
     },
     {
@@ -24,7 +24,7 @@
         "type": "ollama",
         "id": "gemma4:31b"
       },
-      "ollama_pulls": "23.9M",
+      "ollama_pulls": "24.6M",
       "ollama_updated": "2026-08-31"
     },
     {
@@ -35,8 +35,8 @@
         "type": "ollama",
         "id": "qwen3.5:35b"
       },
-      "ollama_pulls": "18.9M",
-      "ollama_updated": "2026-05-21"
+      "ollama_pulls": "20M",
+      "ollama_updated": "2026-09-01"
     },
     {
       "slug": "qwen-qwen3.6-35b",
@@ -46,8 +46,8 @@
         "type": "ollama",
         "id": "qwen3.6:35b"
       },
-      "ollama_pulls": "6.3M",
-      "ollama_updated": "2026-08-27"
+      "ollama_pulls": "6.5M",
+      "ollama_updated": "2026-09-01"
     },
     {
       "slug": "nvidia-nemotron-3-super",
@@ -101,7 +101,7 @@
         "type": "ollama",
         "id": "nemotron3"
       },
-      "ollama_pulls": "653.4K",
+      "ollama_pulls": "658K",
       "ollama_updated": "2026-04-27"
     },
     {
@@ -112,7 +112,7 @@
         "type": "ollama",
         "id": "kimi-k2.6"
       },
-      "ollama_pulls": "454.7K",
+      "ollama_pulls": "466.6K",
       "ollama_updated": "2026-04-20"
     },
     {
@@ -123,7 +123,7 @@
         "type": "ollama",
         "id": "minimax-m3"
       },
-      "ollama_pulls": "500K",
+      "ollama_pulls": "506.2K",
       "ollama_updated": "2026-06-01"
     },
     {
@@ -134,7 +134,7 @@
         "type": "ollama",
         "id": "ornith:35b"
       },
-      "ollama_pulls": "439.6K",
+      "ollama_pulls": "476K",
       "ollama_updated": "2026-06-27"
     },
     {
@@ -145,7 +145,7 @@
         "type": "ollama",
         "id": "deepseek-v4-flash"
       },
-      "ollama_pulls": "412.2K",
+      "ollama_pulls": "444.6K",
       "ollama_updated": "2026-08-01"
     },
     {
@@ -156,7 +156,7 @@
         "type": "ollama",
         "id": "granite4.1"
       },
-      "ollama_pulls": "392.1K",
+      "ollama_pulls": "422K",
       "ollama_updated": "2026-05-19"
     },
     {
@@ -167,7 +167,7 @@
         "type": "ollama",
         "id": "deepseek-v4-pro"
       },
-      "ollama_pulls": "370K",
+      "ollama_pulls": "394.5K",
       "ollama_updated": "2026-08-13"
     },
     {
@@ -178,7 +178,7 @@
         "type": "ollama",
         "id": "mistral-medium-3.5"
       },
-      "ollama_pulls": "367.5K",
+      "ollama_pulls": "383K",
       "ollama_updated": "2026-05-05"
     },
     {
@@ -189,7 +189,7 @@
         "type": "ollama",
         "id": "glm-5.2"
       },
-      "ollama_pulls": "337.1K",
+      "ollama_pulls": "341.5K",
       "ollama_updated": "2026-06-16"
     },
     {
@@ -264,7 +264,7 @@
         "type": "ollama",
         "id": "qwen3.8:27b"
       },
-      "ollama_pulls": "1.3M",
+      "ollama_pulls": "1.7M",
       "ollama_updated": "2026-08-14"
     },
     {
@@ -275,7 +275,7 @@
         "type": "ollama",
         "id": "ornith-1.5:397b"
       },
-      "ollama_pulls": "266.4K",
+      "ollama_pulls": "303.9K",
       "ollama_updated": "2026-08-19"
     },
     {
@@ -286,7 +286,7 @@
         "type": "ollama",
         "id": "medgemma:27b"
       },
-      "ollama_pulls": "332.4K",
+      "ollama_pulls": "366.2K",
       "ollama_updated": "2026-04-16"
     },
     {
@@ -297,7 +297,7 @@
         "type": "ollama",
         "id": "glm-4.7-flash"
       },
-      "ollama_pulls": "1.5M",
+      "ollama_pulls": "1.7M",
       "ollama_updated": "2026-06-05"
     },
     {
@@ -308,9 +308,119 @@
         "type": "ollama",
         "id": "nemotron-3-nano:30b"
       },
-      "ollama_pulls": "757.2K",
+      "ollama_pulls": "820.7K",
       "ollama_updated": "2026-03-16"
+    },
+    {
+      "slug": "ollama-otel-2.0-llm-31b-it",
+      "weight_access": "open",
+      "curation": "draft",
+      "source": {
+        "type": "huggingface",
+        "id": "farbodtavakkoli/OTel-2.0-LLM-31B-IT"
+      },
+      "hf_downloads": 7164611,
+      "hf_updated": "2026-09-08"
+    },
+    {
+      "slug": "moonshot-kimi-k3-dspark",
+      "weight_access": "open",
+      "curation": "draft",
+      "source": {
+        "type": "huggingface",
+        "id": "RadixArk/Kimi-K3-DSpark"
+      },
+      "hf_downloads": 2645687,
+      "hf_updated": "2026-08-16"
+    },
+    {
+      "slug": "ollama-otel-llm-e4b-it",
+      "weight_access": "open",
+      "curation": "draft",
+      "source": {
+        "type": "huggingface",
+        "id": "farbodtavakkoli/OTel-LLM-E4B-IT"
+      },
+      "hf_downloads": 1566806,
+      "hf_updated": "2026-06-23"
+    },
+    {
+      "slug": "ollama-otel-llm-27b-it",
+      "weight_access": "open",
+      "curation": "draft",
+      "source": {
+        "type": "huggingface",
+        "id": "farbodtavakkoli/OTel-LLM-27B-IT"
+      },
+      "hf_downloads": 1356059,
+      "hf_updated": "2026-06-23"
+    },
+    {
+      "slug": "ollama-rax-4.5",
+      "weight_access": "open",
+      "curation": "draft",
+      "source": {
+        "type": "huggingface",
+        "id": "raxcore-dev/Rax-4.5"
+      },
+      "hf_downloads": 1059991,
+      "hf_updated": "2026-07-13"
+    },
+    {
+      "slug": "zai-glm-5.3-flash",
+      "weight_access": "open",
+      "curation": "draft",
+      "source": {
+        "type": "huggingface",
+        "id": "zai-org/GLM-5.3-Flash"
+      },
+      "hf_downloads": 1023103,
+      "hf_updated": "2026-09-07"
+    },
+    {
+      "slug": "ollama-cosmos-reason2-2b",
+      "weight_access": "open",
+      "curation": "draft",
+      "source": {
+        "type": "huggingface",
+        "id": "nvidia/Cosmos-Reason2-2B"
+      },
+      "hf_downloads": 909941,
+      "hf_updated": "2026-04-30"
+    },
+    {
+      "slug": "ollama-diffusiongemma-26b-a4b-it",
+      "weight_access": "open",
+      "curation": "draft",
+      "source": {
+        "type": "huggingface",
+        "id": "google/diffusiongemma-26B-A4B-it"
+      },
+      "hf_downloads": 889361,
+      "hf_updated": "2026-07-15"
+    },
+    {
+      "slug": "ollama-minicpm-o-4-5",
+      "weight_access": "open",
+      "curation": "draft",
+      "source": {
+        "type": "huggingface",
+        "id": "openbmb/MiniCPM-o-4_5"
+      },
+      "hf_downloads": 694166,
+      "hf_updated": "2026-08-18"
+    },
+    {
+      "slug": "ollama-minicpm-o-2-6",
+      "weight_access": "open",
+      "curation": "draft",
+      "source": {
+        "type": "huggingface",
+        "id": "openbmb/MiniCPM-o-2_6"
+      },
+      "hf_downloads": 275363,
+      "hf_updated": "2026-08-18"
     }
   ],
-  "last_refreshed": "2026-09-01"
+  "last_refreshed": "2026-09-10"
 }
