@@ -103,16 +103,16 @@ function meetsMinLevel(actual, min) {
 }
 
 function fmtCutoff(v) {
-  return v || "—";
+  return v || "-";
 }
 
 function fmtTools(v) {
-  if (!v || v === "none") return "—";
+  if (!v || v === "none") return "-";
   return v;
 }
 
 function fmtVision(v) {
-  return v === "enabled" ? "yes" : "—";
+  return v === "enabled" ? "yes" : "-";
 }
 
 function capClass(on) {
@@ -316,7 +316,7 @@ async function main() {
     const notes = omissionNotes(catalog.models);
     if (notes.length) {
       omitEl.hidden = false;
-      omitEl.textContent = notes.join(" · ");
+      omitEl.textContent = notes.join(" | ");
     } else {
       omitEl.hidden = true;
       omitEl.textContent = "";

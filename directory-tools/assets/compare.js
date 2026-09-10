@@ -24,18 +24,18 @@ const ROWS = [
   ["Parameters", (m) => m.parameters],
   ["Context", (m) => m.context_window],
   ["Knowledge cutoff", (m) => m.knowledge_cutoff || "undisclosed"],
-  ["Tools", (m) => m.tool_use || "—"],
+  ["Tools", (m) => m.tool_use || "-"],
   ["Vision", (m) => m.vision_input],
   ["Audio", (m) => m.audio_input],
   ["Speed tier", (m) => m.speed_tier],
   ["Price tier", (m) => m.price_tier],
-  ["VRAM Q4 (GB)", (m) => (m.vram_gb_q4 != null ? String(m.vram_gb_q4) : "—")],
+  ["VRAM Q4 (GB)", (m) => (m.vram_gb_q4 != null ? String(m.vram_gb_q4) : "-")],
   ["Filter type", (m) => m.filter_type],
-  ["API ids", (m) => (m.api_ids || []).join(", ") || "—"],
-  ["Ollama tag", (m) => m.ollama_tag || "—"],
-  ["HF id", (m) => m.hf_id || "—"],
-  ["Family", (m) => m.family || "—"],
-  ["Capability basis", (m) => m.capability_basis || "—"],
+  ["API ids", (m) => (m.api_ids || []).join(", ") || "-"],
+  ["Ollama tag", (m) => m.ollama_tag || "-"],
+  ["HF id", (m) => m.hf_id || "-"],
+  ["Family", (m) => m.family || "-"],
+  ["Capability basis", (m) => m.capability_basis || "-"],
   ["Reasoning (claimed)", (m) => m.reasoning_math],
   ["Coding (claimed)", (m) => m.coding],
   ["Refusal (claimed)", (m) => m.refusal_sensitivity],
@@ -51,7 +51,7 @@ async function main() {
   if (ids.length < 2) {
     emptyEl.hidden = false;
     statusEl.textContent = ids.length
-      ? "Need at least two slugs in ?ids=…"
+      ? "Need at least two slugs in ?ids=..."
       : "No models selected.";
     return;
   }
@@ -71,7 +71,7 @@ async function main() {
   }
 
   statusEl.textContent = `Comparing ${models.length} models${
-    missing.length ? ` · unknown: ${missing.join(", ")}` : ""
+    missing.length ? ` | unknown: ${missing.join(", ")}` : ""
   }`;
   emptyEl.hidden = true;
 

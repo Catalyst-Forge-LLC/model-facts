@@ -74,9 +74,9 @@ function shortUrl(url: string): string {
     const u = new URL(url);
     const path = u.pathname === "/" ? "" : u.pathname.replace(/\/$/, "");
     const display = `${u.host}${path}`;
-    return display.length > 42 ? `${display.slice(0, 39)}…` : display;
+    return display.length > 42 ? `${display.slice(0, 39)}...` : display;
   } catch {
-    return url.length > 42 ? `${url.slice(0, 39)}…` : url;
+    return url.length > 42 ? `${url.slice(0, 39)}...` : url;
   }
 }
 
@@ -92,8 +92,8 @@ function detailHtml(entry: CatalogEntry, facts: ModelFacts): string {
   const s = facts.safety;
   const modalities =
     a.modalities_in && a.modalities_out
-      ? `${a.modalities_in.join(" + ")} → ${a.modalities_out.join(" + ")}`
-      : "—";
+      ? `${a.modalities_in.join(" + ")} -> ${a.modalities_out.join(" + ")}`
+      : "-";
   const benchmarks = (facts.benchmarks ?? [])
     .map((b) => `<div class="row"><strong>${escapeHtml(b.name)}</strong><span>${escapeHtml(String(b.score))}${b.notes ? ` <em>${escapeHtml(b.notes)}</em>` : ""}</span></div>`)
     .join("\n");
@@ -107,14 +107,14 @@ function detailHtml(entry: CatalogEntry, facts: ModelFacts): string {
   const judgmentLinks = (entry.judgment_sources ?? [])
     .map(
       (s) =>
-        `<li><a href="${escapeHtml(s.url)}" rel="noopener">${escapeHtml(s.label)}</a> — <span class="mute-inline">${escapeHtml(shortUrl(s.url))}</span></li>`,
+        `<li><a href="${escapeHtml(s.url)}" rel="noopener">${escapeHtml(s.label)}</a> - <span class="mute-inline">${escapeHtml(shortUrl(s.url))}</span></li>`,
     )
     .join("\n");
   const related =
     entry.related_slugs.length > 0
       ? `<p class="related">Same family: ${entry.related_slugs
           .map((s) => `<a href="/directory/${escapeHtml(s)}/">${escapeHtml(s)}</a>`)
-          .join(" · ")}</p>`
+          .join(" | ")}</p>`
       : "";
 
   return `<!DOCTYPE html>
@@ -122,7 +122,7 @@ function detailHtml(entry: CatalogEntry, facts: ModelFacts): string {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>${escapeHtml(facts.name)} — ModelFacts Directory</title>
+  <title>${escapeHtml(facts.name)} - ModelFacts Directory</title>
   <meta name="description" content="ModelFacts label for ${escapeHtml(facts.name)} by ${escapeHtml(facts.developer)}." />
   <link rel="canonical" href="https://modelfacts.dev${entry.href}" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -149,7 +149,7 @@ function detailHtml(entry: CatalogEntry, facts: ModelFacts): string {
       <span class="badge ${entry.curation}">${entry.curation}</span>
       <span class="badge basis">${escapeHtml(entry.capability_basis)}</span>
       <span>${escapeHtml(facts.developer)}</span>
-      ·
+      |
       <span>${escapeHtml(facts.license)}</span>
     </p>
     ${related}
@@ -157,7 +157,7 @@ function detailHtml(entry: CatalogEntry, facts: ModelFacts): string {
     <div class="label-plane" aria-label="Model Facts label">
       <div class="label-plane-inner">
         <h2>Model Facts</h2>
-        <div class="serving">${escapeHtml(facts.name)} · ${escapeHtml(facts.status)}</div>
+        <div class="serving">${escapeHtml(facts.name)} | ${escapeHtml(facts.status)}</div>
         <div class="label-cols">
           <div class="row thick"><strong>Architecture</strong><span>${escapeHtml(a.type)}</span></div>
           <div class="row thick"><strong>Parameters</strong><span>${escapeHtml(a.parameters)}${a.active_parameters ? ` (${escapeHtml(a.active_parameters)} active)` : ""}</span></div>
@@ -173,7 +173,7 @@ function detailHtml(entry: CatalogEntry, facts: ModelFacts): string {
           <div class="row"><strong>Reasoning / math</strong><span>${escapeHtml(c.reasoning_math)} <em>claimed</em></span></div>
           <div class="row"><strong>Coding</strong><span>${escapeHtml(c.coding)} <em>claimed</em></span></div>
           <div class="row"><strong>Vision</strong><span>${escapeHtml(c.vision_input)}</span></div>
-          <div class="row"><strong>Tool use</strong><span>${escapeHtml(c.tool_use ?? "—")}</span></div>
+          <div class="row"><strong>Tool use</strong><span>${escapeHtml(c.tool_use ?? "-")}</span></div>
           ${benchmarks ? `<div class="deps"><b>Benchmarks</b> <em>(as published; not ModelFacts-run)</em></div>${benchmarks}` : ""}
           ${sourceLinks ? `<div class="deps"><b>Sources</b></div>${sourceLinks}` : ""}
         </div>
@@ -184,7 +184,7 @@ function detailHtml(entry: CatalogEntry, facts: ModelFacts): string {
       <h2>Sources for judgments</h2>
       <p>
         Capability and safety levels above are <strong>${escapeHtml(entry.capability_basis)}</strong>
-        readings of published docs — not independent ModelFacts measurements.
+        readings of published docs - not independent ModelFacts measurements.
         Prefer objective fields (context, modalities, tools, cutoff, access) when selecting a model.
       </p>
       ${
@@ -196,14 +196,14 @@ function detailHtml(entry: CatalogEntry, facts: ModelFacts): string {
 
     <p class="footnote">
       See <a href="https://github.com/Catalyst-Forge-LLC/model-facts/blob/main/specs/DIRECTORY_SPEC.md">DIRECTORY_SPEC.md</a>
-      · Agent guide: <a href="/directory/AGENTS.md">/directory/AGENTS.md</a>
+      | Agent guide: <a href="/directory/AGENTS.md">/directory/AGENTS.md</a>
     </p>
   </main>
 
   <footer>
     <div class="wrap row">
-      <div>© 2026 ModelFacts · <a href="https://www.catalystforge.com/">Catalyst Forge</a></div>
-      <div><a href="/directory/">Directory</a> · <a href="https://github.com/Catalyst-Forge-LLC/model-facts">GitHub</a></div>
+      <div>© 2026 ModelFacts | <a href="https://www.catalystforge.com/">Catalyst Forge</a></div>
+      <div><a href="/directory/">Directory</a> | <a href="https://github.com/Catalyst-Forge-LLC/model-facts">GitHub</a></div>
     </div>
   </footer>
 </body>
@@ -228,19 +228,19 @@ for (const m of manifest.models) {
   try {
     text = readFileSync(mdPath, "utf8");
   } catch {
-    console.error(`✗ ${m.slug} — missing MODEL_FACTS.md`);
+    console.error(`✗ ${m.slug} - missing MODEL_FACTS.md`);
     failed = true;
     continue;
   }
   const fm = extractFrontmatter(text);
   if (!fm) {
-    console.error(`✗ ${m.slug} — no frontmatter`);
+    console.error(`✗ ${m.slug} - no frontmatter`);
     failed = true;
     continue;
   }
   const facts = parseYaml(fm) as ModelFacts;
   if (!validate(facts)) {
-    console.error(`✗ ${m.slug} — schema validation failed`);
+    console.error(`✗ ${m.slug} - schema validation failed`);
     for (const err of validate.errors ?? []) {
       console.error(`    ${err.instancePath || "(root)"} ${err.message}`);
     }

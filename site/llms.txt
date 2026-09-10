@@ -16,7 +16,7 @@
 3. Open `/directory/<slug>/facts.json` for the full label
 4. Optional compare: `/directory/compare/?ids=slug-a,slug-b`
 
-Do not treat reasoning/coding enums as calibrated scores — they are published claims (`capability_basis`).
+Do not treat reasoning/coding enums as calibrated scores - they are published claims (`capability_basis`).
 Undisclosed beats guessing.
 
 ## Specs (git)

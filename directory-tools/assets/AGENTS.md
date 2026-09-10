@@ -1,4 +1,4 @@
-# ModelFacts directory — agent guide
+# ModelFacts directory - agent guide
 
 Machine-readable path for shortlisting models. Prefer this over scraping HTML.
 
@@ -16,7 +16,7 @@ Local mirror: same paths under your static site root (`site/`).
 ## Semantics
 
 - **Golden Rule:** objective facts only. Missing public facts are `undisclosed` (or `null`
-  in numeric filter fields) — do not invent sizes, prices, or cutoffs.
+  in numeric filter fields) - do not invent sizes, prices, or cutoffs.
 - **`capability_basis`:** `reviewed_claim` | `claimed` | `measured` (measured unused until
   a harness exists). Reasoning/coding/refusal enums are **published-claim readings**, not
   calibrated rankings. The v0 catalog is mostly flat (`high`); do not treat them as
@@ -47,7 +47,7 @@ Shareable query params on `/directory/`:
 
 | Task | URL |
 |---|---|
-| Local coding ≤24GB | `/directory/?access=open&tools=native&max_vram=24` |
+| Local coding <=24GB | `/directory/?access=open&tools=native&max_vram=24` |
 | Long-context 200k+ | `/directory/?min_context=200000` |
 | Vision + tools | `/directory/?vision=1&tools=native&expert=1` |
 | Raw / lightly filtered | `/directory/?filter=raw` |
@@ -55,7 +55,7 @@ Shareable query params on `/directory/`:
 
 ## Compare
 
-`/directory/compare/?ids=slug-a,slug-b[,slug-c][,slug-d]` — 2–4 slugs, fields from `index.json`.
+`/directory/compare/?ids=slug-a,slug-b[,slug-c][,slug-d]` - 2-4 slugs, fields from `index.json`.
 
 ## Related docs
 

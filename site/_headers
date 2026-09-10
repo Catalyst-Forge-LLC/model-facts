@@ -7,3 +7,13 @@
 /schema/*
   Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=3600
+
+# Workers assets omit charset on deploy; UTF-8 dashes then render as â€”
+/*.md
+  Content-Type: text/markdown; charset=utf-8
+
+/*.txt
+  Content-Type: text/plain; charset=utf-8
+
+/*.json
+  Content-Type: application/json; charset=utf-8

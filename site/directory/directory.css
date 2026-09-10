@@ -106,7 +106,7 @@ a.chip:hover { color: #fff; }
 }
 .expert > summary::-webkit-details-marker { display: none; }
 .expert > summary::after { content: " +"; color: var(--mute); }
-.expert[open] > summary::after { content: " −"; }
+.expert[open] > summary::after { content: " -"; }
 .expert-body {
   padding: 0 0.85rem 0.95rem;
   border-top: 1px solid rgba(255,255,255,0.08);
