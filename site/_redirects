@@ -1,3 +1,0 @@
-# Cloudflare Pages — always land on the folder index
-/directory  /directory/  301
-/directory/:slug  /directory/:slug/  301

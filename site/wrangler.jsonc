@@ -6,7 +6,11 @@
     "enabled": true
   },
   "assets": {
-    "directory": "."
+    "directory": ".",
+    // HTML folders get a trailing slash. Do not add a Pages-style
+    // /directory/:slug _redirects rule — it also matches directory.css,
+    // listing.js, and index.json and 301s them to 404s.
+    "html_handling": "auto-trailing-slash"
   },
   "compatibility_flags": [
     "nodejs_compat"
