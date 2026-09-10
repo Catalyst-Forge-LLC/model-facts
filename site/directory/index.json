@@ -16,6 +16,7 @@
       "context_window": "1M",
       "context_tokens": 1000000,
       "release_date": "2026-06-09",
+      "updated": "2026-06-09",
       "filter_type": "censored",
       "vision_input": "enabled",
       "audio_input": "disabled",
@@ -46,6 +47,8 @@
           "url": "https://platform.claude.com/docs/en/about-claude/models/overview"
         }
       ],
+      "popularity": null,
+      "popularity_n": null,
       "href": "/directory/anthropic-claude-fable-5/",
       "facts_json": "/directory/anthropic-claude-fable-5/facts.json",
       "facts_md": "/directory/anthropic-claude-fable-5/MODEL_FACTS.md"
@@ -63,6 +66,7 @@
       "context_window": "1M",
       "context_tokens": 1000000,
       "release_date": "2026-07-24",
+      "updated": "2026-07-24",
       "filter_type": "censored",
       "vision_input": "enabled",
       "audio_input": "disabled",
@@ -93,6 +97,8 @@
           "url": "https://www.anthropic.com/news/claude-opus-5"
         }
       ],
+      "popularity": null,
+      "popularity_n": null,
       "href": "/directory/anthropic-claude-opus-5/",
       "facts_json": "/directory/anthropic-claude-opus-5/facts.json",
       "facts_md": "/directory/anthropic-claude-opus-5/MODEL_FACTS.md"
@@ -110,6 +116,7 @@
       "context_window": "1M",
       "context_tokens": 1000000,
       "release_date": "2026-06-30",
+      "updated": "2026-06-30",
       "filter_type": "censored",
       "vision_input": "enabled",
       "audio_input": "disabled",
@@ -140,6 +147,8 @@
           "url": "https://www.anthropic.com/claude-sonnet-5-system-card"
         }
       ],
+      "popularity": null,
+      "popularity_n": null,
       "href": "/directory/anthropic-claude-sonnet-5/",
       "facts_json": "/directory/anthropic-claude-sonnet-5/facts.json",
       "facts_md": "/directory/anthropic-claude-sonnet-5/MODEL_FACTS.md"
@@ -156,6 +165,7 @@
       "parameters_b": null,
       "context_window": "undisclosed",
       "context_tokens": null,
+      "updated": "2026-04-30",
       "filter_type": "hybrid",
       "vision_input": "enabled",
       "audio_input": "disabled",
@@ -181,6 +191,8 @@
           "url": "https://huggingface.co/nvidia/Cosmos-Reason2-2B"
         }
       ],
+      "popularity": "910K",
+      "popularity_n": 909941,
       "href": "/directory/ollama-cosmos-reason2-2b/",
       "facts_json": "/directory/ollama-cosmos-reason2-2b/facts.json",
       "facts_md": "/directory/ollama-cosmos-reason2-2b/MODEL_FACTS.md"
@@ -197,6 +209,7 @@
       "parameters_b": 284,
       "context_window": "1M",
       "context_tokens": 1000000,
+      "updated": "2026-08-01",
       "filter_type": "raw",
       "vision_input": "disabled",
       "audio_input": "disabled",
@@ -228,6 +241,8 @@
           "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash"
         }
       ],
+      "popularity": "444.6K",
+      "popularity_n": 444600,
       "href": "/directory/deepseek-v4-flash/",
       "facts_json": "/directory/deepseek-v4-flash/facts.json",
       "facts_md": "/directory/deepseek-v4-flash/MODEL_FACTS.md"
@@ -244,6 +259,7 @@
       "parameters_b": 1600,
       "context_window": "1M",
       "context_tokens": 1000000,
+      "updated": "2026-08-13",
       "filter_type": "raw",
       "vision_input": "disabled",
       "audio_input": "disabled",
@@ -271,6 +287,8 @@
           "url": "https://ollama.com/library/deepseek-v4-pro"
         }
       ],
+      "popularity": "394.5K",
+      "popularity_n": 394500,
       "href": "/directory/deepseek-v4-pro/",
       "facts_json": "/directory/deepseek-v4-pro/facts.json",
       "facts_md": "/directory/deepseek-v4-pro/MODEL_FACTS.md"
@@ -287,6 +305,7 @@
       "parameters_b": null,
       "context_window": "undisclosed",
       "context_tokens": null,
+      "updated": "2026-07-15",
       "filter_type": "hybrid",
       "vision_input": "enabled",
       "audio_input": "disabled",
@@ -312,6 +331,8 @@
           "url": "https://huggingface.co/google/diffusiongemma-26B-A4B-it"
         }
       ],
+      "popularity": "889K",
+      "popularity_n": 889361,
       "href": "/directory/ollama-diffusiongemma-26b-a4b-it/",
       "facts_json": "/directory/ollama-diffusiongemma-26b-a4b-it/facts.json",
       "facts_md": "/directory/ollama-diffusiongemma-26b-a4b-it/MODEL_FACTS.md"
@@ -328,6 +349,7 @@
       "parameters_b": null,
       "context_window": "1M",
       "context_tokens": 1000000,
+      "updated": null,
       "filter_type": "censored",
       "vision_input": "enabled",
       "audio_input": "enabled",
@@ -357,6 +379,8 @@
           "url": "https://ai.google.dev/gemini-api/docs/generate-content/gemini-3"
         }
       ],
+      "popularity": null,
+      "popularity_n": null,
       "href": "/directory/google-gemini-3.1-pro/",
       "facts_json": "/directory/google-gemini-3.1-pro/facts.json",
       "facts_md": "/directory/google-gemini-3.1-pro/MODEL_FACTS.md"
@@ -374,6 +398,7 @@
       "context_window": "1M",
       "context_tokens": 1000000,
       "release_date": "2026-07-21",
+      "updated": "2026-07-21",
       "filter_type": "censored",
       "vision_input": "enabled",
       "audio_input": "enabled",
@@ -403,6 +428,8 @@
           "url": "https://deepmind.google/models/model-cards/gemini-3-6-flash/"
         }
       ],
+      "popularity": null,
+      "popularity_n": null,
       "href": "/directory/google-gemini-3.6-flash/",
       "facts_json": "/directory/google-gemini-3.6-flash/facts.json",
       "facts_md": "/directory/google-gemini-3.6-flash/MODEL_FACTS.md"
@@ -419,6 +446,7 @@
       "parameters_b": 12,
       "context_window": "256k",
       "context_tokens": 256000,
+      "updated": "2026-08-31",
       "filter_type": "hybrid",
       "vision_input": "enabled",
       "audio_input": "disabled",
@@ -446,6 +474,8 @@
           "url": "https://ollama.com/library/gemma4"
         }
       ],
+      "popularity": "24.6M",
+      "popularity_n": 24600000,
       "href": "/directory/google-gemma-4-12b/",
       "facts_json": "/directory/google-gemma-4-12b/facts.json",
       "facts_md": "/directory/google-gemma-4-12b/MODEL_FACTS.md"
@@ -462,6 +492,7 @@
       "parameters_b": 31,
       "context_window": "256k",
       "context_tokens": 256000,
+      "updated": "2026-08-31",
       "filter_type": "hybrid",
       "vision_input": "enabled",
       "audio_input": "disabled",
@@ -489,6 +520,8 @@
           "url": "https://ollama.com/library/gemma4"
         }
       ],
+      "popularity": "24.6M",
+      "popularity_n": 24600000,
       "href": "/directory/google-gemma-4-31b/",
       "facts_json": "/directory/google-gemma-4-31b/facts.json",
       "facts_md": "/directory/google-gemma-4-31b/MODEL_FACTS.md"
@@ -505,6 +538,7 @@
       "parameters_b": null,
       "context_window": "undisclosed",
       "context_tokens": null,
+      "updated": "2026-06-05",
       "filter_type": "hybrid",
       "vision_input": "disabled",
       "audio_input": "disabled",
@@ -530,6 +564,8 @@
           "url": "https://ollama.com/library/glm-4.7-flash"
         }
       ],
+      "popularity": "1.7M",
+      "popularity_n": 1700000,
       "href": "/directory/zai-glm-4.7-flash/",
       "facts_json": "/directory/zai-glm-4.7-flash/facts.json",
       "facts_md": "/directory/zai-glm-4.7-flash/MODEL_FACTS.md"
@@ -546,6 +582,7 @@
       "parameters_b": null,
       "context_window": "198k",
       "context_tokens": 198000,
+      "updated": "2026-04-07",
       "filter_type": "hybrid",
       "vision_input": "disabled",
       "audio_input": "disabled",
@@ -573,6 +610,8 @@
           "url": "https://ollama.com/library/glm-5.1"
         }
       ],
+      "popularity": "2.3M",
+      "popularity_n": 2300000,
       "href": "/directory/zai-glm-5.1/",
       "facts_json": "/directory/zai-glm-5.1/facts.json",
       "facts_md": "/directory/zai-glm-5.1/MODEL_FACTS.md"
@@ -589,6 +628,7 @@
       "parameters_b": null,
       "context_window": "1M",
       "context_tokens": 1000000,
+      "updated": "2026-06-16",
       "filter_type": "hybrid",
       "vision_input": "disabled",
       "audio_input": "disabled",
@@ -616,6 +656,8 @@
           "url": "https://ollama.com/library/glm-5.2"
         }
       ],
+      "popularity": "341.5K",
+      "popularity_n": 341500,
       "href": "/directory/zai-glm-5.2/",
       "facts_json": "/directory/zai-glm-5.2/facts.json",
       "facts_md": "/directory/zai-glm-5.2/MODEL_FACTS.md"
@@ -632,6 +674,7 @@
       "parameters_b": null,
       "context_window": "undisclosed",
       "context_tokens": null,
+      "updated": "2026-09-07",
       "filter_type": "hybrid",
       "vision_input": "enabled",
       "audio_input": "disabled",
@@ -657,6 +700,8 @@
           "url": "https://huggingface.co/zai-org/GLM-5.3-Flash"
         }
       ],
+      "popularity": "1M",
+      "popularity_n": 1023103,
       "href": "/directory/zai-glm-5.3-flash/",
       "facts_json": "/directory/zai-glm-5.3-flash/facts.json",
       "facts_md": "/directory/zai-glm-5.3-flash/MODEL_FACTS.md"
@@ -674,6 +719,7 @@
       "context_window": "1.05M",
       "context_tokens": 1050000,
       "release_date": "2026-07-09",
+      "updated": "2026-07-09",
       "filter_type": "censored",
       "vision_input": "enabled",
       "audio_input": "disabled",
@@ -703,6 +749,8 @@
           "url": "https://developers.openai.com/api/docs/models/gpt-5.6-luna"
         }
       ],
+      "popularity": null,
+      "popularity_n": null,
       "href": "/directory/openai-gpt-5.6-luna/",
       "facts_json": "/directory/openai-gpt-5.6-luna/facts.json",
       "facts_md": "/directory/openai-gpt-5.6-luna/MODEL_FACTS.md"
@@ -720,6 +768,7 @@
       "context_window": "1.05M",
       "context_tokens": 1050000,
       "release_date": "2026-07-09",
+      "updated": "2026-07-09",
       "filter_type": "censored",
       "vision_input": "enabled",
       "audio_input": "disabled",
@@ -749,6 +798,8 @@
           "url": "https://developers.openai.com/api/docs/models/gpt-5.6-sol"
         }
       ],
+      "popularity": null,
+      "popularity_n": null,
       "href": "/directory/openai-gpt-5.6-sol/",
       "facts_json": "/directory/openai-gpt-5.6-sol/facts.json",
       "facts_md": "/directory/openai-gpt-5.6-sol/MODEL_FACTS.md"
@@ -765,6 +816,7 @@
       "parameters_b": 8,
       "context_window": "undisclosed",
       "context_tokens": null,
+      "updated": "2026-05-19",
       "filter_type": "hybrid",
       "vision_input": "disabled",
       "audio_input": "disabled",
@@ -790,6 +842,8 @@
           "url": "https://ollama.com/library/granite4.1"
         }
       ],
+      "popularity": "422K",
+      "popularity_n": 422000,
       "href": "/directory/ibm-granite-4.1/",
       "facts_json": "/directory/ibm-granite-4.1/facts.json",
       "facts_md": "/directory/ibm-granite-4.1/MODEL_FACTS.md"
@@ -806,6 +860,7 @@
       "parameters_b": null,
       "context_window": "500k",
       "context_tokens": 500000,
+      "updated": null,
       "filter_type": "hybrid",
       "vision_input": "enabled",
       "audio_input": "disabled",
@@ -833,6 +888,8 @@
           "url": "https://x.ai/"
         }
       ],
+      "popularity": null,
+      "popularity_n": null,
       "href": "/directory/xai-grok-4.5/",
       "facts_json": "/directory/xai-grok-4.5/facts.json",
       "facts_md": "/directory/xai-grok-4.5/MODEL_FACTS.md"
@@ -849,6 +906,7 @@
       "parameters_b": null,
       "context_window": "undisclosed",
       "context_tokens": null,
+      "updated": "2026-04-20",
       "filter_type": "hybrid",
       "vision_input": "enabled",
       "audio_input": "disabled",
@@ -874,6 +932,8 @@
           "url": "https://ollama.com/library/kimi-k2.6"
         }
       ],
+      "popularity": "466.6K",
+      "popularity_n": 466600,
       "href": "/directory/moonshot-kimi-k2.6/",
       "facts_json": "/directory/moonshot-kimi-k2.6/facts.json",
       "facts_md": "/directory/moonshot-kimi-k2.6/MODEL_FACTS.md"
@@ -890,6 +950,7 @@
       "parameters_b": null,
       "context_window": "undisclosed",
       "context_tokens": null,
+      "updated": "2026-08-16",
       "filter_type": "hybrid",
       "vision_input": "disabled",
       "audio_input": "disabled",
@@ -915,6 +976,8 @@
           "url": "https://huggingface.co/RadixArk/Kimi-K3-DSpark"
         }
       ],
+      "popularity": "2.6M",
+      "popularity_n": 2645687,
       "href": "/directory/moonshot-kimi-k3-dspark/",
       "facts_json": "/directory/moonshot-kimi-k3-dspark/facts.json",
       "facts_md": "/directory/moonshot-kimi-k3-dspark/MODEL_FACTS.md"
@@ -931,6 +994,7 @@
       "parameters_b": 24,
       "context_window": "undisclosed",
       "context_tokens": null,
+      "updated": "2026-02-24",
       "filter_type": "hybrid",
       "vision_input": "disabled",
       "audio_input": "disabled",
@@ -956,6 +1020,8 @@
           "url": "https://ollama.com/library/lfm2"
         }
       ],
+      "popularity": "1.1M",
+      "popularity_n": 1100000,
       "href": "/directory/liquid-lfm2/",
       "facts_json": "/directory/liquid-lfm2/facts.json",
       "facts_md": "/directory/liquid-lfm2/MODEL_FACTS.md"
@@ -972,6 +1038,7 @@
       "parameters_b": 27,
       "context_window": "undisclosed",
       "context_tokens": null,
+      "updated": "2026-04-16",
       "filter_type": "hybrid",
       "vision_input": "enabled",
       "audio_input": "disabled",
@@ -997,6 +1064,8 @@
           "url": "https://ollama.com/library/medgemma"
         }
       ],
+      "popularity": "366.2K",
+      "popularity_n": 366200,
       "href": "/directory/ollama-medgemma/",
       "facts_json": "/directory/ollama-medgemma/facts.json",
       "facts_md": "/directory/ollama-medgemma/MODEL_FACTS.md"
@@ -1013,6 +1082,7 @@
       "parameters_b": null,
       "context_window": "undisclosed",
       "context_tokens": null,
+      "updated": "2026-08-18",
       "filter_type": "hybrid",
       "vision_input": "enabled",
       "audio_input": "enabled",
@@ -1038,6 +1108,8 @@
           "url": "https://huggingface.co/openbmb/MiniCPM-o-2_6"
         }
       ],
+      "popularity": "275K",
+      "popularity_n": 275363,
       "href": "/directory/ollama-minicpm-o-2-6/",
       "facts_json": "/directory/ollama-minicpm-o-2-6/facts.json",
       "facts_md": "/directory/ollama-minicpm-o-2-6/MODEL_FACTS.md"
@@ -1054,6 +1126,7 @@
       "parameters_b": null,
       "context_window": "undisclosed",
       "context_tokens": null,
+      "updated": "2026-08-18",
       "filter_type": "hybrid",
       "vision_input": "enabled",
       "audio_input": "enabled",
@@ -1079,6 +1152,8 @@
           "url": "https://huggingface.co/openbmb/MiniCPM-o-4_5"
         }
       ],
+      "popularity": "694K",
+      "popularity_n": 694166,
       "href": "/directory/ollama-minicpm-o-4-5/",
       "facts_json": "/directory/ollama-minicpm-o-4-5/facts.json",
       "facts_md": "/directory/ollama-minicpm-o-4-5/MODEL_FACTS.md"
@@ -1095,6 +1170,7 @@
       "parameters_b": null,
       "context_window": "undisclosed",
       "context_tokens": null,
+      "updated": "2026-03-18",
       "filter_type": "hybrid",
       "vision_input": "disabled",
       "audio_input": "disabled",
@@ -1122,6 +1198,8 @@
           "url": "https://ollama.com/library/minimax-m2.7"
         }
       ],
+      "popularity": "2.4M",
+      "popularity_n": 2400000,
       "href": "/directory/minimax-m2.7/",
       "facts_json": "/directory/minimax-m2.7/facts.json",
       "facts_md": "/directory/minimax-m2.7/MODEL_FACTS.md"
@@ -1138,6 +1216,7 @@
       "parameters_b": null,
       "context_window": "1M",
       "context_tokens": 1000000,
+      "updated": "2026-06-01",
       "filter_type": "hybrid",
       "vision_input": "enabled",
       "audio_input": "disabled",
@@ -1165,6 +1244,8 @@
           "url": "https://ollama.com/library/minimax-m3"
         }
       ],
+      "popularity": "506.2K",
+      "popularity_n": 506200,
       "href": "/directory/minimax-m3/",
       "facts_json": "/directory/minimax-m3/facts.json",
       "facts_md": "/directory/minimax-m3/MODEL_FACTS.md"
@@ -1181,6 +1262,7 @@
       "parameters_b": 128,
       "context_window": "256k",
       "context_tokens": 256000,
+      "updated": "2026-05-05",
       "filter_type": "hybrid",
       "vision_input": "enabled",
       "audio_input": "disabled",
@@ -1210,6 +1292,8 @@
           "url": "https://huggingface.co/mistralai/Mistral-Medium-3.5-128B"
         }
       ],
+      "popularity": "383K",
+      "popularity_n": 383000,
       "href": "/directory/mistral-medium-3.5/",
       "facts_json": "/directory/mistral-medium-3.5/facts.json",
       "facts_md": "/directory/mistral-medium-3.5/MODEL_FACTS.md"
@@ -1226,6 +1310,7 @@
       "parameters_b": 30,
       "context_window": "undisclosed",
       "context_tokens": null,
+      "updated": "2026-03-16",
       "filter_type": "hybrid",
       "vision_input": "disabled",
       "audio_input": "disabled",
@@ -1251,6 +1336,8 @@
           "url": "https://ollama.com/library/nemotron-3-nano"
         }
       ],
+      "popularity": "820.7K",
+      "popularity_n": 820700,
       "href": "/directory/nvidia-nemotron-3-nano/",
       "facts_json": "/directory/nvidia-nemotron-3-nano/facts.json",
       "facts_md": "/directory/nvidia-nemotron-3-nano/MODEL_FACTS.md"
@@ -1267,6 +1354,7 @@
       "parameters_b": 33,
       "context_window": "undisclosed",
       "context_tokens": null,
+      "updated": "2026-04-27",
       "filter_type": "hybrid",
       "vision_input": "enabled",
       "audio_input": "enabled",
@@ -1294,6 +1382,8 @@
           "url": "https://ollama.com/library/nemotron3"
         }
       ],
+      "popularity": "658K",
+      "popularity_n": 658000,
       "href": "/directory/nvidia-nemotron-3-nano-omni/",
       "facts_json": "/directory/nvidia-nemotron-3-nano-omni/facts.json",
       "facts_md": "/directory/nvidia-nemotron-3-nano-omni/MODEL_FACTS.md"
@@ -1310,6 +1400,7 @@
       "parameters_b": 120,
       "context_window": "undisclosed",
       "context_tokens": null,
+      "updated": "2026-03-11",
       "filter_type": "hybrid",
       "vision_input": "disabled",
       "audio_input": "disabled",
@@ -1337,6 +1428,8 @@
           "url": "https://ollama.com/library/nemotron-3-super"
         }
       ],
+      "popularity": "2.9M",
+      "popularity_n": 2900000,
       "href": "/directory/nvidia-nemotron-3-super/",
       "facts_json": "/directory/nvidia-nemotron-3-super/facts.json",
       "facts_md": "/directory/nvidia-nemotron-3-super/MODEL_FACTS.md"
@@ -1353,6 +1446,7 @@
       "parameters_b": 397,
       "context_window": "undisclosed",
       "context_tokens": null,
+      "updated": "2026-08-19",
       "filter_type": "hybrid",
       "vision_input": "enabled",
       "audio_input": "disabled",
@@ -1378,6 +1472,8 @@
           "url": "https://ollama.com/library/ornith-1.5"
         }
       ],
+      "popularity": "303.9K",
+      "popularity_n": 303900,
       "href": "/directory/ornith-ornith-1.5/",
       "facts_json": "/directory/ornith-ornith-1.5/facts.json",
       "facts_md": "/directory/ornith-ornith-1.5/MODEL_FACTS.md"
@@ -1394,6 +1490,7 @@
       "parameters_b": 35,
       "context_window": "undisclosed",
       "context_tokens": null,
+      "updated": "2026-06-27",
       "filter_type": "raw",
       "vision_input": "disabled",
       "audio_input": "disabled",
@@ -1419,6 +1516,8 @@
           "url": "https://ollama.com/library/ornith"
         }
       ],
+      "popularity": "476K",
+      "popularity_n": 476000,
       "href": "/directory/ornith-35b/",
       "facts_json": "/directory/ornith-35b/facts.json",
       "facts_md": "/directory/ornith-35b/MODEL_FACTS.md"
@@ -1435,6 +1534,7 @@
       "parameters_b": null,
       "context_window": "undisclosed",
       "context_tokens": null,
+      "updated": "2026-09-08",
       "filter_type": "hybrid",
       "vision_input": "enabled",
       "audio_input": "disabled",
@@ -1460,6 +1560,8 @@
           "url": "https://huggingface.co/farbodtavakkoli/OTel-2.0-LLM-31B-IT"
         }
       ],
+      "popularity": "7.2M",
+      "popularity_n": 7164611,
       "href": "/directory/ollama-otel-2.0-llm-31b-it/",
       "facts_json": "/directory/ollama-otel-2.0-llm-31b-it/facts.json",
       "facts_md": "/directory/ollama-otel-2.0-llm-31b-it/MODEL_FACTS.md"
@@ -1476,6 +1578,7 @@
       "parameters_b": null,
       "context_window": "undisclosed",
       "context_tokens": null,
+      "updated": "2026-06-23",
       "filter_type": "hybrid",
       "vision_input": "disabled",
       "audio_input": "disabled",
@@ -1501,6 +1604,8 @@
           "url": "https://huggingface.co/farbodtavakkoli/OTel-LLM-27B-IT"
         }
       ],
+      "popularity": "1.4M",
+      "popularity_n": 1356059,
       "href": "/directory/ollama-otel-llm-27b-it/",
       "facts_json": "/directory/ollama-otel-llm-27b-it/facts.json",
       "facts_md": "/directory/ollama-otel-llm-27b-it/MODEL_FACTS.md"
@@ -1517,6 +1622,7 @@
       "parameters_b": null,
       "context_window": "undisclosed",
       "context_tokens": null,
+      "updated": "2026-06-23",
       "filter_type": "hybrid",
       "vision_input": "disabled",
       "audio_input": "disabled",
@@ -1542,6 +1648,8 @@
           "url": "https://huggingface.co/farbodtavakkoli/OTel-LLM-E4B-IT"
         }
       ],
+      "popularity": "1.6M",
+      "popularity_n": 1566806,
       "href": "/directory/ollama-otel-llm-e4b-it/",
       "facts_json": "/directory/ollama-otel-llm-e4b-it/facts.json",
       "facts_md": "/directory/ollama-otel-llm-e4b-it/MODEL_FACTS.md"
@@ -1558,6 +1666,7 @@
       "parameters_b": 35,
       "context_window": "256k",
       "context_tokens": 256000,
+      "updated": "2026-09-01",
       "filter_type": "hybrid",
       "vision_input": "enabled",
       "audio_input": "disabled",
@@ -1583,6 +1692,8 @@
           "url": "https://ollama.com/library/qwen3.5"
         }
       ],
+      "popularity": "20M",
+      "popularity_n": 20000000,
       "href": "/directory/qwen-qwen3.5-35b/",
       "facts_json": "/directory/qwen-qwen3.5-35b/facts.json",
       "facts_md": "/directory/qwen-qwen3.5-35b/MODEL_FACTS.md"
@@ -1599,6 +1710,7 @@
       "parameters_b": 35,
       "context_window": "256k",
       "context_tokens": 256000,
+      "updated": "2026-09-01",
       "filter_type": "hybrid",
       "vision_input": "enabled",
       "audio_input": "disabled",
@@ -1624,6 +1736,8 @@
           "url": "https://ollama.com/library/qwen3.6"
         }
       ],
+      "popularity": "6.5M",
+      "popularity_n": 6500000,
       "href": "/directory/qwen-qwen3.6-35b/",
       "facts_json": "/directory/qwen-qwen3.6-35b/facts.json",
       "facts_md": "/directory/qwen-qwen3.6-35b/MODEL_FACTS.md"
@@ -1640,6 +1754,7 @@
       "parameters_b": 27,
       "context_window": "undisclosed",
       "context_tokens": null,
+      "updated": "2026-08-14",
       "filter_type": "hybrid",
       "vision_input": "enabled",
       "audio_input": "disabled",
@@ -1665,6 +1780,8 @@
           "url": "https://ollama.com/library/qwen3.8"
         }
       ],
+      "popularity": "1.7M",
+      "popularity_n": 1700000,
       "href": "/directory/qwen-qwen3.8/",
       "facts_json": "/directory/qwen-qwen3.8/facts.json",
       "facts_md": "/directory/qwen-qwen3.8/MODEL_FACTS.md"
@@ -1681,6 +1798,7 @@
       "parameters_b": null,
       "context_window": "undisclosed",
       "context_tokens": null,
+      "updated": "2026-07-13",
       "filter_type": "hybrid",
       "vision_input": "enabled",
       "audio_input": "disabled",
@@ -1706,6 +1824,8 @@
           "url": "https://huggingface.co/raxcore-dev/Rax-4.5"
         }
       ],
+      "popularity": "1.1M",
+      "popularity_n": 1059991,
       "href": "/directory/ollama-rax-4.5/",
       "facts_json": "/directory/ollama-rax-4.5/facts.json",
       "facts_md": "/directory/ollama-rax-4.5/MODEL_FACTS.md"

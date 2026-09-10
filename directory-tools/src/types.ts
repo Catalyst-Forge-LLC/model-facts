@@ -133,6 +133,15 @@ export interface CatalogEntry {
   instruction_following: "high" | "medium" | "low";
   /** From training.knowledge_cutoff; null if undisclosed. */
   knowledge_cutoff: string | null;
+  /**
+   * Last known listing update: Ollama library date, HF lastModified, or
+   * announced release_date for closed APIs. null if none of those exist.
+   */
+  updated: string | null;
+  /** Display pull/download count when known (`24.6M`, `716K`). */
+  popularity: string | null;
+  /** Numeric pulls or HF downloads for filters; null if unknown (often closed). */
+  popularity_n: number | null;
   /** Provider / routing model ids when known. */
   api_ids: string[];
   ollama_tag: string | null;

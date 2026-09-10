@@ -215,6 +215,50 @@ export function parseHfId(weights?: string): string | null {
   return null;
 }
 
+/** Parse "24.6M", "366.2K", "820.7K" into an integer count. */
+export function parseCountLabel(raw?: string): number | null {
+  if (!raw) return null;
+  const s = raw.trim().toLowerCase().replace(/,/g, "");
+  const m = /^(\d+(?:\.\d+)?)\s*([kmb])?$/.exec(s);
+  if (!m) return null;
+  const n = Number(m[1]);
+  const unit = m[2];
+  if (unit === "k") return Math.round(n * 1_000);
+  if (unit === "m") return Math.round(n * 1_000_000);
+  if (unit === "b") return Math.round(n * 1_000_000_000);
+  return Math.round(n);
+}
+
+export function formatCountLabel(n: number): string {
+  if (n >= 1_000_000) {
+    const v = n / 1_000_000;
+    return `${v >= 10 ? v.toFixed(0) : v.toFixed(1).replace(/\.0$/, "")}M`;
+  }
+  if (n >= 1_000) {
+    const v = n / 1_000;
+    return `${v >= 10 ? v.toFixed(0) : v.toFixed(1).replace(/\.0$/, "")}K`;
+  }
+  return String(n);
+}
+
+/** Ollama pulls if present, else HF downloads. Closed/hand rows are usually null. */
+export function listingPopularity(manifest: ManifestModel): {
+  popularity: string | null;
+  popularity_n: number | null;
+} {
+  const fromOllama = parseCountLabel(manifest.ollama_pulls);
+  if (fromOllama != null) {
+    return { popularity: manifest.ollama_pulls ?? formatCountLabel(fromOllama), popularity_n: fromOllama };
+  }
+  if (manifest.hf_downloads != null && manifest.hf_downloads > 0) {
+    return {
+      popularity: formatCountLabel(manifest.hf_downloads),
+      popularity_n: manifest.hf_downloads,
+    };
+  }
+  return { popularity: null, popularity_n: null };
+}
+
 export function knowledgeCutoffOrNull(raw: string): string | null {
   const s = raw.trim();
   if (!s || s.toLowerCase() === "undisclosed") return null;
@@ -279,6 +323,8 @@ export function buildSelectionFields(
   | "family"
   | "related_slugs"
   | "judgment_sources"
+  | "popularity"
+  | "popularity_n"
 > {
   const override = selectionBySlug[manifest.slug] ?? {};
   const ollamaTag =
@@ -315,5 +361,6 @@ export function buildSelectionFields(
       override.judgment_sources && override.judgment_sources.length > 0
         ? override.judgment_sources
         : defaultJudgmentSources(facts),
+    ...listingPopularity(manifest),
   };
 }

@@ -7,7 +7,7 @@ Machine-readable path for shortlisting models. Prefer this over scraping HTML.
 1. `GET https://modelfacts.dev/directory/index.json`
 2. Filter on objective fields first: `weight_access`, `context_tokens`, `tool_use`,
    `vision_input`, `vram_gb_q4`, `commercial_ok`, `speed_tier`, `knowledge_cutoff`,
-   `api_ids`, `ollama_tag`, `hf_id`
+   `updated`, `popularity` / `popularity_n`, `api_ids`, `ollama_tag`, `hf_id`
 3. Open `/directory/<slug>/facts.json` for the full label (frontmatter as JSON)
 4. Optional: raw Markdown at `/directory/<slug>/MODEL_FACTS.md`
 
@@ -38,7 +38,10 @@ Shareable query params on `/directory/`:
 | `max_vram` | GB Q4 proxy; excludes unknown VRAM |
 | `commercial` | exact `commercial_ok` |
 | `speed` | `flash` \| `standard` \| `flagship` |
+| `min_popularity` | Ollama pulls or HF downloads; excludes unknown (often closed) |
 | `filter` | safety `raw` \| `hybrid` \| `censored` |
+| `license` | exact label string (expert) |
+| `curation` | `reviewed` \| `draft` (expert) |
 | `vision` / `audio` | `1` |
 | `tools` | `any` \| `native` |
 | claimed levels | `min_reasoning`, `min_coding`, `refusal`, `instruction` (weak signal) |

@@ -136,6 +136,9 @@ Selection enrichments are authored in
 | `parameters_b` | number \| `null` | Parsed parameter count in billions for filters (`null` if undisclosed) |
 | `context_tokens` | number \| `null` | Parsed context length in tokens for filters (`null` if undisclosed) |
 | `knowledge_cutoff` | string \| `null` | From `training.knowledge_cutoff` (`null` if undisclosed) |
+| `updated` | string \| `null` | Ollama library date, HF `lastModified`, or announced `release_date` |
+| `popularity` | string \| `null` | Display pull/download count (`24.6M`, `716K`) |
+| `popularity_n` | number \| `null` | Numeric Ollama pulls or HF downloads for filters |
 | `api_ids` | string[] | Provider / routing model ids when known |
 | `ollama_tag` | string \| `null` | Ollama library tag when `source.type` is `ollama` |
 | `hf_id` | string \| `null` | `org/name` when weights URL is on Hugging Face (or explicit) |
@@ -164,7 +167,9 @@ Example: `/directory/?access=open&vision=1&min_context=128000&tools=native&max_v
 | `max_vram` | number (GB) | Keep models with `vram_gb_q4` ≤ value; excludes unknown VRAM |
 | `commercial` | `yes` \| `no` \| `conditional` \| `undisclosed` | Exact `commercial_ok` |
 | `speed` | `flash` \| `standard` \| `flagship` | Exact `speed_tier` |
+| `min_popularity` | number | Keep models with `popularity_n` >= value; excludes unknown |
 | `filter` | `raw` \| `hybrid` \| `censored` | Safety filter type |
+| `license` | string | Exact `license` string |
 | `vision` / `audio` | `1` | Require enabled input modality |
 | `tools` | `any` \| `native` | Tool use present, or native only |
 | `min_reasoning` / `min_coding` / `instruction` | `medium` \| `high` | Minimum level |
@@ -173,8 +178,8 @@ Example: `/directory/?access=open&vision=1&min_context=128000&tools=native&max_v
 | `curation` | `draft` \| `reviewed` | Catalog curation |
 | `expert` | `1` | Keep the expert panel open |
 
-When `min_params`, `min_context`, or `max_vram` is active, the listing shows how many models
-were omitted because the numeric field is `null` (e.g. closed APIs with undisclosed params).
+When `min_params`, `min_context`, `max_vram`, or `min_popularity` is active, the listing shows
+how many models were omitted because the numeric field is `null` (e.g. closed APIs).
 
 Catalog entries also expose `vision_input`, `audio_input`, `tool_use`, `reasoning_math`,
 `coding`, `refusal_sensitivity`, `instruction_following`, and the Phase 1 selection fields

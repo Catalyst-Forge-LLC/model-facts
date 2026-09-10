@@ -15,7 +15,7 @@ import { Ajv } from "ajv";
 import addFormats from "ajv-formats";
 import { parse as parseYaml } from "yaml";
 import { buildSelectionFields } from "./selection.js";
-import type { Catalog, CatalogEntry, Manifest, ModelFacts } from "./types.js";
+import type { Catalog, CatalogEntry, Manifest, ManifestModel, ModelFacts } from "./types.js";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = resolve(here, "../..");
@@ -67,6 +67,14 @@ export function parseContextTokens(raw: string): number | null {
   if (unit === "m") return Math.round(n * 1_000_000);
   if (unit === "b") return Math.round(n * 1_000_000_000);
   return Math.round(n);
+}
+
+/** Ollama/HF listing date, else announced release_date. Date-only YYYY-MM-DD. */
+function listingUpdated(m: ManifestModel, facts: ModelFacts): string | null {
+  const raw = m.ollama_updated || m.hf_updated || facts.release_date;
+  if (!raw) return null;
+  const day = raw.slice(0, 10);
+  return /^\d{4}-\d{2}-\d{2}$/.test(day) ? day : raw;
 }
 
 function shortUrl(url: string): string {
@@ -263,6 +271,7 @@ for (const m of manifest.models) {
     context_window: facts.architecture.context_window,
     context_tokens: parseContextTokens(facts.architecture.context_window),
     release_date: facts.release_date,
+    updated: listingUpdated(m, facts),
     filter_type: facts.safety.filter_type,
     vision_input: facts.capabilities.vision_input,
     audio_input: facts.capabilities.audio_input,

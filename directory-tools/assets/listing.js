@@ -10,6 +10,16 @@ function uniqueSorted(values) {
   return [...new Set(values)].sort((a, b) => a.localeCompare(b));
 }
 
+/** Collapse draft casing (mit / MIT) so the license filter stays exact-but-usable. */
+function prettyLicense(raw) {
+  const s = String(raw || "").trim();
+  const lower = s.toLowerCase();
+  if (lower === "mit") return "MIT";
+  if (lower === "apache-2.0" || lower === "apache 2.0") return "Apache-2.0";
+  if (lower === "unknown") return "UNKNOWN";
+  return s;
+}
+
 const LEVEL = { low: 1, medium: 2, high: 3 };
 const COMPARE_KEY = "mf-compare-slugs";
 const MAX_COMPARE = 4;
@@ -26,6 +36,8 @@ function emptyState() {
     filterType: "",
     commercial: "",
     speed: "",
+    minPopularity: 0,
+    license: "",
     vision: false,
     audio: false,
     tools: "",
@@ -56,6 +68,8 @@ function parseUrlState() {
       ? commercial
       : "",
     speed: ["flash", "standard", "flagship", "undisclosed"].includes(speed) ? speed : "",
+    minPopularity: Number(p.get("min_popularity") || 0) || 0,
+    license: p.get("license") || "",
     vision: p.get("vision") === "1",
     audio: p.get("audio") === "1",
     tools: toolsRaw === "native" || toolsRaw === "any" ? toolsRaw : "",
@@ -65,7 +79,9 @@ function parseUrlState() {
     instruction: p.get("instruction") || "",
     status: p.get("status") || "",
     curation: p.get("curation") || "",
-    expert: p.get("expert") === "1",
+    expert:
+      p.get("expert") === "1" ||
+      Boolean(p.get("license") || p.get("curation") || p.get("status")),
   };
 }
 
@@ -80,6 +96,8 @@ function writeUrl(state) {
   if (state.filterType) p.set("filter", state.filterType);
   if (state.commercial) p.set("commercial", state.commercial);
   if (state.speed) p.set("speed", state.speed);
+  if (state.minPopularity > 0) p.set("min_popularity", String(state.minPopularity));
+  if (state.license) p.set("license", state.license);
   if (state.vision) p.set("vision", "1");
   if (state.audio) p.set("audio", "1");
   if (state.tools) p.set("tools", state.tools);
@@ -149,6 +167,8 @@ async function main() {
   const filterTypeEl = document.getElementById("filter-type");
   const commercialEl = document.getElementById("commercial");
   const speedEl = document.getElementById("speed");
+  const minPopularityEl = document.getElementById("min-popularity");
+  const licenseEl = document.getElementById("license");
   const resetEl = document.getElementById("reset");
   const expertEl = document.getElementById("expert");
   const visionEl = document.getElementById("vision");
@@ -172,6 +192,12 @@ async function main() {
     opt.value = name;
     opt.textContent = name;
     developerEl.appendChild(opt);
+  }
+  for (const name of uniqueSorted(catalog.models.map((m) => prettyLicense(m.license)).filter(Boolean))) {
+    const opt = document.createElement("option");
+    opt.value = name;
+    opt.textContent = name;
+    licenseEl.appendChild(opt);
   }
 
   let state = parseUrlState();
@@ -202,6 +228,8 @@ async function main() {
     filterTypeEl.value = state.filterType;
     commercialEl.value = state.commercial;
     speedEl.value = state.speed;
+    minPopularityEl.value = state.minPopularity > 0 ? String(state.minPopularity) : "";
+    licenseEl.value = state.license;
     visionEl.checked = state.vision;
     audioEl.checked = state.audio;
     toolsEl.checked = state.tools === "any";
@@ -227,6 +255,8 @@ async function main() {
     state.filterType = filterTypeEl.value;
     state.commercial = commercialEl.value;
     state.speed = speedEl.value;
+    state.minPopularity = Number(minPopularityEl.value || 0) || 0;
+    state.license = licenseEl.value;
     state.vision = visionEl.checked;
     state.audio = audioEl.checked;
     if (toolsNativeEl.checked) state.tools = "native";
@@ -274,6 +304,10 @@ async function main() {
     if (!meetsMinLevel(m.instruction_following, state.instruction)) return false;
     if (state.status && m.status !== state.status) return false;
     if (state.curation && m.curation !== state.curation) return false;
+    if (state.license && prettyLicense(m.license) !== state.license) return false;
+    if (state.minPopularity > 0) {
+      if (m.popularity_n == null || m.popularity_n < state.minPopularity) return false;
+    }
     if (state.q) {
       const hay = [
         m.name,
@@ -283,6 +317,7 @@ async function main() {
         ...(m.api_ids || []),
         m.ollama_tag || "",
         m.hf_id || "",
+        m.license || "",
       ]
         .join(" ")
         .toLowerCase();
@@ -304,6 +339,10 @@ async function main() {
     if (state.maxVram > 0) {
       const n = all.filter((m) => m.vram_gb_q4 == null).length;
       if (n) notes.push(`${n} omitted: VRAM unknown (often closed APIs)`);
+    }
+    if (state.minPopularity > 0) {
+      const n = all.filter((m) => m.popularity_n == null).length;
+      if (n) notes.push(`${n} omitted: popularity unknown (often closed APIs)`);
     }
     return notes;
   }
@@ -337,6 +376,7 @@ async function main() {
           <td><span class="${capClass(toolsOn)}">${escapeHtml(fmtTools(m.tool_use))}</span></td>
           <td><span class="${capClass(visionOn)}">${escapeHtml(fmtVision(m.vision_input))}</span></td>
           <td>${escapeHtml(fmtCutoff(m.knowledge_cutoff))}</td>
+          <td>${escapeHtml(fmtCutoff(m.updated))}</td>
           <td><span class="badge commercial-${escapeHtml(m.commercial_ok)}">${escapeHtml(m.commercial_ok)}</span></td>
           <td>${escapeHtml(m.speed_tier)}</td>
           <td><span class="badge ${escapeHtml(m.weight_access)}">${escapeHtml(m.weight_access)}</span></td>
@@ -406,6 +446,8 @@ async function main() {
     filterTypeEl,
     commercialEl,
     speedEl,
+    minPopularityEl,
+    licenseEl,
     visionEl,
     audioEl,
     minReasoningEl,
