@@ -39,6 +39,7 @@ Shareable query params on `/directory/`:
 | `commercial` | exact `commercial_ok` |
 | `speed` | `flash` \| `standard` \| `flagship` |
 | `min_popularity` | Ollama pulls or HF downloads; excludes unknown (often closed) |
+| `max_age_days` | `7` / `30` / `180` on `updated`; excludes missing dates |
 | `filter` | safety `raw` \| `hybrid` \| `censored` |
 | `license` | exact label string (expert) |
 | `curation` | `reviewed` \| `draft` (expert) |

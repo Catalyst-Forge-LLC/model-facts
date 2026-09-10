@@ -11,6 +11,14 @@ function uniqueSorted(values) {
 }
 
 /** Collapse draft casing (mit / MIT) so the license filter stays exact-but-usable. */
+/** Rolling window; 6 months = 180 days to match rebuild `withinMonths(..., 6)`. */
+function withinDays(iso, days, now = Date.now()) {
+  if (!iso || !days) return false;
+  const then = Date.parse(`${iso.slice(0, 10)}T00:00:00Z`);
+  if (Number.isNaN(then)) return false;
+  return now - then <= days * 86_400_000;
+}
+
 function prettyLicense(raw) {
   const s = String(raw || "").trim();
   const lower = s.toLowerCase();
@@ -37,6 +45,7 @@ function emptyState() {
     commercial: "",
     speed: "",
     minPopularity: 0,
+    maxAgeDays: 0,
     license: "",
     vision: false,
     audio: false,
@@ -69,6 +78,7 @@ function parseUrlState() {
       : "",
     speed: ["flash", "standard", "flagship", "undisclosed"].includes(speed) ? speed : "",
     minPopularity: Number(p.get("min_popularity") || 0) || 0,
+    maxAgeDays: Number(p.get("max_age_days") || 0) || 0,
     license: p.get("license") || "",
     vision: p.get("vision") === "1",
     audio: p.get("audio") === "1",
@@ -97,6 +107,7 @@ function writeUrl(state) {
   if (state.commercial) p.set("commercial", state.commercial);
   if (state.speed) p.set("speed", state.speed);
   if (state.minPopularity > 0) p.set("min_popularity", String(state.minPopularity));
+  if (state.maxAgeDays > 0) p.set("max_age_days", String(state.maxAgeDays));
   if (state.license) p.set("license", state.license);
   if (state.vision) p.set("vision", "1");
   if (state.audio) p.set("audio", "1");
@@ -168,6 +179,7 @@ async function main() {
   const commercialEl = document.getElementById("commercial");
   const speedEl = document.getElementById("speed");
   const minPopularityEl = document.getElementById("min-popularity");
+  const maxAgeDaysEl = document.getElementById("max-age-days");
   const licenseEl = document.getElementById("license");
   const resetEl = document.getElementById("reset");
   const expertEl = document.getElementById("expert");
@@ -229,6 +241,7 @@ async function main() {
     commercialEl.value = state.commercial;
     speedEl.value = state.speed;
     minPopularityEl.value = state.minPopularity > 0 ? String(state.minPopularity) : "";
+    maxAgeDaysEl.value = state.maxAgeDays > 0 ? String(state.maxAgeDays) : "";
     licenseEl.value = state.license;
     visionEl.checked = state.vision;
     audioEl.checked = state.audio;
@@ -256,6 +269,7 @@ async function main() {
     state.commercial = commercialEl.value;
     state.speed = speedEl.value;
     state.minPopularity = Number(minPopularityEl.value || 0) || 0;
+    state.maxAgeDays = Number(maxAgeDaysEl.value || 0) || 0;
     state.license = licenseEl.value;
     state.vision = visionEl.checked;
     state.audio = audioEl.checked;
@@ -308,6 +322,9 @@ async function main() {
     if (state.minPopularity > 0) {
       if (m.popularity_n == null || m.popularity_n < state.minPopularity) return false;
     }
+    if (state.maxAgeDays > 0) {
+      if (!withinDays(m.updated, state.maxAgeDays)) return false;
+    }
     if (state.q) {
       const hay = [
         m.name,
@@ -343,6 +360,10 @@ async function main() {
     if (state.minPopularity > 0) {
       const n = all.filter((m) => m.popularity_n == null).length;
       if (n) notes.push(`${n} omitted: popularity unknown (often closed APIs)`);
+    }
+    if (state.maxAgeDays > 0) {
+      const n = all.filter((m) => !m.updated).length;
+      if (n) notes.push(`${n} omitted: no listing/release date`);
     }
     return notes;
   }
@@ -447,6 +468,7 @@ async function main() {
     commercialEl,
     speedEl,
     minPopularityEl,
+    maxAgeDaysEl,
     licenseEl,
     visionEl,
     audioEl,

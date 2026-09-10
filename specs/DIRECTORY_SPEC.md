@@ -168,6 +168,7 @@ Example: `/directory/?access=open&vision=1&min_context=128000&tools=native&max_v
 | `commercial` | `yes` \| `no` \| `conditional` \| `undisclosed` | Exact `commercial_ok` |
 | `speed` | `flash` \| `standard` \| `flagship` | Exact `speed_tier` |
 | `min_popularity` | number | Keep models with `popularity_n` >= value; excludes unknown |
+| `max_age_days` | `7` \| `30` \| `180` | Keep models whose `updated` is within that many days; excludes missing dates |
 | `filter` | `raw` \| `hybrid` \| `censored` | Safety filter type |
 | `license` | string | Exact `license` string |
 | `vision` / `audio` | `1` | Require enabled input modality |
@@ -178,8 +179,8 @@ Example: `/directory/?access=open&vision=1&min_context=128000&tools=native&max_v
 | `curation` | `draft` \| `reviewed` | Catalog curation |
 | `expert` | `1` | Keep the expert panel open |
 
-When `min_params`, `min_context`, `max_vram`, or `min_popularity` is active, the listing shows
-how many models were omitted because the numeric field is `null` (e.g. closed APIs).
+When `min_params`, `min_context`, `max_vram`, `min_popularity`, or `max_age_days` is active, the
+listing shows how many models were omitted because the field is missing (e.g. closed APIs).
 
 Catalog entries also expose `vision_input`, `audio_input`, `tool_use`, `reasoning_math`,
 `coding`, `refusal_sensitivity`, `instruction_following`, and the Phase 1 selection fields

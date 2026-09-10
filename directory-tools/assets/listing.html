@@ -120,6 +120,15 @@
         </select>
       </label>
       <label>
+        <span>Updated within</span>
+        <select id="max-age-days" name="max_age_days">
+          <option value="">Any</option>
+          <option value="7">7 days</option>
+          <option value="30">30 days</option>
+          <option value="180">6 months</option>
+        </select>
+      </label>
+      <label>
         <span>Filter type</span>
         <select id="filter-type" name="filter">
           <option value="">Any</option>
@@ -206,7 +215,8 @@
         <p class="expert-hint">
           Query params: <code>access</code> <code>q</code> <code>developer</code> <code>min_params</code>
           <code>min_context</code> <code>max_vram</code> <code>commercial</code> <code>speed</code>
-          <code>min_popularity</code> <code>filter</code> <code>vision</code> <code>audio</code>
+          <code>min_popularity</code> <code>max_age_days</code> <code>filter</code> <code>vision</code>
+          <code>audio</code>
           <code>tools</code> (<code>any</code>|<code>native</code>) claimed:
           <code>min_reasoning</code> <code>min_coding</code> <code>refusal</code>
           <code>instruction</code> | <code>status</code> <code>curation</code> <code>license</code>
