@@ -364,6 +364,10 @@ async function main() {
     updateCompareBar();
   });
 
+  compareGo.addEventListener("click", (ev) => {
+    if (compareSlugs.length < 2) ev.preventDefault();
+  });
+
   compareClear.addEventListener("click", () => {
     compareSlugs = [];
     saveCompare(compareSlugs);

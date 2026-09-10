@@ -192,6 +192,7 @@ td a:hover { color: var(--accent-soft); }
   border-top: 1px solid rgba(124, 92, 240, 0.45);
   backdrop-filter: blur(8px);
 }
+.compare-bar[hidden] { display: none; }
 .compare-bar .chip { text-decoration: none; }
 .compare-table th[scope="row"] {
   color: var(--mute); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.04em;
