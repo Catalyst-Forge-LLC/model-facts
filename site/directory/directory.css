@@ -165,7 +165,11 @@ a.chip:hover { color: #fff; }
 .omit-note {
   color: #d4b87a; font-size: 0.75rem; margin: 0 0 0.45rem;
 }
-.empty { color: var(--mute); font-size: 0.9rem; margin: 1.25rem 0 0; }
+.empty {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.65rem;
+  color: var(--mute); font-size: 0.9rem; margin: 1.25rem 0 0;
+}
+.empty[hidden] { display: none; }
 .table-wrap { overflow-x: auto; border-top: 1px solid rgba(255,255,255,0.1); }
 table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
 th, td { text-align: left; padding: 0.65rem 0.45rem; border-bottom: 1px solid rgba(255,255,255,0.08); white-space: nowrap; }

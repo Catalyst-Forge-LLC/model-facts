@@ -49,7 +49,7 @@
           <span class="sr-only">Search models</span>
           <input type="search" id="q" name="q" placeholder="Search..." autocomplete="off" />
         </label>
-        <button type="button" class="chip reset" id="reset" hidden>Clear</button>
+        <button type="button" class="chip reset" id="reset" hidden>Clear filters</button>
       </div>
     </div>
 
@@ -251,13 +251,16 @@
         <tbody id="rows"></tbody>
       </table>
     </div>
-    <p class="empty" id="empty" hidden>No models match these filters.</p>
+    <p class="empty" id="empty" hidden>
+      No models match these filters.
+      <button type="button" class="chip reset" id="empty-reset">Clear filters</button>
+    </p>
   </main>
 
   <div class="compare-bar" id="compare-bar" hidden>
     <span id="compare-label">0 selected</span>
     <a class="chip" id="compare-go" href="/directory/compare/">Compare</a>
-    <button type="button" class="chip" id="compare-clear">Clear</button>
+    <button type="button" class="chip" id="compare-clear">Clear selection</button>
   </div>
 
   <footer>

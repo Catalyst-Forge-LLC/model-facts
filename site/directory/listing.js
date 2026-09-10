@@ -182,6 +182,7 @@ async function main() {
   const maxAgeDaysEl = document.getElementById("max-age-days");
   const licenseEl = document.getElementById("license");
   const resetEl = document.getElementById("reset");
+  const emptyResetEl = document.getElementById("empty-reset");
   const expertEl = document.getElementById("expert");
   const visionEl = document.getElementById("vision");
   const audioEl = document.getElementById("audio");
@@ -215,11 +216,19 @@ async function main() {
   let state = parseUrlState();
   let syncing = false;
   let compareSlugs = loadCompare();
+  const bySlug = new Map(catalog.models.map((m) => [m.slug, m]));
 
   function updateCompareBar() {
     const n = compareSlugs.length;
     compareBar.hidden = n === 0;
-    compareLabel.textContent = `${n} selected for compare (max ${MAX_COMPARE})`;
+    const hidden = compareSlugs.filter((s) => {
+      const m = bySlug.get(s);
+      return !m || !matches(m);
+    }).length;
+    const base = `${n} selected for compare (max ${MAX_COMPARE})`;
+    compareLabel.textContent = hidden
+      ? `${base} - ${hidden} hidden by filters`
+      : base;
     compareGo.href =
       n >= 2
         ? `/directory/compare/?ids=${encodeURIComponent(compareSlugs.join(","))}`
@@ -484,11 +493,13 @@ async function main() {
     el.addEventListener("change", render);
   }
 
-  resetEl.addEventListener("click", () => {
+  function clearFilters() {
     state = emptyState();
     applyStateToControls();
     render();
-  });
+  }
+  resetEl.addEventListener("click", clearFilters);
+  emptyResetEl.addEventListener("click", clearFilters);
 
   window.addEventListener("popstate", () => {
     state = parseUrlState();
