@@ -1,11 +1,18 @@
-# ModelFacts Specification — v0.1.1
+# ModelFacts Specification — v0.1.2
 
 > *"Know the weights behind the words."*
 
-ModelFacts is a "Nutrition Facts" label for AI models — the sibling standard to
-[AppFacts](https://appfacts.dev). AppFacts describes the **body** of software (what an app
-is built from); ModelFacts describes the **brain** (what went into a model's intelligence
-layer: architecture, training provenance, capabilities, and safety profile).
+ModelFacts is a compact companion to a model's existing card. It summarizes documented
+architecture, provenance, limits, and reported evaluations in a short
+`MODEL_FACTS.md` that sits beside the source card. It does not replace
+[Hugging Face model cards](https://huggingface.co/docs/hub/en/model-cards) or their
+YAML metadata. Those cards already carry license, task, dataset, and evaluation fields.
+ModelFacts imports a consistent slice of that record and leaves usage notes, bias
+writeups, and full evaluation reports on the source card.
+
+It is the sibling label to [AppFacts](https://appfacts.dev). AppFacts describes the
+**body** of software (what an app is built from). ModelFacts describes the
+**brain** (architecture, training provenance, capabilities, and safety profile).
 
 ## File
 
@@ -16,10 +23,16 @@ layer is documented next to the `APP_FACTS.md` that documents the stack.
 
 ## The Golden Rule
 
-If a piece of information is **subjective** (*"this model is very creative"*), it does
-**not** belong in ModelFacts. If it is **objective** (*"trained on 15T tokens with a 128k
-context window"*), it does. When an objective fact is not publicly disclosed, say so
-explicitly (`undisclosed`) rather than guessing.
+Put documented facts in the label. Marketing language stays out. A published number
+needs a named source and the evaluated variant. When a fact is not public, write
+`undisclosed` rather than guessing.
+
+Capability and safety **levels** (`high` / `medium` / `low`, and the filter enum) are
+fixed-vocabulary **assessments**. A closed enum makes files comparable. It does not
+make a rating a measurement, and it does not create a ModelFacts test protocol.
+Record the evidence basis next to each assessment (YAML comment, `capabilities.notes`,
+or catalog `capability_basis`). If there is no published basis, say the field is
+unresolved. Do not describe these ratings as inherently objective.
 
 ## Structure
 
@@ -91,38 +104,52 @@ numbers.
 
 ### `capabilities` (the "functional limits")
 
-What the model can do **out of the box**, without external tools or plugins. Levels are a
-closed enum so files are comparable.
+What the model can do **out of the box**, without external tools or plugins.
+`vision_input`, `audio_input`, and `tool_use` record stated modalities and interfaces.
+`reasoning_math` and `coding` are **assessments** on a closed enum so files are
+comparable. They are not a reproducible ModelFacts protocol. These fields are required
+in v0.1.0, so a file cannot omit them. Use `notes` (and comments in featured files)
+for the evidence basis, or mark the reading unresolved.
 
 | Key | Type | Required | Values |
 |---|---|---|---|
 | `natural_language` | enum | ✅ | `full`, `limited` |
-| `reasoning_math` | enum | ✅ | `high`, `medium`, `low` |
-| `coding` | enum | ✅ | `high`, `medium`, `low` |
+| `reasoning_math` | enum | ✅ | `high`, `medium`, `low` (assessment) |
+| `coding` | enum | ✅ | `high`, `medium`, `low` (assessment) |
 | `vision_input` | enum | ✅ | `enabled`, `disabled` |
 | `audio_input` | enum | ✅ | `enabled`, `disabled` |
 | `tool_use` | enum | | `native`, `prompted`, `none` — function calling / structured tool use |
 | `languages` | string | | e.g. `"8 languages officially supported"` |
-| `notes` | string | | One line of objective nuance, e.g. supported programming languages |
+| `notes` | string | | Evidence basis for assessments, plus stated nuance such as supported languages |
 
 ### `safety` (the "safety label")
 
-The "temperature" of the model's built-in filters — vital for developers deciding whether
-they must add their own guardrails.
+The temperature of the model's built-in filters, for developers deciding whether they
+must add their own guardrails. `refusal_sensitivity`, `instruction_following`, and
+`filter_type` are **assessments**. They are required enums in v0.1.0. A listed value
+without a published basis should be labeled unresolved in comments or nearby notes.
+`hallucination_benchmark` is optional. Omit it when the evaluated artifact has no
+named, sourced score. Do not invent one.
 
 | Key | Type | Required | Values / description |
 |---|---|---|---|
-| `refusal_sensitivity` | enum | ✅ | `low`, `medium`, `high` — how aggressively it refuses prompts it deems harmful |
-| `instruction_following` | enum | ✅ | `high`, `medium`, `low` — adherence to system prompts vs. pre-set weights |
-| `filter_type` | enum | ✅ | `raw`, `censored`, `hybrid` |
-| `hallucination_benchmark` | object | | `{name, score}` from a standardized benchmark, e.g. `{name: TruthfulQA, score: 0.62}` |
+| `refusal_sensitivity` | enum | ✅ | `low`, `medium`, `high` (assessment of how aggressively it refuses prompts it deems harmful) |
+| `instruction_following` | enum | ✅ | `high`, `medium`, `low` (assessment of adherence to system prompts vs pre-set weights) |
+| `filter_type` | enum | ✅ | `raw`, `censored`, `hybrid` (assessment) |
+| `hallucination_benchmark` | object | | Optional `{name, score}` copied from a named source for this variant |
 
 ### `benchmarks` (the "nutrition value")
 
-Optional but strongly recommended — standardized metrics for objective comparison.
-**0–10 items** of `{name, score, notes?}`. Recommended names: `MMLU`, `GSM8K`,
-`HumanEval`, `HumanPreference` (win-rate vs. a stated baseline). Record the score as
-published, and use `notes` for shot count / variant (e.g. `5-shot`, `pass@1`).
+Optional published scores for comparison. **0–10 items** of `{name, score, notes?}`.
+Common names when the source reports them: `MMLU`, `GSM8K`, `HumanEval`,
+`HumanPreference` (win-rate vs a stated baseline). ModelFacts does not define a
+required benchmark suite. Omit a score rather than invent one.
+
+Record the score as published. Use `notes` for shot count, metric, the evaluated
+variant, and the named source (for example Meta's Llama 3.1 model card for
+`Llama-3.1-70B-Instruct`). Say whether the figure is publisher-reported or
+independently measured. A quantized, prompted, or locally modified artifact does not
+inherit the base model's numbers unless that source evaluated that artifact.
 
 ## Optional fields
 
@@ -139,15 +166,19 @@ published, and use `notes` for shot count / variant (e.g. `5-shot`, `pass@1`).
 
 ## Conventions
 
-- **Objective facts only** (the Golden Rule). Marketing language and vibes belong in the
-  README, not here.
+- Follow the Golden Rule. Marketing language belongs in the README, not here.
+- Fixed-vocabulary capability and safety ratings are assessments, not measurements.
 - **`undisclosed` over omission** for facts the developer knowingly withholds
-  (`parameters`, `tokens`, `data_composition`) — the *absence* of a fact is itself a fact
-  worth labeling.
+  (`parameters`, `tokens`, `data_composition`). The *absence* of a fact is itself a fact
+  worth labeling. Capability and safety enums have no `undisclosed` value in v0.1.0.
+  Label an unsupported reading as an assessment with an unresolved basis.
 - Curate, don't dump: `data_composition` ≤ 8 rows, `benchmarks` ≤ 10 rows.
 - One `MODEL_FACTS.md` per model *version*. A quantized re-release is a new file (the
-  `quantization` field is precisely what changed).
+  `quantization` field is precisely what changed). Do not copy the base file's scores
+  onto that new file unless the source measured that quantization.
 - Keep the body short enough to skim in under a minute.
+- A file that passes the JSON Schema is well-formed. Schema validity is not a truth
+  check.
 - **Canonical schema URL** (matches the schema `$id`):
   [`https://modelfacts.dev/schema/model-facts.schema.json`](https://modelfacts.dev/schema/model-facts.schema.json)
   Source in this repo: [`site/schema/model-facts.schema.json`](../site/schema/model-facts.schema.json).
@@ -167,15 +198,17 @@ Cross-package refs to a model label **SHOULD** use an `https://` URL to the cano
 
 ## Versioning
 
-- **This document:** v0.1.1 (publication & discovery; see revision history).
+- **This document:** v0.1.2 (assessment wording and model-card companion positioning).
 - **Files** declare `model_facts_version` (currently `"0.1.0"`) so tooling can evolve
   independently of the prose document.
-- Required-field list may still change before v1.0.
+- Required-field list may still change before v1.0. v0.1.2 does not change the
+  JSON Schema or existing enum values.
 
 ## Revision history
 
 | Spec doc | Notes |
 |---|---|
+| **0.1.2** | Golden Rule distinguishes documented facts from assessments. Featured ratings need an evidence basis. Benchmarks bind to source and variant. Positioned as a companion to Hugging Face model cards. No schema migration. |
 | **0.1.1** | Publication & discovery: card/directory pointers; link to suite discovery contract. |
 | **0.1.0** | Initial specification, formalizing the concept draft ([`SPEC-draft.md`](./SPEC-draft.md)): frontmatter + rendered body, five fact groups (architecture, training, capabilities, safety, benchmarks), closed enums for levels, `undisclosed` convention. |
 

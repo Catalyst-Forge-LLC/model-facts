@@ -38,16 +38,18 @@ from GGUF header facts. All outputs pass the validator.
 
 - **Frontmatter is the sole source of truth; the Markdown body is a rendered view** —
   identical to AppFacts. Body may drift; tooling doesn't verify body-vs-frontmatter.
-- **The Golden Rule:** objective facts only. Subjective claims stay in READMEs.
+- **The Golden Rule:** documented facts and sourced scores stay. Marketing stays out.
+  Capability and safety enums are assessments, not measurements.
 - **`undisclosed` over omission** for facts a developer knowingly withholds (params,
   tokens, data mix). Making non-disclosure visible and comparable is the label's teeth.
 - **Closed enums for judgment fields** (`reasoning_math: high|medium|low`,
   `filter_type: raw|censored|hybrid`, …) so files are comparable across models.
 - **Generator: deterministic first, LLM second.** Hard facts (exact safetensors param
   count, context window from `config.json`, GGUF header data) never come from prose. The
-  LLM only fills judgment/provenance fields from the card, and its output is sanitized —
-  enum whitelists, architecture facts cannot be overridden. Without `--model`, drafts get
-  conservative defaults marked `# TODO: verify`.
+  LLM may draft judgment/provenance fields from the card, and its output is sanitized
+  (enum whitelists, architecture facts cannot be overridden). That is a constraint, not
+  a truth guarantee. Without `--model`, drafts get conservative defaults marked
+  `# TODO: verify`.
 - **One `MODEL_FACTS.md` per model version**; a quantized re-release is a new file.
 - **Licensing:** spec & schema CC0, tooling MIT — mirrors AppFacts.
 - User conventions in this workspace: **pnpm + TypeScript + ESM only** for Node code;

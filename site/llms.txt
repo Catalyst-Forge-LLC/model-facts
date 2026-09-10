@@ -1,6 +1,6 @@
 # ModelFacts
 
-> Nutrition-label facts for AI models. Prefer structured JSON over marketing HTML.
+> Compact companion to a model card. Prefer structured JSON over marketing HTML.
 
 ## Primary
 

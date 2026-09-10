@@ -134,13 +134,25 @@
       ],
       "properties": {
         "natural_language": { "type": "string", "enum": ["full", "limited"] },
-        "reasoning_math": { "type": "string", "enum": ["high", "medium", "low"] },
-        "coding": { "type": "string", "enum": ["high", "medium", "low"] },
+        "reasoning_math": {
+          "type": "string",
+          "enum": ["high", "medium", "low"],
+          "description": "Assessment for comparison, not a ModelFacts measurement. Record the evidence basis in notes or comments."
+        },
+        "coding": {
+          "type": "string",
+          "enum": ["high", "medium", "low"],
+          "description": "Assessment for comparison, not a ModelFacts measurement. Record the evidence basis in notes or comments."
+        },
         "vision_input": { "type": "string", "enum": ["enabled", "disabled"] },
         "audio_input": { "type": "string", "enum": ["enabled", "disabled"] },
         "tool_use": { "type": "string", "enum": ["native", "prompted", "none"] },
         "languages": { "type": "string", "minLength": 1 },
-        "notes": { "type": "string", "minLength": 1 }
+        "notes": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Evidence basis for capability assessments, plus stated nuance such as supported languages"
+        }
       },
       "additionalProperties": false
     },
@@ -148,9 +160,21 @@
       "type": "object",
       "required": ["refusal_sensitivity", "instruction_following", "filter_type"],
       "properties": {
-        "refusal_sensitivity": { "type": "string", "enum": ["low", "medium", "high"] },
-        "instruction_following": { "type": "string", "enum": ["high", "medium", "low"] },
-        "filter_type": { "type": "string", "enum": ["raw", "censored", "hybrid"] },
+        "refusal_sensitivity": {
+          "type": "string",
+          "enum": ["low", "medium", "high"],
+          "description": "Assessment of refusal posture, not a measured protocol. Label unresolved when the publisher gives no basis."
+        },
+        "instruction_following": {
+          "type": "string",
+          "enum": ["high", "medium", "low"],
+          "description": "Assessment of instruction adherence, not a ModelFacts measurement."
+        },
+        "filter_type": {
+          "type": "string",
+          "enum": ["raw", "censored", "hybrid"],
+          "description": "Assessment of built-in filtering, not a certification."
+        },
         "hallucination_benchmark": {
           "type": "object",
           "required": ["name", "score"],
@@ -166,7 +190,7 @@
     "benchmarks": {
       "type": "array",
       "maxItems": 10,
-      "description": "Standardized metrics for objective comparison, e.g. MMLU, GSM8K, HumanEval, HumanPreference.",
+      "description": "Published scores copied from a named source for this variant. Omit rather than invent. notes should name source, variant, shot count, and metric.",
       "items": {
         "type": "object",
         "required": ["name", "score"],

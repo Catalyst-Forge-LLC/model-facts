@@ -1,12 +1,12 @@
 <h1 align="center">ModelFacts</h1>
 
 <p align="center">
-  <strong>A "Nutrition Facts" label for AI models.</strong>
+  <strong>A compact companion to a model card.</strong>
 </p>
 
 <p align="center">
-  A tiny, standardized <code>MODEL_FACTS.md</code> that lives next to the model card
-  and answers one question in under a minute: <em>what went into this model?</em>
+  A tiny, standardized <code>MODEL_FACTS.md</code> that lives next to the source card
+  and summarizes documented architecture, provenance, limits, and reported evaluations.
 </p>
 
 <p align="center">
@@ -21,11 +21,11 @@
 
 ## What is this?
 
-[AppFacts](https://appfacts.dev) is the label for the **body** of software — what an app is built from. **ModelFacts** is the label for the **brain**: a standardized, machine-parseable, human-readable summary of an AI model's architecture, training provenance, capabilities, and safety profile.
+[AppFacts](https://appfacts.dev) is the label for the **body** of software, what an app is built from. **ModelFacts** is the label for the **brain**: a standardized, machine-parseable, human-readable summary of an AI model's architecture, training provenance, capabilities, and safety profile.
 
-Model cards today are **unstructured prose that rots** — long, inconsistent, and impossible to validate or compare. "Trained on the internet" is not a fact. ModelFacts moves the objective facts into YAML frontmatter you can parse, validate, and diff, with a rendered nutrition-label body for humans.
+[Hugging Face model cards](https://huggingface.co/docs/hub/en/model-cards) already mix Markdown with structured YAML for license, task, datasets, and reported metrics. ModelFacts does not invent that metadata layer, and it does not replace the card. It keeps a compact, comparable slice next to the source, and it leaves usage notes, bias writeups, and full evaluation reports where they belong.
 
-**The Golden Rule:** if a piece of information is *subjective* ("this model is very creative"), it does not belong in ModelFacts. If it is *objective* ("trained on 15T tokens with a 128k context window"), it does. And when a fact isn't public, the file says `undisclosed` — the absence of a fact is itself a fact worth labeling.
+**The Golden Rule:** documented facts stay, marketing language stays out. Published scores need a named source and the evaluated variant. Capability and safety levels are fixed-vocabulary *assessments*, not measurements. A closed enum makes files comparable. It does not make a rating objective. When a fact isn't public, the file says `undisclosed`.
 
 Useful for:
 
@@ -56,18 +56,18 @@ training:
   tokens: 15T
 capabilities:
   natural_language: full
-  reasoning_math: high
-  coding: high
+  reasoning_math: high   # assessment: Meta GSM8K 95.1, 70B Instruct
+  coding: high           # assessment: Meta HumanEval 80.5, 70B Instruct
   vision_input: disabled
   audio_input: disabled
 safety:
-  refusal_sensitivity: medium
-  instruction_following: high
+  refusal_sensitivity: medium  # assessment, unresolved: no publisher protocol
+  instruction_following: high  # assessment: Meta IFEval 87.5, 70B Instruct
   filter_type: hybrid
 benchmarks:
   - name: MMLU
     score: 83.6
-    notes: 5-shot
+    notes: Meta Llama 3.1 model card, Llama-3.1-70B-Instruct, 5-shot
 generated:
   date: 2026-07-31
   generator: hand-authored
@@ -88,9 +88,9 @@ See the [full worked example](./examples/MODEL_FACTS.md), the [hand-authored tem
 |---|---|---|
 | `architecture` | Base ingredients | What is it, physically? Parameters, context, quantization. |
 | `training` | Data sourcing | What was it fed, and until when? Cutoff, methodology, composition. |
-| `capabilities` | Functional limits | What can it do out of the box, without tools? |
-| `safety` | Safety label | How hot are the built-in filters? Do I need my own guardrails? |
-| `benchmarks` | Nutrition value | Objective, comparable numbers (MMLU, GSM8K, HumanEval…). |
+| `capabilities` | Functional limits | Stated modalities, plus assessments for reasoning and coding. |
+| `safety` | Safety label | Assessments of built-in filters, for deciding on extra guardrails. |
+| `benchmarks` | Nutrition value | Publisher-reported scores bound to a named source and variant. |
 
 ## Generating a label
 
@@ -112,7 +112,7 @@ pnpm generate https://huggingface.co/Qwen/Qwen2.5-7B-Instruct \
 pnpm generate ollama:llama3.1 --provider ollama --model llama3.1
 ```
 
-Deterministic facts (parameter count, context window, quantization, license, base model) come straight from structured metadata. The LLM only fills the judgment-and-provenance fields from the card text, under the Golden Rule — and its output is sanitized against the schema's enums. See [`generator/README.md`](./generator/README.md).
+Deterministic facts (parameter count, context window, quantization, license, base model) come straight from structured metadata. Optional LLM curation is instructed to stay inside the card text and schema enums. That is a constraint, not a guarantee. A passing schema check means the file is well-formed, not that every value is true. Review the draft before you publish it. See [`generator/README.md`](./generator/README.md).
 
 ## Validating a file
 

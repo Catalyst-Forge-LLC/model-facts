@@ -296,10 +296,16 @@ async function main(): Promise<void> {
     const path = resolve(args.output);
     writeFileSync(path, output, "utf8");
     console.error(`Wrote ${path} (source: ${src.sourceLabel})`);
-    if (!args.model) {
-      console.error("Deterministic draft: fields marked '# TODO: verify' need human review,");
-      console.error("or re-run with --provider/--model to curate from the model card.");
-    }
+  }
+  console.error("Schema validation passed. The file is well-formed, not proven true.");
+  if (!args.model) {
+    console.error("Deterministic draft: required judgment enums use conservative defaults");
+    console.error("marked '# TODO: verify'. Training gaps stay undisclosed. Benchmarks are omitted");
+    console.error("until a source supplies them. Review before publishing, or re-run with");
+    console.error("--provider/--model to draft those fields from the model card.");
+  } else {
+    console.error("LLM draft: review judgment fields and every score against the source card.");
+    console.error("Constrained prompting is not a factual guarantee.");
   }
 }
 

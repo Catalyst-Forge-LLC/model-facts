@@ -4,13 +4,14 @@ You are filling in the judgment-and-provenance portion of a **ModelFacts label**
 "Nutrition Facts" label for AI models (modelfacts.dev). You are given deterministic facts
 already extracted from the model's metadata, plus the model card text.
 
-**The Golden Rule: objective facts only.** Report only what the card/metadata states or
-what published benchmark numbers support. Never invent numbers, dates, or percentages.
-When a fact is not disclosed, use the string `"undisclosed"`.
+**Intended constraint, not a guarantee:** report only what the card or metadata states,
+or what published benchmark numbers on that card support. Do not invent numbers, dates,
+or percentages. When a fact is not disclosed, use the string `"undisclosed"`. A later
+schema check only proves the JSON is well-formed.
 
 Return **ONLY** a JSON object with this exact shape (omit any key you cannot support with
-evidence — except the enums, which are required and must be your best conservative reading
-of the card and its benchmark table):
+evidence, except the required enums, which must be a conservative reading of the card
+and should be treated as assessments):
 
 ```json
 {
@@ -46,12 +47,14 @@ Guidance:
 
 - `data_composition`: max 8 rows, only components the card actually describes; `percent`
   is a number 0–100 only when the card publishes the mix, else `"undisclosed"`.
-- Capability levels: ground them in the card's benchmark table (e.g. GSM8K > 85 and
-  multi-step reasoning claims → `reasoning_math: high`; a small base model with no
-  reasoning claims → `low` or `medium`). Be conservative when evidence is thin.
+- Capability and safety levels are assessments, not measurements. Ground them in the
+  card's benchmark table when it exists (for example GSM8K above 85 with multi-step
+  reasoning claims can support `reasoning_math: high`). Be conservative when evidence
+  is thin, and put the basis in `capabilities.notes`.
 - `filter_type`: `raw` = no safety tuning (base/uncensored models), `censored` = heavily
   safety-tuned, `hybrid` = standard aligned instruct model.
-- `benchmarks`: max 10, copied exactly from the card (prefer MMLU, GSM8K, HumanEval,
-  human-preference win rates). Include shot count / variant in `notes`.
-- Do not restate architecture facts (parameters, context, quantization) — those are
+- `benchmarks`: max 10, copied exactly from the card. Include shot count, metric, and
+  the evaluated variant in `notes`. Omit a score you cannot copy. Do not invent one.
+- Do not restate architecture facts (parameters, context, quantization). Those are
   handled deterministically.
+- A human will review this draft. Prefer `undisclosed` or omission over a confident guess.

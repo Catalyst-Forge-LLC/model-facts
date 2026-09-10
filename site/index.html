@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ModelFacts — A Nutrition Facts label for AI models</title>
-  <meta name="description" content="MODEL_FACTS.md: a tiny, curated, machine-parseable label for what went into an AI model — architecture, training provenance, capabilities, and safety profile. Spec and schema from Catalyst Forge." />
+  <meta name="description" content="MODEL_FACTS.md: a compact companion to a model card. Summarize documented architecture, provenance, limits, and reported evaluations. Spec and schema from Catalyst Forge." />
   <link rel="canonical" href="https://modelfacts.dev/" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <meta property="og:title" content="ModelFacts" />
@@ -110,7 +110,7 @@
 
     .sub {
       color: var(--mute);
-      max-width: 44ch;
+      max-width: 56ch;
       margin: 0 0 1.75rem;
     }
 
@@ -221,6 +221,11 @@
       color: var(--ink);
       font-size: 0.8rem;
       margin-bottom: 0.15rem;
+    }
+
+    .label-plane .deps span {
+      display: block;
+      margin-top: 0.35rem;
     }
 
     @keyframes fadeup {
@@ -393,8 +398,9 @@
       <h1 class="brand">Model<span>Facts</span></h1>
       <p class="lede">A Nutrition Facts label for AI models, part of the <a href="https://xfacts.dev">xFacts</a> suite.</p>
       <p class="sub">
-        Know the weights behind the words. A tiny <code>MODEL_FACTS.md</code> beside the model card
-        that answers one question in under a minute: what went into this model?
+        Summarize a model's documented architecture, provenance, limits, and reported evaluations
+        in a compact label. ModelFacts keeps missing information visible and provides a consistent
+        view alongside the source model card.
       </p>
       <div class="cta">
         <a class="btn btn-primary" href="/directory/">Browse the directory</a>
@@ -421,6 +427,7 @@
             <code>MMLU</code> 83.6 ·
             <code>GSM8K</code> 95.1 ·
             <code>HumanEval</code> 80.5 pass@1
+            <span>Meta-reported, Llama-3.1-70B-Instruct bf16. Not inherited by quantizations.</span>
           </div>
         </div>
       </div>
@@ -431,18 +438,25 @@
     <section id="why">
       <div class="wrap prose">
         <h2 class="section-title">Why it exists</h2>
-        <p class="section-lead">Model cards are prose that rots. "Trained on the internet" is not a fact.</p>
+        <p class="section-lead">A compact companion to the source model card, with missing facts left visible.</p>
         <p>
-          <a href="https://appfacts.dev">AppFacts</a> is the label for the <strong>body</strong> of software —
-          what an app is built from. ModelFacts is the label for the <strong>brain</strong>:
-          architecture, training provenance, capabilities, and safety profile, in a format you can
-          validate, parse, and compare.
+          <a href="https://huggingface.co/docs/hub/en/model-cards">Hugging Face model cards</a>
+          already mix Markdown with structured YAML for license, task, datasets, and reported
+          metrics. ModelFacts does not invent that metadata layer, and it does not replace the
+          card. It summarizes documented architecture, provenance, limits, and reported
+          evaluations in one short label you can parse, validate, and compare.
         </p>
         <p>
-          <strong>The golden rule:</strong> if it's subjective (<em>"this model is very creative"</em>) it
-          doesn't belong here. If it's objective (<em>"trained on 15T tokens with a 128k context window"</em>)
-          it does. And when a fact isn't public, the file says <code>undisclosed</code> — the absence of a
-          fact is itself a fact worth labeling.
+          <a href="https://appfacts.dev">AppFacts</a> is the label for the <strong>body</strong> of
+          software, what an app is built from. ModelFacts is the label for the <strong>brain</strong>:
+          what the source card and model metadata already state about weights, cutoff, and evaluations.
+        </p>
+        <p>
+          <strong>The golden rule:</strong> documented facts stay, marketing language stays out.
+          Published scores need a named source and the evaluated variant. Capability and safety
+          levels are fixed-vocabulary <em>assessments</em>, not measurements. A closed enum makes
+          files comparable. It does not make a rating objective. When a fact isn't public, the
+          file says <code>undisclosed</code>.
         </p>
         <ul class="who">
           <li>Developers choosing a model who need limits, not marketing</li>
@@ -456,7 +470,7 @@
     <section id="format">
       <div class="wrap">
         <h2 class="section-title">The format</h2>
-        <p class="section-lead">Frontmatter you can validate. A label you can skim.</p>
+        <p class="section-lead">Frontmatter you can validate. A label you can skim. Assessments stay labeled as assessments.</p>
         <div class="split">
           <pre aria-label="Example MODEL_FACTS frontmatter">---
 model_facts_version: "0.1.0"
@@ -475,26 +489,31 @@ training:
   tokens: 15T
 capabilities:
   natural_language: full
-  reasoning_math: high
-  coding: high
+  reasoning_math: high   # assessment: Meta GSM8K 95.1, 70B Instruct
+  coding: high           # assessment: Meta HumanEval 80.5, 70B Instruct
   vision_input: disabled
   audio_input: disabled
 safety:
-  refusal_sensitivity: medium
-  instruction_following: high
+  refusal_sensitivity: medium  # assessment, unresolved: no publisher protocol
+  instruction_following: high  # assessment: Meta IFEval 87.5, 70B Instruct
   filter_type: hybrid
 benchmarks:
   - name: MMLU
     score: 83.6
-    notes: 5-shot
+    notes: Meta Llama 3.1 model card, Llama-3.1-70B-Instruct, 5-shot
 generated:
   date: 2026-07-31
   generator: hand-authored
 ---</pre>
           <div class="prose">
             <p>
-              Spec document <strong>0.1.0</strong> — fields may still shift before 1.0. Files declare
-              <code>model_facts_version</code> (<code>0.1.0</code> today) so tooling can evolve with them.
+              Spec document <strong>0.1.2</strong>, file version <code>0.1.0</code>. Fields may still
+              shift before 1.0. Files declare <code>model_facts_version</code> so tooling can evolve
+              with them.
+            </p>
+            <p>
+              Levels such as <code>reasoning_math</code> and <code>refusal_sensitivity</code> are
+              assessments with an evidence note. They are not a ModelFacts test protocol.
             </p>
             <ul class="links">
               <li><a href="https://github.com/Catalyst-Forge-LLC/model-facts/blob/main/specs/SPEC.md">SPEC.md</a></li>
@@ -512,9 +531,9 @@ generated:
       <div class="wrap">
         <h2 class="section-title">Generate one</h2>
         <p class="section-lead">
-          The generator drafts a label from a Hugging Face model card/URL or a local Ollama model.
-          Hard facts come straight from metadata; an LLM (optional, local-first) curates the rest
-          from the card — never invents.
+          The generator drafts a label from a Hugging Face model card or a local Ollama model.
+          Deterministic mode copies structured metadata. Optional LLM curation is a constrained
+          draft that still needs a factual review.
         </p>
         <div class="split">
           <pre># from a Hugging Face model card
@@ -530,10 +549,12 @@ cd ../validator &amp;&amp; pnpm install
 pnpm validate path/to/MODEL_FACTS.md</pre>
           <div class="prose">
             <p>
-              Output is validated against
+              Output is checked against
               <a href="/schema/model-facts.schema.json">model-facts.schema.json</a> (draft-07)
-              before it's written. Omit <code>--model</code> for a deterministic, no-LLM draft
-              with the judgment fields marked <code>TODO: verify</code>.
+              before it's written. A passing check means the file is well-formed, not that every
+              value is true. Omit <code>--model</code> for a deterministic, no-LLM draft with
+              judgment fields marked <code>TODO: verify</code>. Review those defaults, and any
+              LLM-filled scores, against the source card before you publish.
             </p>
             <p>
               Browse curated labels for open-weight and closed models in the

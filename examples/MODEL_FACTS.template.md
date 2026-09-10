@@ -28,24 +28,24 @@ training:
   #     purpose: general knowledge
 capabilities:
   natural_language: full
-  reasoning_math: medium
-  coding: medium
+  reasoning_math: medium   # assessment: cite the published score or mark unresolved
+  coding: medium           # assessment: cite the published score or mark unresolved
   vision_input: disabled
   audio_input: disabled
   # tool_use: prompted
   # languages: English only
-  # notes: one line of objective nuance
+  # notes: evidence basis for assessments, plus any stated nuance
 safety:
-  refusal_sensitivity: medium
-  instruction_following: medium
-  filter_type: hybrid
-  # hallucination_benchmark:
+  refusal_sensitivity: medium  # assessment, or unresolved if the card has no protocol
+  instruction_following: medium  # assessment: cite IFEval or similar if published
+  filter_type: hybrid          # assessment: raw / censored / hybrid
+  # hallucination_benchmark:   # omit unless a named source scored this variant
   #   name: TruthfulQA
   #   score: 0.50
-# benchmarks:
+# benchmarks:                  # omit a row rather than invent a score
 #   - name: MMLU
 #     score: 62.0
-#     notes: 5-shot
+#     notes: Publisher model card, Exact-Variant-Name, 5-shot, publisher-reported
 generated:
   date: 2026-07-31
   generator: hand-authored

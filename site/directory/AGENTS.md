@@ -15,8 +15,9 @@ Local mirror: same paths under your static site root (`site/`).
 
 ## Semantics
 
-- **Golden Rule:** objective facts only. Missing public facts are `undisclosed` (or `null`
-  in numeric filter fields) - do not invent sizes, prices, or cutoffs.
+- **Golden Rule:** documented facts and sourced scores stay. Capability and safety enums
+  are assessments (see `capability_basis`). Missing public facts are `undisclosed` (or
+  `null` in numeric filter fields). Do not invent sizes, prices, or cutoffs.
 - **`capability_basis`:** `reviewed_claim` | `claimed` | `measured` (measured unused until
   a harness exists). Reasoning/coding/refusal enums are **published-claim readings**, not
   calibrated rankings. The v0 catalog is mostly flat (`high`); do not treat them as

@@ -80,7 +80,7 @@ export interface SourceFacts {
   visionInput?: Toggle;
   audioInput?: Toggle;
   toolUse?: "native" | "prompted" | "none";
-  /** Model card / metadata text handed to the LLM for curation (never invented). */
+  /** Model card / metadata text handed to the LLM for optional curation. */
   cardText: string;
   sourceLabel: string;
 }

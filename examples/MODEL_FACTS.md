@@ -37,30 +37,33 @@ training:
       purpose: alignment to human intent
 capabilities:
   natural_language: full
-  reasoning_math: high
-  coding: high
+  reasoning_math: high   # assessment: Meta GSM8K 95.1, 8-shot CoT em_maj1@1, Llama-3.1-70B-Instruct
+  coding: high           # assessment: Meta HumanEval 80.5, 0-shot pass@1, Llama-3.1-70B-Instruct
   vision_input: disabled
   audio_input: disabled
   tool_use: native
   languages: 8 languages officially supported
-  notes: strongest in Python, JavaScript, C++; multilingual tone matching
+  notes: >-
+    reasoning_math and coding are assessments grounded in Meta's publisher-reported
+    Instruct scores (GSM8K, HumanEval), not a ModelFacts protocol.
+    Quantized or locally modified copies need their own measurements.
 safety:
-  refusal_sensitivity: medium
-  instruction_following: high
-  filter_type: hybrid
-  hallucination_benchmark:
-    name: TruthfulQA
-    score: 0.60
+  refusal_sensitivity: medium  # assessment, unresolved: Meta publishes no refusal protocol or score
+  instruction_following: high  # assessment: Meta IFEval 87.5, Llama-3.1-70B-Instruct
+  filter_type: hybrid          # assessment: aligned instruct model, not a measured filter grade
 benchmarks:
   - name: MMLU
     score: 83.6
-    notes: 5-shot
+    notes: Meta Llama 3.1 model card, Llama-3.1-70B-Instruct, 5-shot macro_avg/acc, publisher-reported
   - name: GSM8K
     score: 95.1
-    notes: 8-shot CoT
+    notes: Meta Llama 3.1 model card, Llama-3.1-70B-Instruct, 8-shot CoT em_maj1@1, publisher-reported
   - name: HumanEval
     score: 80.5
-    notes: pass@1
+    notes: Meta Llama 3.1 model card, Llama-3.1-70B-Instruct, 0-shot pass@1, publisher-reported
+  - name: IFEval
+    score: 87.5
+    notes: Meta Llama 3.1 model card, Llama-3.1-70B-Instruct, publisher-reported
 generated:
   date: 2026-07-31
   generator: hand-authored
@@ -108,30 +111,34 @@ credits:
 | Capability | Level |
 |---|---|
 | Natural language | full |
-| Reasoning / math | high |
-| Coding | high |
+| Reasoning / math | high (assessment) |
+| Coding | high (assessment) |
 | Vision (input) | disabled |
 | Audio (input) | disabled |
 | Tool use | native |
 
-*8 languages officially supported. Strongest in Python, JavaScript, C++; multilingual tone matching.*
+*8 languages officially supported. reasoning_math and coding are assessments grounded in Meta's publisher-reported Instruct scores (GSM8K, HumanEval), not a ModelFacts protocol. Quantized or locally modified copies need their own measurements.*
 
 ## Safety Profile
 
 | | |
 |---|---|
-| Refusal sensitivity | medium |
-| Instruction following | high |
-| Filter type | hybrid |
-| Hallucination | TruthfulQA 0.60 |
+| Refusal sensitivity | medium (assessment, unresolved) |
+| Instruction following | high (assessment) |
+| Filter type | hybrid (assessment) |
+
+*Safety levels are assessments, not a ModelFacts protocol. refusal_sensitivity has no Meta-published score. instruction_following follows Meta IFEval 87.5 for Llama-3.1-70B-Instruct.*
 
 ## Benchmarks
 
+Publisher-reported by Meta for **Llama-3.1-70B-Instruct** (bf16), from the [Llama 3.1 model card](https://huggingface.co/meta-llama/Llama-3.1-70B-Instruct) and [eval details](https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/eval_details.md). These figures do not transfer automatically to quantized or locally modified copies.
+
 | Benchmark | Score | Notes |
 |---|---|---|
-| MMLU | 83.6 | 5-shot |
-| GSM8K | 95.1 | 8-shot CoT |
-| HumanEval | 80.5 | pass@1 |
+| MMLU | 83.6 | Meta Llama 3.1 model card, Llama-3.1-70B-Instruct, 5-shot macro_avg/acc, publisher-reported |
+| GSM8K | 95.1 | Meta Llama 3.1 model card, Llama-3.1-70B-Instruct, 8-shot CoT em_maj1@1, publisher-reported |
+| HumanEval | 80.5 | Meta Llama 3.1 model card, Llama-3.1-70B-Instruct, 0-shot pass@1, publisher-reported |
+| IFEval | 87.5 | Meta Llama 3.1 model card, Llama-3.1-70B-Instruct, publisher-reported |
 
 ---
 *Generated with [ModelFacts](https://modelfacts.dev) · Built by [Catalyst Forge](https://www.catalystforge.com/)*
