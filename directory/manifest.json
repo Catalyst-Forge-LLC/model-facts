@@ -134,7 +134,7 @@
         "type": "ollama",
         "id": "ornith:35b"
       },
-      "ollama_pulls": "476K",
+      "ollama_pulls": "476.1K",
       "ollama_updated": "2026-06-27"
     },
     {
@@ -145,7 +145,7 @@
         "type": "ollama",
         "id": "deepseek-v4-flash"
       },
-      "ollama_pulls": "444.6K",
+      "ollama_pulls": "444.7K",
       "ollama_updated": "2026-08-01"
     },
     {
@@ -156,7 +156,7 @@
         "type": "ollama",
         "id": "granite4.1"
       },
-      "ollama_pulls": "422K",
+      "ollama_pulls": "422.1K",
       "ollama_updated": "2026-05-19"
     },
     {
@@ -178,7 +178,7 @@
         "type": "ollama",
         "id": "mistral-medium-3.5"
       },
-      "ollama_pulls": "383K",
+      "ollama_pulls": "383.1K",
       "ollama_updated": "2026-05-05"
     },
     {
@@ -275,7 +275,7 @@
         "type": "ollama",
         "id": "ornith-1.5:397b"
       },
-      "ollama_pulls": "303.9K",
+      "ollama_pulls": "304K",
       "ollama_updated": "2026-08-19"
     },
     {
@@ -286,7 +286,7 @@
         "type": "ollama",
         "id": "medgemma:27b"
       },
-      "ollama_pulls": "366.2K",
+      "ollama_pulls": "366.3K",
       "ollama_updated": "2026-04-16"
     },
     {

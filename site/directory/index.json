@@ -241,8 +241,8 @@
           "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash"
         }
       ],
-      "popularity": "444.6K",
-      "popularity_n": 444600,
+      "popularity": "444.7K",
+      "popularity_n": 444700,
       "href": "/directory/deepseek-v4-flash/",
       "facts_json": "/directory/deepseek-v4-flash/facts.json",
       "facts_md": "/directory/deepseek-v4-flash/MODEL_FACTS.md"
@@ -842,8 +842,8 @@
           "url": "https://ollama.com/library/granite4.1"
         }
       ],
-      "popularity": "422K",
-      "popularity_n": 422000,
+      "popularity": "422.1K",
+      "popularity_n": 422100,
       "href": "/directory/ibm-granite-4.1/",
       "facts_json": "/directory/ibm-granite-4.1/facts.json",
       "facts_md": "/directory/ibm-granite-4.1/MODEL_FACTS.md"
@@ -1064,8 +1064,8 @@
           "url": "https://ollama.com/library/medgemma"
         }
       ],
-      "popularity": "366.2K",
-      "popularity_n": 366200,
+      "popularity": "366.3K",
+      "popularity_n": 366300,
       "href": "/directory/ollama-medgemma/",
       "facts_json": "/directory/ollama-medgemma/facts.json",
       "facts_md": "/directory/ollama-medgemma/MODEL_FACTS.md"
@@ -1292,8 +1292,8 @@
           "url": "https://huggingface.co/mistralai/Mistral-Medium-3.5-128B"
         }
       ],
-      "popularity": "383K",
-      "popularity_n": 383000,
+      "popularity": "383.1K",
+      "popularity_n": 383100,
       "href": "/directory/mistral-medium-3.5/",
       "facts_json": "/directory/mistral-medium-3.5/facts.json",
       "facts_md": "/directory/mistral-medium-3.5/MODEL_FACTS.md"
@@ -1472,8 +1472,8 @@
           "url": "https://ollama.com/library/ornith-1.5"
         }
       ],
-      "popularity": "303.9K",
-      "popularity_n": 303900,
+      "popularity": "304K",
+      "popularity_n": 304000,
       "href": "/directory/ornith-ornith-1.5/",
       "facts_json": "/directory/ornith-ornith-1.5/facts.json",
       "facts_md": "/directory/ornith-ornith-1.5/MODEL_FACTS.md"
@@ -1516,8 +1516,8 @@
           "url": "https://ollama.com/library/ornith"
         }
       ],
-      "popularity": "476K",
-      "popularity_n": 476000,
+      "popularity": "476.1K",
+      "popularity_n": 476100,
       "href": "/directory/ornith-35b/",
       "facts_json": "/directory/ornith-35b/facts.json",
       "facts_md": "/directory/ornith-35b/MODEL_FACTS.md"
