@@ -25,7 +25,7 @@
 
 [Hugging Face model cards](https://huggingface.co/docs/hub/en/model-cards) already mix Markdown with structured YAML for license, task, datasets, and reported metrics. ModelFacts does not invent that metadata layer, and it does not replace the card. It keeps a compact, comparable slice next to the source, and it leaves usage notes, bias writeups, and full evaluation reports where they belong.
 
-**The Golden Rule:** documented facts stay, marketing language stays out. Published scores need a named source and the evaluated variant. Capability and safety levels are fixed-vocabulary *assessments*, not measurements. A closed enum makes files comparable. It does not make a rating objective. When a fact isn't public, the file says `undisclosed`.
+**The Golden Rule:** documented facts stay, marketing language stays out. Published scores need a named source and the evaluated variant. Capability and safety levels are fixed-vocabulary *assessments*, not measurements. A closed enum makes files comparable. It does not make a rating objective. When a fact isn't public, the file says `undisclosed`. Assessment fields may say `unresolved` when the card gives no basis.
 
 Useful for:
 
@@ -61,7 +61,7 @@ capabilities:
   vision_input: disabled
   audio_input: disabled
 safety:
-  refusal_sensitivity: medium  # assessment, unresolved: no publisher protocol
+  refusal_sensitivity: unresolved  # no publisher protocol
   instruction_following: high  # assessment: Meta IFEval 87.5, 70B Instruct
   filter_type: hybrid
 benchmarks:

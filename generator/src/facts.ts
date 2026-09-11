@@ -1,6 +1,6 @@
 /** Shared types and formatting helpers for the ModelFacts generator. */
 
-export type Level = "high" | "medium" | "low";
+export type Level = "high" | "medium" | "low" | "unresolved";
 export type Toggle = "enabled" | "disabled";
 
 export interface DataComposition {

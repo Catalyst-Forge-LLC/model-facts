@@ -48,7 +48,7 @@ capabilities:
     Instruct scores (GSM8K, HumanEval), not a ModelFacts protocol.
     Quantized or locally modified copies need their own measurements.
 safety:
-  refusal_sensitivity: medium  # assessment, unresolved: Meta publishes no refusal protocol or score
+  refusal_sensitivity: unresolved  # Meta publishes no refusal protocol or score
   instruction_following: high  # assessment: Meta IFEval 87.5, Llama-3.1-70B-Instruct
   filter_type: hybrid          # assessment: aligned instruct model, not a measured filter grade
 benchmarks:
@@ -123,11 +123,11 @@ credits:
 
 | | |
 |---|---|
-| Refusal sensitivity | medium (assessment, unresolved) |
+| Refusal sensitivity | unresolved |
 | Instruction following | high (assessment) |
 | Filter type | hybrid (assessment) |
 
-*Safety levels are assessments, not a ModelFacts protocol. refusal_sensitivity has no Meta-published score. instruction_following follows Meta IFEval 87.5 for Llama-3.1-70B-Instruct.*
+*Safety levels are assessments, not a ModelFacts protocol. refusal_sensitivity is unresolved because Meta publishes no refusal protocol or score. instruction_following follows Meta IFEval 87.5 for Llama-3.1-70B-Instruct.*
 
 ## Benchmarks
 

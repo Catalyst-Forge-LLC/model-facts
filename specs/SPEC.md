@@ -114,8 +114,8 @@ for the evidence basis, or mark the reading unresolved.
 | Key | Type | Required | Values |
 |---|---|---|---|
 | `natural_language` | enum | ✅ | `full`, `limited` |
-| `reasoning_math` | enum | ✅ | `high`, `medium`, `low` (assessment) |
-| `coding` | enum | ✅ | `high`, `medium`, `low` (assessment) |
+| `reasoning_math` | enum | ✅ | `high`, `medium`, `low`, `unresolved` (assessment) |
+| `coding` | enum | ✅ | `high`, `medium`, `low`, `unresolved` (assessment) |
 | `vision_input` | enum | ✅ | `enabled`, `disabled` |
 | `audio_input` | enum | ✅ | `enabled`, `disabled` |
 | `tool_use` | enum | | `native`, `prompted`, `none` — function calling / structured tool use |
@@ -127,14 +127,14 @@ for the evidence basis, or mark the reading unresolved.
 The temperature of the model's built-in filters, for developers deciding whether they
 must add their own guardrails. `refusal_sensitivity`, `instruction_following`, and
 `filter_type` are **assessments**. They are required enums in v0.1.0. A listed value
-without a published basis should be labeled unresolved in comments or nearby notes.
+without a published basis should use `unresolved` on the field itself.
 `hallucination_benchmark` is optional. Omit it when the evaluated artifact has no
 named, sourced score. Do not invent one.
 
 | Key | Type | Required | Values / description |
 |---|---|---|---|
-| `refusal_sensitivity` | enum | ✅ | `low`, `medium`, `high` (assessment of how aggressively it refuses prompts it deems harmful) |
-| `instruction_following` | enum | ✅ | `high`, `medium`, `low` (assessment of adherence to system prompts vs pre-set weights) |
+| `refusal_sensitivity` | enum | ✅ | `low`, `medium`, `high`, `unresolved` (assessment of how aggressively it refuses prompts it deems harmful) |
+| `instruction_following` | enum | ✅ | `high`, `medium`, `low`, `unresolved` (assessment of adherence to system prompts vs pre-set weights) |
 | `filter_type` | enum | ✅ | `raw`, `censored`, `hybrid` (assessment) |
 | `hallucination_benchmark` | object | | Optional `{name, score}` copied from a named source for this variant |
 
@@ -163,6 +163,7 @@ inherit the base model's numbers unless that source evaluated that artifact.
 | `benchmarks` | list | See above |
 | `credits.generated_with` | string (URL) | e.g. `"https://modelfacts.dev"` |
 | `credits.built_by` | string | Author name + link |
+| `reviewed` | object | Optional `{date, by, status}`. Presence is not certification. |
 
 ## Conventions
 
@@ -170,8 +171,8 @@ inherit the base model's numbers unless that source evaluated that artifact.
 - Fixed-vocabulary capability and safety ratings are assessments, not measurements.
 - **`undisclosed` over omission** for facts the developer knowingly withholds
   (`parameters`, `tokens`, `data_composition`). The *absence* of a fact is itself a fact
-  worth labeling. Capability and safety enums have no `undisclosed` value in v0.1.0.
-  Label an unsupported reading as an assessment with an unresolved basis.
+  worth labeling. Assessment enums accept `unresolved` when the card gives no
+  basis. Directory `capability_basis` stays a later promotion into the label schema.
 - Curate, don't dump: `data_composition` ≤ 8 rows, `benchmarks` ≤ 10 rows.
 - One `MODEL_FACTS.md` per model *version*. A quantized re-release is a new file (the
   `quantization` field is precisely what changed). Do not copy the base file's scores
@@ -198,16 +199,16 @@ Cross-package refs to a model label **SHOULD** use an `https://` URL to the cano
 
 ## Versioning
 
-- **This document:** v0.1.2 (assessment wording and model-card companion positioning).
+- **This document:** v0.1.3 (assessment enums accept `unresolved`; optional `reviewed`).
 - **Files** declare `model_facts_version` (currently `"0.1.0"`) so tooling can evolve
   independently of the prose document.
-- Required-field list may still change before v1.0. v0.1.2 does not change the
-  JSON Schema or existing enum values.
+- Required-field list may still change before v1.0. Existing files stay valid.
 
 ## Revision history
 
 | Spec doc | Notes |
 |---|---|
+| **0.1.3** | Assessment enums accept `unresolved`. Optional shared `reviewed` object. Directory `capability_basis` is not promoted into the label schema. |
 | **0.1.2** | Golden Rule distinguishes documented facts from assessments. Featured ratings need an evidence basis. Benchmarks bind to source and variant. Positioned as a companion to Hugging Face model cards. No schema migration. |
 | **0.1.1** | Publication & discovery: card/directory pointers; link to suite discovery contract. |
 | **0.1.0** | Initial specification, formalizing the concept draft ([`SPEC-draft.md`](./SPEC-draft.md)): frontmatter + rendered body, five fact groups (architecture, training, capabilities, safety, benchmarks), closed enums for levels, `undisclosed` convention. |

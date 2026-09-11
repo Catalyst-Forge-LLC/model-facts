@@ -28,15 +28,15 @@ training:
   #     purpose: general knowledge
 capabilities:
   natural_language: full
-  reasoning_math: medium   # assessment: cite the published score or mark unresolved
-  coding: medium           # assessment: cite the published score or mark unresolved
+  reasoning_math: medium   # assessment: cite the published score, or unresolved
+  coding: medium           # assessment: cite the published score, or unresolved
   vision_input: disabled
   audio_input: disabled
   # tool_use: prompted
   # languages: English only
   # notes: evidence basis for assessments, plus any stated nuance
 safety:
-  refusal_sensitivity: medium  # assessment, or unresolved if the card has no protocol
+  refusal_sensitivity: unresolved  # use unresolved when the card has no protocol
   instruction_following: medium  # assessment: cite IFEval or similar if published
   filter_type: hybrid          # assessment: raw / censored / hybrid
   # hallucination_benchmark:   # omit unless a named source scored this variant

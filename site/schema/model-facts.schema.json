@@ -136,13 +136,13 @@
         "natural_language": { "type": "string", "enum": ["full", "limited"] },
         "reasoning_math": {
           "type": "string",
-          "enum": ["high", "medium", "low"],
-          "description": "Assessment for comparison, not a ModelFacts measurement. Record the evidence basis in notes or comments."
+          "enum": ["high", "medium", "low", "unresolved"],
+          "description": "Assessment for comparison, not a ModelFacts measurement. Use unresolved when the card gives no basis. Record the evidence basis in notes or comments."
         },
         "coding": {
           "type": "string",
-          "enum": ["high", "medium", "low"],
-          "description": "Assessment for comparison, not a ModelFacts measurement. Record the evidence basis in notes or comments."
+          "enum": ["high", "medium", "low", "unresolved"],
+          "description": "Assessment for comparison, not a ModelFacts measurement. Use unresolved when the card gives no basis. Record the evidence basis in notes or comments."
         },
         "vision_input": { "type": "string", "enum": ["enabled", "disabled"] },
         "audio_input": { "type": "string", "enum": ["enabled", "disabled"] },
@@ -162,13 +162,13 @@
       "properties": {
         "refusal_sensitivity": {
           "type": "string",
-          "enum": ["low", "medium", "high"],
-          "description": "Assessment of refusal posture, not a measured protocol. Label unresolved when the publisher gives no basis."
+          "enum": ["low", "medium", "high", "unresolved"],
+          "description": "Assessment of refusal posture, not a measured protocol. Use unresolved when the publisher gives no basis."
         },
         "instruction_following": {
           "type": "string",
-          "enum": ["high", "medium", "low"],
-          "description": "Assessment of instruction adherence, not a ModelFacts measurement."
+          "enum": ["high", "medium", "low", "unresolved"],
+          "description": "Assessment of instruction adherence, not a ModelFacts measurement. Use unresolved when the card gives no basis."
         },
         "filter_type": {
           "type": "string",
@@ -208,6 +208,20 @@
       "properties": {
         "date": { "type": "string", "format": "date" },
         "generator": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "reviewed": {
+      "type": "object",
+      "description": "Optional human review stamp. Presence is not certification.",
+      "required": ["date", "by", "status"],
+      "properties": {
+        "date": { "type": "string", "format": "date" },
+        "by": { "type": "string", "minLength": 1 },
+        "status": {
+          "type": "string",
+          "enum": ["publisher-authored", "independently-reviewed", "stale"]
+        }
       },
       "additionalProperties": false
     },

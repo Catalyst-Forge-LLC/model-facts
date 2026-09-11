@@ -25,15 +25,15 @@ and should be treated as assessments):
   },
   "capabilities": {
     "natural_language": "full | limited",
-    "reasoning_math": "high | medium | low",
-    "coding": "high | medium | low",
+    "reasoning_math": "high | medium | low | unresolved",
+    "coding": "high | medium | low | unresolved",
     "tool_use": "native | prompted | none",
     "languages": "one line, e.g. '29 languages officially supported' (only if stated)",
     "notes": "one line of objective nuance (only if stated)"
   },
   "safety": {
-    "refusal_sensitivity": "low | medium | high",
-    "instruction_following": "high | medium | low",
+    "refusal_sensitivity": "low | medium | high | unresolved",
+    "instruction_following": "high | medium | low | unresolved",
     "filter_type": "raw | censored | hybrid",
     "hallucination_benchmark": { "name": "TruthfulQA", "score": 0.6 }
   },

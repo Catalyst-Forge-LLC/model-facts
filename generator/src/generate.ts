@@ -87,7 +87,7 @@ function parseArgs(argv: string[]): Args {
 
 // ---------- LLM patch sanitization ----------
 
-const LEVELS = new Set(["high", "medium", "low"]);
+const LEVELS = new Set(["high", "medium", "low", "unresolved"]);
 const NL = new Set(["full", "limited"]);
 const TOOL = new Set(["native", "prompted", "none"]);
 const FILTER = new Set(["raw", "censored", "hybrid"]);
