@@ -14,7 +14,10 @@
   "devDependencies": {
     "wrangler": "^4.28.0"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": ["esbuild", "workerd"]
-  }
+	"pnpm": {
+		"overrides": {
+			"sharp": "0.35.4"
+		},
+		"onlyBuiltDependencies": ["esbuild", "workerd"]
+	}
 }
