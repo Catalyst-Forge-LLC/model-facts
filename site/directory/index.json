@@ -1,6 +1,6 @@
 {
   "directory_version": "0.3.0",
-  "generated": "2026-09-10",
+  "generated": "2026-09-14",
   "count": 40,
   "models": [
     {
@@ -191,8 +191,8 @@
           "url": "https://huggingface.co/nvidia/Cosmos-Reason2-2B"
         }
       ],
-      "popularity": "910K",
-      "popularity_n": 909941,
+      "popularity": "872K",
+      "popularity_n": 872314,
       "href": "/directory/ollama-cosmos-reason2-2b/",
       "facts_json": "/directory/ollama-cosmos-reason2-2b/facts.json",
       "facts_md": "/directory/ollama-cosmos-reason2-2b/MODEL_FACTS.md"
@@ -241,8 +241,8 @@
           "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash"
         }
       ],
-      "popularity": "444.7K",
-      "popularity_n": 444700,
+      "popularity": "454.3K",
+      "popularity_n": 454300,
       "href": "/directory/deepseek-v4-flash/",
       "facts_json": "/directory/deepseek-v4-flash/facts.json",
       "facts_md": "/directory/deepseek-v4-flash/MODEL_FACTS.md"
@@ -287,8 +287,8 @@
           "url": "https://ollama.com/library/deepseek-v4-pro"
         }
       ],
-      "popularity": "394.5K",
-      "popularity_n": 394500,
+      "popularity": "403.9K",
+      "popularity_n": 403900,
       "href": "/directory/deepseek-v4-pro/",
       "facts_json": "/directory/deepseek-v4-pro/facts.json",
       "facts_md": "/directory/deepseek-v4-pro/MODEL_FACTS.md"
@@ -331,8 +331,8 @@
           "url": "https://huggingface.co/google/diffusiongemma-26B-A4B-it"
         }
       ],
-      "popularity": "889K",
-      "popularity_n": 889361,
+      "popularity": "708K",
+      "popularity_n": 708393,
       "href": "/directory/ollama-diffusiongemma-26b-a4b-it/",
       "facts_json": "/directory/ollama-diffusiongemma-26b-a4b-it/facts.json",
       "facts_md": "/directory/ollama-diffusiongemma-26b-a4b-it/MODEL_FACTS.md"
@@ -474,8 +474,8 @@
           "url": "https://ollama.com/library/gemma4"
         }
       ],
-      "popularity": "24.6M",
-      "popularity_n": 24600000,
+      "popularity": "24.9M",
+      "popularity_n": 24900000,
       "href": "/directory/google-gemma-4-12b/",
       "facts_json": "/directory/google-gemma-4-12b/facts.json",
       "facts_md": "/directory/google-gemma-4-12b/MODEL_FACTS.md"
@@ -520,8 +520,8 @@
           "url": "https://ollama.com/library/gemma4"
         }
       ],
-      "popularity": "24.6M",
-      "popularity_n": 24600000,
+      "popularity": "24.9M",
+      "popularity_n": 24900000,
       "href": "/directory/google-gemma-4-31b/",
       "facts_json": "/directory/google-gemma-4-31b/facts.json",
       "facts_md": "/directory/google-gemma-4-31b/MODEL_FACTS.md"
@@ -564,8 +564,8 @@
           "url": "https://ollama.com/library/glm-4.7-flash"
         }
       ],
-      "popularity": "1.7M",
-      "popularity_n": 1700000,
+      "popularity": "1.8M",
+      "popularity_n": 1800000,
       "href": "/directory/zai-glm-4.7-flash/",
       "facts_json": "/directory/zai-glm-4.7-flash/facts.json",
       "facts_md": "/directory/zai-glm-4.7-flash/MODEL_FACTS.md"
@@ -656,8 +656,8 @@
           "url": "https://ollama.com/library/glm-5.2"
         }
       ],
-      "popularity": "341.5K",
-      "popularity_n": 341500,
+      "popularity": "343.5K",
+      "popularity_n": 343500,
       "href": "/directory/zai-glm-5.2/",
       "facts_json": "/directory/zai-glm-5.2/facts.json",
       "facts_md": "/directory/zai-glm-5.2/MODEL_FACTS.md"
@@ -700,8 +700,8 @@
           "url": "https://huggingface.co/zai-org/GLM-5.3-Flash"
         }
       ],
-      "popularity": "1M",
-      "popularity_n": 1023103,
+      "popularity": "1.8M",
+      "popularity_n": 1770038,
       "href": "/directory/zai-glm-5.3-flash/",
       "facts_json": "/directory/zai-glm-5.3-flash/facts.json",
       "facts_md": "/directory/zai-glm-5.3-flash/MODEL_FACTS.md"
@@ -842,8 +842,8 @@
           "url": "https://ollama.com/library/granite4.1"
         }
       ],
-      "popularity": "422.1K",
-      "popularity_n": 422100,
+      "popularity": "436.1K",
+      "popularity_n": 436100,
       "href": "/directory/ibm-granite-4.1/",
       "facts_json": "/directory/ibm-granite-4.1/facts.json",
       "facts_md": "/directory/ibm-granite-4.1/MODEL_FACTS.md"
@@ -932,8 +932,8 @@
           "url": "https://ollama.com/library/kimi-k2.6"
         }
       ],
-      "popularity": "466.6K",
-      "popularity_n": 466600,
+      "popularity": "471.3K",
+      "popularity_n": 471300,
       "href": "/directory/moonshot-kimi-k2.6/",
       "facts_json": "/directory/moonshot-kimi-k2.6/facts.json",
       "facts_md": "/directory/moonshot-kimi-k2.6/MODEL_FACTS.md"
@@ -976,8 +976,8 @@
           "url": "https://huggingface.co/RadixArk/Kimi-K3-DSpark"
         }
       ],
-      "popularity": "2.6M",
-      "popularity_n": 2645687,
+      "popularity": "2.8M",
+      "popularity_n": 2787760,
       "href": "/directory/moonshot-kimi-k3-dspark/",
       "facts_json": "/directory/moonshot-kimi-k3-dspark/facts.json",
       "facts_md": "/directory/moonshot-kimi-k3-dspark/MODEL_FACTS.md"
@@ -1064,8 +1064,8 @@
           "url": "https://ollama.com/library/medgemma"
         }
       ],
-      "popularity": "366.3K",
-      "popularity_n": 366300,
+      "popularity": "381.2K",
+      "popularity_n": 381200,
       "href": "/directory/ollama-medgemma/",
       "facts_json": "/directory/ollama-medgemma/facts.json",
       "facts_md": "/directory/ollama-medgemma/MODEL_FACTS.md"
@@ -1108,8 +1108,8 @@
           "url": "https://huggingface.co/openbmb/MiniCPM-o-2_6"
         }
       ],
-      "popularity": "275K",
-      "popularity_n": 275363,
+      "popularity": "307K",
+      "popularity_n": 306643,
       "href": "/directory/ollama-minicpm-o-2-6/",
       "facts_json": "/directory/ollama-minicpm-o-2-6/facts.json",
       "facts_md": "/directory/ollama-minicpm-o-2-6/MODEL_FACTS.md"
@@ -1152,8 +1152,8 @@
           "url": "https://huggingface.co/openbmb/MiniCPM-o-4_5"
         }
       ],
-      "popularity": "694K",
-      "popularity_n": 694166,
+      "popularity": "681K",
+      "popularity_n": 681376,
       "href": "/directory/ollama-minicpm-o-4-5/",
       "facts_json": "/directory/ollama-minicpm-o-4-5/facts.json",
       "facts_md": "/directory/ollama-minicpm-o-4-5/MODEL_FACTS.md"
@@ -1244,8 +1244,8 @@
           "url": "https://ollama.com/library/minimax-m3"
         }
       ],
-      "popularity": "506.2K",
-      "popularity_n": 506200,
+      "popularity": "508.8K",
+      "popularity_n": 508800,
       "href": "/directory/minimax-m3/",
       "facts_json": "/directory/minimax-m3/facts.json",
       "facts_md": "/directory/minimax-m3/MODEL_FACTS.md"
@@ -1292,8 +1292,8 @@
           "url": "https://huggingface.co/mistralai/Mistral-Medium-3.5-128B"
         }
       ],
-      "popularity": "383.1K",
-      "popularity_n": 383100,
+      "popularity": "392.2K",
+      "popularity_n": 392200,
       "href": "/directory/mistral-medium-3.5/",
       "facts_json": "/directory/mistral-medium-3.5/facts.json",
       "facts_md": "/directory/mistral-medium-3.5/MODEL_FACTS.md"
@@ -1336,8 +1336,8 @@
           "url": "https://ollama.com/library/nemotron-3-nano"
         }
       ],
-      "popularity": "820.7K",
-      "popularity_n": 820700,
+      "popularity": "831K",
+      "popularity_n": 831000,
       "href": "/directory/nvidia-nemotron-3-nano/",
       "facts_json": "/directory/nvidia-nemotron-3-nano/facts.json",
       "facts_md": "/directory/nvidia-nemotron-3-nano/MODEL_FACTS.md"
@@ -1382,8 +1382,8 @@
           "url": "https://ollama.com/library/nemotron3"
         }
       ],
-      "popularity": "658K",
-      "popularity_n": 658000,
+      "popularity": "660.9K",
+      "popularity_n": 660900,
       "href": "/directory/nvidia-nemotron-3-nano-omni/",
       "facts_json": "/directory/nvidia-nemotron-3-nano-omni/facts.json",
       "facts_md": "/directory/nvidia-nemotron-3-nano-omni/MODEL_FACTS.md"
@@ -1472,8 +1472,8 @@
           "url": "https://ollama.com/library/ornith-1.5"
         }
       ],
-      "popularity": "304K",
-      "popularity_n": 304000,
+      "popularity": "314.3K",
+      "popularity_n": 314300,
       "href": "/directory/ornith-ornith-1.5/",
       "facts_json": "/directory/ornith-ornith-1.5/facts.json",
       "facts_md": "/directory/ornith-ornith-1.5/MODEL_FACTS.md"
@@ -1516,8 +1516,8 @@
           "url": "https://ollama.com/library/ornith"
         }
       ],
-      "popularity": "476.1K",
-      "popularity_n": 476100,
+      "popularity": "492.9K",
+      "popularity_n": 492900,
       "href": "/directory/ornith-35b/",
       "facts_json": "/directory/ornith-35b/facts.json",
       "facts_md": "/directory/ornith-35b/MODEL_FACTS.md"
@@ -1560,8 +1560,8 @@
           "url": "https://huggingface.co/farbodtavakkoli/OTel-2.0-LLM-31B-IT"
         }
       ],
-      "popularity": "7.2M",
-      "popularity_n": 7164611,
+      "popularity": "7.4M",
+      "popularity_n": 7426197,
       "href": "/directory/ollama-otel-2.0-llm-31b-it/",
       "facts_json": "/directory/ollama-otel-2.0-llm-31b-it/facts.json",
       "facts_md": "/directory/ollama-otel-2.0-llm-31b-it/MODEL_FACTS.md"
@@ -1605,7 +1605,7 @@
         }
       ],
       "popularity": "1.4M",
-      "popularity_n": 1356059,
+      "popularity_n": 1354332,
       "href": "/directory/ollama-otel-llm-27b-it/",
       "facts_json": "/directory/ollama-otel-llm-27b-it/facts.json",
       "facts_md": "/directory/ollama-otel-llm-27b-it/MODEL_FACTS.md"
@@ -1649,7 +1649,7 @@
         }
       ],
       "popularity": "1.6M",
-      "popularity_n": 1566806,
+      "popularity_n": 1621917,
       "href": "/directory/ollama-otel-llm-e4b-it/",
       "facts_json": "/directory/ollama-otel-llm-e4b-it/facts.json",
       "facts_md": "/directory/ollama-otel-llm-e4b-it/MODEL_FACTS.md"
@@ -1692,8 +1692,8 @@
           "url": "https://ollama.com/library/qwen3.5"
         }
       ],
-      "popularity": "20M",
-      "popularity_n": 20000000,
+      "popularity": "20.3M",
+      "popularity_n": 20300000,
       "href": "/directory/qwen-qwen3.5-35b/",
       "facts_json": "/directory/qwen-qwen3.5-35b/facts.json",
       "facts_md": "/directory/qwen-qwen3.5-35b/MODEL_FACTS.md"
@@ -1736,8 +1736,8 @@
           "url": "https://ollama.com/library/qwen3.6"
         }
       ],
-      "popularity": "6.5M",
-      "popularity_n": 6500000,
+      "popularity": "6.6M",
+      "popularity_n": 6600000,
       "href": "/directory/qwen-qwen3.6-35b/",
       "facts_json": "/directory/qwen-qwen3.6-35b/facts.json",
       "facts_md": "/directory/qwen-qwen3.6-35b/MODEL_FACTS.md"
@@ -1780,8 +1780,8 @@
           "url": "https://ollama.com/library/qwen3.8"
         }
       ],
-      "popularity": "1.7M",
-      "popularity_n": 1700000,
+      "popularity": "2M",
+      "popularity_n": 2000000,
       "href": "/directory/qwen-qwen3.8/",
       "facts_json": "/directory/qwen-qwen3.8/facts.json",
       "facts_md": "/directory/qwen-qwen3.8/MODEL_FACTS.md"
@@ -1824,8 +1824,8 @@
           "url": "https://huggingface.co/raxcore-dev/Rax-4.5"
         }
       ],
-      "popularity": "1.1M",
-      "popularity_n": 1059991,
+      "popularity": "1M",
+      "popularity_n": 1006663,
       "href": "/directory/ollama-rax-4.5/",
       "facts_json": "/directory/ollama-rax-4.5/facts.json",
       "facts_md": "/directory/ollama-rax-4.5/MODEL_FACTS.md"
