@@ -15,18 +15,20 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v5
         with:
           version: 10
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: pnpm
       - run: pnpm directory:install
       - run: pnpm directory:rebuild
+      # Needs org Actions → General → "Allow GitHub Actions to create and approve pull requests".
+      # The GITHUB_TOKEN can push chore/directory-refresh even when that box is off.
       - name: Open pull request if the catalog changed
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@v8
         with:
           branch: chore/directory-refresh
           title: Weekly directory refresh
