@@ -1,35 +1,192 @@
 {
-  "generated": "2026-09-10",
+  "generated": "2026-09-21",
   "criteria": {
     "min_ollama_pulls": 250000,
     "min_hf_downloads": 250000,
     "max_age_months": 6
   },
-  "ollama_listed": 239,
-  "hf_listed": 139,
+  "ollama_listed": 240,
+  "hf_listed": 132,
   "updated_pulls": [
     {
+      "slug": "google-gemma-4-12b",
+      "from": "24.6M",
+      "to": "25.4M"
+    },
+    {
+      "slug": "google-gemma-4-31b",
+      "from": "24.6M",
+      "to": "25.4M"
+    },
+    {
+      "slug": "qwen-qwen3.5-35b",
+      "from": "20M",
+      "to": "20.7M"
+    },
+    {
+      "slug": "qwen-qwen3.6-35b",
+      "from": "6.5M",
+      "to": "6.7M"
+    },
+    {
+      "slug": "nvidia-nemotron-3-super",
+      "from": "2.9M",
+      "to": "3M"
+    },
+    {
+      "slug": "nvidia-nemotron-3-nano-omni",
+      "from": "658K",
+      "to": "664.7K"
+    },
+    {
+      "slug": "moonshot-kimi-k2.6",
+      "from": "466.6K",
+      "to": "477.4K"
+    },
+    {
+      "slug": "minimax-m3",
+      "from": "506.2K",
+      "to": "513K"
+    },
+    {
       "slug": "ornith-35b",
-      "from": "476K",
-      "to": "476.1K"
+      "from": "476.1K",
+      "to": "517K"
+    },
+    {
+      "slug": "deepseek-v4-flash",
+      "from": "444.7K",
+      "to": "467.7K"
+    },
+    {
+      "slug": "ibm-granite-4.1",
+      "from": "422.1K",
+      "to": "458.5K"
+    },
+    {
+      "slug": "deepseek-v4-pro",
+      "from": "394.5K",
+      "to": "416.2K"
+    },
+    {
+      "slug": "mistral-medium-3.5",
+      "from": "383.1K",
+      "to": "406.5K"
+    },
+    {
+      "slug": "zai-glm-5.2",
+      "from": "341.5K",
+      "to": "347.1K"
+    },
+    {
+      "slug": "qwen-qwen3.8",
+      "from": "1.7M",
+      "to": "2.3M"
+    },
+    {
+      "slug": "ornith-ornith-1.5",
+      "from": "304K",
+      "to": "333.7K"
+    },
+    {
+      "slug": "ollama-medgemma",
+      "from": "366.3K",
+      "to": "406.3K"
+    },
+    {
+      "slug": "zai-glm-4.7-flash",
+      "from": "1.7M",
+      "to": "1.8M"
+    },
+    {
+      "slug": "nvidia-nemotron-3-nano",
+      "from": "820.7K",
+      "to": "849.3K"
     }
   ],
-  "updated_hf_downloads": [],
+  "updated_hf_downloads": [
+    {
+      "slug": "ollama-otel-2.0-llm-31b-it",
+      "from": 7164611,
+      "to": 6257971
+    },
+    {
+      "slug": "moonshot-kimi-k3-dspark",
+      "from": 2645687,
+      "to": 3814434
+    },
+    {
+      "slug": "ollama-otel-llm-e4b-it",
+      "from": 1566806,
+      "to": 1366792
+    },
+    {
+      "slug": "ollama-otel-llm-27b-it",
+      "from": 1356059,
+      "to": 1052287
+    },
+    {
+      "slug": "ollama-rax-4.5",
+      "from": 1059991,
+      "to": 738500
+    },
+    {
+      "slug": "zai-glm-5.3-flash",
+      "from": 1023103,
+      "to": 3309565
+    },
+    {
+      "slug": "ollama-cosmos-reason2-2b",
+      "from": 909941,
+      "to": 784378
+    },
+    {
+      "slug": "ollama-minicpm-o-4-5",
+      "from": 694166,
+      "to": 688287
+    },
+    {
+      "slug": "ollama-minicpm-o-2-6",
+      "from": 275363,
+      "to": 356866
+    }
+  ],
   "missing_from_search": [],
   "new_candidates": [],
-  "new_hf_candidates": [],
+  "new_hf_candidates": [
+    {
+      "source": "huggingface",
+      "id": "CMSManhattan/JiRackUltra_14b",
+      "downloads": 1000918,
+      "last_modified": "2026-09-19T14:59:07.000Z",
+      "pipeline_tag": "text-generation",
+      "gated": false,
+      "url": "https://huggingface.co/CMSManhattan/JiRackUltra_14b",
+      "suggested_slug": "ollama-jirackultra-14b"
+    }
+  ],
   "stale_in_catalog": [
     {
       "slug": "nvidia-nemotron-3-super",
-      "pulls": "2.9M",
-      "pulls_n": 2900000
+      "pulls": "3M",
+      "pulls_n": 3000000
+    },
+    {
+      "slug": "minimax-m2.7",
+      "pulls": "2.4M",
+      "pulls_n": 2400000
     },
     {
       "slug": "liquid-lfm2",
       "pulls": "1.1M",
       "pulls_n": 1100000
+    },
+    {
+      "slug": "nvidia-nemotron-3-nano",
+      "pulls": "849.3K",
+      "pulls_n": 849300
     }
   ],
   "applied_drafts": [],
-  "apply_new": true
+  "apply_new": false
 }
