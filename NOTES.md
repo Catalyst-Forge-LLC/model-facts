@@ -40,12 +40,13 @@ from GGUF header facts. All outputs pass the validator.
   identical to AppFacts. Body may drift; tooling doesn't verify body-vs-frontmatter.
 - **The Golden Rule:** documented facts and sourced scores stay. Marketing stays out.
   Capability and safety enums are assessments, not measurements.
-- **`undisclosed` over omission** for facts a developer knowingly withholds (params,
-  tokens, data mix). Making non-disclosure visible and comparable is the label's teeth.
+- **`undisclosed` over omission** for facts that are not disclosed (params, tokens,
+  data mix). Making non-disclosure visible and comparable is the label's teeth.
 - **Closed enums for judgment fields** (`reasoning_math: high|medium|low`,
   `filter_type: raw|censored|hybrid`, …) so files are comparable across models.
-- **Generator: deterministic first, LLM second.** Hard facts (exact safetensors param
-  count, context window from `config.json`, GGUF header data) never come from prose. The
+- **Generator: deterministic first, LLM second.** The generator never takes hard facts
+  (exact safetensors param count, context window from `config.json`, GGUF header data)
+  from prose. The
   LLM may draft judgment/provenance fields from the card, and its output is sanitized
   (enum whitelists, architecture facts cannot be overridden). That is a constraint, not
   a truth guarantee. Without `--model`, drafts get conservative defaults marked

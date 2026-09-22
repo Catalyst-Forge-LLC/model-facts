@@ -169,9 +169,9 @@ inherit the base model's numbers unless that source evaluated that artifact.
 
 - Follow the Golden Rule. Marketing language belongs in the README, not here.
 - Fixed-vocabulary capability and safety ratings are assessments, not measurements.
-- **`undisclosed` over omission** for facts the developer knowingly withholds
-  (`parameters`, `tokens`, `data_composition`). The *absence* of a fact is itself a fact
-  worth labeling. Assessment enums accept `unresolved` when the card gives no
+- **`undisclosed` over omission** for facts that are not disclosed (`parameters`,
+  `tokens`, `data_composition`). The *absence* of a fact is itself a fact worth
+  labeling. It records absence, not intent. Assessment enums accept `unresolved` when the card gives no
   basis. Directory `capability_basis` stays a later promotion into the label schema.
 - Curate, don't dump: `data_composition` ≤ 8 rows, `benchmarks` ≤ 10 rows.
 - One `MODEL_FACTS.md` per model *version*. A quantized re-release is a new file (the
