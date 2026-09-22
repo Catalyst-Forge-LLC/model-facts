@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ModelFacts — A Nutrition Facts label for AI models</title>
+  <title>ModelFacts — What does this model document about itself?</title>
   <meta name="description" content="MODEL_FACTS.md: a compact companion to a model card. Summarize documented architecture, provenance, limits, and reported evaluations. Spec and schema from Catalyst Forge." />
   <link rel="canonical" href="https://modelfacts.dev/" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <meta property="og:title" content="ModelFacts" />
-  <meta property="og:description" content="A Nutrition Facts label for AI models. Know the weights behind the words." />
+  <meta property="og:description" content="What does this model document about itself? Know the weights behind the words." />
   <meta property="og:url" content="https://modelfacts.dev/" />
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="/fonts/fonts.css" />
@@ -373,6 +373,7 @@
     .xfacts-family-footer .xfacts-footer-nav a[data-label="tool"] { color: #5eead4; }
     .xfacts-family-footer .xfacts-footer-nav a[data-label="agent"] { color: #fbd38d; }
     .xfacts-family-footer .xfacts-footer-nav a[data-label="skill"] { color: #f9a8d4; }
+    .xfacts-family-footer .xfacts-footer-nav a[data-label="feature"] { color: #c4d06a; }
     .xfacts-family-footer .xfacts-footer-nav a:hover { color: #fff; }
     .xfacts-family-footer .xfacts-footer-credit {
       display: flex;
@@ -396,7 +397,7 @@
   <header class="hero">
     <div class="wrap hero-copy">
       <h1 class="brand">Model<span>Facts</span></h1>
-      <p class="lede">A Nutrition Facts label for AI models, part of the <a href="https://xfacts.dev">xFacts</a> suite.</p>
+      <p class="lede">What does this model document about itself? Part of the <a href="https://xfacts.dev">xFacts</a> suite.</p>
       <p class="sub">
         Summarize a model's documented architecture, provenance, limits, and reported evaluations
         in a compact label. ModelFacts keeps missing information visible and provides a consistent
@@ -558,8 +559,9 @@ pnpm validate path/to/MODEL_FACTS.md</pre>
             </p>
             <p>
               Browse curated labels for open-weight and closed models in the
-              <a href="/directory/">directory</a>. Next suite work is Panel
-              (derived tool-surface drift), not more generator sources.
+              <a href="/directory/">directory</a>. The hub
+              <a href="https://xfacts.dev/#panel">Panel</a> is a derived tool-surface view.
+              This catalog stays model labels, not more generator sources.
             </p>
             <ul class="links">
               <li><a href="/directory/">Directory</a></li>
@@ -605,6 +607,7 @@ pnpm validate path/to/MODEL_FACTS.md</pre>
         <li><a data-label="tool" href="https://toolfacts.dev">ToolFacts</a></li>
         <li><a data-label="agent" href="https://agentfacts.dev">AgentFacts</a></li>
         <li><a data-label="skill" href="https://skillfacts.dev">SkillFacts</a></li>
+        <li><a data-label="feature" href="https://featurefacts.dev">FeatureFacts</a></li>
       </ul>
       <div class="xfacts-footer-credit">
         <div>© 2026 ModelFacts · <a href="/directory/">Directory</a> · <a href="/llms.txt">llms.txt</a> · <a href="https://github.com/Catalyst-Forge-LLC/model-facts">GitHub</a></div>
