@@ -189,3 +189,5 @@ This is **v0.1.0** — the spec's required fields may still shift before v1.0. I
 <p align="center">
   <em>"Know the weights behind the words."</em>
 </p>
+
+[See the rest of the Catalyst Forge shelf.](https://catalystforge.com/tools/)
