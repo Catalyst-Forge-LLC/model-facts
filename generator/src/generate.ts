@@ -193,15 +193,15 @@ function assemble(src: SourceFacts, args: Args): ModelFacts {
     },
     capabilities: {
       natural_language: "full",
-      reasoning_math: "medium",
-      coding: "medium",
+      reasoning_math: "unresolved",
+      coding: "unresolved",
       vision_input: src.visionInput ?? "disabled",
       audio_input: src.audioInput ?? "disabled",
       tool_use: src.toolUse,
     },
     safety: {
-      refusal_sensitivity: "medium",
-      instruction_following: "medium",
+      refusal_sensitivity: "unresolved",
+      instruction_following: "unresolved",
       filter_type: "hybrid",
     },
     generated: { date: new Date().toISOString().slice(0, 10), generator: GENERATOR },
@@ -299,8 +299,9 @@ async function main(): Promise<void> {
   }
   console.error("Schema validation passed. The file is well-formed, not proven true.");
   if (!args.model) {
-    console.error("Deterministic draft: required judgment enums use conservative defaults");
-    console.error("marked '# TODO: verify'. Training gaps stay undisclosed. Benchmarks are omitted");
+    console.error("Deterministic draft: assessments without a publisher basis stay unresolved");
+    console.error("and are marked '# TODO: verify'. filter_type stays hybrid because that field");
+    console.error("has no unresolved value. Training gaps stay undisclosed. Benchmarks are omitted");
     console.error("until a source supplies them. Review before publishing, or re-run with");
     console.error("--provider/--model to draft those fields from the model card.");
   } else {

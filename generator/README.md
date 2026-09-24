@@ -58,10 +58,12 @@ Hosted providers read one env var each: `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`,
 
 1. **Scan.** The source adapter pulls deterministic facts from structured metadata,
    not from prose. Exact parameter counts beat marketing numbers.
-2. **Deterministic draft (default).** Omit `--model`. Required judgment enums get
-   conservative defaults (`medium`, `hybrid`) and `# TODO: verify` comments, because
-   v0.1.0 cannot leave those fields empty. Training facts that the metadata does not
-   state stay `undisclosed`. Benchmarks are omitted until a source supplies them.
+2. **Deterministic draft (default).** Omit `--model`. Assessments with no publisher
+   basis stay `unresolved`, and `# TODO: verify` marks them for review. `filter_type`
+   still defaults to `hybrid` because that field has no `unresolved` value. Training
+   facts that the metadata does not state stay `undisclosed`. Benchmarks are omitted
+   until a source supplies them. Review every assessment and reported score before
+   publishing.
 3. **Curate (optional).** The model card text plus extracted facts go to the chosen LLM
    with [`prompt.md`](./prompt.md). The intended constraint is card-stated facts only,
    `undisclosed` otherwise. The LLM's answer is sanitized (enum whitelist, deterministic

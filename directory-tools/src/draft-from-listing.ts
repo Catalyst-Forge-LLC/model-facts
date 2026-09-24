@@ -81,8 +81,8 @@ export function draftFactsFromListing(item: OllamaListing): ModelFacts {
     },
     capabilities: {
       natural_language: "full",
-      reasoning_math: "medium",
-      coding: "medium",
+      reasoning_math: "unresolved",
+      coding: "unresolved",
       vision_input: vision,
       audio_input: audio,
       tool_use: tools,
@@ -91,8 +91,8 @@ export function draftFactsFromListing(item: OllamaListing): ModelFacts {
         : "Draft from Ollama listing — review before marking curated.",
     },
     safety: {
-      refusal_sensitivity: "medium",
-      instruction_following: "medium",
+      refusal_sensitivity: "unresolved",
+      instruction_following: "unresolved",
       filter_type: "hybrid",
     },
     generated: {
@@ -147,16 +147,16 @@ export function draftFactsFromHf(item: HfListing): ModelFacts {
     },
     capabilities: {
       natural_language: "full",
-      reasoning_math: "medium",
-      coding: "medium",
+      reasoning_math: "unresolved",
+      coding: "unresolved",
       vision_input: vision,
       audio_input: audio,
       tool_use: tools,
       notes: `Draft from HF Hub (${item.downloads.toLocaleString()} downloads). Review before marking curated.`,
     },
     safety: {
-      refusal_sensitivity: "medium",
-      instruction_following: "medium",
+      refusal_sensitivity: "unresolved",
+      instruction_following: "unresolved",
       filter_type: "hybrid",
     },
     generated: {

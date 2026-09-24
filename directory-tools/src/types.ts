@@ -1,6 +1,6 @@
 /** Shared types for directory sync / review. */
 
-export type Level = "high" | "medium" | "low";
+export type Level = "high" | "medium" | "low" | "unresolved";
 export type Toggle = "enabled" | "disabled";
 
 export interface ModelFacts {
@@ -127,10 +127,10 @@ export interface CatalogEntry {
   vision_input: "enabled" | "disabled";
   audio_input: "enabled" | "disabled";
   tool_use: "native" | "prompted" | "none" | null;
-  reasoning_math: "high" | "medium" | "low";
-  coding: "high" | "medium" | "low";
-  refusal_sensitivity: "high" | "medium" | "low";
-  instruction_following: "high" | "medium" | "low";
+  reasoning_math: "high" | "medium" | "low" | "unresolved";
+  coding: "high" | "medium" | "low" | "unresolved";
+  refusal_sensitivity: "high" | "medium" | "low" | "unresolved";
+  instruction_following: "high" | "medium" | "low" | "unresolved";
   /** From training.knowledge_cutoff; null if undisclosed. */
   knowledge_cutoff: string | null;
   /**

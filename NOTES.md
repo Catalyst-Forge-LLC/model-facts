@@ -49,8 +49,8 @@ from GGUF header facts. All outputs pass the validator.
   from prose. The
   LLM may draft judgment/provenance fields from the card, and its output is sanitized
   (enum whitelists, architecture facts cannot be overridden). That is a constraint, not
-  a truth guarantee. Without `--model`, drafts get conservative defaults marked
-  `# TODO: verify`.
+  a truth guarantee. Without `--model`, assessments with no publisher basis stay
+  `unresolved` and are marked `# TODO: verify`. `filter_type` still defaults to `hybrid`.
 - **One `MODEL_FACTS.md` per model version**; a quantized re-release is a new file.
 - **Licensing:** spec & schema CC0, tooling MIT — mirrors AppFacts.
 - User conventions in this workspace: **pnpm + TypeScript + ESM only** for Node code;
