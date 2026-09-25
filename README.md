@@ -94,13 +94,14 @@ See the [full worked example](./examples/MODEL_FACTS.md), the [hand-authored tem
 
 ## Generating a label
 
-You *can* hand-write `MODEL_FACTS.md` from the template, but the [generator](./generator/) drafts one for you — from a Hugging Face model card or a local Ollama model:
+Start with a deterministic draft from the source metadata. Add model-assisted curation only if you want a draft interpretation of the model card. Neither route proves the label is true. You can also hand-write `MODEL_FACTS.md` from the template.
 
 ```bash
-cd generator
+git clone https://github.com/Catalyst-Forge-LLC/model-facts
+cd model-facts/generator
 pnpm install
 
-# deterministic draft (no LLM) — judgment fields marked "# TODO: verify"
+# deterministic draft, no model provider
 pnpm generate Qwen/Qwen2.5-7B-Instruct
 
 # LLM-curated from the model card — local-first via Ollama,

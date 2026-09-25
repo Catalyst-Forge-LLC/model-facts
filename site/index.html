@@ -532,13 +532,19 @@ generated:
       <div class="wrap">
         <h2 class="section-title">Generate one</h2>
         <p class="section-lead">
-          The generator drafts a label from a Hugging Face model card or a local Ollama model.
-          Deterministic mode copies structured metadata. Optional LLM curation is a constrained
-          draft that still needs a factual review.
+          Start with a deterministic draft from the source metadata. Add model-assisted
+          curation only if you want a draft interpretation of the model card. Neither route
+          proves the label is true.
         </p>
         <div class="split">
-          <pre># from a Hugging Face model card
-cd model-facts/generator &amp;&amp; pnpm install
+          <pre>git clone https://github.com/Catalyst-Forge-LLC/model-facts
+cd model-facts/generator
+pnpm install
+
+# deterministic draft, no model provider
+pnpm generate Qwen/Qwen2.5-7B-Instruct
+
+# optional curation of the same card
 pnpm generate Qwen/Qwen2.5-7B-Instruct \
   --provider ollama --model llama3.1
 
@@ -553,9 +559,9 @@ pnpm validate path/to/MODEL_FACTS.md</pre>
               Output is checked against
               <a href="/schema/model-facts.schema.json">model-facts.schema.json</a> (draft-07)
               before it's written. A passing check means the file is well-formed, not that every
-              value is true. Omit <code>--model</code> for a deterministic, no-LLM draft with
-              judgment fields marked <code>TODO: verify</code>. Review those defaults, and any
-              LLM-filled scores, against the source card before you publish.
+              value is true. Omit <code>--model</code> for a deterministic draft. Unsupported
+              assessments stay <code>unresolved</code> where the schema permits that value.
+              Review every assessment and reported score before publishing.
             </p>
             <p>
               Browse curated labels for open-weight and closed models in the
