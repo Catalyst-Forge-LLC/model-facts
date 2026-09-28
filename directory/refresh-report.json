@@ -1,35 +1,215 @@
 {
-  "generated": "2026-09-10",
+  "generated": "2026-09-28",
   "criteria": {
     "min_ollama_pulls": 250000,
     "min_hf_downloads": 250000,
     "max_age_months": 6
   },
-  "ollama_listed": 239,
-  "hf_listed": 139,
+  "ollama_listed": 240,
+  "hf_listed": 132,
   "updated_pulls": [
     {
+      "slug": "google-gemma-4-12b",
+      "from": "24.6M",
+      "to": "25.9M"
+    },
+    {
+      "slug": "google-gemma-4-31b",
+      "from": "24.6M",
+      "to": "25.9M"
+    },
+    {
+      "slug": "qwen-qwen3.5-35b",
+      "from": "20M",
+      "to": "21.1M"
+    },
+    {
+      "slug": "qwen-qwen3.6-35b",
+      "from": "6.5M",
+      "to": "6.8M"
+    },
+    {
+      "slug": "nvidia-nemotron-3-super",
+      "from": "2.9M",
+      "to": "3M"
+    },
+    {
+      "slug": "nvidia-nemotron-3-nano-omni",
+      "from": "658K",
+      "to": "670.1K"
+    },
+    {
+      "slug": "moonshot-kimi-k2.6",
+      "from": "466.6K",
+      "to": "482.9K"
+    },
+    {
+      "slug": "minimax-m3",
+      "from": "506.2K",
+      "to": "516.7K"
+    },
+    {
       "slug": "ornith-35b",
-      "from": "476K",
-      "to": "476.1K"
+      "from": "476.1K",
+      "to": "540.4K"
+    },
+    {
+      "slug": "deepseek-v4-flash",
+      "from": "444.7K",
+      "to": "473.6K"
+    },
+    {
+      "slug": "ibm-granite-4.1",
+      "from": "422.1K",
+      "to": "484.2K"
+    },
+    {
+      "slug": "deepseek-v4-pro",
+      "from": "394.5K",
+      "to": "431K"
+    },
+    {
+      "slug": "mistral-medium-3.5",
+      "from": "383.1K",
+      "to": "418.5K"
+    },
+    {
+      "slug": "zai-glm-5.2",
+      "from": "341.5K",
+      "to": "360.7K"
+    },
+    {
+      "slug": "qwen-qwen3.8",
+      "from": "1.7M",
+      "to": "2.8M"
+    },
+    {
+      "slug": "ornith-ornith-1.5",
+      "from": "304K",
+      "to": "352.6K"
+    },
+    {
+      "slug": "ollama-medgemma",
+      "from": "366.3K",
+      "to": "432.9K"
+    },
+    {
+      "slug": "zai-glm-4.7-flash",
+      "from": "1.7M",
+      "to": "2M"
+    },
+    {
+      "slug": "nvidia-nemotron-3-nano",
+      "from": "820.7K",
+      "to": "866.6K"
     }
   ],
-  "updated_hf_downloads": [],
-  "missing_from_search": [],
+  "updated_hf_downloads": [
+    {
+      "slug": "ollama-otel-2.0-llm-31b-it",
+      "from": 7164611,
+      "to": 4298511
+    },
+    {
+      "slug": "moonshot-kimi-k3-dspark",
+      "from": 2645687,
+      "to": 5456864
+    },
+    {
+      "slug": "ollama-otel-llm-e4b-it",
+      "from": 1566806,
+      "to": 938347
+    },
+    {
+      "slug": "zai-glm-5.3-flash",
+      "from": 1023103,
+      "to": 4518525
+    },
+    {
+      "slug": "ollama-cosmos-reason2-2b",
+      "from": 909941,
+      "to": 694684
+    },
+    {
+      "slug": "ollama-minicpm-o-4-5",
+      "from": 694166,
+      "to": 745108
+    },
+    {
+      "slug": "ollama-minicpm-o-2-6",
+      "from": 275363,
+      "to": 334279
+    }
+  ],
+  "missing_from_search": [
+    "zai-glm-5.1",
+    "deepseek-v4-flash"
+  ],
   "new_candidates": [],
-  "new_hf_candidates": [],
+  "new_hf_candidates": [
+    {
+      "source": "huggingface",
+      "id": "CMSManhattan/JiRackUltra_1b",
+      "downloads": 1799961,
+      "last_modified": "2026-09-27T13:02:57.000Z",
+      "pipeline_tag": "text-generation",
+      "gated": false,
+      "url": "https://huggingface.co/CMSManhattan/JiRackUltra_1b",
+      "suggested_slug": "ollama-jirackultra-1b"
+    },
+    {
+      "source": "huggingface",
+      "id": "thinkingmachines/Inkling-Small",
+      "downloads": 632377,
+      "last_modified": "2026-07-31T00:39:44.000Z",
+      "pipeline_tag": "image-text-to-text",
+      "gated": false,
+      "url": "https://huggingface.co/thinkingmachines/Inkling-Small",
+      "suggested_slug": "ollama-inkling-small"
+    },
+    {
+      "source": "huggingface",
+      "id": "thinkingmachines/Inkling",
+      "downloads": 618946,
+      "last_modified": "2026-07-23T17:27:17.000Z",
+      "pipeline_tag": "image-text-to-text",
+      "gated": false,
+      "url": "https://huggingface.co/thinkingmachines/Inkling",
+      "suggested_slug": "ollama-inkling"
+    }
+  ],
   "stale_in_catalog": [
     {
       "slug": "nvidia-nemotron-3-super",
-      "pulls": "2.9M",
-      "pulls_n": 2900000
+      "pulls": "3M",
+      "pulls_n": 3000000
+    },
+    {
+      "slug": "zai-glm-5.1",
+      "pulls": "2.3M",
+      "pulls_n": 2300000
+    },
+    {
+      "slug": "minimax-m2.7",
+      "pulls": "2.4M",
+      "pulls_n": 2400000
     },
     {
       "slug": "liquid-lfm2",
       "pulls": "1.1M",
       "pulls_n": 1100000
+    },
+    {
+      "slug": "deepseek-v4-flash",
+      "pulls": "473.6K",
+      "pulls_n": 473600
+    },
+    {
+      "slug": "nvidia-nemotron-3-nano",
+      "pulls": "866.6K",
+      "pulls_n": 866600
     }
   ],
   "applied_drafts": [],
-  "apply_new": true
+  "apply_new": false
 }
