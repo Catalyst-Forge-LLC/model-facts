@@ -537,23 +537,15 @@ generated:
           proves the label is true.
         </p>
         <div class="split">
-          <pre>git clone https://github.com/Catalyst-Forge-LLC/model-facts
-cd model-facts/generator
-pnpm install
+          <pre>npx @xfacts/modelfacts-generator Qwen/Qwen2.5-7B-Instruct
 
-# deterministic draft, no model provider
-pnpm generate Qwen/Qwen2.5-7B-Instruct
-
-# optional curation of the same card
-pnpm generate Qwen/Qwen2.5-7B-Instruct \
+npx @xfacts/modelfacts-generator Qwen/Qwen2.5-7B-Instruct \
   --provider ollama --model llama3.1
 
-# from a local Ollama model
-pnpm generate ollama:llama3.1 --provider ollama --model llama3.1
+npx @xfacts/modelfacts-generator ollama:llama3.1 \
+  --provider ollama --model llama3.1
 
-# validate any MODEL_FACTS.md (CI-friendly exit codes)
-cd ../validator &amp;&amp; pnpm install
-pnpm validate path/to/MODEL_FACTS.md</pre>
+npx @xfacts/modelfacts validate path/to/MODEL_FACTS.md</pre>
           <div class="prose">
             <p>
               Output is checked against

@@ -97,20 +97,12 @@ See the [full worked example](./examples/MODEL_FACTS.md), the [hand-authored tem
 Start with a deterministic draft from the source metadata. Add model-assisted curation only if you want a draft interpretation of the model card. Neither route proves the label is true. You can also hand-write `MODEL_FACTS.md` from the template.
 
 ```bash
-git clone https://github.com/Catalyst-Forge-LLC/model-facts
-cd model-facts/generator
-pnpm install
+npx @xfacts/modelfacts-generator Qwen/Qwen2.5-7B-Instruct
 
-# deterministic draft, no model provider
-pnpm generate Qwen/Qwen2.5-7B-Instruct
-
-# LLM-curated from the model card — local-first via Ollama,
-# or openai / anthropic / xai / gemini
-pnpm generate https://huggingface.co/Qwen/Qwen2.5-7B-Instruct \
+npx @xfacts/modelfacts-generator https://huggingface.co/Qwen/Qwen2.5-7B-Instruct \
   --provider ollama --model llama3.1
 
-# from a local Ollama model (GGUF header facts: params, context, quant, license)
-pnpm generate ollama:llama3.1 --provider ollama --model llama3.1
+npx @xfacts/modelfacts-generator ollama:llama3.1 --provider ollama --model llama3.1
 ```
 
 Deterministic facts (parameter count, context window, quantization, license, base model) come straight from structured metadata. Optional LLM curation is instructed to stay inside the card text and schema enums. That is a constraint, not a guarantee. A passing schema check means the file is well-formed, not that every value is true. Review the draft before you publish it. See [`generator/README.md`](./generator/README.md).
@@ -120,12 +112,7 @@ Deterministic facts (parameter count, context window, quantization, license, bas
 The frontmatter conforms to [`site/schema/model-facts.schema.json`](./site/schema/model-facts.schema.json) (served at [modelfacts.dev/schema/model-facts.schema.json](https://modelfacts.dev/schema/model-facts.schema.json)) — any draft-07 validator works. This repo ships a small TypeScript CLI:
 
 ```bash
-cd validator
-pnpm install
-
-# exit code 1 on any failure — CI-friendly
-pnpm validate ../examples/MODEL_FACTS.md
-pnpm validate path/to/your/MODEL_FACTS.md
+npx @xfacts/modelfacts validate path/to/MODEL_FACTS.md
 ```
 
 ## Directory
