@@ -1,6 +1,6 @@
 ---
 app_facts_version: 0.1.0
-name: model-facts
+name: ModelFacts
 type: library
 status: active
 license: MIT
@@ -22,7 +22,7 @@ credits:
   built_by: "Catalyst Forge — https://www.catalystforge.com/"
 ---
 
-# model-facts
+# ModelFacts
 
 `library` · **active** · MIT
 
@@ -52,4 +52,4 @@ _None listed_
 ---
 *Generated with [AppFacts](https://appfacts.dev) · Built by [Catalyst Forge](https://www.catalystforge.com/) · [Visual label][appfacts-label]*
 
-[appfacts-label]: https://appfacts.dev/v#af1.eNpNkMtqwzAURH8lzKoF2aZb7UqgTcHpKrtSyrV8o6jRC-kqYEL-vTil0O3M4QzMFRfoJ4VIgaER0sy-O5KRCgVZ8hp6NxUqCxSqkLQKDTLiLgwF7wzHulL7t8MvYc7QV3iKtpFdm91hP0KhtCjuvvKeZu6_7wspeRctNHLMATeFmXOF_vhUmJrz86rKZM5k-StQJMvlD1YwDhqvTnZt2jwbcSnWzcPsChtJZekKHwvXU78E_7iqC-dU3VpB4ySSqx4G6-TUpt6kMGxJyC9VupdULHfjuB3-_3H7AZwpZLs
+[appfacts-label]: https://appfacts.dev/v#af1.eNo1kMtqwzAURH8lzKoF2aZb7UogTcHpKrtSyrV8I6vRC-k6YEL-vdil2znzgLnjBv2iECkwNE5pZH8gIxUKsuRV824oVBYoVCGZKzTIiLsxFLwzHOuWfD__OcwV-g5P0c5kV3I8n3oolDmK20Y-0sjtz7aQknfRQiPHHPBQGDlX6M8vhWF2flyrMpkrWf4OFMly-TcrGAeNNyfHedi9GnEp1t3T6AobSWVpCl8K16ldgn9eqwvnVN2KoDGJ5Kq7zjqZ5qE1KXR7EvJLleaQiuWm7_ddWO9oLtsfj18ecmRO
