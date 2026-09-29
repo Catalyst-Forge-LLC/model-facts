@@ -1,12 +1,13 @@
 {
   "name": "@xfacts/modelfacts-generator",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Draft a MODEL_FACTS.md from a Hugging Face model card or a local Ollama model.",
   "type": "module",
   "scripts": {
     "generate": "node bin/modelfacts-generate.mjs",
     "typecheck": "tsc --noEmit",
-    "prepack": "node scripts/stage-schema.mjs model-facts.schema.json"
+    "build": "node scripts/build.mjs src/generate.ts",
+    "prepack": "pnpm build && node scripts/stage-schema.mjs model-facts.schema.json"
   },
   "dependencies": {
     "ajv": "^8.17.1",
@@ -15,13 +16,15 @@
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
+    "esbuild": "^0.28.2",
     "tsx": "^4.19.0",
     "typescript": "^5.5.0"
   },
   "pnpm": {
     "overrides": {
       "fast-uri": "3.1.7"
-    }
+    },
+    "onlyBuiltDependencies": ["esbuild"]
   },
   "license": "MIT",
   "bin": {
@@ -29,7 +32,7 @@
   },
   "files": [
     "bin",
-    "src",
+    "dist",
     "schema",
     "scripts/stage-schema.mjs",
     "README.md",

@@ -17,5 +17,5 @@ pnpm validate ../examples/MODEL_FACTS.md
 pnpm validate path/to/your/MODEL_FACTS.md
 ```
 
-TypeScript, ESM. Node runs the source directly. Uses [ajv](https://ajv.js.org/) (draft-07) with
+TypeScript, ESM. The published command is compiled JavaScript. Uses [ajv](https://ajv.js.org/) (draft-07) with
 `ajv-formats` and [yaml](https://eemeli.org/yaml/).

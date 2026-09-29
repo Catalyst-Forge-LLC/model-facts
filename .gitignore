@@ -7,3 +7,5 @@ validator/schema/
 validator/LICENSE
 generator/schema/
 generator/LICENSE
+validator/dist/
+generator/dist/

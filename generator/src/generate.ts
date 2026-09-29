@@ -33,7 +33,7 @@ import { fromHuggingFace } from "./sources/hf.ts";
 import { fromOllama } from "./sources/ollama.ts";
 
 const here = dirname(fileURLToPath(import.meta.url));
-const VERSION = "0.1.0";
+const VERSION = JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8")).version;
 const GENERATOR = `modelfacts-generator v${VERSION}`;
 
 // ---------- args ----------
