@@ -1,12 +1,12 @@
 /** Hugging Face source adapter: model API + config.json + raw model card. */
 import {
-  SourceFacts,
-  Toggle,
+  type SourceFacts,
+  type Toggle,
   formatContextWindow,
   formatParamCount,
   formatQuantization,
   normalizeLicense,
-} from "../facts.js";
+} from "../facts.ts";
 
 const HF = "https://huggingface.co";
 

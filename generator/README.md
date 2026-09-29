@@ -19,6 +19,8 @@ before you publish. A valid file is well-formed. It is not automatically accurat
 More sources (OpenRouter, LM Studio, raw GGUF files) are planned. Adapters live in
 [`src/sources/`](./src/sources/) and return one common `SourceFacts` shape.
 
+The command is `modelfacts-generate` from `@xfacts/modelfacts-generator` (Node 22.18 or newer). In this repository, `pnpm generate` runs the same program.
+
 ## Usage
 
 ```bash

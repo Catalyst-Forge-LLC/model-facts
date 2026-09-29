@@ -3,7 +3,7 @@
  * Draft a MODEL_FACTS.md from a model source.
  *
  * Usage:
- *   pnpm generate <target> [flags]
+ *   modelfacts-generate <target> [flags]
  *
  * Targets:
  *   org/name                          Hugging Face model id
@@ -20,17 +20,17 @@
  *   --built-by <text>    Credit line, e.g. "Catalyst Forge — https://catalystforge.com/"
  *   --dry-run            Print instead of writing
  */
-import { readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { Ajv } from "ajv";
 import addFormats from "ajv-formats";
 import { stringify as yamlStringify } from "yaml";
-import { Benchmark, DataComposition, ModelFacts, SourceFacts } from "./facts.js";
-import { chat, extractJson, LlmOptions, Provider } from "./llm.js";
-import { renderBody } from "./render.js";
-import { fromHuggingFace } from "./sources/hf.js";
-import { fromOllama } from "./sources/ollama.js";
+import type { Benchmark, DataComposition, ModelFacts, SourceFacts } from "./facts.ts";
+import { chat, extractJson, type LlmOptions, type Provider } from "./llm.ts";
+import { renderBody } from "./render.ts";
+import { fromHuggingFace } from "./sources/hf.ts";
+import { fromOllama } from "./sources/ollama.ts";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const VERSION = "0.1.0";
@@ -79,7 +79,7 @@ function parseArgs(argv: string[]): Args {
     }
   }
   if (!args.target) {
-    console.error("Usage: pnpm generate <org/name | hf:… | https://huggingface.co/… | ollama:name> [flags]");
+    console.error("Usage: modelfacts-generate <org/name | hf:… | https://huggingface.co/… | ollama:name> [flags]");
     process.exit(2);
   }
   return args;
@@ -275,7 +275,7 @@ async function main(): Promise<void> {
   const cleaned = prune(facts);
 
   // Validate before writing — never emit a file that fails the canonical schema.
-  const schema = JSON.parse(readFileSync(resolve(here, "../../site/schema/model-facts.schema.json"), "utf8"));
+  const schema = JSON.parse(readFileSync(existsSync(resolve(here, "../schema/model-facts.schema.json")) ? resolve(here, "../schema/model-facts.schema.json") : resolve(here, "../../site/schema/model-facts.schema.json"), "utf8"));
   const ajv = new Ajv({ allErrors: true, strict: false });
   addFormats(ajv);
   const validate = ajv.compile(schema);

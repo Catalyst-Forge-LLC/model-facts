@@ -1,5 +1,5 @@
 /** Render the human-readable Markdown body from the frontmatter (the source of truth). */
-import { ModelFacts } from "./facts.js";
+import type { ModelFacts } from "./facts.ts";
 
 function kv(rows: Array<[string, string | undefined]>): string {
   const filtered = rows.filter((r): r is [string, string] => !!r[1]);

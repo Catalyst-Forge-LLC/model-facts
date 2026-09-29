@@ -1,26 +1,49 @@
 {
-  "name": "modelfacts-validator",
+  "name": "@xfacts/modelfacts",
   "version": "0.1.0",
   "description": "Validate MODEL_FACTS.md frontmatter against the ModelFacts JSON Schema.",
   "type": "module",
-  "private": true,
   "scripts": {
-    "validate": "tsx src/validate.ts",
-    "typecheck": "tsc --noEmit"
+    "validate": "node bin/modelfacts.mjs validate",
+    "typecheck": "tsc --noEmit",
+    "prepack": "node scripts/stage-schema.mjs model-facts.schema.json"
   },
   "dependencies": {
     "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1",
     "yaml": "^2.5.0"
   },
-	"devDependencies": {
-		"@types/node": "^22.0.0",
-		"tsx": "^4.19.0",
-		"typescript": "^5.5.0"
-	},
-	"pnpm": {
-		"overrides": {
-			"fast-uri": "3.1.7"
-		}
-	}
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "fast-uri": "3.1.7"
+    }
+  },
+  "license": "MIT",
+  "bin": {
+    "modelfacts": "./bin/modelfacts.mjs"
+  },
+  "files": [
+    "bin",
+    "src",
+    "schema",
+    "scripts/stage-schema.mjs",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Catalyst-Forge-LLC/model-facts.git",
+    "directory": "validator"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

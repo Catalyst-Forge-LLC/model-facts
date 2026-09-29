@@ -1,26 +1,49 @@
 {
-  "name": "modelfacts-generator",
+  "name": "@xfacts/modelfacts-generator",
   "version": "0.1.0",
   "description": "Draft a MODEL_FACTS.md from a Hugging Face model card or a local Ollama model.",
   "type": "module",
-  "private": true,
   "scripts": {
-    "generate": "tsx src/generate.ts",
-    "typecheck": "tsc --noEmit"
+    "generate": "node bin/modelfacts-generate.mjs",
+    "typecheck": "tsc --noEmit",
+    "prepack": "node scripts/stage-schema.mjs model-facts.schema.json"
   },
   "dependencies": {
     "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1",
     "yaml": "^2.5.0"
   },
-	"devDependencies": {
-		"@types/node": "^22.0.0",
-		"tsx": "^4.19.0",
-		"typescript": "^5.5.0"
-	},
-	"pnpm": {
-		"overrides": {
-			"fast-uri": "3.1.7"
-		}
-	}
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "fast-uri": "3.1.7"
+    }
+  },
+  "license": "MIT",
+  "bin": {
+    "modelfacts-generate": "./bin/modelfacts-generate.mjs"
+  },
+  "files": [
+    "bin",
+    "src",
+    "schema",
+    "scripts/stage-schema.mjs",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Catalyst-Forge-LLC/model-facts.git",
+    "directory": "generator"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

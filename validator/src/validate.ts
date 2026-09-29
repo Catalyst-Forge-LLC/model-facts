@@ -3,11 +3,11 @@
  * Validate MODEL_FACTS.md frontmatter against the canonical ModelFacts JSON Schema.
  *
  * Usage:
- *   pnpm validate <path/to/MODEL_FACTS.md> [more files...]
+ *   modelfacts validate <path/to/MODEL_FACTS.md> [more files...]
  *
  * Exits non-zero if any file is missing frontmatter or fails schema validation.
  */
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { Ajv } from "ajv";
@@ -15,7 +15,8 @@ import addFormats from "ajv-formats";
 import { parse as parseYaml } from "yaml";
 
 const here = dirname(fileURLToPath(import.meta.url));
-const schemaPath = resolve(here, "../../site/schema/model-facts.schema.json");
+const packagedSchema = resolve(here, "../schema/model-facts.schema.json");
+const schemaPath = existsSync(packagedSchema) ? packagedSchema : resolve(here, "../../site/schema/model-facts.schema.json");
 const schema = JSON.parse(readFileSync(schemaPath, "utf8"));
 
 const ajv = new Ajv({ allErrors: true, strict: false });
@@ -29,7 +30,7 @@ function extractFrontmatter(markdown: string): string | null {
 
 const files = process.argv.slice(2);
 if (files.length === 0) {
-  console.error("Usage: pnpm validate <path/to/MODEL_FACTS.md> [more files...]");
+  console.error("Usage: modelfacts validate <path/to/MODEL_FACTS.md> [more files...]");
   process.exit(2);
 }
 

@@ -1,5 +1,5 @@
 /** Ollama source adapter: local /api/show metadata (GGUF header facts). */
-import { SourceFacts, Toggle, formatContextWindow, formatParamCount, normalizeLicense } from "../facts.js";
+import { type SourceFacts, type Toggle, formatContextWindow, formatParamCount, normalizeLicense } from "../facts.ts";
 
 interface OllamaShow {
   license?: string;

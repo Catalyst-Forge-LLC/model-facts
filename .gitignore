@@ -1,3 +1,9 @@
 node_modules/
 .wrangler/
 .DS_Store
+
+# Schema copied by prepack for the published package.
+validator/schema/
+validator/LICENSE
+generator/schema/
+generator/LICENSE
