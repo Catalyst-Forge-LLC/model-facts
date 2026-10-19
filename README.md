@@ -157,7 +157,7 @@ The static site for [modelfacts.dev](https://modelfacts.dev) lives in [`site/`](
 
 ## Relationship to AppFacts
 
-Same philosophy, same file shape (frontmatter + rendered body), same origin. AppFacts labels the **vehicle**; ModelFacts labels the **engine**. An app that ships a model can carry both files side by side. The original concept draft is preserved in [`SPEC-draft.md`](./SPEC-draft.md).
+Same philosophy, same file shape (frontmatter + rendered body), same origin. AppFacts labels the **vehicle**; ModelFacts labels the **engine**. An app that ships a model can carry both files side by side. The current format is documented in [SPEC.md](./SPEC.md).
 
 ## Contributing
 
