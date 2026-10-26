@@ -1,35 +1,365 @@
 {
-  "generated": "2026-09-10",
+  "generated": "2026-10-26",
   "criteria": {
     "min_ollama_pulls": 250000,
     "min_hf_downloads": 250000,
     "max_age_months": 6
   },
-  "ollama_listed": 239,
-  "hf_listed": 139,
+  "ollama_listed": 258,
+  "hf_listed": 133,
   "updated_pulls": [
     {
-      "slug": "ornith-35b",
-      "from": "476K",
-      "to": "476.1K"
-    }
-  ],
-  "updated_hf_downloads": [],
-  "missing_from_search": [],
-  "new_candidates": [],
-  "new_hf_candidates": [],
-  "stale_in_catalog": [
+      "slug": "google-gemma-4-12b",
+      "from": "24.6M",
+      "to": "0"
+    },
+    {
+      "slug": "google-gemma-4-31b",
+      "from": "24.6M",
+      "to": "0"
+    },
+    {
+      "slug": "qwen-qwen3.5-35b",
+      "from": "20M",
+      "to": "0"
+    },
+    {
+      "slug": "qwen-qwen3.6-35b",
+      "from": "6.5M",
+      "to": "0"
+    },
     {
       "slug": "nvidia-nemotron-3-super",
-      "pulls": "2.9M",
-      "pulls_n": 2900000
+      "from": "2.9M",
+      "to": "0"
+    },
+    {
+      "slug": "minimax-m2.7",
+      "from": "2.4M",
+      "to": "0"
     },
     {
       "slug": "liquid-lfm2",
-      "pulls": "1.1M",
-      "pulls_n": 1100000
+      "from": "1.1M",
+      "to": "0"
+    },
+    {
+      "slug": "nvidia-nemotron-3-nano-omni",
+      "from": "658K",
+      "to": "0"
+    },
+    {
+      "slug": "moonshot-kimi-k2.6",
+      "from": "466.6K",
+      "to": "0"
+    },
+    {
+      "slug": "minimax-m3",
+      "from": "506.2K",
+      "to": "0"
+    },
+    {
+      "slug": "ornith-35b",
+      "from": "476.1K",
+      "to": "0"
+    },
+    {
+      "slug": "deepseek-v4-flash",
+      "from": "444.7K",
+      "to": "473.6K"
+    },
+    {
+      "slug": "ibm-granite-4.1",
+      "from": "422.1K",
+      "to": "0"
+    },
+    {
+      "slug": "deepseek-v4-pro",
+      "from": "394.5K",
+      "to": "0"
+    },
+    {
+      "slug": "mistral-medium-3.5",
+      "from": "383.1K",
+      "to": "0"
+    },
+    {
+      "slug": "zai-glm-5.2",
+      "from": "341.5K",
+      "to": "0"
+    },
+    {
+      "slug": "qwen-qwen3.8",
+      "from": "1.7M",
+      "to": "0"
+    },
+    {
+      "slug": "ornith-ornith-1.5",
+      "from": "304K",
+      "to": "0"
+    },
+    {
+      "slug": "ollama-medgemma",
+      "from": "366.3K",
+      "to": "0"
+    },
+    {
+      "slug": "zai-glm-4.7-flash",
+      "from": "1.7M",
+      "to": "0"
+    },
+    {
+      "slug": "nvidia-nemotron-3-nano",
+      "from": "820.7K",
+      "to": "0"
+    }
+  ],
+  "updated_hf_downloads": [
+    {
+      "slug": "moonshot-kimi-k3-dspark",
+      "from": 2645687,
+      "to": 2577074
+    },
+    {
+      "slug": "zai-glm-5.3-flash",
+      "from": 1023103,
+      "to": 6350666
+    },
+    {
+      "slug": "ollama-diffusiongemma-26b-a4b-it",
+      "from": 889361,
+      "to": 633589
+    },
+    {
+      "slug": "ollama-minicpm-o-4-5",
+      "from": 694166,
+      "to": 305664
+    },
+    {
+      "slug": "ollama-minicpm-o-2-6",
+      "from": 275363,
+      "to": 44550
+    }
+  ],
+  "missing_from_search": [
+    "zai-glm-5.1",
+    "deepseek-v4-flash"
+  ],
+  "new_candidates": [],
+  "new_hf_candidates": [
+    {
+      "source": "huggingface",
+      "id": "autotrust/JEV-27B-VL",
+      "downloads": 2566616,
+      "last_modified": "2026-10-14T06:16:37.000Z",
+      "pipeline_tag": "image-text-to-text",
+      "gated": false,
+      "url": "https://huggingface.co/autotrust/JEV-27B-VL",
+      "suggested_slug": "ollama-jev-27b-vl"
+    },
+    {
+      "source": "huggingface",
+      "id": "deepseek-ai/DeepSeek-V4.1-Flash",
+      "downloads": 1719277,
+      "last_modified": "2026-10-16T09:27:28.000Z",
+      "pipeline_tag": "image-text-to-text",
+      "gated": false,
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+      "suggested_slug": "deepseek-deepseek-v4.1-flash"
+    },
+    {
+      "source": "huggingface",
+      "id": "CMSManhattan/JiRackUltra_1b",
+      "downloads": 1645327,
+      "last_modified": "2026-10-25T12:51:02.000Z",
+      "pipeline_tag": "text-generation",
+      "gated": false,
+      "url": "https://huggingface.co/CMSManhattan/JiRackUltra_1b",
+      "suggested_slug": "ollama-jirackultra-1b"
+    },
+    {
+      "source": "huggingface",
+      "id": "thinkingmachines/Inkling",
+      "downloads": 1620385,
+      "last_modified": "2026-07-23T17:27:17.000Z",
+      "pipeline_tag": "image-text-to-text",
+      "gated": false,
+      "url": "https://huggingface.co/thinkingmachines/Inkling",
+      "suggested_slug": "ollama-inkling"
+    },
+    {
+      "source": "huggingface",
+      "id": "openbmb/MiniCPM5-2B",
+      "downloads": 1222910,
+      "last_modified": "2026-09-29T06:12:33.000Z",
+      "pipeline_tag": "text-generation",
+      "gated": false,
+      "url": "https://huggingface.co/openbmb/MiniCPM5-2B",
+      "suggested_slug": "ollama-minicpm5-2b"
+    },
+    {
+      "source": "huggingface",
+      "id": "MiniMaxAI/MiniMax-M2.5",
+      "downloads": 1048254,
+      "last_modified": "2026-10-26T07:08:12.000Z",
+      "pipeline_tag": "text-generation",
+      "gated": false,
+      "url": "https://huggingface.co/MiniMaxAI/MiniMax-M2.5",
+      "suggested_slug": "minimax-minimax-m2.5"
+    },
+    {
+      "source": "huggingface",
+      "id": "thinkingmachines/Inkling-Small",
+      "downloads": 1040030,
+      "last_modified": "2026-07-31T00:39:44.000Z",
+      "pipeline_tag": "image-text-to-text",
+      "gated": false,
+      "url": "https://huggingface.co/thinkingmachines/Inkling-Small",
+      "suggested_slug": "ollama-inkling-small"
+    },
+    {
+      "source": "huggingface",
+      "id": "kindlingai/glm-5.3-exlr8-k2-k3-k4",
+      "downloads": 1011601,
+      "last_modified": "2026-10-26T18:00:53.000Z",
+      "pipeline_tag": "text-generation",
+      "gated": false,
+      "url": "https://huggingface.co/kindlingai/glm-5.3-exlr8-k2-k3-k4",
+      "suggested_slug": "zai-glm-5.3-exlr8-k2-k3-k4"
+    },
+    {
+      "source": "huggingface",
+      "id": "tencent/Hy3",
+      "downloads": 984395,
+      "last_modified": "2026-07-20T07:01:39.000Z",
+      "pipeline_tag": "text-generation",
+      "gated": false,
+      "url": "https://huggingface.co/tencent/Hy3",
+      "suggested_slug": "ollama-hy3"
+    },
+    {
+      "source": "huggingface",
+      "id": "farbodtavakkoli/OTel-2.0-Decision-26B-A4B-4bit",
+      "downloads": 914755,
+      "last_modified": "2026-10-10T17:29:32.000Z",
+      "pipeline_tag": "text-generation",
+      "gated": false,
+      "url": "https://huggingface.co/farbodtavakkoli/OTel-2.0-Decision-26B-A4B-4bit",
+      "suggested_slug": "ollama-otel-2.0-decision-26b-a4b-4bit"
+    }
+  ],
+  "stale_in_catalog": [
+    {
+      "slug": "google-gemma-4-12b",
+      "pulls": "0",
+      "pulls_n": 0
+    },
+    {
+      "slug": "google-gemma-4-31b",
+      "pulls": "0",
+      "pulls_n": 0
+    },
+    {
+      "slug": "qwen-qwen3.5-35b",
+      "pulls": "0",
+      "pulls_n": 0
+    },
+    {
+      "slug": "qwen-qwen3.6-35b",
+      "pulls": "0",
+      "pulls_n": 0
+    },
+    {
+      "slug": "nvidia-nemotron-3-super",
+      "pulls": "0",
+      "pulls_n": 0
+    },
+    {
+      "slug": "zai-glm-5.1",
+      "pulls": "2.3M",
+      "pulls_n": 2300000
+    },
+    {
+      "slug": "minimax-m2.7",
+      "pulls": "0",
+      "pulls_n": 0
+    },
+    {
+      "slug": "liquid-lfm2",
+      "pulls": "0",
+      "pulls_n": 0
+    },
+    {
+      "slug": "nvidia-nemotron-3-nano-omni",
+      "pulls": "0",
+      "pulls_n": 0
+    },
+    {
+      "slug": "moonshot-kimi-k2.6",
+      "pulls": "0",
+      "pulls_n": 0
+    },
+    {
+      "slug": "minimax-m3",
+      "pulls": "0",
+      "pulls_n": 0
+    },
+    {
+      "slug": "ornith-35b",
+      "pulls": "0",
+      "pulls_n": 0
+    },
+    {
+      "slug": "deepseek-v4-flash",
+      "pulls": "473.6K",
+      "pulls_n": 473600
+    },
+    {
+      "slug": "ibm-granite-4.1",
+      "pulls": "0",
+      "pulls_n": 0
+    },
+    {
+      "slug": "deepseek-v4-pro",
+      "pulls": "0",
+      "pulls_n": 0
+    },
+    {
+      "slug": "mistral-medium-3.5",
+      "pulls": "0",
+      "pulls_n": 0
+    },
+    {
+      "slug": "zai-glm-5.2",
+      "pulls": "0",
+      "pulls_n": 0
+    },
+    {
+      "slug": "qwen-qwen3.8",
+      "pulls": "0",
+      "pulls_n": 0
+    },
+    {
+      "slug": "ornith-ornith-1.5",
+      "pulls": "0",
+      "pulls_n": 0
+    },
+    {
+      "slug": "ollama-medgemma",
+      "pulls": "0",
+      "pulls_n": 0
+    },
+    {
+      "slug": "zai-glm-4.7-flash",
+      "pulls": "0",
+      "pulls_n": 0
+    },
+    {
+      "slug": "nvidia-nemotron-3-nano",
+      "pulls": "0",
+      "pulls_n": 0
     }
   ],
   "applied_drafts": [],
-  "apply_new": true
+  "apply_new": false
 }
