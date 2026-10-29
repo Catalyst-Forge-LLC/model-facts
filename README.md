@@ -1,7 +1,7 @@
 <h1 align="center">ModelFacts</h1>
 
 <p align="center">
-  <strong>A compact companion to a model card.</strong>
+  <strong>See a model’s specifications, limits, and reported results.</strong>
 </p>
 
 <p align="center">
